@@ -1,0 +1,31 @@
+{
+  "name": "archipelago-middleware",
+  "keywords": [
+    "semapps",
+    "semantic"
+  ],
+  "scripts": {
+    "dev": "moleculer-runner --repl --hot services",
+    "start": "moleculer-runner services",
+    "link-semapps-packages": "yarn link @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/pod @semapps/push @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
+  },
+  "dependencies": {
+    "@semapps/auth": "0.4.0-alpha.5",
+    "@semapps/backup": "0.4.0-alpha.5",
+    "@semapps/fuseki-admin": "0.4.0-alpha.5",
+    "@semapps/inference": "0.4.0-alpha.5",
+    "@semapps/jsonld": "0.4.0-alpha.5",
+    "@semapps/ldp": "0.4.0-alpha.5",
+    "@semapps/mime-types": "0.4.0-alpha.5",
+    "@semapps/sparql-endpoint": "0.4.0-alpha.5",
+    "@semapps/triplestore": "0.4.0-alpha.5",
+    "@semapps/webacl": "0.4.0-alpha.5",
+    "@semapps/webid": "0.4.0-alpha.5",
+    "dotenv-flow": "^3.2.0",
+    "ioredis": "^4.17.3",
+    "moleculer": "^0.14.18",
+    "moleculer-repl": "^0.6.3",
+    "moleculer-web": "^0.10.0-beta1",
+    "url-join": "^4.0.1"
+  }
+}
