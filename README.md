@@ -12,7 +12,7 @@ Thanks to the micro-service architecture of [SemApps](https://github.com/assembl
 
 ## Getting started
 
-## Triple store
+### Triple store
 
 Launch the [Jena Fuseki](https://jena.apache.org/documentation/fuseki2/) triplestore on port 3030:
 
@@ -20,7 +20,7 @@ Launch the [Jena Fuseki](https://jena.apache.org/documentation/fuseki2/) triples
 docker-compose up -d fuseki
 ```
 
-## Middleware
+### Middleware
 
 Add a `.env.local` file in the `/middleware` directory and fill the required OIDC configurations:
 
@@ -40,7 +40,7 @@ yarn run dev
 
 > This will launch Moleculer in [REPL mode](https://moleculer.services/docs/0.14/moleculer-repl.html), allowing you to call actions directly.
 
-## Frontend
+### Frontend
 
 Launch the frontend on port 4000:
 
@@ -53,11 +53,11 @@ yarn start
 
 ## Linking to SemApps packages
 
-To modify packages on the SemApps repository and see the changes before they are published, we recommend to use `yarn link`.
+To modify packages on the SemApps repository and see the changes before they are published, we recommend to use [`yarn link`](https://classic.yarnpkg.com/en/docs/cli/link/).
 
 ### Linking middleware packages
 
-```
+```bash
 git clone git@github.com:assemblee-virtuelle/semapps.git
 cd semapps/src/middleware
 yarn link all
@@ -67,7 +67,7 @@ yarn run link-semapps-packages
 
 ### Linking frontend packages
 
-```
+```bash
 git clone git@github.com:assemblee-virtuelle/semapps.git
 cd semapps/src/frontend
 yarn link all
