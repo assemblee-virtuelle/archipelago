@@ -2,6 +2,8 @@
 
 # Archipelago
 
+> Fostering interconnections between communities by creating synergies between their platforms
+
 A collaborative, interoperable and modular knowledge management system, compliant with most semantic web specifications: LDP, SPARQL, ActivityPub, WAC, WebID.
 
 Based on linked data & semantic web technologies, it allows the co-production of knowledge graphs.
