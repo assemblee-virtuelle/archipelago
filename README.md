@@ -1,6 +1,6 @@
-[![SemApps](https://badgen.net/badge/Powered%20by/SemApps/28CDFB)](https://semapps.org)
-
 # Archipelago
+
+[![SemApps](https://badgen.net/badge/Powered%20by/SemApps/28CDFB)](https://semapps.org)
 
 > Fostering interconnections between communities by creating synergies between their platforms
 
@@ -55,25 +55,23 @@ yarn start
 
 ## Linking to SemApps packages
 
-To modify packages on the SemApps repository and see the changes before they are published, we recommend to use [`yarn link`](https://classic.yarnpkg.com/en/docs/cli/link/).
+To modify packages on the [SemApps repository](https://github.com/assemblee-virtuelle/semapps) and see the changes before they are published, we recommend to use [`yarn link`](https://classic.yarnpkg.com/en/docs/cli/link/).
 
 ### Linking middleware packages
 
 ```bash
-git clone git@github.com:assemblee-virtuelle/semapps.git
-cd semapps/src/middleware
+cd /SEMAPPS_REPO/src/middleware
 yarn link all
-cd /ARCHIPELAGO_DIRECTORY/middleware
+cd /ARCHIPELAGO_REPO/middleware
 yarn run link-semapps-packages
 ```
 
 ### Linking frontend packages
 
 ```bash
-git clone git@github.com:assemblee-virtuelle/semapps.git
-cd semapps/src/frontend
+cd /SEMAPPS_REPO/src/frontend
 yarn link all
-cd /ARCHIPELAGO_DIRECTORY/frontend
+cd /ARCHIPELAGO_REPO/frontend
 yarn run link-semapps-packages
 ```
 
