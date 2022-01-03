@@ -61,7 +61,7 @@ To modify packages on the [SemApps repository](https://github.com/assemblee-virt
 
 ```bash
 cd /SEMAPPS_REPO/src/middleware
-yarn link all
+yarn run link-all
 cd /ARCHIPELAGO_REPO/middleware
 yarn run link-semapps-packages
 ```
@@ -70,7 +70,7 @@ yarn run link-semapps-packages
 
 ```bash
 cd /SEMAPPS_REPO/src/frontend
-yarn link all
+yarn run link-all
 cd /ARCHIPELAGO_REPO/frontend
 yarn run link-semapps-packages
 ```
