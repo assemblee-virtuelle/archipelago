@@ -21,10 +21,9 @@ RUN git clone https://github.com/assemblee-virtuelle/archipelago.git /archipelag
 RUN git checkout $SELECTED_BRANCH
 
 ADD app /archipelago/middleware
-
-RUN yarn run install
-
 WORKDIR /archipelago/middleware
+
+RUN yarn install
 
 EXPOSE 3000
 

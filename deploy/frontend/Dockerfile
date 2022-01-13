@@ -21,6 +21,7 @@ RUN git clone https://github.com/assemblee-virtuelle/archipelago.git /archipelag
 RUN git checkout $SELECTED_BRANCH
 
 ADD app /archipelago/frontend
+WORKDIR /archipelago/frontend
 
 RUN yarn install
 
