@@ -1,53 +1,53 @@
 .DEFAULT_GOAL := help
 .PHONY: docker-build docker-up build start log stop restart
 
-DOCKER_COMPOSE_TEST=docker-compose -f docker-compose-test.yaml
+DOCKER_COMPOSE_DEV=docker-compose -f docker-compose-dev.yaml
 DOCKER_COMPOSE_PROD=docker-compose -f docker-compose.yaml
 
 # Docker
-docker-build-test:
-	$(DOCKER_COMPOSE_TEST) build
+docker-build-dev:
+	$(DOCKER_COMPOSE_DEV) build
 
 docker-build-prod:
 	$(DOCKER_COMPOSE_PROD) build
 
-docker-up-test:
-	$(DOCKER_COMPOSE_TEST) up -d
+docker-up-dev:
+	$(DOCKER_COMPOSE_DEV) up -d
 
-docker-stop-test:
-	$(DOCKER_COMPOSE_TEST) down
+docker-stop-dev:
+	$(DOCKER_COMPOSE_DEV) down
 
 docker-stop-prod:
 		$(DOCKER_COMPOSE_PROD) down
 
-docker-clean-test:
-	$(DOCKER_COMPOSE_TEST) down
+docker-clean-dev:
+	$(DOCKER_COMPOSE_DEV) down
 
-docker-start-test:
-	$(DOCKER_COMPOSE_TEST) up -d --force-recreate
+docker-start-dev:
+	$(DOCKER_COMPOSE_DEV) up -d --force-recreate
 
 docker-start-prod:
 	$(DOCKER_COMPOSE_PROD) up -d --force-recreate
 
-docker-restart-test:
-	$(DOCKER_COMPOSE_TEST) up -d --force-recreate
+docker-restart-dev:
+	$(DOCKER_COMPOSE_DEV) up -d --force-recreate
 
-log-test:
-	$(DOCKER_COMPOSE_TEST) logs -f fuseki middleware frontend
+log-dev:
+	$(DOCKER_COMPOSE_DEV) logs -f fuseki middleware frontend
 
 log-prod:
 	$(DOCKER_COMPOSE_PROD) logs -f fuseki middleware frontend
 
-start-test: docker-start-test
+start-dev: docker-start-dev
 
 start-prod: docker-start-prod
 
-stop-test: docker-stop-test
+stop-dev: docker-stop-dev
 
 stop-prod: docker-stop-prod
 
-restart-test: docker-restart
+restart-dev: docker-restart
 
-build-test: docker-build-test
+build-dev: docker-build-dev
 
 build-prod: docker-build-prod

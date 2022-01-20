@@ -49,20 +49,20 @@ make log-prod
 make stop-prod
 ```
 
-## Test
+## Dev
 
-For those who want to test before
+For those who want to try this Docker configuration in a local environment
 
 ```bash
-docker-compose -f docker-file-test.yaml build
-docker-compose -f docker-file-test.yaml up -d
+docker-compose -f docker-file-dev.yaml build
+docker-compose -f docker-file-dev.yaml up -d
 ```
 
 OR using makefile
 
 ```bash
-make build-test
-make start-test
-make log-test
-make stop-test
+make build-dev
+make start-dev
+make log-dev
+make stop-dev
 ```
