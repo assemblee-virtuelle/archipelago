@@ -1,0 +1,43 @@
+version: '3.5'
+services:
+
+  fuseki:
+    image: semapps/jena-fuseki-webacl
+    container_name: fuseki
+    volumes:
+      - ./data/fuseki:/fuseki
+    ports:
+      - "3030:3030"
+    expose:
+      - "3030"
+    environment:
+      ADMIN_PASSWORD: "admin"
+
+  middleware:
+    build: ./middleware
+    container_name: middleware
+    depends_on:
+      - fuseki
+      - redis
+    volumes:
+      - ./middleware/logs:/archipelago/middleware/logs
+      - ./middleware/jwt:/archipelago/middleware/jwt
+      - ./middleware/uploads:/archipelago/middleware/uploads
+    expose:
+      - "3000"
+
+  frontend:
+    build: frontend
+    container_name: frontend
+    restart: always
+    expose:
+      - "4000"
+
+  redis:
+    image: redis
+    container_name: redis
+    expose:
+      - "6379"
+    volumes:
+      - ./data/redis:/data
+    command: ["redis-server", "--appendonly", "yes"]

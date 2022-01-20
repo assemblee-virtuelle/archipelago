@@ -42,9 +42,9 @@ services:
       - fuseki
       - redis
     volumes:
-      - ./middleware/logs:/app/middleware/logs
-      - ./middleware/jwt:/app/middleware/jwt
-      - ./middleware/uploads:/app/middleware/uploads
+      - ./middleware/logs:/archipelago/middleware/logs
+      - ./middleware/jwt:/archipelago/middleware/jwt
+      - ./middleware/uploads:/archipelago/middleware/uploads
     expose:
       - "3000"
     labels:
@@ -72,16 +72,3 @@ services:
     volumes:
       - ./data/redis:/data
     command: ["redis-server", "--appendonly", "yes"]
-
-  arena:
-    build: ./arena
-    container_name: arena
-    restart: always
-    volumes:
-      - ./arena/config:/opt/arena/src/server/config
-    depends_on:
-      - redis
-    ports:
-      - "4567:4567"
-    environment:
-      REDIS_HOST: 'redis'

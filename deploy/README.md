@@ -39,3 +39,30 @@ In `frontend/app/.env.local`:
 docker-compose build
 docker-compose up -d
 ```
+
+OR using makefile
+
+```bash
+make build-prod
+make start-prod
+make log-prod
+make stop-prod
+```
+
+## Test
+
+For those who want to test before
+
+```bash
+docker-compose -f docker-file-test.yaml build
+docker-compose -f docker-file-test.yaml up -d
+```
+
+OR using makefile
+
+```bash
+make build-test
+make start-test
+make log-test
+make stop-test
+```
