@@ -9,7 +9,7 @@ const IdeaList = props => (
   <ListWithPermissions aside={<IdeaFilterSidebar />} {...props}>
     <SimpleList
       primaryText={record => record['pair:label']}
-      secondaryText={record => record['pair:description']}
+      secondaryText={record => record['pair:comment']}
       leftAvatar={() => (
         <Avatar width="100%">
           <IdeaIcon />

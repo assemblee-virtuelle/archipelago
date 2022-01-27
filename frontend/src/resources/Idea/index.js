@@ -31,7 +31,8 @@ export default {
         'pair:brainstormedBy': 'Imaginée par' /*Actor*/,
         'pair:concretizedBy': 'Concrétisée par' /*Activity*/,
         'pair:hasType': 'Type',
-        'pair:hasStatus': 'Statut'
+        'pair:hasStatus': 'Statut',
+        'pair:comment': 'Courte description'
       }
     }
   }

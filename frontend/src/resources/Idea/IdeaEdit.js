@@ -10,6 +10,7 @@ const IdeaEdit = props => (
   <EditWithPermissions title={<IdeaTitle />} {...props}>
     <SimpleForm redirect="show">
       <TextInput source="pair:label" fullWidth />
+      <TextInput source="pair:comment" fullWidth />
       <MarkdownInput multiline source="pair:description" fullWidth />
       <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:IdeaStatus' }}>
         <SelectInput optionText="pair:label" />
