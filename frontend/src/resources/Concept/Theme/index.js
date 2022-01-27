@@ -28,7 +28,7 @@ export default {
       fields: {
         'pair:label': 'Titre',
         'pair:comment': 'Courte description',
-        'pair:description': 'Description',
+        'pair:description': 'Longue description',
         'pair:topicOf': 'Sujet de'
       }
     }
