@@ -12,6 +12,7 @@ const IdeaShow = props => (
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
+          <TextField label="Courte description" source="pair:comment" />
           <ReferenceArrayField reference="Actor" source="pair:brainstormedBy">
             <SingleFieldList linkType="show">
               <ChipField source="pair:label" color="secondary" />
