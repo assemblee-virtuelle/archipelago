@@ -1,7 +1,7 @@
 import React from 'react';
-import { ChipField, SingleFieldList, TextField } from 'react-admin';
+import { ChipField, SingleFieldList } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { MainList, SideList, Hero } from '@semapps/archipelago-layout';
+import { MainList, SideList } from '@semapps/archipelago-layout';
 import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { MarkdownField } from '@semapps/markdown-components';
@@ -11,9 +11,6 @@ const ThemeShow = props => (
   <ShowWithPermissions title={<ThemeTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
-        <Hero>
-          <TextField source="pair:comment" />
-        </Hero>
         <MainList>
           <MarkdownField source="pair:description" />
         </MainList>
