@@ -9,6 +9,7 @@ const dataServers = {
       av: {
         'pair:Organization': ['/organizations'],
         'pair:MembershipAssociation': ['/membership-associations'],
+        'pair:MembershipRole': ['/membership-roles'],
         'pair:Group': ['/groups'],
         'pair:Project': ['/projects'],
         'pair:Event': ['/events'],
