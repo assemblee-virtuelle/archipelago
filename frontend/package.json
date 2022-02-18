@@ -2,12 +2,12 @@
   "name": "archipelago-frontend",
   "dependencies": {
     "@fullcalendar/core": "^5.7.2",
-    "@semapps/archipelago-layout": "0.4.0-alpha.5",
-    "@semapps/auth-provider": "0.4.0-alpha.5",
-    "@semapps/date-components": "0.4.0-alpha.5",
-    "@semapps/geo-components": "0.4.0-alpha.5",
-    "@semapps/markdown-components": "0.4.0-alpha.5",
-    "@semapps/semantic-data-provider": "0.4.0-alpha.5",
+    "@semapps/archipelago-layout": "0.4.0-alpha.9",
+    "@semapps/auth-provider": "0.4.0-alpha.9",
+    "@semapps/date-components": "0.4.0-alpha.9",
+    "@semapps/geo-components": "0.4.0-alpha.9",
+    "@semapps/markdown-components": "0.4.0-alpha.9",
+    "@semapps/semantic-data-provider": "0.4.0-alpha.9",
     "date-fns": "~2.8.1",
     "history": "4.10.1",
     "leaflet": "^1.7.1",
@@ -27,25 +27,20 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "startwithlink": "make link & make rollup & sleep 10 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/archipelago-layout @semapps/auth-provider @semapps/date-components @semapps/geo-components @semapps/markdown-components @semapps/semantic-data-provider"
+    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/archipelago-layout @semapps/auth-provider @semapps/date-components @semapps/geo-components @semapps/markdown-components @semapps/semantic-data-provider",
+    "unlink-semapps-packages": "yarn unlink @semapps/activitypub-components @semapps/archipelago-layout @semapps/auth-provider @semapps/date-components @semapps/geo-components @semapps/markdown-components @semapps/semantic-data-provider"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
