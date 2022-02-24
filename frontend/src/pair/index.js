@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReferenceArrayInput } from '@semapps/semantic-data-provider';
 import { AutocompleteArrayInput } from 'react-admin';
+import { MultiServerAutocompleteArrayInput } from "@semapps/input-components";
 
 export const OrganizationsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Organization" source={source}>
@@ -46,13 +47,13 @@ export const TasksInput = ({ label, source }) => (
 
 export const SkillsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Skill" source={source}>
-    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
 export const ThemesInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Theme" source={source}>
-    <AutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
   </ReferenceArrayInput>
 );
 
