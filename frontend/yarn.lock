@@ -1709,6 +1709,18 @@
     react-leaflet "^3.2.5"
     react-leaflet-markercluster "^3.0.0-rc1"
 
+"@semapps/input-components@0.4.0-alpha.11":
+  version "0.4.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@semapps/input-components/-/input-components-0.4.0-alpha.11.tgz#e99cced00065f27f4503b29b89eab3288f8ad6ea"
+  integrity sha512-Y2X6lmfVeeCKD8ZEXsl5NMoEec1Wo5+hifGHMMBQY+YzcZMrVZygyGDjesCH4DI+Ovxvhv8WhpOikg2GbK/GdQ==
+  dependencies:
+    "@semapps/semantic-data-provider" "0.4.0-alpha.11"
+
+"@semapps/list-components@0.4.0-alpha.11":
+  version "0.4.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@semapps/list-components/-/list-components-0.4.0-alpha.11.tgz#dd331bc483641db37e9c022fc424f564fc758667"
+  integrity sha512-oP2h+q62lDxp9Si04c411At2Qf+N7EiAbkhnt2D/UNjPZmp4CbCjMHtaCZBKPkKg5HzJbsOIbaJLBjBgnCTl9w==
+
 "@semapps/markdown-components@0.4.0-alpha.11":
   version "0.4.0-alpha.11"
   resolved "https://registry.yarnpkg.com/@semapps/markdown-components/-/markdown-components-0.4.0-alpha.11.tgz#f4c955c6d1b2d14dfe0c83716c28012ea5c6c95d"

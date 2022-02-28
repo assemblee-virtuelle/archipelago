@@ -7,6 +7,8 @@
     "@semapps/date-components": "0.4.0-alpha.11",
     "@semapps/field-components": "0.4.0-alpha.11",
     "@semapps/geo-components": "0.4.0-alpha.11",
+    "@semapps/input-components": "0.4.0-alpha.11",
+    "@semapps/list-components": "0.4.0-alpha.11",
     "@semapps/markdown-components": "0.4.0-alpha.11",
     "@semapps/semantic-data-provider": "0.4.0-alpha.11",
     "date-fns": "~2.8.1",
