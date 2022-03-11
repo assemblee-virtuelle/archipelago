@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, ChipField, SingleFieldList, SimpleList, ArrayField } from 'react-admin';
+import { TextField, SimpleList, ArrayField } from 'react-admin';
 import { Box, Grid } from '@material-ui/core';
 import {
   MainList,
@@ -13,6 +13,8 @@ import {
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { MapField } from '@semapps/geo-components';
 import { ReferenceArrayField, ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { ChipList } from '@semapps/list-components';
 import { MarkdownField } from '@semapps/markdown-components';
 import OrganizationTitle from './OrganizationTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -114,16 +116,12 @@ const OrganizationShow = props => (
               </AvatarField>
             </GridList>
           </ReferenceArrayField>
-          <ReferenceArrayField reference="Activity" source="pair:involvedIn">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
-          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
+          <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
+            <ChipList primaryText="pair:label" linkType="show" />
+          </QuickAppendReferenceArrayField>
+          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <ChipList primaryText="pair:label" linkType="show" />
+          </QuickAppendReferenceArrayField>
         </SideList>
       </Grid>
     </Grid>
