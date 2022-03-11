@@ -50,6 +50,11 @@
     "url": "http://purl.org/dc/terms/"
   },
   {
+    "prefix": "prov",
+    "owl": "",
+    "url": "http://www.w3.org/ns/prov#"
+  },
+  {
     "prefix": "pair",
     "owl": "http://virtual-assembly.org/ontologies/pair-2020-winter/ontology.ttl",
     "url": "http://virtual-assembly.org/ontologies/pair#"
