@@ -1,12 +1,12 @@
 import React from 'react';
 import { FormTab, TabbedForm, TextInput } from 'react-admin';
-import { Edit } from '@semapps/archipelago-layout';
+import { EditWithPermissions } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { AgentsInput } from '../../../pair';
 import ThemeTitle from './ThemeTitle';
 
 export const ThemeEdit = props => (
-  <Edit title={<ThemeTitle />} {...props}>
+  <EditWithPermissions title={<ThemeTitle />} {...props}>
     <TabbedForm redirect="show">
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
@@ -16,7 +16,7 @@ export const ThemeEdit = props => (
         <AgentsInput source="pair:topicOf" />
       </FormTab>
     </TabbedForm>
-  </Edit>
+  </EditWithPermissions>
 );
 
 export default ThemeEdit;
