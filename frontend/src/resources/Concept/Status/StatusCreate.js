@@ -1,6 +1,6 @@
 import React from 'react';
-import { SimpleForm, TextInput, SelectArrayInput, Create } from 'react-admin';
-// import { Create } from '@semapps/archipelago-layout';
+import { SimpleForm, TextInput, SelectArrayInput } from 'react-admin';
+import { Create } from '@semapps/archipelago-layout';
 
 const StatusCreate = props => (
   <Create {...props}>
