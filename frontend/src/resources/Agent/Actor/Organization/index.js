@@ -19,6 +19,7 @@ export default {
   dataModel: {
     types: ['pair:Organization'],
     list: {
+      servers: '@default',
       dereference: ['pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
       forceArray: ['pair:organizationOfMembership']
     },

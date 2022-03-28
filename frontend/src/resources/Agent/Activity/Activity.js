@@ -24,7 +24,10 @@ export default {
     }
   },
   dataModel: {
-    types: ['pair:Project', 'pair:Event', 'pair:Task']
+    types: ['pair:Project', 'pair:Event', 'pair:Task'],
+    fieldsMapping: {
+      title: 'pair:label'
+    }
   },
   translations: {
     fr: {
