@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   fuseki:
-    image: semapps/jena-fuseki-webacl
+    image: semapps/jena-fuseki-webacl:mirror
     container_name: fuseki
     volumes:
       - ./data/fuseki:/fuseki
@@ -12,3 +12,10 @@ services:
       - "3030"
     environment:
       ADMIN_PASSWORD: "admin"
+
+  fuseki_migration:
+    image: semapps/jena-fuseki-webacl:mirror
+    container_name: fuseki_migration
+    volumes:
+      - ./data/fuseki:/fuseki
+    entrypoint: /docker-migration-entrypoint.sh

@@ -1,4 +1,5 @@
 const CONFIG = require('./config');
+const { ACTOR_TYPES } = require("@semapps/activitypub");
 
 module.exports = [
   {
@@ -34,28 +35,29 @@ module.exports = [
   },
   {
     path: '/users',
-    acceptedTypes: ['pair:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
+    acceptedTypes: ['pair:Person', ACTOR_TYPES.APPLICATION],
+    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
+    excludeFromMirror: true
   },
   {
     path: '/ideas',
-    acceptedTypes: 'pair:Idea'
+    acceptedTypes: ['pair:Idea']
   },
   {
     path: '/themes',
-    acceptedTypes: 'pair:Theme'
+    acceptedTypes: ['pair:Theme']
   },
   {
     path: '/skills',
-    acceptedTypes: 'pair:Skill'
+    acceptedTypes: ['pair:Skill']
   },
   {
     path: '/membership-roles',
-    acceptedTypes: 'pair:MembershipRole'
+    acceptedTypes: ['pair:MembershipRole']
   },
   {
     path: '/documents',
-    acceptedTypes: 'pair:Document'
+    acceptedTypes: ['pair:Document']
   },
   {
     path: '/status',
