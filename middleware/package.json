@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "moleculer-runner --repl --hot services",
     "start": "moleculer-runner services",
-    "link-semapps-packages": "yarn link @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/mirror @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid",
-    "unlink-semapps-packages": "yarn unlink @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/mirror @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
+    "link-semapps-packages": "yarn link @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/mirror @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid",
+    "unlink-semapps-packages": "yarn unlink @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/mirror @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
   },
   "dependencies": {
     "@semapps/activitypub": "0.4.0-alpha.32",
@@ -23,6 +23,7 @@
     "@semapps/signature": "0.4.0-alpha.32",
     "@semapps/sparql-endpoint": "0.4.0-alpha.32",
     "@semapps/triplestore": "0.4.0-alpha.32",
+    "@semapps/void": "file:/home/sebastien/SemApps/semapps/src/middleware/packages/void",
     "@semapps/webacl": "0.4.0-alpha.32",
     "@semapps/webfinger": "0.4.0-alpha.32",
     "@semapps/webid": "0.4.0-alpha.32",

@@ -3,3 +3,5 @@
 /jwt/*.key
 /jwt/*.key.pub
 /uploads
+/actors/*.key
+/actors/*.key.pub
