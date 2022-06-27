@@ -8,6 +8,7 @@ module.exports = [
   {
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
+    preferredView: '/Organization',
     dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
     disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }]
   },
@@ -17,50 +18,67 @@ module.exports = [
   },
   {
     path: '/groups',
+    preferredView: '/Group',
     acceptedTypes: ['pair:Group', 'og:Circle'],
     dereference: ['sec:publicKey']
   },
   {
     path: '/projects',
+    preferredView: '/Project',
     acceptedTypes: ['pair:Project', 'og:Circle'],
     dereference: ['sec:publicKey']
   },
   {
     path: '/events',
+    preferredView: '/Event',
     acceptedTypes: ['pair:Event']
   },
   {
     path: '/tasks',
+    preferredView: '/Task',
     acceptedTypes: ['pair:Task']
   },
   {
     path: '/users',
-    acceptedTypes: ['pair:Person', ACTOR_TYPES.APPLICATION],
+    preferredView: '/Person',
+    acceptedTypes: ['pair:Person'],
     dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
     excludeFromMirror: true
   },
   {
+    path: '/bots',
+    acceptedTypes: [ACTOR_TYPES.APPLICATION],
+    dereference: ['sec:publicKey'],
+    excludeFromMirror: true
+  },
+  {
     path: '/ideas',
+    preferredView: '/Idea',
     acceptedTypes: ['pair:Idea']
   },
   {
     path: '/themes',
+    preferredView: '/Theme',
     acceptedTypes: ['pair:Theme']
   },
   {
     path: '/skills',
+    preferredView: '/Skill',
     acceptedTypes: ['pair:Skill']
   },
   {
     path: '/membership-roles',
+    preferredView: '/MembershipRole',
     acceptedTypes: ['pair:MembershipRole']
   },
   {
     path: '/documents',
+    preferredView: '/Document',
     acceptedTypes: ['pair:Document']
   },
   {
     path: '/status',
+    preferredView: '/Status',
     acceptedTypes: [
       'pair:Status',
       'pair:ActivityStatus',
@@ -74,6 +92,7 @@ module.exports = [
   },
   {
     path: '/types',
+    preferredView: '/Type',
     acceptedTypes: [
       'pair:Type',
       'pair:ActivityType',
@@ -95,6 +114,7 @@ module.exports = [
   },
   {
     path: '/pages',
+    preferredView: '/Page',
     acceptedTypes: ['semapps:Page']
   },
   {

@@ -10,6 +10,10 @@ module.exports = {
     baseUrl: CONFIG.HOME_URL,
     ontologies,
     containers,
+    preferredViewForResource: async (resourceUri, containerPreferredView) => {
+      if (!containerPreferredView) return resourceUri;
+      return urlJoin(CONFIG.FRONT_URL, containerPreferredView, encodeURIComponent(resourceUri), 'show')
+    },
     defaultContainerOptions: {
       jsonContext: urlJoin(CONFIG.HOME_URL, 'context.json')
     }
