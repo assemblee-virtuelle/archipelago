@@ -1,4 +1,4 @@
-const { VoidService } = require('@semapps/void/service');
+const { VoidService } = require('@semapps/void');
 const ontologies = require('../config/ontologies.json');
 const CONFIG = require('../config/config');
 

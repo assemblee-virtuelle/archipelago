@@ -1,4 +1,4 @@
-const { MirrorService } = require('@semapps/mirror/service');
+const { MirrorService } = require('@semapps/mirror');
 const CONFIG = require('../config/config');
 
 module.exports = {
