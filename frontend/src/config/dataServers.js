@@ -47,7 +47,7 @@ const dataServers = {
     baseUrl: 'https://colibris.social/',
     sparqlEndpoint: 'https://colibris.social/sparql',
     containers: {
-      cdlt: {
+      colibris: {
         'pair:Project': ['/lafabrique/projects'],
         'pair:Document': ['/lemag/articles'],
         'pair:Organization': ['/presdecheznous/organizations'],
