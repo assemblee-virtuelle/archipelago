@@ -31,7 +31,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startwithlink": "make link & make rollup & sleep 10 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
