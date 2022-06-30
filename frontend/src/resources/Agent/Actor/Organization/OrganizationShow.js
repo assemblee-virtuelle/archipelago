@@ -13,35 +13,15 @@ import {
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { MapField } from '@semapps/geo-components';
 import { ReferenceArrayField, ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
-import { QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { QuickAppendReferenceArrayField, MultiUrlField } from '@semapps/field-components';
 import { ChipList } from '@semapps/list-components';
 import { MarkdownField } from '@semapps/markdown-components';
 import OrganizationTitle from './OrganizationTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
 import HomeIcon from '@material-ui/icons/Home';
-
-const UrlArrayField = ({ record, source }) => {
-  let links = typeof record[source] === 'string' ? [record[source]] : record[source];
-  let index = 0;
-  for (let link of links) {
-    // If no protocol, add "https" (more frequent)
-    if (!link.startsWith('https://') && !link.startsWith('http://')) {
-      links[index] = 'https://'+link;
-    }
-    index++;
-  }
-
-  return record
-    ? links.map(item => (
-        <div>
-          <a href={item} target="_blank" rel="noopener noreferrer">
-            {item}
-          </a>
-        </div>
-      ))
-    : null;
-};
-UrlArrayField.defaultProps = { addLabel: true };
+import ForumIcon from '@material-ui/icons/Forum';
+import { Avatar } from '@material-ui/core';
+import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 
 const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
@@ -53,13 +33,34 @@ const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherPro
   }
 };
 
+const domainMapping = {
+  'forums.assemblee-virtuelle.org': {
+    label: 'Forum',
+    icon: <ForumIcon />,
+    color: '#28ccfb',
+    contrastText: 'white'
+  },
+  'peertube.virtual-assembly.org': {
+    label: 'Peertube',
+    icon: <VideocamOutlinedIcon />,
+    color: 'white',
+    contrastText: '#f2690d'
+  },
+  'chat.lescommuns.org': {
+    label: 'Chat',
+    icon: <Avatar src="/lescommuns.jpg" />,
+    color: 'white',
+    contrastText: 'black'
+  }
+}
+
 const OrganizationShow = props => (
   <ShowWithPermissions title={<OrganizationTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
           <TextField source="pair:comment" />
-          <UrlArrayField source="pair:homePage" />
+          <MultiUrlField source="pair:homePage" domainMapping={domainMapping} />
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
             <SeparatedListField linkType={false}>
               <TextField source="pair:label" />
