@@ -5,13 +5,12 @@ import {
   AutocompleteInput,
   SelectInput,
   TabbedForm,
-  FormTab,
-  ArrayInput,
-  SimpleFormIterator
+  FormTab
 } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
 import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, PairLocationInput } from '../../../../pair';
 import OrganizationTitle from './OrganizationTitle';
 
@@ -29,11 +28,7 @@ export const OrganizationEdit = props => {
           <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:OrganizationType' }}>
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
-          <ArrayInput source="pair:homePage">
-            <SimpleFormIterator>
-              <TextInput label="" fullWidth />
-            </SimpleFormIterator>
-          </ArrayInput>
+          <MultiLinesInput source="pair:homePage" fullWidth />
           <PairLocationInput source="pair:hasLocation" fullWidth />
           <ImageInput source="image" accept="image/*">
             <ImageField source="src" />
