@@ -24,8 +24,9 @@ const UrlArrayField = ({ record, source }) => {
   let links = typeof record[source] === 'string' ? [record[source]] : record[source];
   let index = 0;
   for (let link of links) {
-    if (link.startsWith('https://')) {
-      links[index] = link.split('https://')[1];
+    // If no protocol, add "https" (more frequent)
+    if (!link.startsWith('https://') && !link.startsWith('http://')) {
+      links[index] = 'https://'+link;
     }
     index++;
   }
@@ -33,7 +34,7 @@ const UrlArrayField = ({ record, source }) => {
   return record
     ? links.map(item => (
         <div>
-          <a href={'https://' + item} target="_blank" rel="noopener noreferrer">
+          <a href={item} target="_blank" rel="noopener noreferrer">
             {item}
           </a>
         </div>
