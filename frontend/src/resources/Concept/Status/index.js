@@ -25,6 +25,9 @@ export default {
       'pair:ProjectStatus',
       'pair:TaskStatus'
     ],
+    list: {
+      servers: '@default'
+    },
     fieldsMapping: {
       title: 'pair:label'
     }

@@ -33,6 +33,9 @@ export default {
       'pair:SubjectType',
       'pair:TaskType'
     ],
+    list: {
+      servers: '@default'
+    },
     fieldsMapping: {
       title: 'pair:label'
     }

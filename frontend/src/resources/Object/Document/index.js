@@ -17,6 +17,9 @@ export default {
   },
   dataModel: {
     types: ['pair:Document'],
+    list: {
+      servers: '@default'
+    },
     fieldsMapping: {
       title: 'pair:label'
     }

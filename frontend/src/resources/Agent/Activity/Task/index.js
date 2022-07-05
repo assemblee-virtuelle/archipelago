@@ -18,6 +18,9 @@ export default {
   },
   dataModel: {
     types: ['pair:Task'],
+    list: {
+      servers: '@default'
+    },
     fieldsMapping: {
       title: 'pair:label'
     }
