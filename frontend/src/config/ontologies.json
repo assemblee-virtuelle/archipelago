@@ -35,6 +35,11 @@
     "url": "http://virtual-assembly.org/ontologies/pair#"
   },
   {
+    "prefix": "sec",
+    "owl": "",
+    "url": "https://w3id.org/security#"
+  },
+  {
     "prefix": "skos",
     "owl": "",
     "url": "http://www.w3.org/2004/02/skos/core#"
