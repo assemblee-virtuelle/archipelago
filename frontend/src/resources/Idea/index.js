@@ -17,6 +17,9 @@ export default {
   },
   dataModel: {
     types: ['pair:Idea'],
+    list: {
+      servers: '@default'
+    },
     fieldsMapping: {
       title: 'pair:label'
     }
