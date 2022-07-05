@@ -18,6 +18,6 @@ module.exports = {
   // See https://moleculer.services/docs/0.14/configuration.html
   middlewares: [
     CacherMiddleware(cacherConfig), // Set the cacher before the WebAcl middleware
-    WebAclMiddleware
+    WebAclMiddleware({ baseUrl: CONFIG.HOME_URL })
   ]
 };
