@@ -17,7 +17,7 @@ export default {
   dataModel: {
     types: ['pair:Person'],
     list: {
-      dereference: ['pair:hasLocation/pair:hasPostalAddress']
+      servers: '@default'
     },
     fieldsMapping: {
       title: 'pair:label'
