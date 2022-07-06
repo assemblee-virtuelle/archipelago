@@ -6,19 +6,7 @@ const dataServers = {
     uploadsContainer: '/files'
   },
   cdlt: {
-    name: 'Les Chemins de la Transition',
     baseUrl: 'https://data.lescheminsdelatransition.org/',
-    sparqlEndpoint: 'https://data.lescheminsdelatransition.org/sparql',
-    containers: {
-      cdlt: {
-        'pair:Event': ['/events'],
-        'pair:Place': ['/places'],
-        'pair:Organization': ['/organizations'],
-        'pair:Document': ['/documents'],
-        'pair:Theme': ['/themes'],
-        'pair:Skill': ['/skills'],
-      }
-    }
   },
   colibris: {
     name: 'Colibris',
