@@ -119,10 +119,10 @@ const OrganizationShow = props => (
             </GridList>
           </ReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
-            <ChipList primaryText="pair:label" linkType="show" />
+            <ChipList primaryText="pair:label" linkType="show" remoteFrontends />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <ChipList primaryText="pair:label" linkType="show" />
+            <ChipList primaryText="pair:label" linkType="show" remoteFrontends />
           </QuickAppendReferenceArrayField>
         </SideList>
       </Grid>

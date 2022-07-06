@@ -20,6 +20,9 @@ export default {
     show: AgentRedirect
   },
   dataModel: {
-    types: ['pair:Project', 'pair:Organization', 'pair:Person', 'pair:Group', 'pair:Event']
+    types: ['pair:Project', 'pair:Organization', 'pair:Person', 'pair:Group', 'pair:Event'],
+    list: {
+      servers: '@default',
+    }
   }
 };

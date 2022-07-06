@@ -18,7 +18,10 @@ export default {
     }
   },
   dataModel: {
-    types: ['pair:Skill']
+    types: ['pair:Skill'],
+    list: {
+      servers: '@default',
+    }
   },
   translations: {
     fr: {

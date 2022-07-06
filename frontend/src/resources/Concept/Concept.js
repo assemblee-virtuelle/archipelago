@@ -8,7 +8,10 @@ export default {
     }
   },
   dataModel: {
-    types: ['pair:Theme']
+    types: ['pair:Theme'],
+    list: {
+      servers: '@default',
+    }
   },
   translations: {
     fr: {

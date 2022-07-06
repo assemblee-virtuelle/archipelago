@@ -18,7 +18,10 @@ export default {
     }
   },
   dataModel: {
-    types: ['pair:Organization', 'pair:Person', 'pair:Group']
+    types: ['pair:Organization', 'pair:Person', 'pair:Group'],
+    list: {
+      servers: '@default',
+    }
   },
   translations: {
     fr: {
