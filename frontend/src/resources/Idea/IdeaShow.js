@@ -1,7 +1,9 @@
 import React from 'react';
-import { ChipField, SingleFieldList, TextField } from 'react-admin';
+import { SingleFieldList, TextField } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { Hero, GridList, MainList, SideList, AvatarField, SeparatedListField } from '@semapps/archipelago-layout';
+import { Hero, MainList, SideList, SeparatedListField } from '@semapps/archipelago-layout';
+import { AvatarWithLabelField } from '@semapps/field-components';
+import { GridList } from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { MarkdownField } from '@semapps/markdown-components';
@@ -15,7 +17,7 @@ const IdeaShow = props => (
           <TextField label="Courte description" source="pair:comment" />
           <ReferenceArrayField reference="Actor" source="pair:brainstormedBy">
             <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
+              <TextField source="pair:label" color="secondary" />
             </SingleFieldList>
           </ReferenceArrayField>
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
@@ -36,8 +38,8 @@ const IdeaShow = props => (
       <Grid item xs={12} sm={3}>
         <SideList>
           <ReferenceArrayField reference="Activity" source="pair:concretizedBy" sort={{ field: 'type', order: 'ASC' }}>
-            <GridList xs={6} linkType="show">
-              <AvatarField label="pair:label" image="image" />
+            <GridList xs={6} linkType="show" externalLinks>
+              <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
         </SideList>

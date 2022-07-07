@@ -7,6 +7,7 @@ const dataServers = {
   },
   cdlt: {
     baseUrl: 'https://data.lescheminsdelatransition.org/',
+    externalLinks: true,
   },
   colibris: {
     name: 'Colibris',
@@ -19,7 +20,8 @@ const dataServers = {
         'pair:Organization': ['/presdecheznous/organizations'],
         'pair:Theme': ['/themes']
       }
-    }
+    },
+    externalLinks: false // Colibris doesn't have a public frontend
   }
 };
 

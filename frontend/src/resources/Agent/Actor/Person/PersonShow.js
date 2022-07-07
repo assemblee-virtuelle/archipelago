@@ -1,9 +1,9 @@
 import React from 'react';
 import { TextField } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { MainList, SideList, Hero, GridList, AvatarField } from '@semapps/archipelago-layout';
-import { QuickAppendReferenceArrayField } from '@semapps/field-components';
-import { ChipList } from '@semapps/list-components';
+import { MainList, SideList, Hero } from '@semapps/archipelago-layout';
+import { QuickAppendReferenceArrayField, AvatarWithLabelField } from '@semapps/field-components';
+import { ChipList, GridList } from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
@@ -31,20 +31,20 @@ const PersonShow = props => (
       <Grid item xs={12} sm={3}>
         <SideList>
           <ReferenceArrayField reference="Organization" source="pair:affiliatedBy">
-            <GridList xs={6} linkType="show">
-              <AvatarField label="pair:label" image="image">
+            <GridList xs={6} linkType="show" externalLinks>
+              <AvatarWithLabelField label="pair:label" image="image">
                 <HomeIcon />
-              </AvatarField>
+              </AvatarWithLabelField>
             </GridList>
           </ReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
-            <ChipList primaryText="pair:label" linkType="show" />
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <ChipList primaryText="pair:label" linkType="show" />
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Skill" source="pair:offers">
-            <ChipList primaryText="pair:label" linkType="show" />
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
         </SideList>
       </Grid>

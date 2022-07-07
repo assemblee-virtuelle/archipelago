@@ -1,10 +1,11 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { SideList, GridList, AvatarField } from '@semapps/archipelago-layout';
+import { SideList } from '@semapps/archipelago-layout';
+import { AvatarWithLabelField, QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { GridList, ChipList } from '@semapps/list-components';
 import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import SkillTitle from './SkillTitle';
-import { ChipField, SingleFieldList } from 'react-admin';
 
 const SkillShow = props => (
   <ShowWithPermissions title={<SkillTitle />} {...props}>
@@ -15,15 +16,13 @@ const SkillShow = props => (
       <Grid item xs={12} sm={3}>
         <SideList>
           <ReferenceArrayField reference="Person" source="pair:offeredBy">
-            <GridList xs={6} linkType="show">
-              <AvatarField label="pair:label" image="image" />
+            <GridList xs={6} linkType="show" externalLinks>
+              <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <ReferenceArrayField reference="Agent" source="pair:neededBy">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
+          <QuickAppendReferenceArrayField reference="Agent" source="pair:neededBy">
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
+          </QuickAppendReferenceArrayField>
         </SideList>
       </Grid>
     </Grid>

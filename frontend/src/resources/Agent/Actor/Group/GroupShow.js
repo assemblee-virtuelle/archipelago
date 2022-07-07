@@ -1,8 +1,10 @@
 import React from 'react';
-import { TextField, ChipField, SingleFieldList } from 'react-admin';
-import { Column, ColumnShowLayout, Hero, GridList, AvatarField } from '@semapps/archipelago-layout';
+import { TextField } from 'react-admin';
+import { Column, ColumnShowLayout, Hero } from '@semapps/archipelago-layout';
+import { AvatarWithLabelField, QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { ChipList, GridList} from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { UriArrayField } from '@semapps/semantic-data-provider';
+import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { MarkdownField } from '@semapps/markdown-components';
 import GroupTitle from './GroupTitle';
 
@@ -17,36 +19,23 @@ const GroupShow = props => (
         <br />
       </Column>
       <Column xs={12} sm={3} showLabel>
-        <UriArrayField reference="Person" source="pair:affiliates">
-          <GridList xs={6} linkType="show">
-            <AvatarField label="pair:label" image="image" />
+        <ReferenceArrayField reference="Person" source="pair:affiliates">
+          <GridList xs={6} linkType="show" externalLinks>
+            <AvatarWithLabelField label="pair:label" image="image" />
           </GridList>
-        </UriArrayField>
-        <UriArrayField
-          label="Projets"
-          reference="Project"
-          filter={{ '@type': 'pair:Project' }}
-          source="pair:involvedIn"
-        >
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </UriArrayField>
-        <UriArrayField label="Evénements" reference="Event" filter={{ '@type': 'pair:Event' }} source="pair:involvedIn">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </UriArrayField>
-        <UriArrayField reference="Theme" source="pair:hasTopic">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </UriArrayField>
-        <UriArrayField reference="Document" source="pair:documentedBy">
-          <SingleFieldList linkType="show">
-            <ChipField source="pair:label" color="secondary" />
-          </SingleFieldList>
-        </UriArrayField>
+        </ReferenceArrayField>
+        <QuickAppendReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ '@type': 'pair:Project' }}>
+          <ChipList primaryText="pair:label" linkType="show" externalLinks />
+        </QuickAppendReferenceArrayField>
+        <QuickAppendReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ '@type': 'pair:Event' }}>
+          <ChipList primaryText="pair:label" linkType="show" externalLinks />
+        </QuickAppendReferenceArrayField>
+        <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
+          <ChipList primaryText="pair:label" linkType="show" externalLinks />
+        </QuickAppendReferenceArrayField>
+        <QuickAppendReferenceArrayField reference="Document" source="pair:documentedBy">
+          <ChipList primaryText="pair:label" linkType="show" externalLinks />
+        </QuickAppendReferenceArrayField>
       </Column>
     </ColumnShowLayout>
   </ShowWithPermissions>

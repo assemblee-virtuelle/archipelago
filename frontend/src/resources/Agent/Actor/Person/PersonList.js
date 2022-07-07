@@ -1,6 +1,8 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
-import { AvatarField, GridList, MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
+import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
+import { AvatarWithLabelField } from '@semapps/field-components';
+import { GridList } from '@semapps/list-components';
 import { MapList } from '@semapps/geo-components';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import MapIcon from '@material-ui/icons/Map';
@@ -21,8 +23,8 @@ const PersonList = props => (
         perPage: 500,
         pagination: false,
         list: (
-          <GridList xs={2} linkType="show">
-            <AvatarField label="pair:label" image="image" />
+          <GridList xs={2} linkType="show" externalLinks>
+            <AvatarWithLabelField label="pair:label" image="image" />
           </GridList>
         )
       },
