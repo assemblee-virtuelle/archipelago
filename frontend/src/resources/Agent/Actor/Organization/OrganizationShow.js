@@ -5,16 +5,14 @@ import {
   MainList,
   SideList,
   Hero,
-  GridList,
-  AvatarField,
   SeparatedListField,
   RightLabel
 } from '@semapps/archipelago-layout';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { MapField } from '@semapps/geo-components';
 import { ReferenceArrayField, ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
-import { QuickAppendReferenceArrayField, MultiUrlField } from '@semapps/field-components';
-import { ChipList } from '@semapps/list-components';
+import { QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField } from '@semapps/field-components';
+import { ChipList, GridList } from '@semapps/list-components';
 import { MarkdownField } from '@semapps/markdown-components';
 import OrganizationTitle from './OrganizationTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -102,9 +100,9 @@ const OrganizationShow = props => (
               <RightLabel mb={0} />
               <ArrayField source="pair:organizationOfMembership">
                 <Box mb={4}>
-                  <GridList xs={6} linkType={false}>
+                  <GridList xs={6} linkType={false} externalLinks>
                     <ReferenceField reference="Person" source="pair:membershipActor" link="show">
-                      <AvatarField label="pair:label" image="image" />
+                      <AvatarWithLabelField label="pair:label" image="image" />
                     </ReferenceField>
                   </GridList>
                 </Box>
@@ -112,17 +110,17 @@ const OrganizationShow = props => (
             </ConditionalSourceDefinedHandler>
           </GroupedReferenceHandler>
           <ReferenceArrayField reference="Organization" source="pair:partnerOf">
-            <GridList xs={6} linkType="show">
-              <AvatarField label="pair:label" image="image">
+            <GridList xs={6} linkType="show" externalLinks>
+              <AvatarWithLabelField label="pair:label" image="image">
                 <HomeIcon />
-              </AvatarField>
+              </AvatarWithLabelField>
             </GridList>
           </ReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
-            <ChipList primaryText="pair:label" linkType="show" remoteFrontends />
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <ChipList primaryText="pair:label" linkType="show" remoteFrontends />
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
         </SideList>
       </Grid>

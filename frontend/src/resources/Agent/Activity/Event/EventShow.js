@@ -1,7 +1,9 @@
 import React from 'react';
-import { ChipField, SingleFieldList, TextField, UrlField, DateField } from 'react-admin';
+import { TextField, UrlField, DateField } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { Hero, GridList, MainList, SideList, AvatarField } from '@semapps/archipelago-layout';
+import { Hero, MainList, SideList } from '@semapps/archipelago-layout';
+import { AvatarWithLabelField, QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { GridList, ChipList } from '@semapps/list-components';
 import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { MarkdownField } from '@semapps/markdown-components';
@@ -24,15 +26,13 @@ const EventShow = props => (
       <Grid item xs={12} sm={3}>
         <SideList>
           <ReferenceArrayField reference="Actor" source="pair:involves" sort={{ field: 'type', order: 'ASC' }}>
-            <GridList xs={6} linkType="show">
-              <AvatarField label="pair:label" image="image" />
+            <GridList xs={6} linkType="show" externalLinks>
+              <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <SingleFieldList linkType="show">
-              <ChipField source="pair:label" color="secondary" />
-            </SingleFieldList>
-          </ReferenceArrayField>
+          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
+          </QuickAppendReferenceArrayField>
         </SideList>
       </Grid>
     </Grid>
