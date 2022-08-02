@@ -6,7 +6,7 @@ const CONFIG = require('../config/config');
 const { getSlugByUrl } = require("./utils/utils");
 
 module.exports = {
-  name: 'importer.wiki.jardins-locaux',
+  name: 'importer.wiki.jardins-thematiques',
   mixins: [SpaceManagerMixin, YesWikiImporterMixin, CONFIG.QUEUE_SERVICE_URL ? QueueMixin(CONFIG.QUEUE_SERVICE_URL) : {}],
   settings: {
     source: {
@@ -41,7 +41,7 @@ module.exports = {
         'og:purpose': data.bf_raisondetre ? data.bf_raisondetre.trim() : undefined,
         'pair:partOf': urlJoin(CONFIG.HOME_URL, 'circles', 'jardins-thematiques'),
         'pair:affiliates': humhubSpace.members ? humhubSpace.members.map(member => urlJoin(CONFIG.HOME_URL, 'users', getSlugByUrl(member.user.url))) : undefined,
-        'semapps:humhubId': humhubSpace.contentcontainer_id,
+        // 'semapps:humhubId': humhubSpace.contentcontainer_id,
       })
     },
   }

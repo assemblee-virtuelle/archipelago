@@ -8,7 +8,10 @@ module.exports = [
   {
     path: '/circles',
     acceptedTypes: ['pair:Group', 'og:Circle'],
-    dereference: ['pair:hasLocation']
+    dereference: ['pair:hasLocation'],
+    permissions: {},
+    newResourcesPermissions: {},
+    readOnly: true,
   },
   // {
   //   path: '/organizations',
@@ -35,8 +38,10 @@ module.exports = [
   // },
   {
     path: '/events',
-    // preferredView: '/Event',
-    acceptedTypes: ['pair:Event']
+    acceptedTypes: ['pair:Event'],
+    permissions: {},
+    newResourcesPermissions: {},
+    readOnly: true,
   },
   // {
   //   path: '/tasks',
@@ -45,15 +50,18 @@ module.exports = [
   // },
   {
     path: '/users',
-    // preferredView: '/Person',
     acceptedTypes: ['pair:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
+    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
+    permissions: {},
+    newResourcesPermissions: {},
+    readOnly: true,
   },
   {
     path: '/bots',
     acceptedTypes: [ACTOR_TYPES.APPLICATION],
     dereference: ['sec:publicKey'],
-    excludeFromMirror: true
+    excludeFromMirror: true,
+    readOnly: true,
   },
   // {
   //   path: '/ideas',

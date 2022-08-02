@@ -51,7 +51,7 @@ module.exports = {
         'pair:partOf': urlJoin(CONFIG.HOME_URL, 'circles', 'jardins-locaux'),
         'pair:hasLocation': location,
         'pair:affiliates': humhubSpace.members ? humhubSpace.members.map(member => urlJoin(CONFIG.HOME_URL, 'users', getSlugByUrl(member.user.url))) : undefined,
-        'semapps:humhubId': humhubSpace.contentcontainer_id,
+        // 'semapps:humhubId': humhubSpace.contentcontainer_id,
       })
     },
   }

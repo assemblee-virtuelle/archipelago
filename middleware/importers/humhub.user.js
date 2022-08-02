@@ -2,7 +2,6 @@ const { HumHubImporterMixin } = require('@semapps/importer');
 const ProfileManagerMixin = require('./mixins/profile-manager');
 const urlJoin = require("url-join");
 const CONFIG = require("../config/config");
-const { getSlugByUrl } = require("./utils/utils");
 
 module.exports = {
   name: 'importer.humhub.user',
@@ -13,13 +12,11 @@ module.exports = {
         baseUrl: 'https://grandjardin.jardiniersdunous.org',
         jwtToken: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIyN30.UcZ9LvJwMNZVBA9QEJiU74f4eoUzeJ7L61GeOOOGE5aAZSKIVUFPQ42CzLtPPyEquwu7stnXlbJCD2Rh2OKlXw',
         type: 'user',
-      },
-      fieldsMapping: {
-        slug: data => getSlugByUrl(data.url)
       }
     },
     dest: {
       containerUri: urlJoin(CONFIG.HOME_URL, 'users'),
+      predicatesToKeep: ['pair:affiliatedBy', 'pair:involvedIn']
     },
   },
   methods: {
@@ -61,7 +58,7 @@ module.exports = {
         'pair:depictedBy': image,
         'pair:hasLocation': location,
         'pair:affiliatedBy': urlJoin(CONFIG.HOME_URL, 'circles', 'jardiniers-du-nous'),
-        'semapps:humhubId': data.account.contentcontainer_id,
+        // 'semapps:humhubId': data.account.contentcontainer_id,
       })
     }
   }
