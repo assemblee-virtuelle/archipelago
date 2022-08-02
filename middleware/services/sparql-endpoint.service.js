@@ -3,6 +3,7 @@ const { SparqlEndpointService } = require('@semapps/sparql-endpoint');
 module.exports = {
   mixins: [SparqlEndpointService],
   settings: {
-    defaultAccept: 'application/ld+json'
+    defaultAccept: 'application/ld+json',
+    ignoreAcl: true
   }
 };

@@ -5,8 +5,8 @@
     "semantic"
   ],
   "scripts": {
-    "dev": "moleculer-runner --repl --hot services",
-    "start": "moleculer-runner services",
+    "dev": "moleculer-runner --repl --hot services importers/*.js",
+    "start": "moleculer-runner services importers/*.js",
     "link-semapps-packages": "yarn link @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/mirror @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid",
     "unlink-semapps-packages": "yarn unlink @semapps/activitypub @semapps/auth @semapps/backup @semapps/fuseki-admin @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mime-types @semapps/mirror @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
   },
