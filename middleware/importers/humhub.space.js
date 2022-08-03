@@ -1,4 +1,5 @@
 const { HumHubImporterMixin } = require('@semapps/importer');
+const CONFIG = require("../config/config");
 
 module.exports = {
   name: 'importer.humhub.space',
@@ -7,7 +8,7 @@ module.exports = {
     source: {
       humhub: {
         baseUrl: 'https://grandjardin.jardiniersdunous.org',
-        jwtToken: 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIyN30.UcZ9LvJwMNZVBA9QEJiU74f4eoUzeJ7L61GeOOOGE5aAZSKIVUFPQ42CzLtPPyEquwu7stnXlbJCD2Rh2OKlXw',
+        jwtToken: CONFIG.HUMHUB_TOKEN,
         type: 'space',
       }
     }

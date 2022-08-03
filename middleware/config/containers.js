@@ -1,6 +1,8 @@
 const CONFIG = require('./config');
 const { ACTOR_TYPES } = require("@semapps/activitypub");
 
+const anonymousRead = { anon: { read: true } };
+
 module.exports = [
   {
     path: '/'
@@ -9,8 +11,8 @@ module.exports = [
     path: '/circles',
     acceptedTypes: ['pair:Group', 'og:Circle'],
     dereference: ['pair:hasLocation'],
-    permissions: {},
-    newResourcesPermissions: {},
+    permissions: anonymousRead,
+    newResourcesPermissions: anonymousRead,
     readOnly: true,
   },
   // {
@@ -39,8 +41,8 @@ module.exports = [
   {
     path: '/events',
     acceptedTypes: ['pair:Event'],
-    permissions: {},
-    newResourcesPermissions: {},
+    permissions: anonymousRead,
+    newResourcesPermissions: anonymousRead,
     readOnly: true,
   },
   // {
@@ -52,8 +54,8 @@ module.exports = [
     path: '/users',
     acceptedTypes: ['pair:Person'],
     dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
-    permissions: {},
-    newResourcesPermissions: {},
+    permissions: anonymousRead,
+    newResourcesPermissions: anonymousRead,
     readOnly: true,
   },
   {
@@ -61,6 +63,8 @@ module.exports = [
     acceptedTypes: [ACTOR_TYPES.APPLICATION],
     dereference: ['sec:publicKey'],
     excludeFromMirror: true,
+    permissions: anonymousRead,
+    newResourcesPermissions: anonymousRead,
     readOnly: true,
   },
   // {
@@ -85,8 +89,10 @@ module.exports = [
   // },
   {
     path: '/documents',
-    preferredView: '/Document',
-    acceptedTypes: ['pair:Document']
+    acceptedTypes: ['pair:Document'],
+    permissions: anonymousRead,
+    newResourcesPermissions: anonymousRead,
+    readOnly: true,
   },
   // {
   //   path: '/status',

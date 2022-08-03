@@ -17,7 +17,7 @@ module.exports = {
       name: authData.given_name,
       familyName: authData.family_name
     }),
-    accountsDataset: CONFIG.SEMAPPS_AUTH_ACCOUNTS_DATASET_NAME
+    accountsDataset: CONFIG.AUTH_ACCOUNTS_DATASET_NAME
   },
   events: {
     async 'auth.registered'(ctx) {
