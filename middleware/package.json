@@ -31,6 +31,7 @@
     "dotenv-flow": "^3.2.0",
     "ioredis": "^4.17.3",
     "moleculer": "^0.14.18",
+    "moleculer-bull": "^0.2.8",
     "moleculer-repl": "^0.6.3",
     "moleculer-web": "^0.10.0-beta1",
     "url-join": "^4.0.1"
