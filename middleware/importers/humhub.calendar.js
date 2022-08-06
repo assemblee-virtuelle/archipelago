@@ -1,3 +1,4 @@
+const QueueMixin = require("moleculer-bull");
 const { HumHubImporterMixin, convertToIsoString } = require('@semapps/importer');
 const SpaceManagerMixin = require('./mixins/space-manager');
 const urlJoin = require("url-join");
@@ -6,7 +7,7 @@ const {getSlugByUrl} = require("./utils/utils");
 
 module.exports = {
   name: 'importer.humhub.calendar',
-  mixins: [SpaceManagerMixin, HumHubImporterMixin],
+  mixins: [SpaceManagerMixin, HumHubImporterMixin, CONFIG.QUEUE_SERVICE_URL ? QueueMixin(CONFIG.QUEUE_SERVICE_URL) : {}],
   settings: {
     source: {
       humhub: {
@@ -18,6 +19,10 @@ module.exports = {
     dest: {
       containerUri: urlJoin(CONFIG.HOME_URL, 'events'),
     },
+    cronJob: CONFIG.QUEUE_SERVICE_URL ? {
+      time: '0 0 4 * * *', // Every night at 4am
+      timeZone: 'Europe/Paris'
+    } : undefined
   },
   methods: {
     async transform(data) {

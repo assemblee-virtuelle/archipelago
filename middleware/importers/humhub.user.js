@@ -1,3 +1,4 @@
+const QueueMixin = require("moleculer-bull");
 const { HumHubImporterMixin } = require('@semapps/importer');
 const ProfileManagerMixin = require('./mixins/profile-manager');
 const urlJoin = require("url-join");
@@ -5,7 +6,7 @@ const CONFIG = require("../config/config");
 
 module.exports = {
   name: 'importer.humhub.user',
-  mixins: [ProfileManagerMixin, HumHubImporterMixin],
+  mixins: [ProfileManagerMixin, HumHubImporterMixin, CONFIG.QUEUE_SERVICE_URL ? QueueMixin(CONFIG.QUEUE_SERVICE_URL) : {}],
   settings: {
     source: {
       humhub: {
@@ -18,6 +19,10 @@ module.exports = {
       containerUri: urlJoin(CONFIG.HOME_URL, 'users'),
       predicatesToKeep: ['pair:affiliatedBy', 'pair:involvedIn']
     },
+    cronJob: CONFIG.QUEUE_SERVICE_URL ? {
+      time: '0 0 4 * * *', // Every night at 4am
+      timeZone: 'Europe/Paris'
+    } : undefined
   },
   methods: {
     async transform(data) {

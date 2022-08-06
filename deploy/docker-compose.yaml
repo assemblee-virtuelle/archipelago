@@ -42,6 +42,7 @@ services:
       - fuseki
       - redis
     volumes:
+      - ./middleware/actors:/archipelago/middleware/actors
       - ./middleware/logs:/archipelago/middleware/logs
       - ./middleware/jwt:/archipelago/middleware/jwt
       - ./middleware/uploads:/archipelago/middleware/uploads
