@@ -16,6 +16,7 @@
     "@semapps/backup": "0.4.0-alpha.36",
     "@semapps/fuseki-admin": "0.4.0-alpha.36",
     "@semapps/inference": "0.4.0-alpha.36",
+    "@semapps/importer": "0.4.0-alpha.36",
     "@semapps/jsonld": "0.4.0-alpha.36",
     "@semapps/ldp": "0.4.0-alpha.36",
     "@semapps/mime-types": "0.4.0-alpha.36",
