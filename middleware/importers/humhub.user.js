@@ -1,12 +1,13 @@
 const QueueMixin = require("moleculer-bull");
 const { HumHubImporterMixin } = require('@semapps/importer');
 const ProfileManagerMixin = require('./mixins/profile-manager');
+const ThemeCreatorMixin = require('./mixins/theme-creator');
 const urlJoin = require("url-join");
 const CONFIG = require("../config/config");
 
 module.exports = {
   name: 'importer.humhub.user',
-  mixins: [ProfileManagerMixin, HumHubImporterMixin, CONFIG.QUEUE_SERVICE_URL ? QueueMixin(CONFIG.QUEUE_SERVICE_URL) : {}],
+  mixins: [ProfileManagerMixin, HumHubImporterMixin, ThemeCreatorMixin, CONFIG.QUEUE_SERVICE_URL ? QueueMixin(CONFIG.QUEUE_SERVICE_URL) : {}],
   settings: {
     source: {
       humhub: {
@@ -27,6 +28,9 @@ module.exports = {
   methods: {
     async transform(data) {
       let image, location;
+
+      const themes = await this.createOrGetThemes(...data.account.tags);
+
       const wikiProfile = this.getProfileByEmail(data.account.email)
 
       if (wikiProfile) {
@@ -58,11 +62,13 @@ module.exports = {
         'pair:firstName': data.profile.firstname,
         'pair:lastName': data.profile.lastname,
         'pair:phone': data.profile.mobile || data.profile.phone_work || data.profile.phone_private || undefined,
+        'pair:webPage': data.url,
         'pair:homePage': [data.profile.url, data.profile.url_facebook, data.profile.url_linkedin].filter(x => x),
         'pair:e-mail': data.account.email,
         'pair:depictedBy': image,
         'pair:hasLocation': location,
         'pair:affiliatedBy': urlJoin(CONFIG.HOME_URL, 'circles', 'jardiniers-du-nous'),
+        'pair:hasInterest': themes,
         // 'semapps:humhubId': data.account.contentcontainer_id,
       })
     }

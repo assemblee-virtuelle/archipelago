@@ -72,11 +72,10 @@ module.exports = [
   //   preferredView: '/Idea',
   //   acceptedTypes: ['pair:Idea']
   // },
-  // {
-  //   path: '/themes',
-  //   preferredView: '/Theme',
-  //   acceptedTypes: ['pair:Theme']
-  // },
+  {
+    path: '/themes',
+    acceptedTypes: ['pair:Theme']
+  },
   // {
   //   path: '/skills',
   //   preferredView: '/Skill',

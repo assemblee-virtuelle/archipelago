@@ -21,6 +21,7 @@ module.exports = {
     },
     dest: {
       containerUri: urlJoin(CONFIG.HOME_URL, 'circles'),
+      predicatesToKeep: ['pair:documentedBy', 'pair:concernedBy']
     },
     cronJob: CONFIG.QUEUE_SERVICE_URL ? {
       time: '0 0 4 * * *', // Every night at 4am
