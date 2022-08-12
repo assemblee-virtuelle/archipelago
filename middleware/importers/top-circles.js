@@ -14,15 +14,15 @@ module.exports = {
       },
     },
     dest: {
-      containerUri: urlJoin(CONFIG.HOME_URL, 'circles')
+      containerUri: urlJoin(CONFIG.HOME_URL, 'circles'),
+      predicatesToKeep: ['pair:documentedBy', 'pair:concernedBy', 'pair:hasPart']
     }
   },
   methods: {
-    async transform(data) {
+    async transform({ slug, ...data }) {
       return ({
         type: 'og:Circle',
-        'pair:label': data['pair:label'],
-        'pair:partOf': data['pair:partOf'] ? urlJoin(CONFIG.HOME_URL, 'circles', data['pair:partOf']) : undefined
+        ...data
       });
     }
   }
