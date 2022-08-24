@@ -5,3 +5,4 @@
 /uploads
 /actors/*.key
 /actors/*.key.pub
+.yalc
