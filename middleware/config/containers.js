@@ -9,8 +9,13 @@ module.exports = [
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
     preferredView: '/Organization',
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress', 'pair:organizationOfMembership'],
-    disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }]
+    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
+    disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }],
+    ldpDereferencePlan :[
+      {
+        p:'pair:organizationOfMembership'
+      }
+    ]
   },
   {
     path: '/membership-associations',

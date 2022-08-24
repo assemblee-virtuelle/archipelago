@@ -1,0 +1,432 @@
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}
+dotenv-flow: "SEMAPPS_HOME_URL" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_SPARQL_ENDPOINT" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_MAIN_DATASET" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_USER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_JENA_PASSWORD" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_ISSUER" is already defined in `process.env` and will not be overwritten
+dotenv-flow: "SEMAPPS_OIDC_CLIENT_ID" is already defined in `process.env` and will not be overwritten
+[Runner] Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js Error: Cannot find module '@semapps/webacl'
+Require stack:
+- /app/moleculer.config.js
+- /app/node_modules/moleculer/src/runner.js
+- /app/node_modules/moleculer/index.js
+- /app/node_modules/moleculer/bin/moleculer-runner.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:957:15)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:61:29)
+    at require (internal/modules/cjs/helpers.js:77:18)
+    at Object.<anonymous> (/app/moleculer.config.js:2:48)
+    at Module._compile (internal/modules/cjs/loader.js:1133:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1153:10)
+    at Module.load (internal/modules/cjs/loader.js:977:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:877:14)
+    at Module.require (internal/modules/cjs/loader.js:1019:19)
+    at Module.Hook._require.Module.require (/usr/local/share/.config/yarn/global/node_modules/require-in-the-middle/index.js:80:39) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/app/moleculer.config.js',
+    '/app/node_modules/moleculer/src/runner.js',
+    '/app/node_modules/moleculer/index.js',
+    '/app/node_modules/moleculer/bin/moleculer-runner.js'
+  ]
+}

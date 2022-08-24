@@ -1,5 +1,6 @@
 {
   "name": "archipelago-frontend",
+  "version": "0.2",
   "dependencies": {
     "@fullcalendar/core": "^5.7.2",
     "@semapps/archipelago-layout": "0.4.0-alpha.29",

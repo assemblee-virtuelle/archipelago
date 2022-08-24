@@ -23,7 +23,6 @@ export const PersonEdit = props => (
       </FormTab>
       <FormTab label="Relations">
         <ActivitiesInput source="pair:involvedIn" />
-        <OrganizationsInput source="pair:affiliatedBy" />
         <SkillsInput source="pair:offers" />
         <ThemesInput source="pair:hasTopic" />
       </FormTab>
