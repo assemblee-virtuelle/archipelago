@@ -6,3 +6,4 @@
 /actors/*.key
 /actors/*.key.pub
 .yalc
+yalk.lock
