@@ -1,8 +1,0 @@
-{
-  "version": "v1",
-  "packages": {
-    "ldp-navigator": {
-      "signature": "3d256cb9a4461d864746adfeb4903d76"
-    }
-  }
-}
