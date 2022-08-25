@@ -25,7 +25,6 @@ module.exports = {
             "get":async (ctx, res)=>{
               for ( let container of containers){
                 if (ctx.params.resourceUri.includes(container.path) && container.ldpDereferencePlan){
-                  console.log('container.ldpDereferencePlan',container.ldpDereferencePlan);
                   let ldpNavigator=new LDPNavigator();
                   ldpNavigator.setAdapters([
                     new FetchAdapter({

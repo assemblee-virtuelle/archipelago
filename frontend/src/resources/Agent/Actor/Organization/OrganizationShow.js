@@ -101,7 +101,7 @@ const OrganizationShow = props => (
               <ArrayField source="pair:organizationOfMembership">
                 <Box mb={4}>
                   <GridList xs={6} linkType={false} externalLinks>
-                    <ReferenceField reference="Person" source="pair:membershipActor" link="show">
+                    <ReferenceField reference="Person" source="pair:membershipActor" link="show" basePath="/Person">
                       <AvatarWithLabelField label="pair:label" image="image" />
                     </ReferenceField>
                   </GridList>

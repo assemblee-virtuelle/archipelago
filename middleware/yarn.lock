@@ -3643,10 +3643,10 @@ ky@^0.25.1:
   resolved "https://registry.yarnpkg.com/ky/-/ky-0.25.1.tgz#0df0bd872a9cc57e31acd5dbc1443547c881bfbc"
   integrity sha512-PjpCEWlIU7VpiMVrTwssahkYXX1by6NCT0fhTUX34F3DTinARlgMpriuroolugFPcMgpPWrOW4mTb984Qm1RXA==
 
-ldp-navigator@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/ldp-navigator/-/ldp-navigator-1.2.5.tgz#12d9a0f18c996c78fabc25faeeb8a7e4442f1962"
-  integrity sha512-fVm7/LiXzIJ5ErbfE4YFDE8sCx+xjliUR5Z9D/nKMth6ANwQRBeI4oTNSKoglnNgq/I277ncwDgUW8RiZQm9RA==
+ldp-navigator@^1.2.7:
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/ldp-navigator/-/ldp-navigator-1.2.7.tgz#061140c35c6c48f32cf42755295617c6cc654526"
+  integrity sha512-iKleX4kZTX/Yp2oPG/2rdmAtj+lPql7mvJHB8ph+VtrJPIzBdfb7OJw+qTeVompgf9U1xJVkxUXtFkf+s3kAFQ==
   dependencies:
     isobject "^4.0.0"
     isuri "^2.0.3"

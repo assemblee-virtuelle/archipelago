@@ -31,7 +31,7 @@
     "dotenv-flow": "^3.2.0",
     "fix-esm": "^1.0.1",
     "ioredis": "^4.17.3",
-    "ldp-navigator": "^1.2.6",
+    "ldp-navigator": "^1.2.7",
     "moleculer": "^0.14.18",
     "moleculer-repl": "^0.6.3",
     "moleculer-web": "^0.10.0-beta1",

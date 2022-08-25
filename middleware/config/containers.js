@@ -47,7 +47,12 @@ module.exports = [
     path: '/users',
     preferredView: '/Person',
     acceptedTypes: ['pair:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
+    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
+    ldpDereferencePlan :[
+      {
+        p:'pair:actorOfMembership'
+      }
+    ]
   },
   {
     path: '/bots',
