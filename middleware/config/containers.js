@@ -10,12 +10,7 @@ module.exports = [
     acceptedTypes: ['pair:Organization'],
     preferredView: '/Organization',
     dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
-    disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }],
-    ldpDereferencePlan :[
-      {
-        p:'pair:organizationOfMembership'
-      }
-    ]
+    disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }]
   },
   {
     path: '/membership-associations',
@@ -47,12 +42,7 @@ module.exports = [
     path: '/users',
     preferredView: '/Person',
     acceptedTypes: ['pair:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
-    ldpDereferencePlan :[
-      {
-        p:'pair:actorOfMembership'
-      }
-    ]
+    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
   },
   {
     path: '/bots',
