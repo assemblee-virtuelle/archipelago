@@ -2,9 +2,10 @@ import React from 'react';
 import { ImageInput, SelectInput, TextInput, TabbedForm, FormTab } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ActorsInput, DocumentsInput, ThemesInput, ResourcesInput } from '../../../../pair';
+import { ActorsInput, DocumentsInput, ThemesInput, ResourcesInput } from '../../../../common/input';
 import ProjectTitle from './ProjectTitle';
-import { ImageField, ReferenceInput } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/field-components';
+import { ReferenceInput } from '@semapps/input-components';
 
 const ProjectEdit = props => (
   <EditWithPermissions title={<ProjectTitle />} {...props}>

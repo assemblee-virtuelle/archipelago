@@ -4,7 +4,7 @@ import frLocale from 'date-fns/locale/fr';
 import { EditWithPermissions } from '@semapps/auth-provider';
 import { DateTimeInput } from '@semapps/date-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ActorsInput, ThemesInput } from '../../../../pair';
+import { ActorsInput, ThemesInput } from '../../../../common/input';
 import EventTitle from './EventTitle';
 
 const EventEdit = props => (

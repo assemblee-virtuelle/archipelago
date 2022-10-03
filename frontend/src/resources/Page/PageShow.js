@@ -1,9 +1,9 @@
 import React from 'react';
 import { Typography, makeStyles } from '@material-ui/core';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { MainList } from '@semapps/archipelago-layout';
 import { MarkdownField } from '@semapps/markdown-components';
 import PageTitle from './PageTitle';
+import { MainList } from '../../common/list';
 
 const useStyles = makeStyles(() => ({
   card: {

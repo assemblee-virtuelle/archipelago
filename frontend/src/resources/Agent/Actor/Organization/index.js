@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../../pair';
+import CreateOrImport from '../../../../common/CreateOrImport';
 import OrganizationEdit from './OrganizationEdit';
 import OrganizationList from './OrganizationList';
 import OrganizationShow from './OrganizationShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: OrganizationList,
     show: OrganizationShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: OrganizationEdit,
     icon: HomeIcon,
     options: {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { SingleFieldList, ChipField } from 'react-admin';
 import { Grid, Typography } from '@material-ui/core';
-import { MainList, SideList } from '@semapps/archipelago-layout';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { ReferenceArrayField } from '@semapps/semantic-data-provider';
+import { ReferenceArrayField } from '@semapps/field-components';
 import { MarkdownField } from '@semapps/markdown-components';
 import DocumentTitle from './DocumentTitle';
+import { MainList, SideList } from '../../../common/list';
 
 const DocumentShow = props => (
   <ShowWithPermissions title={<DocumentTitle />} {...props}>

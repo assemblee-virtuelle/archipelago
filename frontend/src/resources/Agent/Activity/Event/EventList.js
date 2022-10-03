@@ -1,5 +1,5 @@
 import React from 'react';
-import { MultiViewsList } from '@semapps/archipelago-layout';
+import { MultiViewsList } from '@semapps/list-components';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import { CalendarList, DaysList } from '@semapps/date-components';
 import frLocale from '@fullcalendar/core/locales/fr';

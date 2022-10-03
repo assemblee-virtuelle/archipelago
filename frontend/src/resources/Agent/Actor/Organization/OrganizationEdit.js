@@ -8,10 +8,12 @@ import {
   FormTab
 } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
-import { ImageField, ReferenceInput, ReificationArrayInput } from '@semapps/semantic-data-provider';
+import { ReificationArrayInput } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/field-components';
+import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
-import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, PairLocationInput } from '../../../../pair';
+import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import OrganizationTitle from './OrganizationTitle';
 
 export const OrganizationEdit = props => {
@@ -29,7 +31,7 @@ export const OrganizationEdit = props => {
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
           <MultiLinesInput source="pair:homePage" fullWidth />
-          <PairLocationInput source="pair:hasLocation" fullWidth />
+          <LocationInput source="pair:hasLocation" fullWidth />
           <ImageInput source="image" accept="image/*">
             <ImageField source="src" />
           </ImageInput>

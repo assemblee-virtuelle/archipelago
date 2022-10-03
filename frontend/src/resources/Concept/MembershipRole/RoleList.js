@@ -1,8 +1,8 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import { Avatar } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/Class';
+import SimpleList from "../../../common/list/SimpleList";
 
 const RoleList = props => (
   <ListWithPermissions {...props}>

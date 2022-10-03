@@ -1,6 +1,6 @@
 import React from 'react';
 import { Show } from 'react-admin';
-import { RedirectByType } from '@semapps/archipelago-layout';
+import RedirectByType from "../../common/RedirectByType";
 
 const AgentRedirect = props => (
   <Show {...props}>

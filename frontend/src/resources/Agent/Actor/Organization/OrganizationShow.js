@@ -1,25 +1,19 @@
 import React from 'react';
 import { TextField, SimpleList, ArrayField } from 'react-admin';
-import { Box, Grid } from '@material-ui/core';
-import {
-  MainList,
-  SideList,
-  Hero,
-  SeparatedListField,
-  RightLabel
-} from '@semapps/archipelago-layout';
+import { Box, Grid, Avatar } from '@material-ui/core';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { MapField } from '@semapps/geo-components';
-import { ReferenceArrayField, ReferenceField, GroupedReferenceHandler } from '@semapps/semantic-data-provider';
-import { QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField } from '@semapps/field-components';
+import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { ReferenceArrayField, ReferenceField, QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import { MarkdownField } from '@semapps/markdown-components';
-import OrganizationTitle from './OrganizationTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
 import HomeIcon from '@material-ui/icons/Home';
 import ForumIcon from '@material-ui/icons/Forum';
-import { Avatar } from '@material-ui/core';
 import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
+import OrganizationTitle from './OrganizationTitle';
+import { Hero, MainList, SideList } from '../../../../common/list';
+import RightLabel from "../../../../common/list/SideList/RightLabel";
 
 const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {

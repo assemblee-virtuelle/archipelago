@@ -2,8 +2,8 @@ import React from 'react';
 import { SimpleForm, TextInput, SelectInput } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ReferenceInput } from '@semapps/semantic-data-provider';
-import { ActorsInput, ActivitiesInput } from '../../pair';
+import { ReferenceInput } from '@semapps/input-components';
+import { ActorsInput, ActivitiesInput } from '../../common/input';
 import IdeaTitle from './IdeaTitle';
 
 const IdeaEdit = props => (

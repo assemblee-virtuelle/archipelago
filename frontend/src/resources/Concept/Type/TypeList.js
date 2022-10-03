@@ -1,7 +1,7 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import StyleIcon from '@material-ui/icons/Style';
+import SimpleList from "../../../common/list/SimpleList";
 
 const TypeList = props => (
   <ListWithPermissions {...props}>

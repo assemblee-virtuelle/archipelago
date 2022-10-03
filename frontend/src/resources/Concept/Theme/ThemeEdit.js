@@ -2,7 +2,7 @@ import React from 'react';
 import { FormTab, TabbedForm, TextInput } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { AgentsInput } from '../../../pair';
+import { AgentsInput } from '../../../common/input';
 import ThemeTitle from './ThemeTitle';
 
 export const ThemeEdit = props => (

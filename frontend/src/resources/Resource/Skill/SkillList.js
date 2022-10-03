@@ -1,7 +1,7 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import PanToolIcon from '@material-ui/icons/PanTool';
+import SimpleList from "../../../common/list/SimpleList";
 
 const SkillList = props => (
   <ListWithPermissions {...props}>

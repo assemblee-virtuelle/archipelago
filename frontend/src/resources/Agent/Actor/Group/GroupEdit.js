@@ -1,9 +1,9 @@
 import React from 'react';
 import { SimpleForm, TextInput, ImageInput } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
-import { ImageField } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/field-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { UsersInput, EventsInput, ThemesInput, DocumentsInput } from '../../../../pair';
+import { UsersInput, EventsInput, ThemesInput, DocumentsInput } from '../../../../common/input';
 import GroupTitle from './GroupTitle';
 
 export const GroupEdit = props => (

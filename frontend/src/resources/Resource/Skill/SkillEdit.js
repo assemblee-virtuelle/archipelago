@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormTab, TextInput, TabbedForm } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
-import { UsersInput, AgentsInput } from '../../../pair';
+import { UsersInput, AgentsInput } from '../../../common/input';
 import SkillTitle from './SkillTitle';
 
 export const SkillEdit = props => (

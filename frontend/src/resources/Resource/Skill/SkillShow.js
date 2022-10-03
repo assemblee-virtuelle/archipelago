@@ -1,11 +1,10 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import { SideList } from '@semapps/archipelago-layout';
-import { AvatarWithLabelField, QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
-import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import SkillTitle from './SkillTitle';
+import { SideList } from '../../../common/list';
 
 const SkillShow = props => (
   <ShowWithPermissions title={<SkillTitle />} {...props}>

@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../../pair';
+import CreateOrImport from '../../../../common/CreateOrImport';
 import EventEdit from './EventEdit';
 import EventList from './EventList';
 import EventShow from './EventShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: EventList,
     show: EventShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: EventEdit,
     icon: EventIcon,
     options: {

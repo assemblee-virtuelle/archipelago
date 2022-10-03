@@ -1,8 +1,8 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
 import { ListWithPermissions } from '@semapps/auth-provider';
-import { SimpleList } from '@semapps/archipelago-layout';
 import DescriptionIcon from '@material-ui/icons/Description';
+import SimpleList from "../../common/list/SimpleList";
 
 const PageList = props => (
   <ListWithPermissions {...props}>

@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../../pair';
+import CreateOrImport from '../../../../common/CreateOrImport';
 import TaskEdit from './TaskEdit';
 import TaskList from './TaskList';
 import TaskShow from './TaskShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: TaskList,
     show: TaskShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: TaskEdit,
     icon: TaskIcon,
     options: {

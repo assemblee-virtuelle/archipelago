@@ -1,9 +1,9 @@
 import React from 'react';
 import { FormTab, SelectInput, TabbedForm, TextInput } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
-import { ReferenceInput } from '@semapps/semantic-data-provider';
+import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { AgentsInput } from '../../../pair';
+import { AgentsInput } from '../../../common/input';
 import DocumentTitle from './DocumentTitle';
 
 export const DocumentEdit = props => (

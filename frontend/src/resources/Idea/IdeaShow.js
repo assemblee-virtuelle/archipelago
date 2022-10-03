@@ -1,13 +1,12 @@
 import React from 'react';
 import { SingleFieldList, TextField } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { Hero, MainList, SideList, SeparatedListField } from '@semapps/archipelago-layout';
-import { AvatarWithLabelField } from '@semapps/field-components';
+import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { MarkdownField } from '@semapps/markdown-components';
 import IdeaTitle from './IdeaTitle';
+import { Hero, MainList, SideList } from '../../common/list';
 
 const IdeaShow = props => (
   <ShowWithPermissions title={<IdeaTitle />} {...props}>

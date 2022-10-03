@@ -1,7 +1,7 @@
 import React from 'react';
 import PersonIcon from '@material-ui/icons/Person';
 import { Show } from 'react-admin';
-import { RedirectByType } from '@semapps/archipelago-layout';
+import RedirectByType from "../../../common/RedirectByType";
 
 const ActorRedirect = props => (
   <Show {...props}>

@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../pair';
+import CreateOrImport from '../../../common/CreateOrImport';
 import ThemeEdit from './ThemeEdit';
 import ThemeList from './ThemeList';
 import ThemeShow from './ThemeShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: ThemeList,
     show: ThemeShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: ThemeEdit,
     icon: LocalOfferIcon,
     options: {

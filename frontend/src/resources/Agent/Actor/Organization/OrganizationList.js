@@ -1,5 +1,5 @@
 import React from 'react';
-import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
+import { MultiViewsList } from '@semapps/list-components';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import { MapList } from '@semapps/geo-components';
 import { Avatar } from '@material-ui/core';
@@ -7,6 +7,7 @@ import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
 import HomeIcon from '@material-ui/icons/Home';
 import OrganizationFilterSidebar from './OrganizationFilterSidebar';
+import SimpleList from "../../../../common/list/SimpleList";
 
 const OrganizationList = props => (
   <MultiViewsList

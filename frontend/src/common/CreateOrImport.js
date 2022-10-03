@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextInput } from 'react-admin';
-import { Create } from '@semapps/archipelago-layout';
 import { CreateOrImportForm } from '@semapps/interop-components';
 import { useDataModel } from '@semapps/semantic-data-provider';
+import Create from "../layout/Create";
 
-const PairResourceCreate = props => {
+const CreateOrImport = props => {
   const dataModel = useDataModel(props.resource);
   return (
     <Create {...props}>
@@ -17,4 +17,4 @@ const PairResourceCreate = props => {
   );
 }
 
-export default PairResourceCreate;
+export default CreateOrImport;

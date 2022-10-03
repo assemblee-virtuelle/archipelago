@@ -1,9 +1,9 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
 import { ListWithPermissions } from '@semapps/auth-provider';
 import ProjectFilterSidebar from './ProjectFilterSidebar';
 import { Avatar } from '@material-ui/core';
 import SettingsIcon from '@material-ui/icons/Settings';
+import SimpleList from "../../../../common/list/SimpleList";
 
 const ProjectList = props => (
   <ListWithPermissions aside={<ProjectFilterSidebar />} {...props}>

@@ -1,14 +1,13 @@
 import React from 'react';
 import { TextField, UrlField, SimpleList } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { SideList, MainList, Hero, SeparatedListField } from '@semapps/archipelago-layout';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { QuickAppendReferenceArrayField, AvatarWithLabelField } from '@semapps/field-components';
+import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import { ReferenceArrayField } from '@semapps/semantic-data-provider';
 import { MarkdownField } from '@semapps/markdown-components';
 import ProjectTitle from './ProjectTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
+import { Hero, MainList, SideList } from '../../../../common/list';
 
 const ProjectShow = props => (
   <ShowWithPermissions title={<ProjectTitle />} {...props}>
