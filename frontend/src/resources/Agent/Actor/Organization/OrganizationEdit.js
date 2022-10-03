@@ -5,9 +5,9 @@ import {
   AutocompleteInput,
   SelectInput,
   TabbedForm,
-  FormTab
+  FormTab,
+  EditBase
 } from 'react-admin';
-import { EditWithPermissions } from '@semapps/auth-provider';
 import { ReificationArrayInput } from '@semapps/semantic-data-provider';
 import { ImageField } from '@semapps/field-components';
 import { ReferenceInput } from '@semapps/input-components';
@@ -15,10 +15,11 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import OrganizationTitle from './OrganizationTitle';
+import EditView from "../../../../layout/EditView";
 
-export const OrganizationEdit = props => {
-  return (
-    <EditWithPermissions title={<OrganizationTitle />} {...props}>
+export const OrganizationEdit = props => (
+  <EditBase {...props}>
+    <EditView title={<OrganizationTitle />}>
       <TabbedForm redirect="show">
         <FormTab label="Données">
           <TextInput source="pair:label" fullWidth />
@@ -55,8 +56,8 @@ export const OrganizationEdit = props => {
           <DocumentsInput source="pair:documentedBy" />
         </FormTab>
       </TabbedForm>
-    </EditWithPermissions>
-  );
-};
+    </EditView>
+  </EditBase>
+);
 
 export default OrganizationEdit;
