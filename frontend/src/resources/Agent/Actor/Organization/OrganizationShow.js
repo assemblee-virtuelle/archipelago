@@ -6,12 +6,12 @@ import { MapField } from '@semapps/geo-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
 import { ReferenceArrayField, ReferenceField, QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import { MarkdownField } from '@semapps/markdown-components';
 import DescriptionIcon from '@material-ui/icons/Description';
 import HomeIcon from '@material-ui/icons/Home';
 import ForumIcon from '@material-ui/icons/Forum';
 import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 import OrganizationTitle from './OrganizationTitle';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import RightLabel from "../../../../common/list/SideList/RightLabel";
 

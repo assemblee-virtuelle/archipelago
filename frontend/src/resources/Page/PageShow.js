@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography, makeStyles } from '@material-ui/core';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { MarkdownField } from '@semapps/markdown-components';
 import PageTitle from './PageTitle';
+import { MarkdownField } from '../../common/field';
 import { MainList } from '../../common/list';
 
 const useStyles = makeStyles(() => ({

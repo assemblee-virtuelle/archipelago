@@ -3,8 +3,8 @@ import { ChipField, SingleFieldList } from 'react-admin';
 import { Grid } from '@material-ui/core';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { ReferenceArrayField } from '@semapps/field-components';
-import { MarkdownField } from '@semapps/markdown-components';
 import ThemeTitle from './ThemeTitle';
+import { MarkdownField } from '../../../common/field';
 import { MainList, SideList } from '../../../common/list';
 
 const ThemeShow = props => (

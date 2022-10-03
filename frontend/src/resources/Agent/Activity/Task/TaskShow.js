@@ -4,8 +4,8 @@ import { Grid } from '@material-ui/core';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { MarkdownField } from '@semapps/markdown-components';
 import TaskTitle from './TaskTitle';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 
 const TaskShow = props => (

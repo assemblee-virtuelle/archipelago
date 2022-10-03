@@ -4,9 +4,9 @@ import { Grid } from '@material-ui/core';
 import { ShowWithPermissions } from '@semapps/auth-provider';
 import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import { MarkdownField } from '@semapps/markdown-components';
 import ProjectTitle from './ProjectTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 
 const ProjectShow = props => (

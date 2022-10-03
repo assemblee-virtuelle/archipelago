@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { MarkdownField } from '@semapps/markdown-components';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import EventTitle from './EventTitle';
 

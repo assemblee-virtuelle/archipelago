@@ -4,8 +4,8 @@ import { Grid } from '@material-ui/core';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { ChipList, GridList} from '@semapps/list-components';
 import { ShowWithPermissions } from '@semapps/auth-provider';
-import { MarkdownField } from '@semapps/markdown-components';
 import GroupTitle from './GroupTitle';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 
 const GroupShow = props => (
