@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageInput, TabbedForm, TextInput, FormTab } from 'react-admin';
 import { EditWithPermissions } from '@semapps/auth-provider';
-import { ActivitiesInput, OrganizationsInput, PairLocationInput, SkillsInput, ThemesInput } from '../../../../pair';
+import { ActivitiesInput, PairLocationInput, SkillsInput, ThemesInput } from '../../../../pair';
 import { ImageField } from '@semapps/semantic-data-provider';
 import PersonTitle from './PersonTitle';
 
