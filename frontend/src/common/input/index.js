@@ -70,4 +70,5 @@ export const AgentsInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
+export { default as DateTimeInput } from './DateTimeInput';
 export { default as LocationInput } from './LocationInput';

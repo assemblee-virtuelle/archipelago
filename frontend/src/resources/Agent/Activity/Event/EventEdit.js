@@ -1,9 +1,7 @@
 import React from 'react';
 import { FormTab, TextInput, TabbedForm } from 'react-admin';
-import frLocale from 'date-fns/locale/fr';
-import { DateTimeInput } from '@semapps/date-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ActorsInput, ThemesInput } from '../../../../common/input';
+import { ActorsInput, ThemesInput, DateTimeInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
 import EventTitle from './EventTitle';
 
@@ -15,28 +13,8 @@ const EventEdit = props => (
         <TextInput source="pair:comment" fullWidth />
         <MarkdownInput multiline source="pair:description" fullWidth />
         <TextInput source="pair:aboutPage" fullWidth />
-        <DateTimeInput
-          source="pair:startDate"
-          options={{
-            format: 'dd/MM/yyyy à HH:mm',
-            ampm: false
-          }}
-          providerOptions={{
-            locale: frLocale
-          }}
-          fullWidth
-        />
-        <DateTimeInput
-          source="pair:endDate"
-          options={{
-            format: 'dd/MM/yyyy à HH:mm',
-            ampm: false
-          }}
-          providerOptions={{
-            locale: frLocale
-          }}
-          fullWidth
-        />
+        <DateTimeInput source="pair:startDate" />
+        <DateTimeInput source="pair:endDate" />
       </FormTab>
       <FormTab label="Relations">
         <ActorsInput source="pair:involves" />
