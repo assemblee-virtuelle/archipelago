@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListBase } from 'react-admin';
 import ListView from "./ListView";
-import ListActions from "./ListActions";
+import ListActionsWithViewsAndPermissions from "./ListActionsWithViewsAndPermissions";
 
 const List = ({ actions, aside, children, ...rest }) => (
   <ListBase {...rest}>
@@ -12,7 +12,7 @@ const List = ({ actions, aside, children, ...rest }) => (
 );
 
 List.defaultProps = {
-  actions: <ListActions />
+  actions: <ListActionsWithViewsAndPermissions />
 }
 
 export default List;

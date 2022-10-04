@@ -6,7 +6,7 @@ import { ViewsButtons } from "@semapps/list-components";
 import { PermissionsButton } from "@semapps/auth-provider";
 
 // Custom ListActions which include the PermissionButton and ViewsButtons
-const ListActions = ({
+const ListActionsWithViewsAndPermissions = ({
   bulkActions,
   basePath,
   currentSort,
@@ -61,4 +61,4 @@ const ListActions = ({
   );
 };
 
-export default ListActions;
+export default ListActionsWithViewsAndPermissions;

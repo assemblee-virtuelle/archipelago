@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShowBase } from 'react-admin';
-import { ShowActions } from "@semapps/auth-provider";
+import { ShowActionsWithPermissions } from "@semapps/auth-provider";
 import ShowView from "./ShowView";
 
 const Show = ({ title, actions, children, ...rest }) => (
@@ -12,7 +12,7 @@ const Show = ({ title, actions, children, ...rest }) => (
 );
 
 Show.defaultProps = {
-  actions: <ShowActions />
+  actions: <ShowActionsWithPermissions />
 };
 
 export default Show;

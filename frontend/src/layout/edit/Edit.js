@@ -1,6 +1,6 @@
 import React from 'react';
 import { EditBase } from 'react-admin';
-import { EditActions } from "@semapps/auth-provider";
+import { EditActionsWithPermissions } from "@semapps/auth-provider";
 import EditView from "./EditView";
 
 const Edit = ({ title, actions, children, ...rest }) => (
@@ -12,7 +12,7 @@ const Edit = ({ title, actions, children, ...rest }) => (
 );
 
 Edit.defaultProps = {
-  actions: <EditActions />
+  actions: <EditActionsWithPermissions />
 };
 
 export default Edit;
