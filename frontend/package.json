@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "dependencies": {
     "@fullcalendar/core": "^5.7.2",
-    "@semapps/archipelago-layout": "0.4.0-alpha.36",
-    "@semapps/auth-provider": "0.4.0-alpha.36",
-    "@semapps/date-components": "0.4.0-alpha.36",
-    "@semapps/field-components": "0.4.0-alpha.36",
-    "@semapps/geo-components": "0.4.0-alpha.36",
-    "@semapps/input-components": "0.4.0-alpha.36",
-    "@semapps/interop-components": "0.4.0-alpha.36",
-    "@semapps/list-components": "0.4.0-alpha.36",
-    "@semapps/markdown-components": "0.4.0-alpha.36",
-    "@semapps/semantic-data-provider": "0.4.0-alpha.36",
+    "@semapps/auth-provider": "0.4.0-alpha.37",
+    "@semapps/date-components": "0.4.0-alpha.37",
+    "@semapps/field-components": "0.4.0-alpha.37",
+    "@semapps/geo-components": "0.4.0-alpha.37",
+    "@semapps/input-components": "0.4.0-alpha.37",
+    "@semapps/interop-components": "0.4.0-alpha.37",
+    "@semapps/list-components": "0.4.0-alpha.37",
+    "@semapps/markdown-components": "0.4.0-alpha.37",
+    "@semapps/semantic-data-provider": "0.4.0-alpha.37",
     "date-fns": "~2.8.1",
     "history": "4.10.1",
     "leaflet": "^1.7.1",
@@ -36,8 +35,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/archipelago-layout @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/interop-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider",
-    "unlink-semapps-packages": "yarn unlink @semapps/activitypub-components @semapps/archipelago-layout @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/interop-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider"
+    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/interop-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider",
+    "unlink-semapps-packages": "yarn unlink @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/interop-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider"
   },
   "eslintConfig": {
     "extends": "react-app"
