@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../../pair';
+import CreateOrImport from '../../../../common/CreateOrImport';
 import GroupEdit from './GroupEdit';
 import GroupList from './GroupList';
 import GroupShow from './GroupShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: GroupList,
     show: GroupShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: GroupEdit,
     icon: GroupIcon,
     options: {

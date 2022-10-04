@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardContent, makeStyles } from '@material-ui/core';
-import { ReferenceFilter } from '@semapps/archipelago-layout';
+import { ReferenceFilter } from '@semapps/list-components';
 
 const useStyles = makeStyles(theme => ({
   card: {

@@ -1,16 +1,15 @@
 import React from 'react';
 import { TextField, UrlField, DateField } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { Hero, MainList, SideList } from '@semapps/archipelago-layout';
-import { AvatarWithLabelField, QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
-import { ReferenceArrayField } from '@semapps/semantic-data-provider';
-import { ShowWithPermissions } from '@semapps/auth-provider';
-import { MarkdownField } from '@semapps/markdown-components';
+import { MarkdownField } from '../../../../common/field';
+import { Hero, MainList, SideList } from '../../../../common/list';
 import EventTitle from './EventTitle';
+import Show from "../../../../layout/show/Show";
 
 const EventShow = props => (
-  <ShowWithPermissions title={<EventTitle />} {...props}>
+  <Show title={<EventTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero>
@@ -36,7 +35,7 @@ const EventShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default EventShow;

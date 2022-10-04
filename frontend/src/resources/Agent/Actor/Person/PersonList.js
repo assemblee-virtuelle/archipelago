@@ -1,19 +1,19 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
-import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
 import { AvatarWithLabelField } from '@semapps/field-components';
-import { GridList } from '@semapps/list-components';
+import { MultiViewsList, GridList } from '@semapps/list-components';
 import { MapList } from '@semapps/geo-components';
-import { ListWithPermissions } from '@semapps/auth-provider';
 import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
 import PersonIcon from '@material-ui/icons/Person';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import PersonFilterSidebar from './PersonFilterSidebar';
+import SimpleList from "../../../../common/list/SimpleList";
+import List from "../../../../layout/list/List";
 
 const PersonList = props => (
   <MultiViewsList
-    ListComponent={ListWithPermissions}
+    ListComponent={List}
     aside={<PersonFilterSidebar />}
     views={{
       avatar: {

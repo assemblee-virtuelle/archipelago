@@ -1,15 +1,14 @@
 import React from 'react';
 import { FormTab, TextInput, SelectInput, TabbedForm } from 'react-admin';
-import frLocale from 'date-fns/locale/fr';
-import { EditWithPermissions } from '@semapps/auth-provider';
-import { ActorsInput, ThemesInput, TasksInput, SkillsInput, DocumentsInput, ActivitiesInput } from '../../../../pair';
-import { ReferenceInput } from '@semapps/semantic-data-provider';
-import { DateTimeInput } from '@semapps/date-components';
+import { ActorsInput, ThemesInput, TasksInput, SkillsInput, DocumentsInput, ActivitiesInput } from '../../../../common/input';
+import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import TaskTitle from './TaskTitle';
+import { DateTimeInput } from "../../../../common/input";
+import Edit from "../../../../layout/edit/Edit";
 
 const TaskEdit = props => (
-  <EditWithPermissions title={<TaskTitle />} {...props}>
+  <Edit title={<TaskTitle />} {...props}>
     <TabbedForm redirect="show">
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
@@ -20,28 +19,8 @@ const TaskEdit = props => (
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:TaskType' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
-        <DateTimeInput
-          source="pair:dueDate"
-          options={{
-            format: 'dd/MM/yyyy à HH:mm',
-            ampm: false
-          }}
-          providerOptions={{
-            locale: frLocale
-          }}
-          fullWidth
-        />
-        <DateTimeInput
-          source="pair:endDate"
-          options={{
-            format: 'dd/MM/yyyy à HH:mm',
-            ampm: false
-          }}
-          providerOptions={{
-            locale: frLocale
-          }}
-          fullWidth
-        />
+        <DateTimeInput source="pair:dueDate" />
+        <DateTimeInput source="pair:endDate" />
       </FormTab>
       <FormTab label="Relations">
         <ActorsInput source="pair:assignedTo" />
@@ -54,7 +33,7 @@ const TaskEdit = props => (
         <DocumentsInput source="pair:uses" />
       </FormTab>
     </TabbedForm>
-  </EditWithPermissions>
+  </Edit>
 );
 
 export default TaskEdit;

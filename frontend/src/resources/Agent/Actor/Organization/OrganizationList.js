@@ -1,16 +1,17 @@
 import React from 'react';
-import { MultiViewsList, SimpleList } from '@semapps/archipelago-layout';
-import { ListWithPermissions } from '@semapps/auth-provider';
+import { MultiViewsList } from '@semapps/list-components';
 import { MapList } from '@semapps/geo-components';
 import { Avatar } from '@material-ui/core';
 import MapIcon from '@material-ui/icons/Map';
 import ListIcon from '@material-ui/icons/List';
 import HomeIcon from '@material-ui/icons/Home';
 import OrganizationFilterSidebar from './OrganizationFilterSidebar';
+import SimpleList from "../../../../common/list/SimpleList";
+import List from "../../../../layout/list/List";
 
 const OrganizationList = props => (
   <MultiViewsList
-    ListComponent={ListWithPermissions}
+    ListComponent={List}
     aside={<OrganizationFilterSidebar />}
     views={{
       list: {

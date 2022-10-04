@@ -1,23 +1,18 @@
 import React from 'react';
-import { DateField, TextField } from 'react-admin';
+import { DateField } from 'react-admin';
 import { Avatar } from '@material-ui/core';
 import TaskIcon from '@material-ui/icons/PlaylistAddCheck';
-import { SimpleList } from '@semapps/archipelago-layout';
-import { ListWithPermissions } from '@semapps/auth-provider';
+import List from "../../../../layout/list/List";
 import TaskFilterSidebar from './TaskFilterSidebar';
+import SimpleList from "../../../../common/list/SimpleList";
 
 const TaskList = props => (
-  <ListWithPermissions aside={<TaskFilterSidebar />} {...props}>
+  <List aside={<TaskFilterSidebar />} {...props}>
     <SimpleList
       primaryText={record => record['pair:label']}
       secondaryText={record => (
         <>
-          Deadline : <DateField record={record} source="pair:dueDate" showTime />
-        </>
-      )}
-      tertiaryText={record => (
-        <>
-          <TextField record={record} source="pair:assignedTo" />
+          Date limite : <DateField record={record} source="pair:dueDate" showTime />
         </>
       )}
       leftAvatar={() => (
@@ -27,7 +22,7 @@ const TaskList = props => (
       )}
       linkType="show"
     />
-  </ListWithPermissions>
+  </List>
 );
 
 export default TaskList;

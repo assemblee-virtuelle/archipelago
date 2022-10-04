@@ -1,6 +1,5 @@
 import React from 'react';
-import { ReferenceArrayInput } from '@semapps/semantic-data-provider';
-import { MultiServerAutocompleteArrayInput } from "@semapps/input-components";
+import { ReferenceArrayInput, MultiServerAutocompleteArrayInput } from "@semapps/input-components";
 
 const ifTwoLetters = ({ q }) => !!(q && q.length > 1);
 const filterOnlyLabel = { _predicates: ['pair:label'] };
@@ -71,5 +70,5 @@ export const AgentsInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
-export { default as PairLocationInput } from './PairLocationInput';
-export { default as PairResourceCreate } from './PairResourceCreate';
+export { default as DateTimeInput } from './DateTimeInput';
+export { default as LocationInput } from './LocationInput';

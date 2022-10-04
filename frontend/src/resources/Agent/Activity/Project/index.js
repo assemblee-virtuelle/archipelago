@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../../pair';
+import CreateOrImport from '../../../../common/CreateOrImport';
 import ProjectEdit from './ProjectEdit';
 import ProjectList from './ProjectList';
 import ProjectShow from './ProjectShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: ProjectList,
     show: ProjectShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: ProjectEdit,
     icon: SettingsIcon,
     options: {

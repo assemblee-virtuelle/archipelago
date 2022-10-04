@@ -1,13 +1,14 @@
 import React from 'react';
 import { TextField, ArrayField } from 'react-admin';
 import { Box, Grid } from '@material-ui/core';
-import { MainList, SideList, Hero , RightLabel } from '@semapps/archipelago-layout';
-import { QuickAppendReferenceArrayField, AvatarWithLabelField } from '@semapps/field-components';
+import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import { ShowWithPermissions } from '@semapps/auth-provider';
-import { GroupedReferenceHandler, ReferenceField } from '@semapps/semantic-data-provider';
+import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
 import PersonTitle from './PersonTitle';
+import { Hero, MainList, SideList } from '../../../../common/list';
+import RightLabel from "../../../../common/list/SideList/RightLabel";
+import Show from "../../../../layout/show/Show";
 
 const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
@@ -20,7 +21,7 @@ const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherPro
 };
 
 const PersonShow = props => (
-  <ShowWithPermissions title={<PersonTitle />} {...props}>
+  <Show title={<PersonTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -71,7 +72,7 @@ const PersonShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default PersonShow;

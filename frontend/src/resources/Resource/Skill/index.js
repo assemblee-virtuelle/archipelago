@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../../pair';
+import CreateOrImport from '../../../common/CreateOrImport';
 import SkillEdit from './SkillEdit';
 import SkillList from './SkillList';
 import SkillShow from './SkillShow';
@@ -7,7 +7,7 @@ import PersonIcon from '@material-ui/icons/Person';
 export default {
   config: {
     list: SkillList,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: SkillEdit,
     show: SkillShow,
     icon: PersonIcon,

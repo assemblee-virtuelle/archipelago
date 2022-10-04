@@ -1,11 +1,11 @@
 import React from 'react';
 import { FormTab, TextInput, TabbedForm } from 'react-admin';
-import { EditWithPermissions } from '@semapps/auth-provider';
-import { UsersInput, AgentsInput } from '../../../pair';
+import Edit from "../../../layout/edit/Edit";
+import { UsersInput, AgentsInput } from '../../../common/input';
 import SkillTitle from './SkillTitle';
 
 export const SkillEdit = props => (
-  <EditWithPermissions title={<SkillTitle />} {...props}>
+  <Edit title={<SkillTitle />} {...props}>
     <TabbedForm redirect="show">
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
@@ -15,7 +15,7 @@ export const SkillEdit = props => (
         <AgentsInput source="pair:neededBy" />
       </FormTab>
     </TabbedForm>
-  </EditWithPermissions>
+  </Edit>
 );
 
 export default SkillEdit;

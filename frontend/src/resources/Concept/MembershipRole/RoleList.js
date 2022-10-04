@@ -1,11 +1,11 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
-import { ListWithPermissions } from '@semapps/auth-provider';
 import { Avatar } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/Class';
+import SimpleList from "../../../common/list/SimpleList";
+import List from "../../../layout/list/List";
 
 const RoleList = props => (
-  <ListWithPermissions {...props}>
+  <List {...props}>
     <SimpleList
       primaryText={record => record['pair:label']}
       leftAvatar={() => (
@@ -14,7 +14,7 @@ const RoleList = props => (
         </Avatar>
       )}
     />
-  </ListWithPermissions>
+  </List>
 );
 
 export default RoleList;

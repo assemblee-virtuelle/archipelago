@@ -1,11 +1,11 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
-import { ListWithPermissions } from '@semapps/auth-provider';
-import { SimpleList } from '@semapps/archipelago-layout';
 import DescriptionIcon from '@material-ui/icons/Description';
+import SimpleList from "../../common/list/SimpleList";
+import List from "../../layout/list/List";
 
 const PageList = props => (
-  <ListWithPermissions {...props}>
+  <List {...props}>
     <SimpleList
       primaryText={record => record['semapps:title']}
       leftAvatar={() => (
@@ -15,7 +15,7 @@ const PageList = props => (
       )}
       linkType="show"
     />
-  </ListWithPermissions>
+  </List>
 );
 
 export default PageList;

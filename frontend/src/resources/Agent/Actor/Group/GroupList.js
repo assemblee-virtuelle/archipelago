@@ -1,11 +1,11 @@
 import React from 'react';
-import { SimpleList } from '@semapps/archipelago-layout';
-import { ListWithPermissions } from '@semapps/auth-provider';
 import { Avatar } from '@material-ui/core';
 import GroupIcon from '@material-ui/icons/Group';
+import List from "../../../../layout/list/List";
+import SimpleList from "../../../../common/list/SimpleList";
 
 const GroupList = props => (
-  <ListWithPermissions {...props}>
+  <List {...props}>
     <SimpleList
       primaryText={record => record['pair:label']}
       secondaryText={record => record['pair:comment']}
@@ -16,7 +16,7 @@ const GroupList = props => (
       )}
       linkType="show"
     />
-  </ListWithPermissions>
+  </List>
 );
 
 export default GroupList;

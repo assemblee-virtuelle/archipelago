@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../pair';
+import CreateOrImport from '../../common/CreateOrImport';
 import IdeaEdit from './IdeaEdit';
 import IdeaList from './IdeaList';
 import IdeaShow from './IdeaShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: IdeaList,
     show: IdeaShow,
-    create: PairResourceCreate,
+    create: CreateOrImport,
     edit: IdeaEdit,
     icon: IdeaIcon,
     options: {

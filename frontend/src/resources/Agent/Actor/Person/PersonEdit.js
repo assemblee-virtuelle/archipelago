@@ -1,12 +1,12 @@
 import React from 'react';
 import { ImageInput, TabbedForm, TextInput, FormTab } from 'react-admin';
-import { EditWithPermissions } from '@semapps/auth-provider';
-import { ActivitiesInput, PairLocationInput, SkillsInput, ThemesInput } from '../../../../pair';
-import { ImageField } from '@semapps/semantic-data-provider';
+import { ImageField } from '@semapps/field-components';
+import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
 import PersonTitle from './PersonTitle';
+import Edit from "../../../../layout/edit/Edit";
 
 export const PersonEdit = props => (
-  <EditWithPermissions
+  <Edit
     title={<PersonTitle />}
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}
@@ -16,7 +16,7 @@ export const PersonEdit = props => (
         <TextInput source="pair:firstName" fullWidth />
         <TextInput source="pair:lastName" fullWidth />
         <TextInput source="pair:comment" fullWidth />
-        <PairLocationInput source="pair:hasLocation" fullWidth />
+        <LocationInput source="pair:hasLocation" fullWidth />
         <ImageInput source="image" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
@@ -27,7 +27,7 @@ export const PersonEdit = props => (
         <ThemesInput source="pair:hasTopic" />
       </FormTab>
     </TabbedForm>
-  </EditWithPermissions>
+  </Edit>
 );
 
 export default PersonEdit;

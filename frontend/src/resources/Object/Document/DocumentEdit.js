@@ -1,13 +1,13 @@
 import React from 'react';
 import { FormTab, SelectInput, TabbedForm, TextInput } from 'react-admin';
-import { EditWithPermissions } from '@semapps/auth-provider';
-import { ReferenceInput } from '@semapps/semantic-data-provider';
+import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { AgentsInput } from '../../../pair';
+import { AgentsInput } from '../../../common/input';
 import DocumentTitle from './DocumentTitle';
+import Edit from "../../../layout/edit/Edit";
 
 export const DocumentEdit = props => (
-  <EditWithPermissions title={<DocumentTitle />} {...props}>
+  <Edit title={<DocumentTitle />} {...props}>
     <TabbedForm redirect="show">
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
@@ -20,7 +20,7 @@ export const DocumentEdit = props => (
         <AgentsInput source="pair:documents" />
       </FormTab>
     </TabbedForm>
-  </EditWithPermissions>
+  </Edit>
 );
 
 export default DocumentEdit;
