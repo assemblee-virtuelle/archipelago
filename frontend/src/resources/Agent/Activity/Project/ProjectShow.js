@@ -1,16 +1,16 @@
 import React from 'react';
 import { TextField, UrlField, SimpleList } from 'react-admin';
 import { Grid } from '@material-ui/core';
-import { ShowWithPermissions } from '@semapps/auth-provider';
 import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import ProjectTitle from './ProjectTitle';
 import DescriptionIcon from '@material-ui/icons/Description';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
+import Show from "../../../../layout/show/Show";
 
 const ProjectShow = props => (
-  <ShowWithPermissions title={<ProjectTitle />} {...props}>
+  <Show title={<ProjectTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -49,7 +49,7 @@ const ProjectShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default ProjectShow;

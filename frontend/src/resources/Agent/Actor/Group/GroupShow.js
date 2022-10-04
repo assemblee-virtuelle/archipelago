@@ -3,13 +3,13 @@ import { TextField } from 'react-admin';
 import { Grid } from '@material-ui/core';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { ChipList, GridList} from '@semapps/list-components';
-import { ShowWithPermissions } from '@semapps/auth-provider';
 import GroupTitle from './GroupTitle';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
+import Show from "../../../../layout/show/Show";
 
 const GroupShow = props => (
-  <ShowWithPermissions title={<GroupTitle />} {...props}>
+  <Show title={<GroupTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -41,7 +41,7 @@ const GroupShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default GroupShow;

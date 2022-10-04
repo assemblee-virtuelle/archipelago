@@ -3,13 +3,13 @@ import { SingleFieldList, TextField } from 'react-admin';
 import { Grid } from '@material-ui/core';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
-import { ShowWithPermissions } from '@semapps/auth-provider';
 import IdeaTitle from './IdeaTitle';
 import { MarkdownField } from '../../common/field';
+import Show from "../../layout/show/Show";
 import { Hero, MainList, SideList } from '../../common/list';
 
 const IdeaShow = props => (
-  <ShowWithPermissions title={<IdeaTitle />} {...props}>
+  <Show title={<IdeaTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -44,7 +44,7 @@ const IdeaShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default IdeaShow;

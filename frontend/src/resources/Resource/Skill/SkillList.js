@@ -1,12 +1,12 @@
 import React from 'react';
-import { ListWithPermissions } from '@semapps/auth-provider';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import SimpleList from "../../../common/list/SimpleList";
+import List from "../../../layout/list/List";
 
 const SkillList = props => (
-  <ListWithPermissions {...props}>
+  <List {...props}>
     <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <PanToolIcon />} linkType="show" />
-  </ListWithPermissions>
+  </List>
 );
 
 export default SkillList;

@@ -3,13 +3,13 @@ import { SingleFieldList, TextField, DateField } from 'react-admin';
 import { Grid } from '@material-ui/core';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
-import { ShowWithPermissions } from '@semapps/auth-provider';
 import TaskTitle from './TaskTitle';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
+import Show from "../../../../layout/show/Show";
 
 const TaskShow = props => (
-  <ShowWithPermissions title={<TaskTitle />} {...props}>
+  <Show title={<TaskTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero>
@@ -65,7 +65,7 @@ const TaskShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default TaskShow;

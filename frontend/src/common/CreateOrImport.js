@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput } from 'react-admin';
 import { CreateOrImportForm } from '@semapps/interop-components';
 import { useDataModel } from '@semapps/semantic-data-provider';
-import Create from "../layout/Create";
+import Create from "../layout/create/Create";
 
 const CreateOrImport = props => {
   const dataModel = useDataModel(props.resource);

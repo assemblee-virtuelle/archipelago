@@ -2,12 +2,12 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
-import { ShowWithPermissions } from '@semapps/auth-provider';
 import SkillTitle from './SkillTitle';
+import Show from "../../../layout/show/Show";
 import { SideList } from '../../../common/list';
 
 const SkillShow = props => (
-  <ShowWithPermissions title={<SkillTitle />} {...props}>
+  <Show title={<SkillTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
@@ -25,7 +25,7 @@ const SkillShow = props => (
         </SideList>
       </Grid>
     </Grid>
-  </ShowWithPermissions>
+  </Show>
 );
 
 export default SkillShow;
