@@ -14,19 +14,19 @@ export { default as Activity } from './Agent/Activity/Activity';
 export { default as Skill } from './Resource/Skill';
 export { default as Resource } from './Resource/Resource';
 
+// Ideas
+export { default as Idea } from './Idea';
+
+// Objects
+export { default as Document } from './Object/Document';
+export { default as Object } from './Object/Object';
+
 // Concepts
 export { default as Theme } from './Concept/Theme';
 export { default as Status } from './Concept/Status';
 export { default as Type } from './Concept/Type';
 export { default as Concept } from './Concept/Concept';
 export { default as MembershipRole } from './Concept/MembershipRole';
-
-// Objects
-export { default as Document } from './Object/Document';
-export { default as Object } from './Object/Object';
-
-// Ideas
-export { default as Idea } from './Idea';
 
 // Pages
 export { default as Page } from './Page';
