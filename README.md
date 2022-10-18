@@ -4,6 +4,8 @@
 
 > Fostering interconnections between communities by creating synergies between their platforms
 
+![archipelago](https://user-images.githubusercontent.com/17931931/196366532-f67d8ce3-749b-4791-ba31-493415983d3b.png)
+
 A collaborative, interoperable and modular knowledge management system, compliant with most semantic web specifications: LDP, SPARQL, ActivityPub, WAC, WebID.
 
 Based on linked data & semantic web technologies, it allows the co-production of knowledge graphs.
