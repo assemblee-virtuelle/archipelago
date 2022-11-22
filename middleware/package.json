@@ -22,6 +22,7 @@
     "moleculer": "^0.14.18",
     "moleculer-repl": "^0.6.3",
     "moleculer-web": "^0.10.0-beta1",
-    "url-join": "^4.0.1"
+    "url-join": "^4.0.1",
+    "@rdfjs/data-model": "^1.3.4"
   }
 }
