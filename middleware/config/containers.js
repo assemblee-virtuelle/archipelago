@@ -115,8 +115,5 @@ module.exports = [
     path: '/pages',
     preferredView: '/Page',
     acceptedTypes: ['semapps:Page']
-  },
-  {
-    path: '/files'
   }
 ];
