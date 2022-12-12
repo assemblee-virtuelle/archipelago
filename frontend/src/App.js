@@ -1,6 +1,6 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
-import { LoginPage, LogoutButton } from '@semapps/auth-provider';
+import { PodLoginPage, LogoutButton } from '@semapps/auth-provider';
 import { createBrowserHistory as createHistory } from 'history';
 
 import HomePage from './HomePage';
@@ -11,6 +11,8 @@ import theme from './config/theme';
 import * as resources from './resources';
 
 import Layout from './layout/Layout';
+
+const LoginPage = props => <PodLoginPage text="Veuillez choisir un fournisseur de PODs dans la liste ci-dessous" podProviders={['http://localhost:3000']} {...props} />
 
 const history = createHistory();
 
