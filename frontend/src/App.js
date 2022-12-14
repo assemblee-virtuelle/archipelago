@@ -12,7 +12,10 @@ import * as resources from './resources';
 
 import Layout from './layout/Layout';
 
-const LoginPage = props => <PodLoginPage text="Veuillez choisir un fournisseur de PODs dans la liste ci-dessous" podProviders={['http://localhost:3000']} {...props} />
+const customPodProviders = process.env.REACT_APP_POD_PROVIDER_DOMAIN_NAME
+  && [{ 'apods:domainName': process.env.REACT_APP_POD_PROVIDER_DOMAIN_NAME, 'apods:area': 'Local' }];
+
+const LoginPage = props => <PodLoginPage text="Veuillez choisir un fournisseur de PODs dans la liste ci-dessous" customPodProviders={customPodProviders} {...props} />
 
 const history = createHistory();
 
