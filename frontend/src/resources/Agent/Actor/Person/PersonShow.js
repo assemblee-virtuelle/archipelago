@@ -24,10 +24,9 @@ const PersonShow = props => (
   <Show title={<PersonTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
-        <Hero image="image">
-          <TextField source="pair:firstName" />
-          <TextField source="pair:lastName" />
-          <TextField source="pair:comment" />
+        <Hero image="vcard:photo">
+          <TextField source="vcard:given-name" />
+          <TextField source="vcard:note" />
         </Hero>
         <MainList>
           <MapField

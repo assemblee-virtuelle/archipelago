@@ -28,6 +28,9 @@ export default {
     fr: {
       name: 'Personne |||| Personnes',
       fields: {
+        'vcard:given-name': 'Prénom',
+        'vcard:note': 'En deux mots',
+        'vcard:photo': 'Photo',
         'pair:firstName': 'Prénom',
         'pair:lastName': 'Nom de famille',
         'pair:comment': 'En deux mots',
