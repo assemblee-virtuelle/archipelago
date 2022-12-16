@@ -1,12 +1,12 @@
 import React from 'react';
 import { ImageInput, TabbedForm, TextInput, FormTab } from 'react-admin';
 import { ImageField } from '@semapps/field-components';
-import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
-import PersonTitle from './PersonTitle';
+import { ActivitiesInput, SkillsInput, ThemesInput } from '../../../../common/input';
+import ProfileTitle from './ProfileTitle';
 import Edit from "../../../../layout/edit/Edit";
 
-export const PersonEdit = props => (
-  <Edit title={<PersonTitle />} {...props}>
+export const ProfileEdit = props => (
+  <Edit title={<ProfileTitle />} {...props}>
     <TabbedForm redirect="show">
       <FormTab label="Données">
         <TextInput source="vcard:given-name" fullWidth />
@@ -25,4 +25,4 @@ export const PersonEdit = props => (
   </Edit>
 );
 
-export default PersonEdit;
+export default ProfileEdit;

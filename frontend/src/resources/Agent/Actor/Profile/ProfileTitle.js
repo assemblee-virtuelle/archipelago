@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PersonTitle = ({ record }) => {
+const ProfileTitle = ({ record }) => {
   return <span>{record ? record['vcard:given-name'] : ''}</span>;
 };
 
-export default PersonTitle;
+export default ProfileTitle;

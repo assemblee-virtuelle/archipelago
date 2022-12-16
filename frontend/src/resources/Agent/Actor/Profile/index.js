@@ -1,28 +1,25 @@
-import PersonList from './PersonList';
-import PersonIcon from '@material-ui/icons/Person';
+import ProfileShow from './ProfileShow';
+import ProfileEdit from './ProfileEdit';
 
 export default {
   config: {
-    list: PersonList,
-    icon: PersonIcon,
-    options: {
-      label: 'Personnes',
-      parent: 'Actor'
-    }
+    show: ProfileShow,
+    edit: ProfileEdit
   },
   dataModel: {
-    types: ['foaf:Person', 'as:Person'],
+    types: ['as:Profile'],
     list: {
       servers: '@default',
       forceArray: ['pair:actorOfMembership']
     },
     fieldsMapping: {
-      title: 'pair:label'
+      title: 'vcard:given-name',
+      image: 'vcard:photo'
     }
   },
   translations: {
     fr: {
-      name: 'Personne |||| Personnes',
+      name: 'Profile |||| Profiles',
       fields: {
         'vcard:given-name': 'Prénom',
         'vcard:note': 'En deux mots',
