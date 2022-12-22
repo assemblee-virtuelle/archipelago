@@ -1,4 +1,4 @@
-import CreateOrImport from '../../../common/CreateOrImport';
+import ThemeCreate from "./ThemeCreate";
 import ThemeEdit from './ThemeEdit';
 import ThemeList from './ThemeList';
 import ThemeShow from './ThemeShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: ThemeList,
     show: ThemeShow,
-    create: CreateOrImport,
+    create: ThemeCreate,
     edit: ThemeEdit,
     icon: LocalOfferIcon,
     options: {
