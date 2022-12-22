@@ -3,6 +3,7 @@ import { TextField, SimpleList, ArrayField } from 'react-admin';
 import { Box, Grid, Avatar } from '@material-ui/core';
 import { MapField } from '@semapps/geo-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { CommentsField } from '@semapps/activitypub-components';
 import { ReferenceArrayField, ReferenceField, QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import DescriptionIcon from '@material-ui/icons/Description';
@@ -79,6 +80,7 @@ const OrganizationShow = props => (
             latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
             longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
           />
+          <CommentsField userResource="Profile" />
         </MainList>
       </Grid>
       <Grid item xs={12} sm={3}>
