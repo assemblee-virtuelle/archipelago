@@ -1,7 +1,7 @@
 import PersonEdit from './PersonEdit';
 import PersonList from './PersonList';
 import PersonShow from './PersonShow';
-import PersonIcon from '@material-ui/icons/Person';
+import PersonIcon from '@mui/icons-material/Person';
 
 export default {
   config: {

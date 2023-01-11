@@ -2,7 +2,7 @@ import CreateOrImport from '../../../common/CreateOrImport';
 import DocumentEdit from './DocumentEdit';
 import DocumentList from './DocumentList';
 import DocumentShow from './DocumentShow';
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 export default {
   config: {

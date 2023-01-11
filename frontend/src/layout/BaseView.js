@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid, makeStyles, Card, Typography, Box } from '@material-ui/core';
+import { Grid, Card, Typography, Box } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -8,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'nowrap',
     paddingTop: 20,
     paddingBottom: 10,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: '1.8rem'
     }
   },
@@ -17,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('margin-top'),
     position: 'relative',
     flex: '1 1 auto',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       boxShadow: 'none',
     },
     overflow: 'inherit',

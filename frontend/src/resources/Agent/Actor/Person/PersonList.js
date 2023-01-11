@@ -1,12 +1,12 @@
 import React from 'react';
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 import { AvatarWithLabelField } from '@semapps/field-components';
 import { MultiViewsList, GridList } from '@semapps/list-components';
 import { MapList } from '@semapps/geo-components';
-import MapIcon from '@material-ui/icons/Map';
-import ListIcon from '@material-ui/icons/List';
-import PersonIcon from '@material-ui/icons/Person';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import MapIcon from '@mui/icons-material/Map';
+import ListIcon from '@mui/icons-material/List';
+import PersonIcon from '@mui/icons-material/Person';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonFilterSidebar from './PersonFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
 import List from "../../../../layout/list/List";

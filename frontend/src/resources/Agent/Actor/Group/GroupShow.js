@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextField } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
-import { ChipList, GridList} from '@semapps/list-components';
+import { ChipList, GridList } from '@semapps/list-components';
 import GroupTitle from './GroupTitle';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';

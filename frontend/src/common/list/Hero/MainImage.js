@@ -1,5 +1,7 @@
 import React from 'react';
-import { makeStyles, Box, CircularProgress } from '@material-ui/core';
+import { Box, CircularProgress } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   loader: {
@@ -12,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxHeight: 'none',
     margin: '0.5rem',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0
     },
     '@media print': {

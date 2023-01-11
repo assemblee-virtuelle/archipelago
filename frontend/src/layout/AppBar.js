@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar as RaAppBar, Link } from 'react-admin';
-import { Zoom, Hidden, makeStyles, Typography } from '@material-ui/core';
+import { Zoom, Hidden, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { UserMenu } from "@semapps/auth-provider";
 import SearchForm from './SearchForm';
 

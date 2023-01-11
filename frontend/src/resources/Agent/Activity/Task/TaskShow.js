@@ -1,6 +1,6 @@
 import React from 'react';
 import { SingleFieldList, TextField, DateField } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
 import TaskTitle from './TaskTitle';

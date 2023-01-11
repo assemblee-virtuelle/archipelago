@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, ArrayField } from 'react-admin';
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid } from '@mui/material';
 import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';

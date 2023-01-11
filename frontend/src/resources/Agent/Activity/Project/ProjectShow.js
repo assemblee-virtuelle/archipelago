@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextField, UrlField, SimpleList } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import ProjectTitle from './ProjectTitle';
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";

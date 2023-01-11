@@ -1,6 +1,6 @@
 import React from 'react';
 import { useShowContext } from 'react-admin';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import BaseView from "../BaseView";
 

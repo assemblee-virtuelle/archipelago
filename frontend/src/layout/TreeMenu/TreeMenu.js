@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
-import { useMediaQuery, Box, makeStyles } from '@material-ui/core';
+import { useMediaQuery, Box } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { getResources } from 'react-admin';
-import DefaultIcon from '@material-ui/icons/ViewList';
+import DefaultIcon from '@mui/icons-material/ViewList';
 import SubMenu from './SubMenu';
 import ResourceMenuLink from './ResourceMenuLink';
 
@@ -47,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNbLines = 1 }) => {
-  const isXSmall = useMediaQuery(theme => theme.breakpoints.down('xs'));
+  const isXSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   const isSmall = useMediaQuery(theme => theme.breakpoints.only('sm'));
   labelNbLines = isSmall ? 1 : labelNbLines;
   const classes = useStyles({ labelNbLines });

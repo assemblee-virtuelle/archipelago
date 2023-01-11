@@ -1,6 +1,7 @@
 import React from 'react';
 import { useShowContext } from 'react-admin';
-import { Grid, Typography, makeStyles } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import DetailsList from './DetailsList';
 import MainImage from './MainImage';
 

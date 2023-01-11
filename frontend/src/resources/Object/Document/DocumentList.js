@@ -1,5 +1,5 @@
 import React from 'react';
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
 import SimpleList from "../../../common/list/SimpleList";
 import List from "../../../layout/list/List";
 

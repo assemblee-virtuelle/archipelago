@@ -1,9 +1,9 @@
-import { createTheme } from '@material-ui/core';
+import { createTheme, adaptV4Theme } from '@mui/material';
 
 // Allow to use breakpoints
 const defaultTheme = createTheme();
 
-const theme = createTheme({
+const theme = createTheme(adaptV4Theme({
   palette: {
     primary: { main: '#28ccfb', contrastText: '#fff' },
     secondary: { main: '#bcef5b' },
@@ -26,7 +26,7 @@ const theme = createTheme({
     RaShow: {
       card: {
         padding: 25,
-        [defaultTheme.breakpoints.down('xs')]: {
+        [defaultTheme.breakpoints.down('sm')]: {
           padding: 15
         }
       }
@@ -34,7 +34,7 @@ const theme = createTheme({
     RaList: {
       content: {
         padding: 25,
-        [defaultTheme.breakpoints.down('xs')]: {
+        [defaultTheme.breakpoints.down('sm')]: {
           padding: 15,
           paddingTop: 0,
           marginTop: -8
@@ -77,6 +77,6 @@ const theme = createTheme({
       }
     }
   }
-});
+}));
 
 export default theme;

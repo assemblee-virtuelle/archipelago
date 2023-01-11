@@ -1,7 +1,7 @@
 import TypeCreate from './TypeCreate';
 import TypeEdit from './TypeEdit';
 import TypeList from './TypeList';
-import StyleIcon from '@material-ui/icons/Style';
+import StyleIcon from '@mui/icons-material/Style';
 
 export default {
   config: {

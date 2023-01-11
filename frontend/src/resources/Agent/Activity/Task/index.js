@@ -2,7 +2,7 @@ import CreateOrImport from '../../../../common/CreateOrImport';
 import TaskEdit from './TaskEdit';
 import TaskList from './TaskList';
 import TaskShow from './TaskShow';
-import TaskIcon from '@material-ui/icons/PlaylistAddCheck';
+import TaskIcon from '@mui/icons-material/PlaylistAddCheck';
 
 export default {
   config: {

@@ -1,6 +1,7 @@
 import React from 'react';
-import { List, MenuItem, ListItemIcon, Typography, Collapse, Tooltip, makeStyles } from '@material-ui/core';
-import ExpandMore from '@material-ui/icons/ExpandMore';
+import { List, MenuItem, ListItemIcon, Typography, Collapse, Tooltip } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import ExpandMore from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
   icon: { minWidth: theme.spacing(5) },

@@ -1,7 +1,7 @@
 import StatusCreate from './StatusCreate';
 import TypeEdit from './StatusEdit';
 import StatusList from './StatusList';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default {
   config: {

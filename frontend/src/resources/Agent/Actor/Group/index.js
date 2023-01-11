@@ -2,7 +2,7 @@ import CreateOrImport from '../../../../common/CreateOrImport';
 import GroupEdit from './GroupEdit';
 import GroupList from './GroupList';
 import GroupShow from './GroupShow';
-import GroupIcon from '@material-ui/icons/Group';
+import GroupIcon from '@mui/icons-material/Group';
 
 export default {
   config: {

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTranslate, getFieldLabelTranslationArgs } from 'react-admin';
-import { Box, makeStyles } from '@material-ui/core';
+import { Box } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(() => ({
   rightLabel: {

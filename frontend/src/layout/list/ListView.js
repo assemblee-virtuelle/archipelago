@@ -1,6 +1,6 @@
 import React from 'react';
 import { useListContext, Pagination } from 'react-admin';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import BaseView from "../BaseView";
 
 const ListView = ({ title, children, aside, actions }) => {

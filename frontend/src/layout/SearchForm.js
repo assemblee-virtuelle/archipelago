@@ -1,6 +1,6 @@
 import React from 'react';
 import { getResources } from 'react-admin';
-import { Grid, Select, MenuItem, TextField, Button } from '@material-ui/core';
+import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import { Form, Field } from 'react-final-form';
 import { useHistory, useLocation } from 'react-router-dom';
 import { shallowEqual, useSelector, useStore } from 'react-redux';

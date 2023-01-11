@@ -1,7 +1,7 @@
 import React from 'react';
 import { DateField } from 'react-admin';
-import { Avatar } from '@material-ui/core';
-import TaskIcon from '@material-ui/icons/PlaylistAddCheck';
+import { Avatar } from '@mui/material';
+import TaskIcon from '@mui/icons-material/PlaylistAddCheck';
 import List from "../../../../layout/list/List";
 import TaskFilterSidebar from './TaskFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
