@@ -9,17 +9,6 @@ import ResourceMenuLink from './ResourceMenuLink';
 import { LogoutButton } from '@semapps/auth-provider';
 
 const useStyles = makeStyles(theme => ({
-  treeMenuOneRowLabel: {
-    '& .MuiMenuItem-root': {
-      display: 'block',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      maxWidth: 240,
-      '& > .MuiListItemIcon-root': {
-        verticalAlign: 'middle'
-      }
-    }
-  },
   treeMenu: props => ({
     '& .MuiMenuItem-root': {
       whiteSpace: 'normal',
@@ -91,7 +80,7 @@ const TreeMenu = ({ onMenuClick, dense = false, openAll = false, labelNbLines = 
   }, [categories, resources, currentResourceName, openAll]);
 
   return (
-    <Box mt={2} className={labelNbLines === 1 ? classes.treeMenuOneRowLabel : classes.treeMenu}>
+    <Box mt={2} className={classes.treeMenu}>
       {menuRootItems.map(menuRootItem => (
         <Box key={menuRootItem.name}>
           {categories.includes(menuRootItem) ? (
