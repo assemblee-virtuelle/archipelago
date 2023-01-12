@@ -41,8 +41,8 @@ const TreeMenu = ({ onMenuClick, dense = false, openAll = false, labelNbLines = 
   const isSmall = useMediaQuery(theme => theme.breakpoints.only('sm'));
   labelNbLines = isSmall ? 1 : labelNbLines;
   const classes = useStyles({ labelNbLines });
-  // const open = useSelector(state => state.admin.ui.sidebarOpen);
-  const resourceDefinitions = useResourceDefinitions();
+  // const [open] = useSidebarState();
+    const resourceDefinitions = useResourceDefinitions();
   const resources = useMemo(() => Object.values(resourceDefinitions), [resourceDefinitions]);
 
   // TODO create a specialized hook, as this is used several times in the layout (which cannot use useResourceDefinition)
