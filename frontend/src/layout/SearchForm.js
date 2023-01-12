@@ -4,6 +4,13 @@ import { Grid, Select, MenuItem, TextField, Button } from '@material-ui/core';
 import { Form, Field } from 'react-final-form';
 import { useHistory, useLocation } from 'react-router-dom';
 import { shallowEqual, useSelector, useStore } from 'react-redux';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles(theme => ({
+  searchFormElement: {
+    color: theme.palette.primary.contrastText
+  },
+}));
 
 const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
 
@@ -23,6 +30,7 @@ const TypeSelect = ({ input, ...otherProps }) => {
 };
 
 const SearchForm = () => {
+  const classes = useStyles();
   const history = useHistory();
 
   const location = useLocation();
@@ -49,13 +57,27 @@ const SearchForm = () => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={5}>
-              <Field name="filter" component={FilterText} placeholder="Rechercher..." fullWidth />
+              <Field 
+                name="filter" 
+                component={FilterText} 
+                placeholder="Rechercher..." 
+                fullWidth 
+                InputProps={{className: classes.searchFormElement }} />
             </Grid>
             <Grid item xs={5}>
-              <Field name="type" component={TypeSelect} fullWidth />
+              <Field 
+                name="type" 
+                component={TypeSelect} 
+                fullWidth 
+                className={classes.searchFormElement} />
             </Grid>
             <Grid item xs={2}>
-              <Button variant="outlined" type="submit" fullWidth>
+              <Button 
+                variant="outlined" 
+                type="submit" 
+                fullWidth 
+                className={classes.searchFormElement}
+              >
                 Hop
               </Button>
             </Grid>
