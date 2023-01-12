@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useResourceDefinitionContext } from 'react-admin';
+import { useResourceDefinitions } from 'react-admin';
 import { useLocation } from 'react-router';
 import { useMediaQuery, Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
@@ -52,7 +52,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
   labelNbLines = isSmall ? 1 : labelNbLines;
   const classes = useStyles({ labelNbLines });
   // const open = useSelector(state => state.admin.ui.sidebarOpen);
-  const resources = useResourceDefinitionContext();
+  const resources = Object.values(useResourceDefinitions());
 
   // TODO create a specialized hook, as this is used several times in the layout (which cannot use useResourceDefinition)
   const location = useLocation();
@@ -65,7 +65,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
   };
 
   // Get menu root items
-  const menuRootItems = useMemo(() => resources.filter(r => !r.options.parent), [resources]);
+  const menuRootItems = useMemo(() => resources.filter(r => r.options && !r.options.parent), [resources]);
 
   // Calculate available categories
   const categories = useMemo(() => {
