@@ -6,6 +6,7 @@ import makeStyles from '@mui/styles/makeStyles';
 import DefaultIcon from '@mui/icons-material/ViewList';
 import SubMenu from './SubMenu';
 import ResourceMenuLink from './ResourceMenuLink';
+import { LogoutButton } from '@semapps/auth-provider';
 
 const useStyles = makeStyles(theme => ({
   treeMenuOneRowLabel: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles(theme => ({
   })
 }));
 
-const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNbLines = 1 }) => {
+const TreeMenu = ({ onMenuClick, dense = false, openAll = false, labelNbLines = 1 }) => {
   const isXSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   const isSmall = useMediaQuery(theme => theme.breakpoints.only('sm'));
   labelNbLines = isSmall ? 1 : labelNbLines;
@@ -117,7 +118,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
           )}
         </Box>
       ))}
-      {isXSmall && logout}
+      {isXSmall && <LogoutButton/>}
     </Box>
   );
 };

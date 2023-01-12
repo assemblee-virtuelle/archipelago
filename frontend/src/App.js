@@ -2,7 +2,7 @@ import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import StylesProvider from '@mui/styles/StylesProvider';
-import { LoginPage, LogoutButton } from '@semapps/auth-provider';
+import { LoginPage } from '@semapps/auth-provider';
 import { createBrowserHistory as createHistory } from 'history';
 
 import HomePage from './HomePage';
@@ -30,7 +30,6 @@ const App = () => (
           layout={Layout}
           theme={theme}
           loginPage={LoginPage}
-          logoutButton={LogoutButton}
           dashboard={HomePage}
         >
           {Object.entries(resources).map(([key, resource]) => (
