@@ -2,7 +2,7 @@ import React from 'react';
 import { getResources } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import { Form, Field } from 'react-final-form';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { shallowEqual, useSelector, useStore } from 'react-redux';
 
 const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
@@ -23,7 +23,7 @@ const TypeSelect = ({ input, ...otherProps }) => {
 };
 
 const SearchForm = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const location = useLocation();
   const matches = location.pathname.match(/^\/([^/]+)/);
@@ -35,9 +35,9 @@ const SearchForm = () => {
 
   const onSubmit = ({ filter, type }) => {
     if (filter) {
-      history.push(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
+      navigate.push(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
     } else {
-      history.push(`/${type}?filter=${encodeURIComponent(`{}`)}`);
+      navigate.push(`/${type}?filter=${encodeURIComponent(`{}`)}`);
     }
   };
 
