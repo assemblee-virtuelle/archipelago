@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useResourceDefinitionContext } from 'react-admin';
 import { useLocation } from 'react-router';
 import { useMediaQuery, Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { getResources } from 'react-admin';
 import DefaultIcon from '@mui/icons-material/ViewList';
 import SubMenu from './SubMenu';
 import ResourceMenuLink from './ResourceMenuLink';
@@ -53,7 +52,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
   labelNbLines = isSmall ? 1 : labelNbLines;
   const classes = useStyles({ labelNbLines });
   // const open = useSelector(state => state.admin.ui.sidebarOpen);
-  const resources = useSelector(getResources);
+  const resources = useResourceDefinitionContext();
 
   // TODO create a specialized hook, as this is used several times in the layout (which cannot use useResourceDefinition)
   const location = useLocation();

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getResources } from 'react-admin';
+import { useResourceDefinitionContext } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import { Form, Field } from 'react-final-form';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { shallowEqual, useSelector, useStore } from 'react-redux';
 const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
 
 const TypeSelect = ({ input, ...otherProps }) => {
-  const resources = useSelector(getResources, shallowEqual);
+  const resources = useResourceDefinitionContext();
   return (
     <Select {...input} {...otherProps}>
       {resources
