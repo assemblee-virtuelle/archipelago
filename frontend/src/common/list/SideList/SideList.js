@@ -3,8 +3,8 @@ import { useShowContext } from 'react-admin';
 import RightLabel from './RightLabel';
 
 const SideList = ({ children }) => {
-  const { basePath, loaded, record, resource } = useShowContext();
-  if (!loaded) return null;
+  const { basePath, isLoading, record, resource } = useShowContext();
+  if (isLoading) return null;
 
   return React.Children.map(children, field =>
     field && React.isValidElement(field) ? (

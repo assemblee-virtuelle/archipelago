@@ -18,8 +18,8 @@ const useStyles = makeStyles(theme => ({
 const MainList = ({ children, divider, Label }) => {
   const translate = useTranslate();
   const classes = useStyles();
-  const { basePath, loaded, record, resource } = useShowContext();
-  if (!loaded) return null;
+  const { basePath, isLoading, record, resource } = useShowContext();
+  if (isLoading) return null;
 
   return (
     <Box>
