@@ -9,7 +9,7 @@ import { PermissionsButton } from "@semapps/auth-provider";
 const ListActionsWithViewsAndPermissions = ({
   bulkActions,
   basePath,
-  currentSort,
+  sort,
   displayedFilters,
   exporter,
   filters,
@@ -44,7 +44,7 @@ const ListActionsWithViewsAndPermissions = ({
         <ExportButton
           disabled={total === 0}
           resource={resource}
-          sort={currentSort}
+          sort={sort}
           filter={filterValues}
           exporter={exporter}
         />
