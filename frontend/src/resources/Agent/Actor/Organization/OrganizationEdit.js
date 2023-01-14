@@ -17,8 +17,8 @@ import OrganizationTitle from './OrganizationTitle';
 import Edit from "../../../../layout/edit/Edit";
 
 export const OrganizationEdit = props => (
-  <Edit title={<OrganizationTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<OrganizationTitle />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />

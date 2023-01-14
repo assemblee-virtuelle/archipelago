@@ -6,8 +6,8 @@ import Edit from "../../../../layout/edit/Edit";
 import EventTitle from './EventTitle';
 
 const EventEdit = props => (
-  <Edit title={<EventTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<EventTitle />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />

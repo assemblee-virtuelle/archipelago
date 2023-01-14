@@ -7,8 +7,8 @@ import GroupTitle from './GroupTitle';
 import Edit from "../../../../layout/edit/Edit";
 
 export const GroupEdit = props => (
-  <Edit title={<GroupTitle />} {...props}>
-    <SimpleForm redirect="show">
+  <Edit title={<GroupTitle />} redirect="show" {...props}>
+    <SimpleForm>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
       <MarkdownInput multiline source="pair:description" fullWidth />

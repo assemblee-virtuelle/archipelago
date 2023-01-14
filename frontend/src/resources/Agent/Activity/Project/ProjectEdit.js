@@ -8,8 +8,8 @@ import { ReferenceInput } from '@semapps/input-components';
 import Edit from "../../../../layout/edit/Edit";
 
 const ProjectEdit = props => (
-  <Edit title={<ProjectTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<ProjectTitle />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />

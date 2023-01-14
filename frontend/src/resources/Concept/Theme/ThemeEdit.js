@@ -6,8 +6,8 @@ import Edit from "../../../layout/edit/Edit";
 import ThemeTitle from './ThemeTitle';
 
 export const ThemeEdit = props => (
-  <Edit title={<ThemeTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<ThemeTitle />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <MarkdownInput multiline source="pair:description" fullWidth />

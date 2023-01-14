@@ -8,8 +8,8 @@ import { DateTimeInput } from "../../../../common/input";
 import Edit from "../../../../layout/edit/Edit";
 
 const TaskEdit = props => (
-  <Edit title={<TaskTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<TaskTitle />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <MarkdownInput multiline source="pair:description" fullWidth />

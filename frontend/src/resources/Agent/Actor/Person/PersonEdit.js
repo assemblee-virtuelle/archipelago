@@ -8,10 +8,11 @@ import Edit from "../../../../layout/edit/Edit";
 export const PersonEdit = props => (
   <Edit
     title={<PersonTitle />}
+    redirect="show"
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}
   >
-    <TabbedForm redirect="show">
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:firstName" fullWidth />
         <TextInput source="pair:lastName" fullWidth />

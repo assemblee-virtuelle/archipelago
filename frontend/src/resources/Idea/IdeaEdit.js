@@ -7,8 +7,8 @@ import IdeaTitle from './IdeaTitle';
 import Edit from "../../layout/edit/Edit";
 
 const IdeaEdit = props => (
-  <Edit title={<IdeaTitle />} {...props}>
-    <SimpleForm redirect="show">
+  <Edit title={<IdeaTitle />} redirect="show" {...props}>
+    <SimpleForm>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
       <MarkdownInput multiline source="pair:description" fullWidth />
