@@ -42,7 +42,13 @@ module.exports = [
     path: '/users',
     preferredView: '/Person',
     acceptedTypes: ['foaf:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
+    dereference: ['sec:publicKey']
+  },
+  {
+    path: '/profiles',
+    preferredView: '/Profile',
+    acceptedTypes: ['as:Profile'],
+    dereference: ['pair:hasLocation/pair:hasPostalAddress']
   },
   {
     path: '/bots',
