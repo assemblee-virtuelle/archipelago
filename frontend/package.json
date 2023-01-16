@@ -15,6 +15,7 @@
     "@semapps/semantic-data-provider": "0.4.1",
     "date-fns": "~2.8.1",
     "history": "4.10.1",
+    "jwt-decode": "^3.1.2",
     "leaflet": "^1.8.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet.markercluster": "^1.5.3",
