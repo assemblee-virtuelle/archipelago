@@ -2,6 +2,7 @@
 export { default as Organization } from './Agent/Actor/Organization';
 export { default as Group } from './Agent/Actor/Group';
 export { default as Person } from './Agent/Actor/Person';
+export { default as Profile } from './Agent/Actor/Profile';
 export { default as Actor } from './Agent/Actor/Actor';
 
 // Activities

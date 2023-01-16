@@ -5,7 +5,7 @@ import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceField } 
 import { ChipList, GridList } from '@semapps/list-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
 import { MapField } from '@semapps/geo-components';
-import PersonTitle from './PersonTitle';
+import ProfileTitle from './ProfileTitle';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import RightLabel from "../../../../common/list/SideList/RightLabel";
 import Show from "../../../../layout/show/Show";
@@ -20,14 +20,13 @@ const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherPro
   }
 };
 
-const PersonShow = props => (
-  <Show title={<PersonTitle />} {...props}>
+const ProfileShow = props => (
+  <Show title={<ProfileTitle />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
-        <Hero image="image">
-          <TextField source="pair:firstName" />
-          <TextField source="pair:lastName" />
-          <TextField source="pair:comment" />
+        <Hero image="vcard:photo">
+          <TextField source="vcard:given-name" />
+          <TextField source="vcard:note" />
         </Hero>
         <MainList>
           <MapField
@@ -75,4 +74,4 @@ const PersonShow = props => (
   </Show>
 );
 
-export default PersonShow;
+export default ProfileShow;

@@ -1,7 +1,16 @@
 const dataServers = {
+  pod: {
+    pod: true,
+    authServer: true,
+    containers: {
+      pod: {
+        'vcard:Location': ['/locations'],
+        'vcard:Individual': ['/profiles'],
+      },
+    }
+  },
   av: {
     baseUrl: process.env.REACT_APP_MIDDLEWARE_URL,
-    authServer: true,
     default: true,
     uploadsContainer: '/files'
   },
@@ -21,7 +30,8 @@ const dataServers = {
         'pair:Theme': ['/themes']
       }
     },
-    externalLinks: false // Colibris doesn't have a public frontend
+    externalLinks: false, // The server doesn't have a public frontend
+    noProxy: true, // The server doesn't support HTTP signature yet
   }
 };
 

@@ -97,7 +97,7 @@ const AppBar = props => {
 };
 
 AppBar.defaultProps = {
-  userMenu: <UserMenu />
+  userMenu: <UserMenu profileResource="Profile" />
 };
 
 export default AppBar;

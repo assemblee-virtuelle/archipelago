@@ -19,6 +19,14 @@ module.exports = {
     api: {
       port: CONFIG.PORT,
     },
+    activitypub: {
+      like: {
+        attachToObjectTypes: ['pair:Organization']
+      },
+      reply: {
+        attachToObjectTypes: ['pair:Organization']
+      },
+    },
     ldp: {
       preferredViewForResource: async (resourceUri, containerPreferredView) => {
         if (!containerPreferredView) return resourceUri;
