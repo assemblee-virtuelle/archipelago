@@ -13,7 +13,7 @@ const DocumentShow = props => (
       <Grid item xs={12} sm={9}>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <MainList>
-          <MarkdownField source="pair:description" addLabel={false} />
+          <MarkdownField source="pair:description" label={false} />
         </MainList>
       </Grid>
       <Grid item xs={12} sm={3}>

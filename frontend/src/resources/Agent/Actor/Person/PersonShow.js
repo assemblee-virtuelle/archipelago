@@ -45,7 +45,6 @@ const PersonShow = props => (
             groupReference="MembershipRole"
             groupLabel="pair:label"
             filterProperty="pair:membershipRole"
-            addLabel={false}
           >
             <ConditionalSourceDefinedHandler>
               <RightLabel mb={0} />

@@ -9,7 +9,7 @@ const SideList = ({ children }) => {
   return React.Children.map(children, field =>
     field && React.isValidElement(field) ? (
       <div key={field.props.source}>
-        {field.props.addLabel ? (
+        {field.props.label !== false ? (
           <RightLabel
             record={record}
             resource={resource}

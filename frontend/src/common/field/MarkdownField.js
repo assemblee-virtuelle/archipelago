@@ -6,8 +6,4 @@ const MarkdownField = props => (
   <SemAppsMarkdownField LabelComponent={LargeLabel} {...props} />
 );
 
-MarkdownField.defaultProps = {
-  addLabel: true
-};
-
 export default MarkdownField;
