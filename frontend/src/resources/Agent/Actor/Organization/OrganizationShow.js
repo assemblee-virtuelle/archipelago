@@ -103,6 +103,7 @@ const OrganizationShow = props => (
               </ArrayField>
             </ConditionalSourceDefinedHandler>
           </GroupedReferenceHandler>
+          {/*
           <ReferenceArrayField reference="Organization" source="pair:partnerOf">
             <GridList xs={6} linkType="show" externalLinks>
               <AvatarWithLabelField label="pair:label" image="image">
@@ -116,6 +117,7 @@ const OrganizationShow = props => (
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
+          */}
         </SideList>
       </Grid>
     </Grid>
