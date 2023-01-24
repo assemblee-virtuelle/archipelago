@@ -1,14 +1,14 @@
-import React from 'react';
-import { useResourceDefinitionContext } from 'react-admin';
+import React, { useMemo } from 'react';
+import { useResourceDefinitions } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import { Form, Field } from 'react-final-form';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { shallowEqual, useSelector, useStore } from 'react-redux';
 
 const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
 
 const TypeSelect = ({ input, ...otherProps }) => {
-  const resources = useResourceDefinitionContext();
+  const resourceDefinitions = useResourceDefinitions();
+  const resources = useMemo(() => Object.values(resourceDefinitions), [resourceDefinitions]);
   return (
     <Select {...input} {...otherProps}>
       {resources
@@ -24,27 +24,21 @@ const TypeSelect = ({ input, ...otherProps }) => {
 
 const SearchForm = () => {
   const navigate = useNavigate();
-
   const location = useLocation();
   const matches = location.pathname.match(/^\/([^/]+)/);
   const currentType = matches ? matches[1] : 'Organization';
 
-  const store = useStore();
-  const state = store.getState();
-  const qFilter = state?.admin?.resources[location.pathname.split('/')[1]]?.list?.params?.filter?.q;
-
   const onSubmit = ({ filter, type }) => {
     if (filter) {
-      navigate.push(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
+      navigate(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
     } else {
-      navigate.push(`/${type}?filter=${encodeURIComponent(`{}`)}`);
+      navigate(`/${type}?filter=${encodeURIComponent(`{}`)}`);
     }
   };
 
-  return (
+  return ( 
     <Form
       onSubmit={onSubmit}
-      initialValues={{ type: currentType, filter: qFilter ? qFilter : '' }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
@@ -55,7 +49,7 @@ const SearchForm = () => {
               <Field name="type" component={TypeSelect} fullWidth />
             </Grid>
             <Grid item xs={2}>
-              <Button variant="outlined" type="submit" fullWidth>
+              <Button color="secondary" variant="outlined" type="submit" fullWidth>
                 Hop
               </Button>
             </Grid>
