@@ -88,7 +88,7 @@ const OrganizationShow = props => (
             groupReference="MembershipRole"
             groupLabel="pair:label"
             filterProperty="pair:membershipRole"
-            addLabel={false}
+            label={false}
           >
             <ConditionalSourceDefinedHandler>
               <RightLabel mb={0} />
