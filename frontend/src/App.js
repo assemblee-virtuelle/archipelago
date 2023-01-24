@@ -1,9 +1,9 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import StylesProvider from '@mui/styles/StylesProvider';
 import { LoginPage } from '@semapps/auth-provider';
-import { createBrowserHistory as createHistory } from 'history';
+// import { createBrowserHistory as createHistory } from 'history';
+import { BrowserRouter } from 'react-router-dom';
 
 import HomePage from './HomePage';
 import i18nProvider from './config/i18nProvider';
@@ -14,15 +14,15 @@ import * as resources from './resources';
 
 import Layout from './layout/Layout';
 
-const history = createHistory();
+// const history = createHistory();
 
 const App = () => (
-  <StylesProvider injectFirst>
-    <StyledEngineProvider injectFirst>
+  <StyledEngineProvider injectFirst>
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Admin
           disableTelemetry
-          history={history}
+          // history={history}
           title="Archipel"
           authProvider={authProvider}
           dataProvider={dataProvider}
@@ -37,8 +37,8 @@ const App = () => (
           ))}
         </Admin>
       </ThemeProvider>
-    </StyledEngineProvider>
-  </StylesProvider>
+    </BrowserRouter>
+  </StyledEngineProvider>
 );
 
 export default App;
