@@ -6,6 +6,7 @@ const dataServers = {
       pod: {
         'vcard:Location': ['/locations'],
         'vcard:Individual': ['/profiles'],
+        'as:Profile': ['/profiles']
       },
     }
   },

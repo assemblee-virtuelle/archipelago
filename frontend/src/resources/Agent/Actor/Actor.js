@@ -5,7 +5,7 @@ import RedirectByType from "../../../common/RedirectByType";
 
 const ActorRedirect = props => (
   <Show {...props}>
-    <RedirectByType typesMap={{ Person: 'pair:Person', Organization: 'pair:Organization' }} />
+    <RedirectByType typesMap={{ Person: 'pair:Person', Organization: 'pair:Organization', Profile: 'as:Profile' }} />
   </Show>
 );
 
@@ -18,9 +18,9 @@ export default {
     }
   },
   dataModel: {
-    types: ['pair:Organization', 'pair:Person', 'pair:Group'],
+    types: ['pair:Organization', 'pair:Person', 'pair:Group', 'as:Profile'],
     list: {
-      servers: '@default',
+      servers: ['@default', '@pod'],
     }
   },
   translations: {
