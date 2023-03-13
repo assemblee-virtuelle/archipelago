@@ -5,6 +5,7 @@ import { Form, Field } from 'react-final-form';
 import { useHistory, useLocation } from 'react-router-dom';
 import { shallowEqual, useSelector, useStore } from 'react-redux';
 import { makeStyles } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles(theme => ({
   searchFormElement: {
@@ -57,28 +58,28 @@ const SearchForm = () => {
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={5}>
-              <Field 
-                name="filter" 
-                component={FilterText} 
-                placeholder="Rechercher..." 
-                fullWidth 
+              <Field
+                name="filter"
+                component={FilterText}
+                placeholder="Rechercher..."
+                fullWidth
                 InputProps={{className: classes.searchFormElement }} />
             </Grid>
             <Grid item xs={5}>
-              <Field 
-                name="type" 
-                component={TypeSelect} 
-                fullWidth 
+              <Field
+                name="type"
+                component={TypeSelect}
+                fullWidth
                 className={classes.searchFormElement} />
             </Grid>
             <Grid item xs={2}>
-              <Button 
-                variant="outlined" 
-                type="submit" 
-                fullWidth 
+              <Button
+                variant="outlined"
+                type="submit"
                 className={classes.searchFormElement}
+                startIcon={<SearchIcon />}
               >
-                Hop
+                Rechercher
               </Button>
             </Grid>
           </Grid>
