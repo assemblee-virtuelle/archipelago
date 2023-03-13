@@ -13,7 +13,6 @@ export default {
     icon: GroupIcon,
     options: {
       label: 'Groupes',
-      parent: 'Actor'
     }
   },
   dataModel: {

@@ -13,7 +13,6 @@ export default {
     icon: TaskIcon,
     options: {
       label: 'Tâches',
-      parent: 'Activity'
     }
   },
   dataModel: {

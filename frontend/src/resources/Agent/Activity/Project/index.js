@@ -13,7 +13,6 @@ export default {
     icon: SettingsIcon,
     options: {
       label: 'Projets',
-      parent: 'Activity'
     }
   },
   dataModel: {

@@ -13,7 +13,6 @@ export default {
     icon: HomeIcon,
     options: {
       label: 'Organisations',
-      parent: 'Actor'
     }
   },
   dataModel: {

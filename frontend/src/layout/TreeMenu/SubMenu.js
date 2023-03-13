@@ -1,6 +1,7 @@
 import React from 'react';
 import { List, MenuItem, ListItemIcon, Typography, Collapse, Tooltip, makeStyles } from '@material-ui/core';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import ChevronRight from '@material-ui/icons/ChevronRight';
 
 const useStyles = makeStyles(theme => ({
   icon: { minWidth: theme.spacing(5) },
@@ -23,7 +24,7 @@ const SubMenu = ({ handleToggle, sidebarIsOpen, isOpen, name, icon, children, de
 
   const header = (
     <MenuItem dense={dense} button onClick={handleToggle}>
-      <ListItemIcon className={classes.icon}>{isOpen ? <ExpandMore /> : icon}</ListItemIcon>
+      <ListItemIcon className={classes.icon}>{isOpen ? <ExpandMore /> : <ChevronRight />}</ListItemIcon>
       <Typography variant="inherit" color="textSecondary">
         {name}
       </Typography>

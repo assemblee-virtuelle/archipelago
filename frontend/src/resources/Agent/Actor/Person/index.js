@@ -11,7 +11,6 @@ export default {
     icon: PersonIcon,
     options: {
       label: 'Personnes',
-      parent: 'Actor'
     }
   },
   dataModel: {

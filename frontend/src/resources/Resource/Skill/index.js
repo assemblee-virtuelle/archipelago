@@ -13,7 +13,6 @@ export default {
     icon: PersonIcon,
     options: {
       label: 'Compétences',
-      parent: 'Resource'
     }
   },
   dataModel: {

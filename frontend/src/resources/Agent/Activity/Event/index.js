@@ -13,7 +13,7 @@ export default {
     icon: EventIcon,
     options: {
       label: 'Événements',
-      parent: 'Activity'
+      // parent: 'Activity'
     }
   },
   dataModel: {
