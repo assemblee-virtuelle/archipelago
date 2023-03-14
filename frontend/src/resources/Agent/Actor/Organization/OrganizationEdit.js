@@ -30,6 +30,7 @@ export const OrganizationEdit = props => (
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
         <MultiLinesInput source="pair:homePage" fullWidth />
+        <TextInput source="pair:e-mail" fullWidth type="email" />
         <LocationInput source="pair:hasLocation" fullWidth />
         <ImageInput source="image" accept="image/*">
           <ImageField source="src" />
