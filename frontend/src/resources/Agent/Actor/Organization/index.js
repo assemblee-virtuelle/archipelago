@@ -34,6 +34,7 @@ export default {
         'pair:comment': 'Courte description',
         'pair:description': 'Description',
         'pair:homePage': 'Site web',
+        'pair:e-mail': 'E-mail de contact',
         image: 'Logo',
         'pair:affiliates': 'A pour membres',
         'pair:partnerOf': 'Partenaire de',
