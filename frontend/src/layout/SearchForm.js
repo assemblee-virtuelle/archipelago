@@ -3,6 +3,14 @@ import { useResourceDefinitions } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import { Form, Field } from 'react-final-form';
 import { useNavigate, useLocation } from 'react-router-dom';
+import makeStyles from '@mui/styles/makeStyles';
+import SearchIcon from '@material-ui/icons/Search';
+
+const useStyles = makeStyles(theme => ({
+  searchFormElement: {
+    color: theme.palette.primary.contrastText
+  },
+}));
 
 const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
 
@@ -23,6 +31,7 @@ const TypeSelect = ({ input, ...otherProps }) => {
 };
 
 const SearchForm = () => {
+  const classes = useStyles();
   const navigate = useNavigate();
   const location = useLocation();
   const matches = location.pathname.match(/^\/([^/]+)/);
@@ -36,21 +45,36 @@ const SearchForm = () => {
     }
   };
 
-  return ( 
+  return (
     <Form
       onSubmit={onSubmit}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={5}>
-              <Field name="filter" component={FilterText} placeholder="Rechercher..." fullWidth />
+              <Field
+                name="filter"
+                component={FilterText}
+                placeholder="Rechercher..."
+                fullWidth
+                InputProps={{className: classes.searchFormElement }} />
             </Grid>
             <Grid item xs={5}>
-              <Field name="type" component={TypeSelect} fullWidth />
+              <Field
+                name="type"
+                component={TypeSelect}
+                fullWidth
+                className={classes.searchFormElement} />
             </Grid>
             <Grid item xs={2}>
-              <Button color="secondary" variant="outlined" type="submit" fullWidth>
-                Hop
+              <Button
+                color="secondary"
+                variant="outlined"
+                type="submit"
+                className={classes.searchFormElement}
+                startIcon={<SearchIcon />}
+              >
+                Rechercher
               </Button>
             </Grid>
           </Grid>

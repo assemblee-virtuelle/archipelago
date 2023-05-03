@@ -56,7 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     display: 'block',
-    color: theme.palette.common.white,
+    color: theme.palette.primary.contrastText,
     [theme.breakpoints.up('sm')]: {
       display: 'none'
     },

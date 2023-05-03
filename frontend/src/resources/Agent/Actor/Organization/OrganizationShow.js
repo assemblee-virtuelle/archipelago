@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, SimpleList, ArrayField } from 'react-admin';
+import { TextField, SimpleList, ArrayField, EmailField } from 'react-admin';
 import { Box, Grid, Avatar } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
@@ -53,6 +53,7 @@ const OrganizationShow = props => (
         <Hero image="image">
           <TextField source="pair:comment" />
           <MultiUrlField source="pair:homePage" domainMapping={domainMapping} />
+          <EmailField source="pair:e-mail" />
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
             <SeparatedListField linkType={false}>
               <TextField source="pair:label" />
