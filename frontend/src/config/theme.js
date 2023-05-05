@@ -1,4 +1,4 @@
-import { createTheme, adaptV4Theme } from '@mui/material';
+import { createTheme, adaptV4Theme } from '@mui/material/styles';
 
 // Allow to use breakpoints
 const defaultTheme = createTheme();

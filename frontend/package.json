@@ -2,12 +2,8 @@
   "name": "archipelago-frontend",
   "version": "1.0.0",
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@mui/styles": "^5.0.2",
     "@fullcalendar/core": "^5.7.2",
-    "@mui/icons-material": "^5.11.0",
-    "@mui/material": "^5.11.4",
-    "@mui/styles": "^5.11.2",
     "@semapps/auth-provider": "0.4.5",
     "@semapps/date-components": "0.4.5",
     "@semapps/field-components": "0.4.5",

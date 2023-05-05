@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, SimpleList, ArrayField, EmailField } from 'react-admin';
+import {TextField, SimpleList, ArrayField, EmailField, ChipField} from 'react-admin';
 import { Box, Grid, Avatar } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
@@ -104,7 +104,6 @@ const OrganizationShow = props => (
               </ArrayField>
             </ConditionalSourceDefinedHandler>
           </GroupedReferenceHandler>
-          {/*
           <ReferenceArrayField reference="Organization" source="pair:partnerOf">
             <GridList xs={6} linkType="show" externalLinks>
               <AvatarWithLabelField label="pair:label" image="image">
@@ -112,7 +111,7 @@ const OrganizationShow = props => (
               </AvatarWithLabelField>
             </GridList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
+          {/*<QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">

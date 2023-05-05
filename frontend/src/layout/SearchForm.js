@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import { useResourceDefinitions } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
 import { Form, Field } from 'react-final-form';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
-import SearchIcon from '@material-ui/icons/Search';
+import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles(theme => ({
   searchFormElement: {
@@ -33,9 +33,6 @@ const TypeSelect = ({ input, ...otherProps }) => {
 const SearchForm = () => {
   const classes = useStyles();
   const navigate = useNavigate();
-  const location = useLocation();
-  const matches = location.pathname.match(/^\/([^/]+)/);
-  const currentType = matches ? matches[1] : 'Organization';
 
   const onSubmit = ({ filter, type }) => {
     if (filter) {
