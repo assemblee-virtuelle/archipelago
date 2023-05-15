@@ -1,26 +1,25 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useResourceDefinitions } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
-import { Form, Field } from 'react-final-form';
-import { useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
+import { useNavigate, useLocation } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
 import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles(theme => ({
-  searchFormElement: {
-    color: theme.palette.primary.contrastText
+  button: {
+    color: theme.palette.primary.contrastText,
+    borderColor: theme.palette.primary.contrastText,
   },
 }));
 
-const FilterText = ({ input, ...otherProps }) => <TextField {...input} {...otherProps} />;
-
-const TypeSelect = ({ input, ...otherProps }) => {
+const TypeSelect = (props) => {
   const resourceDefinitions = useResourceDefinitions();
   const resources = useMemo(() => Object.values(resourceDefinitions), [resourceDefinitions]);
   return (
-    <Select {...input} {...otherProps}>
+    <Select {...props}>
       {resources
-        .filter(resource => resource.hasList || resource.name === input.value)
+        .filter(resource => resource.hasList || resource.name === props.value)
         .map(resource => (
           <MenuItem value={resource.name} key={resource.name}>
             {resource.options.label}
@@ -34,6 +33,26 @@ const SearchForm = () => {
   const classes = useStyles();
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const matches = location.pathname.match(/^\/([^/]+)/);
+  const type = matches ? matches[1] : 'Organization';
+
+  let search = new URLSearchParams(location.search);
+  const filter = (search && JSON.parse(search.get('filter'))) || {};
+
+  const { register, setValue, control, handleSubmit } = useForm({
+    defaultValues: {
+      type,
+      filter: filter.q
+    }
+  });
+
+  // useEffect(() => {
+  //   console.log('useEffect', type, filter);
+  //   setValue('type', type);
+  //   setValue('filter', filter.q);
+  // }, [location, setValue, type, filter])
+
   const onSubmit = ({ filter, type }) => {
     if (filter) {
       navigate(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
@@ -43,41 +62,44 @@ const SearchForm = () => {
   };
 
   return (
-    <Form
-      onSubmit={onSubmit}
-      render={({ handleSubmit }) => (
-        <form onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={5}>
-              <Field
-                name="filter"
-                component={FilterText}
-                placeholder="Rechercher..."
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Grid container spacing={2}>
+        <Grid item xs={5}>
+          <TextField
+            {...register("filter")}
+            variant="standard"
+            placeholder="Rechercher..."
+            fullWidth
+            className={classes.field}
+          />
+        </Grid>
+        <Grid item xs={5}>
+          <Controller
+            name="type"
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <TypeSelect
+                value={value}
+                onChange={onChange}
+                variant="standard"
                 fullWidth
-                InputProps={{className: classes.searchFormElement }} />
-            </Grid>
-            <Grid item xs={5}>
-              <Field
-                name="type"
-                component={TypeSelect}
-                fullWidth
-                className={classes.searchFormElement} />
-            </Grid>
-            <Grid item xs={2}>
-              <Button
-                color="secondary"
-                variant="outlined"
-                type="submit"
-                className={classes.searchFormElement}
-                startIcon={<SearchIcon />}
-              >
-                Rechercher
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      )}
-    />
+                className={classes.field}
+              />
+          )} 
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <Button
+            variant="outlined"
+            type="submit"
+            startIcon={<SearchIcon />}
+            className={classes.button}
+          >
+            Rechercher
+          </Button>
+        </Grid>
+      </Grid>
+    </form>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextField, SimpleList, ArrayField, EmailField, ChipField} from 'react-admin';
+import { TextField, SimpleList, ArrayField, EmailField, ChipField } from 'react-admin';
 import { Box, Grid, Avatar } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
 import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
@@ -55,12 +55,12 @@ const OrganizationShow = props => (
           <MultiUrlField source="pair:homePage" domainMapping={domainMapping} />
           <EmailField source="pair:e-mail" />
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>
           <ReferenceArrayField reference="Type" source="pair:hasType">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>
@@ -84,7 +84,7 @@ const OrganizationShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <GroupedReferenceHandler
+{/*           <GroupedReferenceHandler
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"
@@ -103,7 +103,7 @@ const OrganizationShow = props => (
                 </Box>
               </ArrayField>
             </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler>
+          </GroupedReferenceHandler> */}
           <ReferenceArrayField reference="Organization" source="pair:partnerOf">
             <GridList xs={6} linkType="show" externalLinks>
               <AvatarWithLabelField label="pair:label" image="image">
@@ -111,13 +111,12 @@ const OrganizationShow = props => (
               </AvatarWithLabelField>
             </GridList>
           </ReferenceArrayField>
-          {/*<QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
+          <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
-          */}
         </SideList>
       </Grid>
     </Grid>

@@ -23,7 +23,7 @@ const SubMenu = ({ handleToggle, sidebarIsOpen, isOpen, name, icon, children, de
   const classes = useStyles();
 
   const header = (
-    <MenuItem dense={dense} button onClick={handleToggle}>
+    <MenuItem dense={dense} onClick={handleToggle}>
       <ListItemIcon className={classes.icon}>{isOpen ? <ExpandMore /> : icon}</ListItemIcon>
       <Typography variant="inherit" color="textSecondary">
         {name}

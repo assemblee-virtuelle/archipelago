@@ -8,10 +8,7 @@ const ListView = ({ title, children, aside, actions }) => {
   return(
     <BaseView title={title} actions={actions} aside={aside} context={listContext}>
       <Box p={3}>
-        {React.cloneElement(children, {
-          ...listContext,
-          ...children.props
-        })}
+        {children}
       </Box>
       <Pagination />
     </BaseView>

@@ -31,7 +31,7 @@ const Hero = ({ children, image, defaultImage }) => {
           <MainImage record={record} source={image} defaultImage={defaultImage} />
         </Grid>
         <Grid item xs={12} sm={8}>
-          <DetailsList record={record} resource={resource} basePath={basePath}>
+          <DetailsList>
             {children}
           </DetailsList>
         </Grid>

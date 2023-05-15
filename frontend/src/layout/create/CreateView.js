@@ -10,10 +10,7 @@ const CreateView = ({ title, actions, children }) => {
   useCheckPermissions(createContainerUri, 'create');
   return(
     <BaseView title={title} actions={actions} context={createContext}>
-      {React.cloneElement(children, {
-        ...createContext,
-        ...children.props
-      })}
+      {children}
     </BaseView>
   )
 };

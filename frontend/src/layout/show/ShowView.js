@@ -10,10 +10,7 @@ const ShowView = ({ title, actions, children }) => {
   return(
     <BaseView title={title} actions={actions} context={showContext}>
       <Box p={3}>
-        {React.cloneElement(children, {
-          ...showContext,
-          ...children.props
-        })}
+        {children}
       </Box>
     </BaseView>
   )
