@@ -1,6 +1,6 @@
 import React from 'react';
+import { useShowContext } from "react-admin";
 import { Box, CircularProgress } from '@mui/material';
-
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
@@ -24,8 +24,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MainImage = ({ record, source, defaultImage, ...rest }) => {
+const MainImage = ({ source, defaultImage, ...rest }) => {
   const classes = useStyles();
+  const { isLoading, record } = useShowContext();
+
+  if (isLoading) return null;
 
   if (!record[source]) {
     record[source] = defaultImage;

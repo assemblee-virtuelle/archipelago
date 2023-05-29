@@ -14,13 +14,7 @@ const useStyles = makeStyles(theme => ({
 
 const Hero = ({ children, image, defaultImage }) => {
   const classes = useStyles();
-  const {
-    basePath, // deduced from the location, useful for action buttons
-    isLoading, // boolean that is false until the record is available
-    record, // record fetched via dataProvider.getOne() based on the id from the location
-    resource // the resource name, deduced from the location. e.g. 'posts'
-  } = useShowContext();
-
+  const { isLoading } = useShowContext();
   if (isLoading) return null;
 
   return (
@@ -28,7 +22,7 @@ const Hero = ({ children, image, defaultImage }) => {
       <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
       <Grid container spacing={5}>
         <Grid item xs={12} sm={4}>
-          <MainImage record={record} source={image} defaultImage={defaultImage} />
+          <MainImage source={image} defaultImage={defaultImage} />
         </Grid>
         <Grid item xs={12} sm={8}>
           <DetailsList>
