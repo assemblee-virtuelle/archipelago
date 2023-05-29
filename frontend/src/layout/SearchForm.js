@@ -22,7 +22,7 @@ const TypeSelect = (props) => {
         .filter(resource => resource.hasList || resource.name === props.value)
         .map(resource => (
           <MenuItem value={resource.name} key={resource.name}>
-            {resource.options.label}
+            {resource.options?.label}
           </MenuItem>
         ))}
     </Select>

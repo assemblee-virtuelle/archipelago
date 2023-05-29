@@ -20,12 +20,12 @@ const IdeaShow = props => (
             </SingleFieldList>
           </ReferenceArrayField>
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>
           <ReferenceArrayField reference="Type" source="pair:hasType">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>

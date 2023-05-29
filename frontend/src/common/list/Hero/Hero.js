@@ -20,7 +20,7 @@ const Hero = ({ children, image, defaultImage }) => {
   return (
     <div className={classes.root}>
       <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
-      <Grid container spacing={5}>
+      <Grid container spacing={7}>
         <Grid item xs={12} sm={4}>
           <MainImage source={image} defaultImage={defaultImage} />
         </Grid>

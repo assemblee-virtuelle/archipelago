@@ -17,7 +17,7 @@ const ProjectShow = props => (
           <TextField label="Courte description" source="pair:comment" />
           <UrlField label="Site web" source="pair:homePage" />
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>

@@ -1,11 +1,15 @@
-import { redirect } from 'react-router';
+import { useNavigate } from 'react-router';
+import { useCreatePath, useShowContext } from "react-admin";
 
-const RedirectByType = ({ record, typesMap }) => {
+const RedirectByType = ({ typesMap }) => {
+  const { record, resource } = useShowContext();
+  const navigate = useNavigate();
+  const createPath = useCreatePath();
   if (record) {
     if (!Array.isArray(record.type)) record.type = [record.type];
     const matchingResource = Object.keys(typesMap).find(resource => record.type.includes(typesMap[resource]));
     if (matchingResource) {
-      return redirect(`/${matchingResource}/${encodeURIComponent(record.id)}/show`);
+      return navigate(createPath({ resource: matchingResource, id: record.id, type: 'show' }));
     }
   }
   return null;

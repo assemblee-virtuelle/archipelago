@@ -5,7 +5,7 @@ import AppBar from './AppBar';
 import TreeMenu from './TreeMenu/TreeMenu';
 
 const useStyles = makeStyles(theme => ({
-  appFrame: {
+  layout: {
     marginTop: 56,
     [theme.breakpoints.up('sm')]: {
       '& #main-content': {
@@ -22,9 +22,10 @@ const Layout = ({ appBar, menu, userMenu, children, labelNbLines, ...otherProps 
   return (
     <RaLayout
       {...otherProps}
-      classes={{ appFrame: classes.appFrame }}
+      classes={classes.layout}
       appBar={appBar}
       menu={menu ? menu : LayoutTreeMenu}
+
     >
       {children}
     </RaLayout>

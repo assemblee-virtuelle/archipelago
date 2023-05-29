@@ -9,6 +9,9 @@ const useStyles = makeStyles(() => ({
     borderBottom: '1px solid #e0e0e0',
     marginTop: -6,
     marginBottom: 7
+  },
+  item: {
+    padding: '12px !important',
   }
 }));
 
@@ -24,7 +27,7 @@ const DetailsList = ({ children }) => {
           <div key={i}>
             {field.props.label !== false ? (
               <Grid container spacing={3} className={classes.line}>
-                <Grid item xs={3}>
+                <Grid item xs={3} className={classes.item}>
                   <Typography color="textSecondary" align="right" variant="body2">
                     {translate(
                       ...getFieldLabelTranslationArgs({
@@ -35,7 +38,7 @@ const DetailsList = ({ children }) => {
                     )}
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={9} className={classes.item}>
                   <Typography variant="body2" component="div">
                     {field}
                   </Typography>

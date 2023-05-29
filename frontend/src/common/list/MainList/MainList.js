@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 const MainList = ({ children, divider, Label }) => {
   const translate = useTranslate();
   const classes = useStyles();
-  const { basePath, isLoading, record, resource } = useShowContext();
+  const { isLoading, record, resource } = useShowContext();
   if (isLoading) return null;
 
   return (
@@ -37,20 +37,10 @@ const MainList = ({ children, divider, Label }) => {
                     })
                   )}
                 </Label>
-                {React.cloneElement(field, {
-                  record,
-                  resource,
-                  basePath
-                })}
+                {field}
               </>
-            ) : typeof field.type === 'string' ? (
-              field
             ) : (
-              React.cloneElement(field, {
-                record,
-                resource,
-                basePath
-              })
+              field
             )}
           </div>
         ) : null

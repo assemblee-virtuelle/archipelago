@@ -1,9 +1,9 @@
 import React from 'react';
-import { Show } from 'react-admin';
+import { ShowBase } from 'react-admin';
 import RedirectByType from "../../common/RedirectByType";
 
 const AgentRedirect = props => (
-  <Show {...props}>
+  <ShowBase {...props}>
     <RedirectByType
       typesMap={{
         Person: 'pair:Person',
@@ -12,7 +12,7 @@ const AgentRedirect = props => (
         Project: 'pair:Project'
       }}
     />
-  </Show>
+  </ShowBase>
 );
 
 export default {

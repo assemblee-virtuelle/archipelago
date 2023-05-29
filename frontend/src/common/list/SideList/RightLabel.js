@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslate, getFieldLabelTranslationArgs } from 'react-admin';
+import { useTranslate, getFieldLabelTranslationArgs, useShowContext } from 'react-admin';
 import { Box } from '@mui/material';
 
 import makeStyles from '@mui/styles/makeStyles';
@@ -14,8 +14,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const RightLabel = ({ label, children, record, resource, source, basePath, mb }) => {
+const RightLabel = ({ label, children, source, mb }) => {
   const classes = useStyles();
+  const { record, resource } = useShowContext();
   const translate = useTranslate();
   if (!record?.[source]) return null;
   return (
@@ -31,11 +32,7 @@ const RightLabel = ({ label, children, record, resource, source, basePath, mb })
       </Box>
       {children && (
         <Box m={0}>
-          {React.cloneElement(children, {
-            record,
-            resource,
-            basePath
-          })}
+          {children}
         </Box>
       )}
     </Box>

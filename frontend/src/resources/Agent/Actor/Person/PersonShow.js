@@ -40,25 +40,25 @@ const PersonShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <GroupedReferenceHandler
-            source="pair:actorOfMembership"
-            groupReference="MembershipRole"
-            groupLabel="pair:label"
-            filterProperty="pair:membershipRole"
-          >
-            <ConditionalSourceDefinedHandler>
-              <RightLabel mb={0} />
-              <ArrayField source="pair:actorOfMembership" >
-                <Box mb={4}>
-                  <GridList xs={6} linkType="show" externalLinks>
-                    <ReferenceField reference="Organization" source="pair:membershipOrganization" link="show" basePath="/Organization">
-                      <AvatarWithLabelField label="pair:label" image="image"/>
-                    </ReferenceField>
-                  </GridList>
-                </Box>
-              </ArrayField>
-            </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler>
+          {/*<GroupedReferenceHandler*/}
+          {/*  source="pair:actorOfMembership"*/}
+          {/*  groupReference="MembershipRole"*/}
+          {/*  groupLabel="pair:label"*/}
+          {/*  filterProperty="pair:membershipRole"*/}
+          {/*>*/}
+          {/*  <ConditionalSourceDefinedHandler>*/}
+          {/*    <RightLabel mb={0} />*/}
+          {/*    <ArrayField source="pair:actorOfMembership" >*/}
+          {/*      <Box mb={4}>*/}
+          {/*        <GridList xs={6} linkType="show" externalLinks>*/}
+          {/*          <ReferenceField reference="Organization" source="pair:membershipOrganization" link="show" basePath="/Organization">*/}
+          {/*            <AvatarWithLabelField label="pair:label" image="image"/>*/}
+          {/*          </ReferenceField>*/}
+          {/*        </GridList>*/}
+          {/*      </Box>*/}
+          {/*    </ArrayField>*/}
+          {/*  </ConditionalSourceDefinedHandler>*/}
+          {/*</GroupedReferenceHandler>*/}
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
