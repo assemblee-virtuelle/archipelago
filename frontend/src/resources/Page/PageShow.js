@@ -7,7 +7,7 @@ import Show from "../../layout/show/Show";
 const PageShow = props => (
   <Show title={<PageTitle />} {...props}>
     <MainList>
-      <MarkdownField source="semapps:content" />
+      <MarkdownField source="semapps:content" label={false} />
     </MainList>
   </Show>
 );

@@ -8,8 +8,8 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    color: theme.palette.primary.contrastText,
-    borderColor: theme.palette.primary.contrastText,
+    color: 'black',
+    borderColor: 'black',
   },
 }));
 
@@ -47,11 +47,11 @@ const SearchForm = () => {
     }
   });
 
-  // useEffect(() => {
-  //   console.log('useEffect', type, filter);
-  //   setValue('type', type);
-  //   setValue('filter', filter.q);
-  // }, [location, setValue, type, filter])
+  // Reinitialize the form on page change
+  useEffect(() => {
+    setValue('type', type);
+    setValue('filter', filter.q);
+  }, [location.pathname, type, filter.q, setValue]);
 
   const onSubmit = ({ filter, type }) => {
     if (filter) {

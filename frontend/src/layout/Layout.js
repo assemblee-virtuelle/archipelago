@@ -25,7 +25,6 @@ const Layout = ({ appBar, menu, userMenu, children, labelNbLines, ...otherProps 
       classes={classes.layout}
       appBar={appBar}
       menu={menu ? menu : LayoutTreeMenu}
-
     >
       {children}
     </RaLayout>

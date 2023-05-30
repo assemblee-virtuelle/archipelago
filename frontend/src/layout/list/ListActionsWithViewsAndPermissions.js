@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreateButton, ExportButton, useResourceDefinition, TopToolbar, usePermissionsOptimized } from 'react-admin';
+import { CreateButton, ExportButton, useResourceDefinition, TopToolbar, usePermissions } from 'react-admin';
 import { useMediaQuery } from '@mui/material';
 import { useCreateContainer } from "@semapps/semantic-data-provider";
 import { ViewsButtons } from "@semapps/list-components";
@@ -24,7 +24,7 @@ const ListActionsWithViewsAndPermissions = ({
   const xs = useMediaQuery(theme => theme.breakpoints.down('sm'));
   const resourceDefinition = useResourceDefinition(rest);
   const createContainerUri = useCreateContainer(resource);
-  const { permissions } = usePermissionsOptimized(createContainerUri);
+  const { permissions } = usePermissions(createContainerUri);
   return (
     <TopToolbar>
       <ViewsButtons />
@@ -36,9 +36,9 @@ const ListActionsWithViewsAndPermissions = ({
           filterValues,
           context: 'button'
         })}
-      {resourceDefinition.hasCreate && permissions && permissions.some(p => ['acl:Append', 'acl:Write', 'acl:Control'].includes(p['acl:mode'])) && <CreateButton basePath={basePath} />}
+      {resourceDefinition.hasCreate && permissions && permissions.some(p => ['acl:Append', 'acl:Write', 'acl:Control'].includes(p['acl:mode'])) && <CreateButton />}
       {permissions && permissions.some(p => ['acl:Control'].includes(p['acl:mode'])) && (
-        <PermissionsButton basePath={basePath} record={createContainerUri} />
+        <PermissionsButton record={createContainerUri} />
       )}
       {!xs && exporter !== false && (
         <ExportButton
@@ -51,7 +51,6 @@ const ListActionsWithViewsAndPermissions = ({
       )}
       {bulkActions &&
         React.cloneElement(bulkActions, {
-          basePath,
           filterValues,
           resource,
           selectedIds,

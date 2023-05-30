@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import { useCreatePath, useShowContext } from "react-admin";
 
 const RedirectByType = ({ typesMap }) => {
-  const { record, resource } = useShowContext();
+  const { record } = useShowContext();
   const navigate = useNavigate();
   const createPath = useCreatePath();
   if (record) {
