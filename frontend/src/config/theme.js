@@ -60,6 +60,9 @@ const theme = createTheme(adaptV4Theme({
       }
     },
     MuiTab: {
+      root: {
+        minWidth: 160
+      },
       labelIcon: {
         paddingTop: 0
         // minHeight: 0
@@ -68,6 +71,20 @@ const theme = createTheme(adaptV4Theme({
       //   alignItems: null,
       //   flexDirection: null
       // }
+    },
+    MuiOutlinedInput: {
+      root: {
+        backgroundColor: '#efefef',
+      },
+      input: {
+        paddingTop: 12
+      }
+    },
+    MuiAutocomplete: {
+      inputRoot: {
+        paddingTop: 12,
+        paddingBottom: 5
+      }
     },
     MuiCard: {
       root: {

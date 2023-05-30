@@ -1,9 +1,8 @@
 import React from 'react';
-import { TextField, SimpleList, ArrayField, EmailField, ChipField } from 'react-admin';
-import { Box, Grid, Avatar } from '@mui/material';
+import { TextField, SimpleList, EmailField } from 'react-admin';
+import { Grid, Avatar } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
-import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
-import { ReferenceArrayField, ReferenceField, QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField, SeparatedListField } from '@semapps/field-components';
+import { ReferenceArrayField, QuickAppendReferenceArrayField, MultiUrlField, AvatarWithLabelField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
@@ -12,18 +11,17 @@ import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import OrganizationTitle from './OrganizationTitle';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import RightLabel from "../../../../common/list/SideList/RightLabel";
 import Show from "../../../../layout/show/Show";
 
-const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
-  if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
-    return React.Children.map(children, (child, i) => {
-      return React.cloneElement(child, { ...otherProps, record, source });
-    });
-  } else {
-    return <></>;
-  }
-};
+// const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
+//   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
+//     return React.Children.map(children, (child, i) => {
+//       return React.cloneElement(child, { ...otherProps, record, source });
+//     });
+//   } else {
+//     return <></>;
+//   }
+// };
 
 const domainMapping = {
   'forums.assemblee-virtuelle.org': {
@@ -84,7 +82,7 @@ const OrganizationShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-{/*           <GroupedReferenceHandler
+        {/* <GroupedReferenceHandler
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"

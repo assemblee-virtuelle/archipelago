@@ -1,24 +1,22 @@
 import React from 'react';
-import { TextField, ArrayField } from 'react-admin';
-import { Box, Grid } from '@mui/material';
-import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceField } from '@semapps/field-components';
-import { ChipList, GridList } from '@semapps/list-components';
-import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { TextField } from 'react-admin';
+import { Grid } from '@mui/material';
+import { QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
 import PersonTitle from './PersonTitle';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import RightLabel from "../../../../common/list/SideList/RightLabel";
 import Show from "../../../../layout/show/Show";
 
-const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
-  if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
-    return React.Children.map(children, (child, i) => {
-      return React.cloneElement(child, { ...otherProps, record, source });
-    });
-  } else {
-    return <></>;
-  }
-};
+// const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
+//   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
+//     return React.Children.map(children, (child, i) => {
+//       return React.cloneElement(child, { ...otherProps, record, source });
+//     });
+//   } else {
+//     return <></>;
+//   }
+// };
 
 const PersonShow = props => (
   <Show title={<PersonTitle />} {...props}>
