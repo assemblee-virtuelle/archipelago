@@ -32,18 +32,18 @@ const BaseView = ({ title, actions, aside, context, children }) => {
     <Grid container>
       <Grid item xs={6}>
         <Typography variant="h4" color="primary" component="h1" className={classes.title}>
-          {title ? React.cloneElement(title, context) : context.defaultTitle}
+          {title || context.defaultTitle}
         </Typography>
       </Grid>
       <Grid item xs={6}>
-        {actions && React.cloneElement(actions, context)}
+        {actions}
       </Grid>
       <Grid item xs={12}>
         <Box display="flex">
           <Card className={classes.card}>
             {children}
           </Card>
-          {aside && React.cloneElement(aside, context)}
+          {aside}
         </Box>
       </Grid>
     </Grid>
