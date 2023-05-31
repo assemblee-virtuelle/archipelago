@@ -43,6 +43,9 @@ const ProjectShow = props => (
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
+          <QuickAppendReferenceArrayField reference="Type" source="pair:hasType">
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
+          </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Resource" source="pair:needs">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
