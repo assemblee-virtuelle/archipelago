@@ -15,7 +15,6 @@
     "@semapps/semantic-data-provider": "0.4.5",
     "date-fns": "~2.8.1",
     "history": "4.10.1",
-    "final-form": "^4.20.8",
     "leaflet": "^1.8.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet.markercluster": "^1.5.3",
@@ -23,8 +22,7 @@
     "ra-language-french": "^3.19.10",
     "react": "^18.1.0",
     "react-admin": "^4.7.0",
-    "react-dom": "^18.1.0",
-    "react-final-form": "^6.5.9"
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
