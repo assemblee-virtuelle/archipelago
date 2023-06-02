@@ -30,11 +30,8 @@ const MainImage = ({ source, defaultImage, ...rest }) => {
 
   if (isLoading) return null;
 
-  if (!record[source]) {
-    record[source] = defaultImage;
-  }
-
-  const image = Array.isArray(record[source]) ? record[source][0] : record[source];
+  let image = record[source] || defaultImage;
+  image = Array.isArray(image) ? image[0] : image;
 
   if (image.rawFile instanceof File) {
     return (

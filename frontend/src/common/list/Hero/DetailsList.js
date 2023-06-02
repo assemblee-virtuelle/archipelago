@@ -23,7 +23,7 @@ const DetailsList = ({ children }) => {
   return (
     <Box>
       {React.Children.map(children, (field, i) =>
-        field && record[field.props.source] && React.isValidElement(field) ? (
+        field && record[field.props.source] && (Array.isArray(record[field.props.source]) && record[field.props.source].length > 0) && React.isValidElement(field) ? (
           <div key={i}>
             {field.props.label !== false ? (
               <Grid container spacing={3} className={classes.line}>

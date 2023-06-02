@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 const TypeSelect = (props) => {
   const resourceDefinitions = useResourceDefinitions();
   const resources = useMemo(() => Object.values(resourceDefinitions), [resourceDefinitions]);
+  if (resources.length === 0) return null;
   return (
     <Select {...props}>
       {resources
