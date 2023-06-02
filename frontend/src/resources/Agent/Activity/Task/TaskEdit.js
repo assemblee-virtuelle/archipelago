@@ -12,7 +12,7 @@ const TaskEdit = props => (
     <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
-        <MarkdownInput multiline source="pair:description" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:TaskStatus' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>

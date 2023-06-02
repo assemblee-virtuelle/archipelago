@@ -10,7 +10,7 @@ export const ThemeEdit = props => (
     <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
-        <MarkdownInput multiline source="pair:description" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
       </FormTab>
       <FormTab label="Relations">
         <AgentsInput source="pair:topicOf" />

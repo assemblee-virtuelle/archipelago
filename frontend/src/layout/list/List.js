@@ -5,14 +5,10 @@ import ListActionsWithViewsAndPermissions from "./ListActionsWithViewsAndPermiss
 
 const List = ({ actions, aside, pagination, children, ...rest }) => (
   <ListBase {...rest}>
-    <ListView aside={aside} actions={actions} pagination={pagination}>
+    <ListView aside={aside} actions={<ListActionsWithViewsAndPermissions />} pagination={pagination}>
       {children}
     </ListView>
   </ListBase>
 );
-
-List.defaultProps = {
-  actions: <ListActionsWithViewsAndPermissions />
-}
 
 export default List;

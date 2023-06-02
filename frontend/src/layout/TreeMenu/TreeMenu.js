@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useResourceDefinitions } from 'react-admin';
+import { useResourceDefinitions, Logout } from 'react-admin';
 import { useLocation } from 'react-router';
 import { useMediaQuery, Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import DefaultIcon from '@mui/icons-material/ViewList';
 import SubMenu from './SubMenu';
 import ResourceMenuLink from './ResourceMenuLink';
-import { LogoutButton } from '@semapps/auth-provider';
 
 const useStyles = makeStyles(theme => ({
   treeMenu: props => ({
@@ -108,7 +107,7 @@ const TreeMenu = ({ onMenuClick, dense = false, openAll = false, labelNbLines = 
           )}
         </Box>
       ))}
-      {isXSmall && <LogoutButton/>}
+      {isXSmall && <Logout />}
     </Box>
   );
 };

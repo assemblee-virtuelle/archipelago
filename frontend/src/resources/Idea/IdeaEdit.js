@@ -11,7 +11,7 @@ const IdeaEdit = props => (
     <SimpleForm>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
-      <MarkdownInput multiline source="pair:description" fullWidth />
+      <MarkdownInput source="pair:description" fullWidth />
       <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:IdeaStatus' }}>
         <SelectInput optionText="pair:label" />
       </ReferenceInput>

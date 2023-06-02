@@ -19,7 +19,7 @@ export const OrganizationEdit = props => (
       <TabbedForm.Tab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />
-        <MarkdownInput multiline source="pair:description" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:AgentStatus' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>

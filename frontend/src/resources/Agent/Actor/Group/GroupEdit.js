@@ -11,7 +11,7 @@ export const GroupEdit = props => (
     <SimpleForm>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
-      <MarkdownInput multiline source="pair:description" fullWidth />
+      <MarkdownInput source="pair:description" fullWidth />
       <ImageInput source="image" accept="image/*">
         <ImageField source="src" />
       </ImageInput>

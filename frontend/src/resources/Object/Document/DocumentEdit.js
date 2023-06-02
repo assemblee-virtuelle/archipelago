@@ -11,7 +11,7 @@ export const DocumentEdit = props => (
     <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
-        <MarkdownInput multiline source="pair:description" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:DocumentType' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>

@@ -14,13 +14,13 @@ export const OrganizationsInput = ({ label, source }) => (
 
 export const ActorsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Actor" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
 export const ResourcesInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Resource" source={source} enableGetChoices={ifTwoLetters}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
@@ -32,25 +32,25 @@ export const ActivitiesInput = ({ label, source }) => (
 
 export const DocumentsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Document" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
 export const EventsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Event" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
 export const TasksInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Task" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
 export const SkillsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Skill" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
@@ -74,13 +74,13 @@ export const ThemesInput = ({ label, source }) => (
 
 export const UsersInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Person" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
 export const AgentsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Agent" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} fullWidth />
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
   </ReferenceArrayInput>
 );
 
