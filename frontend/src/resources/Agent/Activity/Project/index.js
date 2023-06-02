@@ -37,7 +37,8 @@ export default {
         'pair:involves': 'Implique',
         'pair:needs': 'Compétences requises',
         'pair:documentedBy': 'Documenté par',
-        'pair:hasTopic': 'A pour thème'
+        'pair:hasTopic': 'A pour thème',
+        'pair:hasType': 'Type',
       }
     }
   }
