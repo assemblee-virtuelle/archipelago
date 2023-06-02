@@ -1,6 +1,6 @@
 import React from 'react';
-import { SimpleForm, TextInput, ImageInput } from 'react-admin';
-import { ImageField } from '@semapps/field-components';
+import { SimpleForm, TextInput, ImageField } from 'react-admin';
+import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { UsersInput, EventsInput, ThemesInput, DocumentsInput } from '../../../../common/input';
 import GroupTitle from './GroupTitle';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { ImageInput, TabbedForm, TextInput, FormTab } from 'react-admin';
-import { ImageField } from '@semapps/field-components';
+import { ImageField, TabbedForm, TextInput, FormTab } from 'react-admin';
+import { ImageInput } from '@semapps/input-components';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
 import PersonTitle from './PersonTitle';
 import Edit from "../../../../layout/edit/Edit";

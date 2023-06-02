@@ -23,7 +23,7 @@ const PersonList = props => (
         perPage: 500,
         pagination: false,
         list: (
-          <GridList xs={2} linkType="show" externalLinks>
+          <GridList xs={6} sm={2} linkType="show" externalLinks>
             <AvatarWithLabelField label="pair:label" image="image" />
           </GridList>
         )

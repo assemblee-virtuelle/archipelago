@@ -20,6 +20,6 @@ code {
   padding-bottom: 16px;
 }
 
-.layout, .mde-text {
+body, .layout, .mde-text {
   background-color: #efefef;
 }

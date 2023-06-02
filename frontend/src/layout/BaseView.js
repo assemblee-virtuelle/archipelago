@@ -11,7 +11,22 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 20,
     paddingBottom: 10,
     [theme.breakpoints.down('sm')]: {
-      fontSize: '1.8rem'
+      fontSize: '1.8rem',
+      paddingTop: 0,
+      paddingBottom: 6
+    }
+  },
+  actions: {
+    [theme.breakpoints.down('sm')]: {
+      '& .MuiToolbar-root': {
+        backgroundColor: '#efefef',
+        minHeight: 0,
+        paddingTop: 0
+      },
+      '& .MuiButtonBase-root': {
+        padding: 0
+      },
+      order: -1
     }
   },
   card: {
@@ -30,12 +45,12 @@ const BaseView = ({ title, actions, aside, context, children }) => {
   const classes = useStyles();
   return(
     <Grid container>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Typography variant="h4" color="primary" component="h1" className={classes.title}>
           {title || context.defaultTitle}
         </Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6} className={classes.actions}>
         {actions}
       </Grid>
       <Grid item xs={12}>
