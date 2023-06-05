@@ -24,7 +24,7 @@ const MainList = ({ children, divider, Label }) => {
   return (
     <Box>
       {React.Children.map(children, field =>
-        field && record[field.props.source] && (Array.isArray(record[field.props.source]) && record[field.props.source].length > 0) && React.isValidElement(field) ? (
+        field && record[field.props.source] && (!Array.isArray(record[field.props.source]) || record[field.props.source].length > 0) && React.isValidElement(field) ? (
           <div key={field.props.source} className={divider ? classes.divider : null}>
             {field.props.label !== false ? (
               <>

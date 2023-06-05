@@ -7,7 +7,7 @@ const SideList = ({ children }) => {
   if (isLoading) return null;
 
   return React.Children.map(children, field =>
-    field && record[field.props.source] && (Array.isArray(record[field.props.source]) && record[field.props.source].length > 0) && React.isValidElement(field) ? (
+    field && record[field.props.source] && (!Array.isArray(record[field.props.source]) || record[field.props.source].length > 0) && React.isValidElement(field) ? (
       <div key={field.props.source}>
         {field.props.label !== false ? (
           <RightLabel

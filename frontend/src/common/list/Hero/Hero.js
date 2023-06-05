@@ -8,7 +8,11 @@ import MainImage from './MainImage';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    margin: theme.spacing(-1)
+    margin: theme.spacing(-1),
+    marginBottom: theme.spacing(2),
+    [theme.breakpoints.down('sm')]: {
+      margin: theme.spacing(2),
+    },
   }
 }));
 

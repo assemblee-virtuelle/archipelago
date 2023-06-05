@@ -14,7 +14,7 @@ import Edit from "../../../../layout/edit/Edit";
 
 export const OrganizationEdit = props => (
   <Edit title={<OrganizationTitle />} redirect="show" {...props}>
-    <TabbedForm sanitizeEmptyValues>
+    <TabbedForm>
       <TabbedForm.Tab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />

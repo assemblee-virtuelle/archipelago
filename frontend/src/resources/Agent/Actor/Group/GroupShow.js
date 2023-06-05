@@ -26,10 +26,10 @@ const GroupShow = props => (
               <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ '@type': 'pair:Project' }}>
+          <QuickAppendReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ 'type': 'pair:Project' }}>
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ '@type': 'pair:Event' }}>
+          <QuickAppendReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ 'type': 'pair:Event' }}>
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">

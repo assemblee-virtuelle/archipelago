@@ -6,7 +6,10 @@ import makeStyles from '@mui/styles/makeStyles';
 const useStyles = makeStyles(theme => ({
   subTitle: {
     marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
+    '&:first-of-type': {
+      marginTop: theme.spacing(1),
+    }
   },
   subTitleSpan: {
     color: theme.palette.primary.contrastText,

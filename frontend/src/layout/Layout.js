@@ -6,11 +6,13 @@ import TreeMenu from './TreeMenu/TreeMenu';
 
 const useStyles = makeStyles(theme => ({
   layout: {
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      '& #main-content': {
-        paddingTop: 8,
-        paddingLeft: 5
+    '& .RaLayout-content': {
+      backgroundColor: '#efefef',
+      paddingTop: theme.spacing(1),
+      paddingRight: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
+      [theme.breakpoints.down('sm')]: {
+        padding: theme.spacing(2)
       }
     }
   }
@@ -22,7 +24,7 @@ const Layout = ({ appBar, menu, userMenu, children, labelNbLines, ...otherProps 
   return (
     <RaLayout
       {...otherProps}
-      classes={classes.layout}
+      className={classes.layout}
       appBar={appBar}
       menu={menu ? menu : LayoutTreeMenu}
     >
