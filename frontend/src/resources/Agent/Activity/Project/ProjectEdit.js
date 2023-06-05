@@ -17,6 +17,9 @@ const ProjectEdit = props => (
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:ProjectStatus' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
+        <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:ProjectType' }}>
+          <SelectInput optionText="pair:label" />
+        </ReferenceInput>
         <TextInput source="pair:homePage" fullWidth />
         <ImageInput source="image" accept="image/*">
           <ImageField source="src" />

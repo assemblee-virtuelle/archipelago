@@ -38,6 +38,13 @@ const ProjectFilterSidebar = () => {
           limit={100}
           sort={{ field: 'pair:label', order: 'DESC' }}
         />
+        <ReferenceFilter
+            reference="Type"
+            source="pair:hasType"
+            limit={100}
+            filter={{ a: 'pair:ProjectType' }}
+            sort={{ field: 'pair:label', order: 'DESC' }}
+        />
       </CardContent>
     </Card>
   );
