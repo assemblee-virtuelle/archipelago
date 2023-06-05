@@ -1,7 +1,7 @@
 import React from 'react';
-import { FormTab, TextInput, TabbedForm, DateTimeInput } from 'react-admin';
+import { FormTab, TextInput, TabbedForm } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ActorsInput, ThemesInput } from '../../../../common/input';
+import { ActorsInput, ThemesInput, DateTimeInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
 import EventTitle from './EventTitle';
 

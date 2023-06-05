@@ -1,19 +1,12 @@
 import React from "react";
 import frLocale from "date-fns/locale/fr";
-// import { DateTimeInput as SemAppsDateTimeInput } from "@semapps/date-components";
+import { DateTimeInput as SemAppsDateTimeInput } from "@semapps/date-components";
 
-const DateTimeInput = props => ( null
-  // <SemAppsDateTimeInput
-  //   options={{
-  //     format: 'dd/MM/yyyy à HH:mm',
-  //     ampm: false
-  //   }}
-  //   providerOptions={{
-  //     locale: frLocale
-  //   }}
-  //   fullWidth
-  //   {...props}
-  // />
+const DateTimeInput = props => (
+  <SemAppsDateTimeInput
+    locale={frLocale}
+    {...props}
+  />
 );
 
 export default DateTimeInput;
