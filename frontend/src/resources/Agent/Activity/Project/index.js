@@ -2,7 +2,7 @@ import CreateOrImport from '../../../../common/CreateOrImport';
 import ProjectEdit from './ProjectEdit';
 import ProjectList from './ProjectList';
 import ProjectShow from './ProjectShow';
-import SettingsIcon from '@material-ui/icons/Settings';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export default {
   config: {

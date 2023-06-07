@@ -2,7 +2,7 @@ import PageCreate from './PageCreate';
 import PageEdit from './PageEdit';
 import PageList from './PageList';
 import PageShow from './PageShow';
-import DescriptionIcon from '@material-ui/icons/Description';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 export default {
   config: {

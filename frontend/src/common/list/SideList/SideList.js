@@ -3,31 +3,22 @@ import { useShowContext } from 'react-admin';
 import RightLabel from './RightLabel';
 
 const SideList = ({ children }) => {
-  const { basePath, loaded, record, resource } = useShowContext();
-  if (!loaded) return null;
+  const { isLoading, record } = useShowContext();
+  if (isLoading) return null;
 
   return React.Children.map(children, field =>
-    field && React.isValidElement(field) ? (
+    field && record[field.props.source] && (!Array.isArray(record[field.props.source]) || record[field.props.source].length > 0) && React.isValidElement(field) ? (
       <div key={field.props.source}>
-        {field.props.addLabel ? (
+        {field.props.label !== false ? (
           <RightLabel
-            record={record}
-            resource={resource}
-            basePath={basePath}
             label={field.props.label}
             source={field.props.source}
             disabled={false}
           >
             {field}
           </RightLabel>
-        ) : typeof field.type === 'string' ? (
-          field
         ) : (
-          React.cloneElement(field, {
-            record,
-            resource,
-            basePath
-          })
+          field
         )}
       </div>
     ) : null

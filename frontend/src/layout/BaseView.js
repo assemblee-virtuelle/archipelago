@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid, makeStyles, Card, Typography, Box } from '@material-ui/core';
+import { Grid, Card, Typography, Box } from '@mui/material';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -8,8 +10,23 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'nowrap',
     paddingTop: 20,
     paddingBottom: 10,
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '1.8rem'
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '1.8rem',
+      paddingTop: 0,
+      paddingBottom: 6
+    }
+  },
+  actions: {
+    [theme.breakpoints.down('sm')]: {
+      '& .MuiToolbar-root': {
+        backgroundColor: '#efefef',
+        minHeight: 0,
+        paddingTop: 0
+      },
+      '& .MuiButtonBase-root': {
+        padding: 0
+      },
+      order: -1
     }
   },
   card: {
@@ -17,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create('margin-top'),
     position: 'relative',
     flex: '1 1 auto',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       boxShadow: 'none',
     },
     overflow: 'inherit',
@@ -28,20 +45,20 @@ const BaseView = ({ title, actions, aside, context, children }) => {
   const classes = useStyles();
   return(
     <Grid container>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Typography variant="h4" color="primary" component="h1" className={classes.title}>
-          {title ? React.cloneElement(title, context) : context.defaultTitle}
+          {title || context.defaultTitle}
         </Typography>
       </Grid>
-      <Grid item xs={6}>
-        {actions && React.cloneElement(actions, context)}
+      <Grid item xs={12} sm={6} className={classes.actions}>
+        {actions}
       </Grid>
       <Grid item xs={12}>
         <Box display="flex">
           <Card className={classes.card}>
             {children}
           </Card>
-          {aside && React.cloneElement(aside, context)}
+          {aside}
         </Box>
       </Grid>
     </Grid>

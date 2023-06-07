@@ -1,6 +1,6 @@
 import React from 'react';
-import { ImageInput, TabbedForm, TextInput, FormTab } from 'react-admin';
-import { ImageField } from '@semapps/field-components';
+import { ImageField, TabbedForm, TextInput, FormTab } from 'react-admin';
+import { ImageInput } from '@semapps/input-components';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
 import PersonTitle from './PersonTitle';
 import Edit from "../../../../layout/edit/Edit";
@@ -8,10 +8,11 @@ import Edit from "../../../../layout/edit/Edit";
 export const PersonEdit = props => (
   <Edit
     title={<PersonTitle />}
+    redirect="show"
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}
   >
-    <TabbedForm redirect="show">
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:firstName" fullWidth />
         <TextInput source="pair:lastName" fullWidth />

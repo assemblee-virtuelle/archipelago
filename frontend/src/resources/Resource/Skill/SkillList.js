@@ -1,5 +1,5 @@
 import React from 'react';
-import PanToolIcon from '@material-ui/icons/PanTool';
+import PanToolIcon from '@mui/icons-material/PanTool';
 import SimpleList from "../../../common/list/SimpleList";
 import List from "../../../layout/list/List";
 

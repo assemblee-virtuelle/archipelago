@@ -1,24 +1,22 @@
 import React from 'react';
-import { TextField, ArrayField } from 'react-admin';
-import { Box, Grid } from '@material-ui/core';
-import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceField } from '@semapps/field-components';
-import { ChipList, GridList } from '@semapps/list-components';
-import { GroupedReferenceHandler } from '@semapps/semantic-data-provider';
+import { TextField } from 'react-admin';
+import { Grid } from '@mui/material';
+import { QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
 import PersonTitle from './PersonTitle';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import RightLabel from "../../../../common/list/SideList/RightLabel";
 import Show from "../../../../layout/show/Show";
 
-const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
-  if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
-    return React.Children.map(children, (child, i) => {
-      return React.cloneElement(child, { ...otherProps, record, source });
-    });
-  } else {
-    return <></>;
-  }
-};
+// const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
+//   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
+//     return React.Children.map(children, (child, i) => {
+//       return React.cloneElement(child, { ...otherProps, record, source });
+//     });
+//   } else {
+//     return <></>;
+//   }
+// };
 
 const PersonShow = props => (
   <Show title={<PersonTitle />} {...props}>
@@ -40,26 +38,25 @@ const PersonShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <GroupedReferenceHandler
-            source="pair:actorOfMembership"
-            groupReference="MembershipRole"
-            groupLabel="pair:label"
-            filterProperty="pair:membershipRole"
-            addLabel={false}
-          >
-            <ConditionalSourceDefinedHandler>
-              <RightLabel mb={0} />
-              <ArrayField source="pair:actorOfMembership" >
-                <Box mb={4}>
-                  <GridList xs={6} linkType="show" externalLinks>
-                    <ReferenceField reference="Organization" source="pair:membershipOrganization" link="show" basePath="/Organization">
-                      <AvatarWithLabelField label="pair:label" image="image"/>
-                    </ReferenceField>
-                  </GridList>
-                </Box>
-              </ArrayField>
-            </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler>
+          {/*<GroupedReferenceHandler*/}
+          {/*  source="pair:actorOfMembership"*/}
+          {/*  groupReference="MembershipRole"*/}
+          {/*  groupLabel="pair:label"*/}
+          {/*  filterProperty="pair:membershipRole"*/}
+          {/*>*/}
+          {/*  <ConditionalSourceDefinedHandler>*/}
+          {/*    <RightLabel mb={0} />*/}
+          {/*    <ArrayField source="pair:actorOfMembership" >*/}
+          {/*      <Box mb={4}>*/}
+          {/*        <GridList xs={6} linkType="show" externalLinks>*/}
+          {/*          <ReferenceField reference="Organization" source="pair:membershipOrganization" link="show" basePath="/Organization">*/}
+          {/*            <AvatarWithLabelField label="pair:label" image="image"/>*/}
+          {/*          </ReferenceField>*/}
+          {/*        </GridList>*/}
+          {/*      </Box>*/}
+          {/*    </ArrayField>*/}
+          {/*  </ConditionalSourceDefinedHandler>*/}
+          {/*</GroupedReferenceHandler>*/}
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>

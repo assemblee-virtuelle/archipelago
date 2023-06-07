@@ -3,7 +3,7 @@ import Create from "../../../layout/create/Create";
 import { LexiconImportForm, fetchWikidata } from "@semapps/interop-components";
 
 const ThemeCreate = (props) => (
-  <Create {...props}>
+  <Create redirect="show" {...props}>
     <LexiconImportForm
       fetchLexicon={fetchWikidata()}
       selectData={data => ({
@@ -11,7 +11,6 @@ const ThemeCreate = (props) => (
         'pair:description': data.summary,
         'http://www.w3.org/ns/prov#wasDerivedFrom': data.uri,
       })}
-      redirect="show"
     />
   </Create>
 );

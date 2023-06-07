@@ -1,5 +1,7 @@
 import React from 'react';
-import { makeStyles, Box, CircularProgress } from '@material-ui/core';
+import { useShowContext } from "react-admin";
+import { Box, CircularProgress } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   loader: {
@@ -12,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxHeight: 'none',
     margin: '0.5rem',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0
     },
     '@media print': {
@@ -22,14 +24,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const MainImage = ({ record, source, defaultImage, ...rest }) => {
+const MainImage = ({ source, defaultImage, ...rest }) => {
   const classes = useStyles();
+  const { isLoading, record } = useShowContext();
 
-  if (!record[source]) {
-    record[source] = defaultImage;
-  }
+  if (isLoading) return null;
 
-  const image = Array.isArray(record[source]) ? record[source][0] : record[source];
+  let image = record[source] || defaultImage;
+  image = Array.isArray(image) ? image[0] : image;
 
   if (image.rawFile instanceof File) {
     return (

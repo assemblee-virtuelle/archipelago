@@ -1,7 +1,7 @@
 import RoleCreate from './RoleCreate';
 import RoleEdit from './RoleEdit';
 import RoleList from './RoleList';
-import FavoriteBorderIcon from '@material-ui/icons/Class';
+import FavoriteBorderIcon from '@mui/icons-material/Class';
 
 export default {
   config: {

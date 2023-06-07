@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectFilterSidebar from './ProjectFilterSidebar';
-import { Avatar } from '@material-ui/core';
-import SettingsIcon from '@material-ui/icons/Settings';
+import { Avatar } from '@mui/material';
+import SettingsIcon from '@mui/icons-material/Settings';
 import SimpleList from "../../../../common/list/SimpleList";
 import List from "../../../../layout/list/List";
 

@@ -2,7 +2,7 @@ import CreateOrImport from '../../../common/CreateOrImport';
 import SkillEdit from './SkillEdit';
 import SkillList from './SkillList';
 import SkillShow from './SkillShow';
-import PersonIcon from '@material-ui/icons/Person';
+import PersonIcon from '@mui/icons-material/Person';
 
 export default {
   config: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import IdeaFilterSidebar from './IdeaFilterSidebar';
-import { Avatar } from '@material-ui/core';
-import IdeaIcon from '@material-ui/icons/EmojiObjects';
+import { Avatar } from '@mui/material';
+import IdeaIcon from '@mui/icons-material/EmojiObjects';
 import SimpleList from "../../common/list/SimpleList";
 import List from "../../layout/list/List";
 

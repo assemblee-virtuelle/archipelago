@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, UrlField, DateField } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
 import { MarkdownField } from '../../../../common/field';

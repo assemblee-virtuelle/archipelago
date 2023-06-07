@@ -1,11 +1,11 @@
-import { createTheme } from '@material-ui/core';
+import { createTheme } from '@mui/material/styles';
 
 // Allow to use breakpoints
 const defaultTheme = createTheme();
 
 const theme = createTheme({
   palette: {
-    primary: { main: '#28ccfb', contrastText: '#fff' },
+    primary: { main: '#28ccfb', contrastText: '#ffffff' },
     secondary: { main: '#bcef5b' },
     grey: { main: '#e0e0e0' }
   },
@@ -14,65 +14,97 @@ const theme = createTheme({
       fontSize: 8
     }
   },
-  overrides: {
+  components: {
     RaChipField: {
-      chip: {
-        marginLeft: 0,
-        marginTop: 0,
-        marginRight: 8,
-        marginBottom: 8
+      styleOverrides: {
+        chip: {
+          marginLeft: 0,
+          marginTop: 0,
+          marginRight: 8,
+          marginBottom: 8
+        }
       }
     },
     RaShow: {
-      card: {
-        padding: 25,
-        [defaultTheme.breakpoints.down('xs')]: {
-          padding: 15
+      styleOverrides: {
+        card: {
+          padding: 25,
+          [defaultTheme.breakpoints.down('sm')]: {
+            padding: 15
+          }
         }
       }
     },
     RaList: {
-      content: {
-        padding: 25,
-        [defaultTheme.breakpoints.down('xs')]: {
-          padding: 15,
-          paddingTop: 0,
-          marginTop: -8
+      styleOverrides: {
+        content: {
+          padding: 25,
+          [defaultTheme.breakpoints.down('sm')]: {
+            padding: 15,
+            paddingTop: 0,
+            marginTop: -8
+          }
         }
       }
     },
     RaListToolbar: {
-      toolbar: {
-        paddingLeft: '0 !important'
+      styleOverrides: {
+        toolbar: {
+          paddingLeft: '0 !important'
+        }
       }
     },
     RaSingleFieldList: {
-      root: {
-        marginTop: 0,
-        marginBottom: 0
+      styleOverrides: {
+        root: {
+          marginTop: 0,
+          marginBottom: 0
+        }
       }
     },
     RaAutocompleteArrayInput: {
-      chipContainerFilled: {
-        '& .serverName': {
-          display: 'none'
+      styleOverrides: {
+        chipContainerFilled: {
+          '& .serverName': {
+            display: 'none'
+          }
         }
       }
     },
     MuiTab: {
-      labelIcon: {
-        paddingTop: 0
-        // minHeight: 0
+      styleOverrides: {
+        root: {
+          minWidth: 160
+        },
+        labelIcon: {
+          paddingTop: 0
+        }
       }
-      // wrapper: {
-      //   alignItems: null,
-      //   flexDirection: null
-      // }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#efefef',
+        },
+        input: {
+          paddingTop: 12
+        }
+      }
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        inputRoot: {
+          paddingTop: 12,
+          paddingBottom: 5
+        }
+      }
     },
     MuiCard: {
-      root: {
-        '@media print': {
-          boxShadow: 'none !important'
+      styleOverrides: {
+        root: {
+          '@media print': {
+            boxShadow: 'none !important'
+          }
         }
       }
     }

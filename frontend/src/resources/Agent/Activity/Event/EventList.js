@@ -2,8 +2,8 @@ import React from 'react';
 import { MultiViewsList } from '@semapps/list-components';
 import { CalendarList, DaysList } from '@semapps/date-components';
 import frLocale from '@fullcalendar/core/locales/fr';
-import ListIcon from '@material-ui/icons/List';
-import EventIcon from '@material-ui/icons/Event';
+import ListIcon from '@mui/icons-material/List';
+import EventIcon from '@mui/icons-material/Event';
 import EventFilterSidebar from './EventFilterSidebar';
 import List from "../../../../layout/list/List";
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Show } from 'react-admin';
-import PanToolIcon from '@material-ui/icons/PanTool';
+import PanToolIcon from '@mui/icons-material/PanTool';
 import RedirectByType from "../../../common/RedirectByType";
 
 const ActivityRedirect = props => (

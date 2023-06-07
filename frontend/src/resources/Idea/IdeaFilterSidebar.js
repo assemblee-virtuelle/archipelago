@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardContent, makeStyles } from '@material-ui/core';
+import { Card, CardContent } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { ReferenceFilter } from '@semapps/list-components';
 
 const useStyles = makeStyles(theme => ({
@@ -9,7 +10,7 @@ const useStyles = makeStyles(theme => ({
       minWidth: '15em',
       marginLeft: '1em'
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'none'
     }
   },

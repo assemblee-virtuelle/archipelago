@@ -1,6 +1,6 @@
 import React from 'react';
 import { SingleFieldList, ChipField } from 'react-admin';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
 import { ReferenceArrayField } from '@semapps/field-components';
 import DocumentTitle from './DocumentTitle';
 import Show from "../../../layout/show/Show";
@@ -13,7 +13,7 @@ const DocumentShow = props => (
       <Grid item xs={12} sm={9}>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <MainList>
-          <MarkdownField source="pair:description" addLabel={false} />
+          <MarkdownField source="pair:description" label={false} />
         </MainList>
       </Grid>
       <Grid item xs={12} sm={3}>
