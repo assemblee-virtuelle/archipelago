@@ -8,7 +8,7 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import ForumIcon from '@mui/icons-material/Forum';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
-import OrganizationTitle from './OrganizationTitle';
+import Title from "../../../../layout/Title";
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
@@ -45,7 +45,7 @@ const domainMapping = {
 }
 
 const OrganizationShow = props => (
-  <Show title={<OrganizationTitle />} {...props}>
+  <Show title={<Title />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">

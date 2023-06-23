@@ -5,11 +5,11 @@ import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayFie
 import { GridList, ChipList } from '@semapps/list-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import EventTitle from './EventTitle';
+import Title from "../../../../layout/Title";
 import Show from "../../../../layout/show/Show";
 
 const EventShow = props => (
-  <Show title={<EventTitle />} {...props}>
+  <Show title={<Title />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero>

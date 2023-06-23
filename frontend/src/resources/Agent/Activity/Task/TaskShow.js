@@ -3,13 +3,13 @@ import { SingleFieldList, TextField, DateField } from 'react-admin';
 import { Grid } from '@mui/material';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
-import TaskTitle from './TaskTitle';
+import Title from "../../../../layout/Title";
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 
 const TaskShow = props => (
-  <Show title={<TaskTitle />} {...props}>
+  <Show title={<Title />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero>
