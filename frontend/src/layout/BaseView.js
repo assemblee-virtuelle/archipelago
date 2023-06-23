@@ -37,7 +37,8 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       boxShadow: 'none',
     },
-    overflow: 'inherit',
+    overflow: 'hidden',
+    maxWidth: '100vw'
   }
 }));
 

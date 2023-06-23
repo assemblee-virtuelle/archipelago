@@ -10,7 +10,17 @@ const useStyles = makeStyles(theme => ({
   button: {
     color: 'black',
     borderColor: 'black',
+    '& .MuiButton-startIcon': {
+      [theme.breakpoints.down('md')]: {
+        margin: 0
+      }
+    }
   },
+  buttonLabel: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none'
+    }
+  }
 }));
 
 const TypeSelect = (props) => {
@@ -96,7 +106,7 @@ const SearchForm = () => {
             startIcon={<SearchIcon />}
             className={classes.button}
           >
-            Rechercher
+            <span className={classes.buttonLabel}>Rechercher</span>
           </Button>
         </Grid>
       </Grid>

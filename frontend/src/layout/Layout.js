@@ -13,6 +13,11 @@ const useStyles = makeStyles(theme => ({
       paddingBottom: theme.spacing(2),
       [theme.breakpoints.down('sm')]: {
         padding: theme.spacing(2)
+      },
+      maxWidth: '100vw',
+      '& a:not(.MuiListItemButton-root):not(.MuiButtonBase-root)': {
+        overflowWrap: 'break-word',
+        color: theme.palette.primary.main
       }
     }
   }
