@@ -18,7 +18,13 @@ const useStyles = makeStyles(theme => ({
       '& a:not(.MuiListItemButton-root):not(.MuiButtonBase-root)': {
         overflowWrap: 'break-word',
         color: theme.palette.primary.main
-      }
+      },
+      [theme.breakpoints.up('sm')]: {
+        '& > .MuiGrid-container > div': {
+          flexBasis: '100%',
+          maxWidth: '100%'
+        },
+      },
     }
   }
 }));
