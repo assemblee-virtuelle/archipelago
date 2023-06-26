@@ -8,8 +8,8 @@ import SearchForm from './SearchForm';
 const useStyles = makeStyles(theme => ({
   appBar: {
     [theme.breakpoints.down('sm')]: {
-      '& .MuiToolbar-root': {
-        marginLeft: 'auto'
+      '& .MuiToolbar-root a.MuiLink-root': {
+        marginRight: 'auto'
       }
     }
   },

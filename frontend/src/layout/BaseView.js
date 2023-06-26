@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     order: -1,
     '& .MuiToolbar-root': {
       minHeight: 'unset',
-      paddingBottom: 0
+      paddingBottom: 4
     }
   },
   card: {
@@ -40,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     flex: '1 1 auto',
     [theme.breakpoints.down('sm')]: {
       boxShadow: 'none',
+      '& > .MuiBox-root, .MuiCardContent-root': {
+        paddingRight: theme.spacing(1.5),
+        paddingLeft: theme.spacing(1.5)
+      }
     },
     overflow: 'hidden',
     maxWidth: '100vw'
