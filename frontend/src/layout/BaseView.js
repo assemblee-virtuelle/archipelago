@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    paddingTop: 0,
+    paddingTop: 20,
     paddingBottom: 10,
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.8rem',
@@ -26,11 +26,7 @@ const useStyles = makeStyles(theme => ({
       '& .MuiButtonBase-root': {
         padding: 0
       },
-    },
-    order: -1,
-    '& .MuiToolbar-root': {
-      minHeight: 'unset',
-      paddingBottom: 4
+      order: -1
     }
   },
   card: {
