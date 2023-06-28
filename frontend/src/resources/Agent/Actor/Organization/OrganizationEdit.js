@@ -9,11 +9,11 @@ import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
-import OrganizationTitle from './OrganizationTitle';
+import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
 
 export const OrganizationEdit = props => (
-  <Edit title={<OrganizationTitle />} redirect="show" {...props}>
+  <Edit title={<Title />} redirect="show" {...props}>
     <TabbedForm>
       <TabbedForm.Tab label="Données">
         <TextInput source="pair:label" fullWidth />

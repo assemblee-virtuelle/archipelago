@@ -36,8 +36,13 @@ const useStyles = makeStyles(theme => ({
     flex: '1 1 auto',
     [theme.breakpoints.down('sm')]: {
       boxShadow: 'none',
+      '& > .MuiBox-root, .MuiCardContent-root': {
+        paddingRight: theme.spacing(1.5),
+        paddingLeft: theme.spacing(1.5)
+      }
     },
-    overflow: 'inherit',
+    overflow: 'hidden',
+    maxWidth: '100vw'
   }
 }));
 

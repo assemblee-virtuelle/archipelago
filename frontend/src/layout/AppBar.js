@@ -6,6 +6,13 @@ import { UserMenu } from "@semapps/auth-provider";
 import SearchForm from './SearchForm';
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    [theme.breakpoints.down('sm')]: {
+      '& .MuiToolbar-root a.MuiLink-root': {
+        marginRight: 'auto'
+      }
+    }
+  },
   menuButton: {
     [theme.breakpoints.up('sm')]: {
       display: 'none'
@@ -25,7 +32,8 @@ const useStyles = makeStyles(theme => ({
     flex: 2,
     margin: '0 5%',
     [theme.breakpoints.up('md')]: {
-      minWidth: 360
+      minWidth: 360,
+      marginRight: 100
     }
   },
   searchFormWrapper: {
@@ -71,6 +79,7 @@ const AppBar = props => {
   return (
     <RaAppBar
       {...props}
+      className={classes.appBar}
       classes={{ toolbar: classes.toolbar, menuButton: classes.menuButton, ...props.classes }}
       color="primary"
     >
