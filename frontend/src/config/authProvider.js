@@ -1,9 +1,8 @@
-import { authProvider as semappsAuthProvider } from '@semapps/auth-provider';
+import { authProvider } from '@semapps/auth-provider';
 import dataProvider from './dataProvider';
 
-const authProvider = semappsAuthProvider({
+export default authProvider({
   dataProvider,
-  checkPermissions: true
+  authType: 'sso',
+  checkPermissions: true,
 });
-
-export default authProvider;
