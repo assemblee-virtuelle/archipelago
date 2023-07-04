@@ -4,7 +4,6 @@ import PageShow from './resources/Page/PageShow';
 
 const HomePage = () => {
   const config = {
-    basePath: '/Page',
     id: process.env.REACT_APP_MIDDLEWARE_URL + 'pages/accueil',
     resource: 'Page'
   };

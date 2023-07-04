@@ -3,16 +3,16 @@ import { FormTab, TextInput, SelectInput, TabbedForm } from 'react-admin';
 import { ActorsInput, ThemesInput, TasksInput, SkillsInput, DocumentsInput, ActivitiesInput } from '../../../../common/input';
 import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import TaskTitle from './TaskTitle';
+import Title from "../../../../layout/Title";
 import { DateTimeInput } from "../../../../common/input";
 import Edit from "../../../../layout/edit/Edit";
 
 const TaskEdit = props => (
-  <Edit title={<TaskTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<Title />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
-        <MarkdownInput multiline source="pair:description" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:TaskStatus' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>

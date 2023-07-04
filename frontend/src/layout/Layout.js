@@ -1,16 +1,24 @@
 import React, { useMemo } from 'react';
 import { Layout as RaLayout } from 'react-admin';
-import { makeStyles } from '@material-ui/core';
+import makeStyles from '@mui/styles/makeStyles';
 import AppBar from './AppBar';
 import TreeMenu from './TreeMenu/TreeMenu';
 
 const useStyles = makeStyles(theme => ({
-  appFrame: {
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      '& #main-content': {
-        paddingTop: 8,
-        paddingLeft: 5
+  layout: {
+    '& .RaLayout-content': {
+      backgroundColor: '#efefef',
+      paddingTop: theme.spacing(1),
+      paddingRight: theme.spacing(2),
+      paddingBottom: theme.spacing(2),
+      [theme.breakpoints.down('sm')]: {
+        padding: theme.spacing(1),
+        marginBottom: 80,
+      },
+      maxWidth: '100vw',
+      '& a:not(.MuiListItemButton-root):not(.MuiButtonBase-root)': {
+        overflowWrap: 'break-word',
+        color: theme.palette.primary.main
       }
     }
   }
@@ -22,7 +30,7 @@ const Layout = ({ appBar, menu, userMenu, children, labelNbLines, ...otherProps 
   return (
     <RaLayout
       {...otherProps}
-      classes={{ appFrame: classes.appFrame }}
+      className={classes.layout}
       appBar={appBar}
       menu={menu ? menu : LayoutTreeMenu}
     >

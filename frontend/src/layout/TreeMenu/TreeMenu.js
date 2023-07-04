@@ -1,24 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import { useResourceDefinitions, Logout } from 'react-admin';
 import { useLocation } from 'react-router';
-import { useMediaQuery, Box, makeStyles } from '@material-ui/core';
-import { getResources } from 'react-admin';
-import DefaultIcon from '@material-ui/icons/ViewList';
+import { useMediaQuery, Box } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
+import DefaultIcon from '@mui/icons-material/ViewList';
 import SubMenu from './SubMenu';
 import ResourceMenuLink from './ResourceMenuLink';
 
 const useStyles = makeStyles(theme => ({
-  treeMenuOneRowLabel: {
-    '& .MuiMenuItem-root': {
-      display: 'block',
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      maxWidth: 240,
-      '& > .MuiListItemIcon-root': {
-        verticalAlign: 'middle'
-      }
-    }
-  },
   treeMenu: props => ({
     '& .MuiMenuItem-root': {
       whiteSpace: 'normal',
@@ -46,13 +35,14 @@ const useStyles = makeStyles(theme => ({
   })
 }));
 
-const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNbLines = 1 }) => {
-  const isXSmall = useMediaQuery(theme => theme.breakpoints.down('xs'));
+const TreeMenu = ({ onMenuClick, dense = false, openAll = false, labelNbLines = 1 }) => {
+  const isXSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
   const isSmall = useMediaQuery(theme => theme.breakpoints.only('sm'));
   labelNbLines = isSmall ? 1 : labelNbLines;
   const classes = useStyles({ labelNbLines });
-  // const open = useSelector(state => state.admin.ui.sidebarOpen);
-  const resources = useSelector(getResources);
+  // const [open] = useSidebarState();
+    const resourceDefinitions = useResourceDefinitions();
+  const resources = useMemo(() => Object.values(resourceDefinitions), [resourceDefinitions]);
 
   // TODO create a specialized hook, as this is used several times in the layout (which cannot use useResourceDefinition)
   const location = useLocation();
@@ -65,7 +55,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
   };
 
   // Get menu root items
-  const menuRootItems = useMemo(() => resources.filter(r => !r.options.parent), [resources]);
+  const menuRootItems = useMemo(() => resources.filter(r => r.options && !r.options.parent), [resources]);
 
   // Calculate available categories
   const categories = useMemo(() => {
@@ -80,7 +70,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
   useEffect(() => {
     const currentResource = resources.find(resource => resource.name === currentResourceName);
     const currentCategory =
-      currentResource && categories.find(category => category.name === currentResource.options.parent);
+      currentResource && categories.find(category => category.name === currentResource.options?.parent);
     const defaultValues = categories.reduce((acc, category) => {
       acc[category.name] = openAll || (currentCategory && category.name === currentCategory.name);
       return acc;
@@ -89,7 +79,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
   }, [categories, resources, currentResourceName, openAll]);
 
   return (
-    <Box mt={2} className={labelNbLines === 1 ? classes.treeMenuOneRowLabel : classes.treeMenu}>
+    <Box mt={2} className={classes.treeMenu}>
       {menuRootItems.map(menuRootItem => (
         <Box key={menuRootItem.name}>
           {categories.includes(menuRootItem) ? (
@@ -117,7 +107,7 @@ const TreeMenu = ({ onMenuClick, logout, dense = false, openAll = false, labelNb
           )}
         </Box>
       ))}
-      {isXSmall && logout}
+      {isXSmall && <Logout />}
     </Box>
   );
 };

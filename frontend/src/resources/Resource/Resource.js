@@ -1,6 +1,6 @@
 import React from 'react';
 import { Show } from 'react-admin';
-import NaturePeopleIcon from '@material-ui/icons/NaturePeople';
+import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import RedirectByType from "../../common/RedirectByType";
 
 

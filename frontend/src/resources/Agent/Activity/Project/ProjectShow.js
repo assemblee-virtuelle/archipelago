@@ -1,23 +1,23 @@
 import React from 'react';
 import { TextField, UrlField, SimpleList } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import ProjectTitle from './ProjectTitle';
-import DescriptionIcon from '@material-ui/icons/Description';
+import Title from "../../../../layout/Title";
+import DescriptionIcon from '@mui/icons-material/Description';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 
 const ProjectShow = props => (
-  <Show title={<ProjectTitle />} {...props}>
+  <Show title={<Title />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
           <TextField label="Courte description" source="pair:comment" />
           <UrlField label="Site web" source="pair:homePage" />
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>

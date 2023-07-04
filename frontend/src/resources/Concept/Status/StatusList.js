@@ -1,5 +1,5 @@
 import React from 'react';
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import SimpleList from "../../../common/list/SimpleList";
 import List from "../../../layout/list/List";
 

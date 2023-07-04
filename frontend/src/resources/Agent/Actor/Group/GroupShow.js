@@ -1,15 +1,15 @@
 import React from 'react';
 import { TextField } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
-import { ChipList, GridList} from '@semapps/list-components';
-import GroupTitle from './GroupTitle';
+import { ChipList, GridList } from '@semapps/list-components';
+import Title from "../../../../layout/Title";
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 
 const GroupShow = props => (
-  <Show title={<GroupTitle />} {...props}>
+  <Show title={<Title />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -26,10 +26,10 @@ const GroupShow = props => (
               <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ '@type': 'pair:Project' }}>
+          <QuickAppendReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ 'type': 'pair:Project' }}>
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ '@type': 'pair:Event' }}>
+          <QuickAppendReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ 'type': 'pair:Event' }}>
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">

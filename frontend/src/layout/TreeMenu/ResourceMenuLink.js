@@ -1,6 +1,6 @@
 import React from 'react';
 import { MenuItemLink } from 'react-admin';
-import DefaultIcon from '@material-ui/icons/ViewList';
+import DefaultIcon from '@mui/icons-material/ViewList';
 
 const ResourceMenuLink = ({ resource, onClick, open }) => (
   <MenuItemLink

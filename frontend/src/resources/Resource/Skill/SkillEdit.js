@@ -2,11 +2,11 @@ import React from 'react';
 import { FormTab, TextInput, TabbedForm } from 'react-admin';
 import Edit from "../../../layout/edit/Edit";
 import { UsersInput, AgentsInput } from '../../../common/input';
-import SkillTitle from './SkillTitle';
+import Title from "../../../layout/Title";
 
 export const SkillEdit = props => (
-  <Edit title={<SkillTitle />} {...props}>
-    <TabbedForm redirect="show">
+  <Edit title={<Title />} redirect="show" {...props}>
+    <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
       </FormTab>

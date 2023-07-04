@@ -1,10 +1,18 @@
 import React from 'react';
 import { AppBar as RaAppBar, Link } from 'react-admin';
-import { Zoom, Hidden, makeStyles, Typography } from '@material-ui/core';
+import { Zoom, Box, Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import { UserMenu } from "@semapps/auth-provider";
 import SearchForm from './SearchForm';
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    [theme.breakpoints.down('sm')]: {
+      '& .MuiToolbar-root a.MuiLink-root': {
+        marginRight: 'auto'
+      }
+    }
+  },
   menuButton: {
     [theme.breakpoints.up('sm')]: {
       display: 'none'
@@ -24,7 +32,8 @@ const useStyles = makeStyles(theme => ({
     flex: 2,
     margin: '0 5%',
     [theme.breakpoints.up('md')]: {
-      minWidth: 360
+      minWidth: 360,
+      marginRight: 100
     }
   },
   searchFormWrapper: {
@@ -70,6 +79,7 @@ const AppBar = props => {
   return (
     <RaAppBar
       {...props}
+      className={classes.appBar}
       classes={{ toolbar: classes.toolbar, menuButton: classes.menuButton, ...props.classes }}
       color="primary"
     >
@@ -85,13 +95,13 @@ const AppBar = props => {
           </Typography>
         </div>
       </Link>
-      <Hidden only="xs">
+       <Box sx={{ display: { xs: 'none', sm: 'revert' }, width: '100%' }} >
         <div className={classes.searchFormContainer}>
           <div className={classes.searchFormWrapper}>
             <SearchForm />
           </div>
         </div>
-      </Hidden>
+      </Box>
     </RaAppBar>
   );
 };

@@ -1,15 +1,15 @@
 import React from 'react';
 import { SingleFieldList, TextField } from 'react-admin';
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
-import IdeaTitle from './IdeaTitle';
 import { MarkdownField } from '../../common/field';
 import Show from "../../layout/show/Show";
+import Title from '../../layout/Title';
 import { Hero, MainList, SideList } from '../../common/list';
 
 const IdeaShow = props => (
-  <Show title={<IdeaTitle />} {...props}>
+  <Show title={<Title fieldName="pair:label" />} {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -20,12 +20,12 @@ const IdeaShow = props => (
             </SingleFieldList>
           </ReferenceArrayField>
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>
           <ReferenceArrayField reference="Type" source="pair:hasType">
-            <SeparatedListField linkType={false}>
+            <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
           </ReferenceArrayField>

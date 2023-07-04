@@ -2,7 +2,7 @@ import CreateOrImport from '../../common/CreateOrImport';
 import IdeaEdit from './IdeaEdit';
 import IdeaList from './IdeaList';
 import IdeaShow from './IdeaShow';
-import IdeaIcon from '@material-ui/icons/EmojiObjects';
+import IdeaIcon from '@mui/icons-material/EmojiObjects';
 
 export default {
   config: {

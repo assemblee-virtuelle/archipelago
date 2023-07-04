@@ -10,9 +10,7 @@ const EditView = ({ title, actions, children }) => {
   return(
     <BaseView title={title} actions={actions} context={editContext}>
       {React.cloneElement(children, {
-        toolbar: <EditToolbarWithPermissions />,
-        ...editContext,
-        ...children.props
+        toolbar: <EditToolbarWithPermissions />
       })}
     </BaseView>
   )

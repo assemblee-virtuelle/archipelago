@@ -1,6 +1,6 @@
 import React from 'react';
-import { CreateButton, ExportButton, useResourceDefinition, TopToolbar, usePermissionsOptimized } from 'react-admin';
-import { useMediaQuery } from '@material-ui/core';
+import { CreateButton, ExportButton, useResourceDefinition, TopToolbar, usePermissions, useResourceContext } from 'react-admin';
+import { useMediaQuery } from '@mui/material';
 import { useCreateContainer } from "@semapps/semantic-data-provider";
 import { ViewsButtons } from "@semapps/list-components";
 import { PermissionsButton } from "@semapps/auth-provider";
@@ -8,52 +8,49 @@ import { PermissionsButton } from "@semapps/auth-provider";
 // Custom ListActions which include the PermissionButton and ViewsButtons
 const ListActionsWithViewsAndPermissions = ({
   bulkActions,
-  basePath,
-  currentSort,
+  sort,
   displayedFilters,
   exporter,
   filters,
   filterValues,
   onUnselectItems,
-  resource,
   selectedIds,
   showFilter,
   total,
   ...rest
 }) => {
-  const xs = useMediaQuery(theme => theme.breakpoints.down('xs'));
+  const resource = useResourceContext();
+  const xs = useMediaQuery(theme => theme.breakpoints.down('sm'));
   const resourceDefinition = useResourceDefinition(rest);
   const createContainerUri = useCreateContainer(resource);
-  const { permissions } = usePermissionsOptimized(createContainerUri);
+  const { permissions } = usePermissions(createContainerUri);
   return (
     <TopToolbar>
       <ViewsButtons />
       {filters &&
         React.cloneElement(filters, {
-          resource,
           showFilter,
           displayedFilters,
           filterValues,
           context: 'button'
         })}
-      {resourceDefinition.hasCreate && permissions && permissions.some(p => ['acl:Append', 'acl:Write', 'acl:Control'].includes(p['acl:mode'])) && <CreateButton basePath={basePath} />}
+      {resourceDefinition.hasCreate && permissions && permissions.some(p => ['acl:Append', 'acl:Write', 'acl:Control'].includes(p['acl:mode'])) && 
+        <CreateButton 
+      />}
       {permissions && permissions.some(p => ['acl:Control'].includes(p['acl:mode'])) && (
-        <PermissionsButton basePath={basePath} record={createContainerUri} />
+        <PermissionsButton isContainer />
       )}
       {!xs && exporter !== false && (
         <ExportButton
           disabled={total === 0}
-          resource={resource}
-          sort={currentSort}
+          sort={sort}
           filter={filterValues}
           exporter={exporter}
         />
       )}
       {bulkActions &&
         React.cloneElement(bulkActions, {
-          basePath,
           filterValues,
-          resource,
           selectedIds,
           onUnselectItems
         })}

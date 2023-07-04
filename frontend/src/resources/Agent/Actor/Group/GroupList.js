@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar } from '@material-ui/core';
-import GroupIcon from '@material-ui/icons/Group';
+import { Avatar } from '@mui/material';
+import GroupIcon from '@mui/icons-material/Group';
 import List from "../../../../layout/list/List";
 import SimpleList from "../../../../common/list/SimpleList";
 

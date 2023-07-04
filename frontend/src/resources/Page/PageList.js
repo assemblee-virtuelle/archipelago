@@ -1,6 +1,6 @@
 import React from 'react';
-import { Avatar } from '@material-ui/core';
-import DescriptionIcon from '@material-ui/icons/Description';
+import { Avatar } from '@mui/material';
+import DescriptionIcon from '@mui/icons-material/Description';
 import SimpleList from "../../common/list/SimpleList";
 import List from "../../layout/list/List";
 

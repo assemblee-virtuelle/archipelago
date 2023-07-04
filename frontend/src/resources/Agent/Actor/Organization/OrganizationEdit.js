@@ -1,28 +1,24 @@
 import React from 'react';
 import {
   TextInput,
-  ImageInput,
-  AutocompleteInput,
   SelectInput,
   TabbedForm,
-  FormTab
+  ImageField
 } from 'react-admin';
-import { ReificationArrayInput } from '@semapps/semantic-data-provider';
-import { ImageField } from '@semapps/field-components';
-import { ReferenceInput } from '@semapps/input-components';
+import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
-import OrganizationTitle from './OrganizationTitle';
+import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
 
 export const OrganizationEdit = props => (
-  <Edit title={<OrganizationTitle />} {...props}>
-    <TabbedForm redirect="show">
-      <FormTab label="Données">
+  <Edit title={<Title />} redirect="show" {...props}>
+    <TabbedForm>
+      <TabbedForm.Tab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />
-        <MarkdownInput multiline source="pair:description" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:AgentStatus' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
@@ -35,8 +31,8 @@ export const OrganizationEdit = props => (
         <ImageInput source="image" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
-      </FormTab>
-      <FormTab label="Membres">
+      </TabbedForm.Tab>
+      {/* <TabbedForm.Tab label="Membres">
         <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
           <ReferenceInput reference="Person" source="pair:membershipActor">
           <AutocompleteInput optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
@@ -47,13 +43,13 @@ export const OrganizationEdit = props => (
             <SelectInput optionText="pair:label" />
           </ReferenceInput>
         </ReificationArrayInput>
-      </FormTab>
-      <FormTab label="Relations">
+      </TabbedForm.Tab> */}
+      <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
         <ThemesInput source="pair:hasTopic" />
         <DocumentsInput source="pair:documentedBy" />
-      </FormTab>
+      </TabbedForm.Tab>
     </TabbedForm>
   </Edit>
 );

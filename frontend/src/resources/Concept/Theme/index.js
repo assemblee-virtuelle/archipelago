@@ -2,7 +2,7 @@ import ThemeCreate from "./ThemeCreate";
 import ThemeEdit from './ThemeEdit';
 import ThemeList from './ThemeList';
 import ThemeShow from './ThemeShow';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 export default {
   config: {

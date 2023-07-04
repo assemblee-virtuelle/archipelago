@@ -3,15 +3,15 @@ import { SimpleForm, TextInput, SelectInput } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ReferenceInput } from '@semapps/input-components';
 import { ActorsInput, ActivitiesInput } from '../../common/input';
-import IdeaTitle from './IdeaTitle';
+import Title from "../../layout/Title";
 import Edit from "../../layout/edit/Edit";
 
 const IdeaEdit = props => (
-  <Edit title={<IdeaTitle />} {...props}>
-    <SimpleForm redirect="show">
+  <Edit title={<Title />} redirect="show" {...props}>
+    <SimpleForm>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
-      <MarkdownInput multiline source="pair:description" fullWidth />
+      <MarkdownInput source="pair:description" fullWidth />
       <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:IdeaStatus' }}>
         <SelectInput optionText="pair:label" />
       </ReferenceInput>
