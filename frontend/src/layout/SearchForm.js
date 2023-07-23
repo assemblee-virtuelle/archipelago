@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { useResourceDefinitions } from 'react-admin';
 import { Grid, Select, MenuItem, TextField, Button } from '@mui/material';
+import { alpha } from '@mui/material/styles';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
 import makeStyles from '@mui/styles/makeStyles';
@@ -8,18 +9,24 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    color: 'black',
-    borderColor: 'black',
+    color: theme.palette.primary.contrastText,
+    borderColor: alpha(theme.palette.common.black, 0.42),
     '& .MuiButton-startIcon': {
       [theme.breakpoints.down('md')]: {
         margin: 0
       }
+    },
+    '&:hover': {
+      borderColor: alpha(theme.palette.common.black, 0.8),
     }
   },
   buttonLabel: {
     [theme.breakpoints.down('md')]: {
       display: 'none'
     }
+  },
+  field: {
+    color: theme.palette.primary.contrastText
   }
 }));
 
@@ -82,6 +89,7 @@ const SearchForm = () => {
             placeholder="Rechercher..."
             fullWidth
             className={classes.field}
+            InputProps={{className: classes.field }}
           />
         </Grid>
         <Grid item xs={5}>
@@ -96,7 +104,7 @@ const SearchForm = () => {
                 fullWidth
                 className={classes.field}
               />
-          )} 
+          )}
           />
         </Grid>
         <Grid item xs={2}>
