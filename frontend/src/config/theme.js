@@ -7,7 +7,10 @@ const theme = createTheme({
   palette: {
     primary: { main: '#28ccfb', contrastText: '#ffffff' },
     secondary: { main: '#bcef5b' },
-    grey: { main: '#e0e0e0' }
+    grey: { main: '#e0e0e0' },
+    background: {
+      default: '#efefef',
+    }
   },
   typography: {
     details: {
@@ -70,6 +73,15 @@ const theme = createTheme({
           }
         }
       }
+    },
+    RaMenuItemLink: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&.RaMenuItemLink-active': {
+              borderLeft: `3px solid ${theme.palette.primary.main}`,
+          },
+        }),
+      },
     },
     MuiTab: {
       styleOverrides: {
