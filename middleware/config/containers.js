@@ -31,7 +31,8 @@ module.exports = [
   {
     path: '/events',
     preferredView: '/Event',
-    acceptedTypes: ['pair:Event']
+    acceptedTypes: ['pair:Event'],
+    dereference: ['pair:hasLocation/pair:hasPostalAddress']
   },
   {
     path: '/tasks',

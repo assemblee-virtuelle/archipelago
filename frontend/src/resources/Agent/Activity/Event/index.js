@@ -33,6 +33,7 @@ export default {
         'pair:description': 'Description',
         'pair:comment': 'Courte description',
         'pair:aboutPage': 'Site web',
+        'pair:hasLocation': 'Lieu',
         'pair:startDate': 'Date de début',
         'pair:endDate': 'Date de fin',
         'pair:involves': 'Implique',
