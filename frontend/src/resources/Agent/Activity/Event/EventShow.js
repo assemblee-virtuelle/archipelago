@@ -3,6 +3,7 @@ import { TextField, UrlField, DateField } from 'react-admin';
 import { Grid } from '@mui/material';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
+import { MapField } from '@semapps/geo-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Title from "../../../../layout/Title";
@@ -17,6 +18,12 @@ const EventShow = props => (
           <DateField source="pair:startDate" showTime />
           <DateField source="pair:endDate" showTime />
           <UrlField source="pair:aboutPage" />
+          <MapField
+            source="pair:hasLocation"
+            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+          />
         </Hero>
         <MainList>
           <MarkdownField source="pair:description" />
