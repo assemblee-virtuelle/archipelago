@@ -2,13 +2,11 @@ import React from 'react';
 import { MenuItemLink } from 'react-admin';
 import DefaultIcon from '@mui/icons-material/ViewList';
 
-const ResourceMenuLink = ({ resource, onClick, open }) => (
+const ResourceMenuLink = ({ resource }) => (
   <MenuItemLink
     to={`/${resource.name}`}
-    primaryText={(resource.options && resource.options.label) || resource.name}
+    primaryText={resource.options?.label || resource.name}
     leftIcon={resource.icon ? <resource.icon /> : <DefaultIcon />}
-    onClick={onClick}
-    sidebarIsOpen={open}
   />
 );
 

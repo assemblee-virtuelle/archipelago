@@ -1,10 +1,10 @@
 import React from 'react';
-import { List, MenuItem, ListItemIcon, Typography, Collapse, Tooltip } from '@mui/material';
+import { MenuItemLink, useSidebarState } from 'react-admin';
+import { MenuList, Collapse, Tooltip } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
-  icon: { minWidth: theme.spacing(5) },
   sidebarIsOpen: {
     '& a': {
       paddingLeft: theme.spacing(4),
@@ -19,16 +19,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SubMenu = ({ handleToggle, sidebarIsOpen, isOpen, name, icon, children, dense }) => {
+const SubMenu = ({ handleToggle, isOpen, name, icon, children }) => {
   const classes = useStyles();
+  const [sidebarIsOpen, setSidebarIsOpen] = useSidebarState();
 
   const header = (
-    <MenuItem dense={dense} onClick={handleToggle}>
-      <ListItemIcon className={classes.icon}>{isOpen ? <ExpandMore /> : icon}</ListItemIcon>
-      <Typography variant="inherit" color="textSecondary">
-        {name}
-      </Typography>
-    </MenuItem>
+    <MenuItemLink
+      to={`/${name}`}
+      primaryText={name}
+      leftIcon={isOpen ? <ExpandMore /> : icon}
+      onClick={(e) => {
+        e.preventDefault();
+        setSidebarIsOpen(true);
+        handleToggle();
+      }}
+    />
   );
 
   return (
@@ -41,14 +46,13 @@ const SubMenu = ({ handleToggle, sidebarIsOpen, isOpen, name, icon, children, de
         </Tooltip>
       )}
       <Collapse in={isOpen} timeout="auto" unmountOnExit>
-        <List
-          dense={dense}
+        <MenuList
           component="div"
           disablePadding
           className={sidebarIsOpen ? classes.sidebarIsOpen : classes.sidebarIsClosed}
         >
           {children}
-        </List>
+        </MenuList>
       </Collapse>
     </>
   );

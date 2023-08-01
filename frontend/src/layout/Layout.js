@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Layout as RaLayout } from 'react-admin';
 import makeStyles from '@mui/styles/makeStyles';
 import AppBar from './AppBar';
@@ -7,7 +7,7 @@ import TreeMenu from './TreeMenu/TreeMenu';
 const useStyles = makeStyles(theme => ({
   layout: {
     '& .RaLayout-content': {
-      backgroundColor: '#efefef',
+      backgroundColor: theme.palette.background.default,
       paddingTop: theme.spacing(1),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(2),
@@ -24,23 +24,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Layout = ({ appBar, menu, userMenu, children, labelNbLines, ...otherProps }) => {
+const Layout = ({ appBar, menu, children, ...otherProps }) => {
   const classes = useStyles();
-  const LayoutTreeMenu = useMemo(() => props => <TreeMenu {...props} labelNbLines={labelNbLines} />, [labelNbLines]);
   return (
     <RaLayout
       {...otherProps}
       className={classes.layout}
-      appBar={appBar}
-      menu={menu ? menu : LayoutTreeMenu}
+      appBar={AppBar}
+      menu={TreeMenu}
     >
       {children}
     </RaLayout>
   );
-};
-
-Layout.defaultProps = {
-  appBar: AppBar
 };
 
 export default Layout;
