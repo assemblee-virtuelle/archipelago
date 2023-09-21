@@ -6,15 +6,8 @@ module.exports = [
     path: '/'
   },
   {
-    path: '/organizations',
-    acceptedTypes: ['pair:Organization'],
-    preferredView: '/Organization',
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
-    disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }]
-  },
-  {
     path: '/membership-associations',
-    acceptedTypes: ['pair:MembershipAssociation']
+    acceptedTypes: ['pair:MembershipAssociation'],
   },
   {
     path: '/groups',
