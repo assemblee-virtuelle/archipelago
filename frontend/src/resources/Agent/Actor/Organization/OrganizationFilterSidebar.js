@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { ReferenceFilter } from '@semapps/list-components';
+import ReferenceFilterTree from '../../../../common/ReferenceFilterTree';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -32,10 +33,13 @@ const ProjectFilterSidebar = () => {
           filter={{ a: 'pair:OrganizationType' }}
           sort={{ field: 'pair:label', order: 'DESC' }}
         />
-        <ReferenceFilter
+        <ReferenceFilterTree
           reference="Theme"
+          title="Thèmes"
+          broader="pair:broader"
           source="pair:hasTopic"
-          inverseSource="pair:topicOf"
+          label="pair:label"
+          predicate="http://virtual-assembly.org/ontologies/pair#hasTopic"
           limit={100}
           sort={{ field: 'pair:label', order: 'DESC' }}
         />

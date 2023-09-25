@@ -2,8 +2,9 @@
   "name": "archipelago-frontend",
   "version": "1.0.0",
   "dependencies": {
-    "@mui/styles": "^5.0.2",
     "@fullcalendar/core": "^5.7.2",
+    "@mui/lab": "^5.0.0-alpha.145",
+    "@mui/styles": "^5.0.2",
     "@semapps/auth-provider": "0.5.0",
     "@semapps/date-components": "0.5.0",
     "@semapps/field-components": "0.5.0",
