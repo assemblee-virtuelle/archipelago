@@ -11,8 +11,6 @@ import clsx from 'clsx';
 import Typography from '@mui/material/Typography';
 
 /**
- * Warning: We use the multiSelect TreeView props to work around the system's limitations.
- * It's used to simulate deselection because it's not possible in single selection.
  *
  * @example
  * const FilterAside = () => (
@@ -160,6 +158,10 @@ const ReferenceFilterTree = ({ reference, source, broader, label, limit, sort, f
     allItems = allItems.concat(data[item]);
   }
 
+  /*
+  * We utilize the `onNodeSelect` function to mimic a click on a single node.
+  * If the node is already selected, we render an empty array (`[]`), and we retain only the last selected node using `[0]`.
+  */
   const handleSelect = (event, nodes) => {
     let effectiveSelection;
     if (nodes[0] === selected) {
@@ -188,6 +190,9 @@ const ReferenceFilterTree = ({ reference, source, broader, label, limit, sort, f
         </div>
       </div>
       <TreeView
+       /* Warning: We use the multiSelect TreeView props to work around the system's limitations.
+        It's used to simulate deselection because it's not possible in single selection.
+        Like this we can trigger the handler */
         multiSelect
         selected={treeViewSelection}
         onNodeSelect={handleSelect}

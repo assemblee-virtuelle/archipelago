@@ -1,7 +1,7 @@
-import React, { useState  } from 'react';
+import React, { useState } from 'react';
 import { AutocompleteArrayInput, useGetList, useInput } from "react-admin";
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/system'; // Import styled from '@mui/system'
 import EditIcon from '@mui/icons-material/Edit';
 import { TreeView } from '@mui/x-tree-view';
 import { generateTreeItem, buildTreeData } from './TreeItemUtils';
@@ -21,66 +21,78 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 *   </ReferenceArrayInput>
 */
 
-const useStyles = makeStyles(theme => ({
-    editIcon: { 
-        backgroundColor:"#026a63", 
-        borderRadius: "25%", 
-        color: "white",
-        height: "25px"
-    },
-    TreeStyle: {
-        paddingLeft: "15px"
-    }
-}));
+const StyledEditIcon = styled(EditIcon)({
+  backgroundColor: "#026a63",
+  borderRadius: "25%",
+  color: "white",
+  height: "25px"
+});
+
+const StyledTree = styled(TreeView)({
+  paddingLeft: "15px"
+});
+
+const useStyles = {
+  root: {
+    display: "flex",
+    alignItems: "top",
+    width: "100%", // Set a default width
+  },
+  inputContainer: {
+    flexGrow: 1
+  },
+  iconContainer: {
+    paddingTop: "16px",
+    paddingLeft: "10px"
+  }
+};
 
 const TreeAutocompleteArrayInput = (props) => {
-    const style = useStyles();
-    const {field} = useInput({source:props.source});
+  const { field } = useInput({ source: props.source });
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-    const  {data, isLoading}  = useGetList(props.treeReference, {pagination:{ page: 1, perPage: Infinity }});
-    if (isLoading) return null;
+  const { data, isLoading } = useGetList(props.treeReference, { pagination: { page: 1, perPage: Infinity } });
+  if (isLoading) return null;
 
-    const isFullWidth = props.fullWidth === true;
-    
-    const handleSelect = (event, nodes) => {
-        if (field.value === undefined) {
-            field.onChange([nodes.id]);
-        } else if (!field.value.includes(nodes.id)){
-            const newVal = [...(field.value), nodes.id]
-            field.onChange(newVal)
-        }
-        handleClose();
-    };
+  const isFullWidth = props.fullWidth === true;
 
-    const treeData = buildTreeData( data, props.parentProperty, props.defaultExpanded);
-    return (
-        <div style={{display: "flex", alignItems: "top", width: isFullWidth ? "100%" : ""}}>
-            <div style={{flexGrow: isFullWidth ? 1 : 0}}>
-                <AutocompleteArrayInput fullWidth {...props} />
-            </div>
-            <div style={{paddingTop: "16px", paddingLeft: "10px"}}>
-                <EditIcon className={style.editIcon} onClick={handleOpen} />
-            </div>           
-            <Dialog fullWidth open={open} onClose={handleClose}>
-                <DialogTitle >Choix du {props.treeReference}</DialogTitle>
-                <TreeView 
-                    defaultExpanded={treeData.expendedNodes}
-                    defaultCollapseIcon={<ExpandMoreIcon />}
-                    defaultExpandIcon={<ChevronRightIcon />}
-                    className={style.TreeStyle}
-                >
-                    {generateTreeItem(props.parentProperty, props.optionText, treeData.allItems, treeData.routeTree.reverse(), false, [], handleSelect)}
-                </TreeView >
-                <DialogActions >
-                    <Button label="ra.action.close" variant="text" onClick={handleClose} />
-                </DialogActions>
-            </Dialog>
-        </div>
-    )
+  const handleSelect = (event, nodes) => {
+    if (field.value === undefined) {
+      field.onChange([nodes.id]);
+    } else if (!field.value.includes(nodes.id)) {
+      const newVal = [...field.value, nodes.id];
+      field.onChange(newVal);
+    }
+    handleClose();
+  };
+
+  const treeData = buildTreeData(data, props.parentProperty, props.defaultExpanded);
+  return (
+    <div style={useStyles.root}>
+      <div style={useStyles.inputContainer}>
+        <AutocompleteArrayInput fullWidth {...props} />
+      </div>
+      <div style={useStyles.iconContainer}>
+        <StyledEditIcon onClick={handleOpen} />
+      </div>
+      <Dialog fullWidth open={open} onClose={handleClose}>
+        <DialogTitle>Choix du {props.treeReference}</DialogTitle>
+        <StyledTree
+          defaultExpanded={treeData.expendedNodes}
+          defaultCollapseIcon={<ExpandMoreIcon />}
+          defaultExpandIcon={<ChevronRightIcon />}
+        >
+          {generateTreeItem(props.parentProperty, props.optionText, treeData.allItems, treeData.routeTree.reverse(), false, [], handleSelect)}
+        </StyledTree>
+        <DialogActions>
+          <Button label="ra.action.close" variant="text" onClick={handleClose} />
+        </DialogActions>
+      </Dialog>
+    </div>
+  )
 }
 
 export default TreeAutocompleteArrayInput;

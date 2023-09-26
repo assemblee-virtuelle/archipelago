@@ -8,7 +8,7 @@ import {
 import { ReferenceInput, ImageInput, ReferenceArrayInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
-import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
+import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
 import TreeAutocompleteArrayInput from '../../../../common/input/TreeComponent/TreeAutocompleteArrayInput';

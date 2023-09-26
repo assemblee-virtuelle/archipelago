@@ -2,7 +2,7 @@ import React, { useState  } from 'react';
 import { AutocompleteInput, useGetList, useInput } from "react-admin";
 import Button from '@mui/material/Button';
 import { TreeView } from '@mui/x-tree-view';
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/system'; // Import styled from '@mui/system'
 import { Dialog, DialogTitle, DialogActions } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { generateTreeItem, buildTreeData } from './TreeItemUtils';
@@ -23,20 +23,32 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 *   </ReferenceArrayInput>
 */
 
-const useStyles = makeStyles(theme => ({
-    editIcon: { 
-        backgroundColor:"#026a63", 
-        borderRadius: "25%", 
-        color: "white",
-        height: "25px"
+const StyledEditIcon = styled(EditIcon)({ // Use styled() to create a styled component
+  backgroundColor: "#026a63",
+  borderRadius: "25%",
+  color: "white",
+  height: "25px"
+});
+
+const StyledTree = styled(TreeView)({
+  paddingLeft: "15px"
+});
+
+const useStyles = {
+    root: {
+      display: "flex",
+      alignItems: "top"
     },
-    treeStyle: {
-        paddingLeft: "15px"
+    inputContainer: {
+      flexGrow: 1
     },
-}));
+    iconContainer: {
+      paddingTop: "20px",
+      paddingLeft: "10px"
+    }
+  };
 
 const TreeAutocompleteInput = (props) => {
-    const style = useStyles();
     const {field} = useInput({source:"pair:broader"});
 
     const [open, setOpen] = useState(false);
@@ -60,18 +72,18 @@ const TreeAutocompleteInput = (props) => {
                 <AutocompleteInput {...props} />
             </div>
             <div style={{paddingTop: "20px", paddingLeft: "10px"}}>
-                <EditIcon className={style.editIcon} onClick={handleOpen} />
+                <StyledEditIcon className={useStyles.editIcon} onClick={handleOpen} />
             </div>
             <Dialog fullWidth open={open} onClose={handleClose}>
                 <DialogTitle >Choix du {props.treeReference} </DialogTitle>
-                <TreeView 
+                <StyledTree 
                     defaultExpanded={treeData.expendedNodes}
                     defaultCollapseIcon={<ExpandMoreIcon />}
                     defaultExpandIcon={<ChevronRightIcon />}
-                    className={style.treeStyle}
+                    className={useStyles.treeStyle}
                 >
                     {generateTreeItem(props.parentProperty, props.optionText, treeData.allItems, treeData.routeTree, false, [], handleSelect)}
-                </TreeView >
+                </StyledTree >
                 <DialogActions >
                     <Button label="ra.action.close" variant="text" onClick={handleClose} />
                 </DialogActions>
