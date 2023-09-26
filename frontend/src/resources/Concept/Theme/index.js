@@ -1,4 +1,4 @@
-import ThemeCreate from "./ThemeCreate";
+import ThemeCreate from './ThemeCreate';
 import ThemeEdit from './ThemeEdit';
 import ThemeList from './ThemeList';
 import ThemeShow from './ThemeShow';
@@ -19,7 +19,8 @@ export default {
   dataModel: {
     types: ['pair:Theme'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'

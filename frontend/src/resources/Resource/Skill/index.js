@@ -19,7 +19,8 @@ export default {
   dataModel: {
     types: ['pair:Skill'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'

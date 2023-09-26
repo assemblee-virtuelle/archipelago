@@ -17,7 +17,8 @@ export default {
   dataModel: {
     types: ['pair:MembershipRole'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'

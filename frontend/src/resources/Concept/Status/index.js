@@ -26,7 +26,8 @@ export default {
       'pair:TaskStatus'
     ],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'
