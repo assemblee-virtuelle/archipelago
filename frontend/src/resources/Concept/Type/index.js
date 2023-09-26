@@ -34,7 +34,8 @@ export default {
       'pair:TaskType'
     ],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'
