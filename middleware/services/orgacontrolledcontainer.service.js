@@ -3,7 +3,7 @@ const { ControlledContainerMixin, DisassemblyMixin } = require('@semapps/ldp');
 
 module.exports = {
   name: 'users',
-  mixins: [ControlledContainerMixin],
+  mixins: [ControlledContainerMixin, DisassemblyMixin],
   settings: {
         path: '/organizations',
         acceptedTypes: ['pair:Organization'],
