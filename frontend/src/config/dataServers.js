@@ -22,6 +22,16 @@ const dataServers = {
       }
     },
     externalLinks: false // Colibris doesn't have a public frontend
+  },
+  dp:{
+    name: "Data-Players",
+    baseUrl: "https://data.archipelago.data-players.com/",
+    sparqlEndpoint: 'https://data.archipelago.data-players.com/sparql',
+    containers: {
+      dp: {
+        'pair:Organization': ['/organizations'],
+      }
+    }
   }
 };
 

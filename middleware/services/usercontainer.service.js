@@ -8,17 +8,16 @@ module.exports = {
   name: 'users',
   mixins: [ControlledContainerMixin, DisassemblyMixin],
   settings: {
-        path: '/organizations',
-        acceptedTypes: ['pair:Organization'],
-        preferredView: '/Organization',
-        dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
-        disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }]
-    },
+    path: '/users',
+    preferredView: '/Person',
+    acceptedTypes: ['pair:Person'],
+    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
+    disassembly: [{ path: 'pair:actorOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }],
+  },
   actions: {},
   hooks: {
     after: {
         "get": async (ctx, res) => {
-            console.log(ctx.params)
             let ldpNavigator=new LDPNavigator();
             let headers = {
               'accept': 'application/ld+json',
@@ -35,12 +34,13 @@ module.exports = {
             //context have to be replce because jsonld librairy don't support url with localhost
             res['@context']=defaultContext['@context'];
             await ldpNavigator.init(res);
-            res= await ldpNavigator.dereference(res,container.ldpDereferencePlan);
+            res= await ldpNavigator.dereference(res, [{p:'pair:actorOfMembership' }]);
+            console.log("tata")
             //frame have to be because ldp-navigator return '@id' instead 'id' in dereferenced data
             res = await jsonld.frame(res,{'@context':res['@context'],'id':ctx.params.resourceUri});
             res['@context']=oldContext;
 
-          return res;
+            return res;
         }
 
     }

@@ -33,12 +33,6 @@ module.exports = [
     acceptedTypes: ['pair:Task']
   },
   {
-    path: '/users',
-    preferredView: '/Person',
-    acceptedTypes: ['pair:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
-  },
-  {
     path: '/bots',
     acceptedTypes: [ACTOR_TYPES.APPLICATION],
     dereference: ['sec:publicKey'],

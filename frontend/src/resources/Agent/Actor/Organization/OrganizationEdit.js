@@ -35,14 +35,20 @@ export const OrganizationEdit = props => (
         </ImageInput>
       </TabbedForm.Tab>
       <TabbedForm.Tab label="Membres">
-        <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
+        <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation"  >
           <ReferenceInput reference="Person" source="pair:membershipActor">
-          <AutocompleteInput optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
-          shouldRenderSuggestions={value => value && value.length > 1}
+          <AutocompleteInput label="Membre" optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
+            size='small'
+            sx={{
+              mt: 1,
+              mb: '4px',
+              minWidth: 300,
+            }}
+            shouldRenderSuggestions={value => value && value.length > 1}
           />
           </ReferenceInput>
           <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
-            <SelectInput optionText="pair:label" />
+            <SelectInput label="Rôle" optionText="pair:label" />
           </ReferenceInput>
         </ReificationArrayInput>
       </TabbedForm.Tab>

@@ -36,7 +36,8 @@ export default {
         'pair:affiliatedBy': 'Membre de',
         'pair:offers': 'A pour compétences',
         'pair:hasTopic': 'A pour intérêt',
-        'pair:hasLocation': 'Adresse'
+        'pair:hasLocation': 'Adresse',
+         'pair:actorOfMembership': 'A pour rôles'
       }
     }
   }

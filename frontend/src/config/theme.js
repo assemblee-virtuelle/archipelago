@@ -98,9 +98,9 @@ const theme = createTheme({
         root: {
           backgroundColor: '#efefef',
         },
-        input: {
-          paddingTop: 12
-        }
+        // input: {
+        //   paddingTop: 12
+        // }
       }
     },
     MuiAutocomplete: {
