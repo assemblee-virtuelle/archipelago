@@ -54,7 +54,6 @@ export const OrganizationEdit = props => (
             parentProperty="pair:broader"
             treeReference="Theme"
             source="pair:hasTopic"
-            // shouldRenderSuggestions={value => false} 
             defaultExpanded={true}
             fullWidth
           />

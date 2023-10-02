@@ -32,21 +32,6 @@ const StyledTree = styled(TreeView)({
   paddingLeft: "15px"
 });
 
-const useStyles = {
-  root: {
-    display: "flex",
-    alignItems: "top",
-    width: "100%", // Set a default width
-  },
-  inputContainer: {
-    flexGrow: 1
-  },
-  iconContainer: {
-    paddingTop: "16px",
-    paddingLeft: "10px"
-  }
-};
-
 const TreeAutocompleteArrayInput = (props) => {
   const { field } = useInput({ source: props.source });
 
@@ -71,11 +56,11 @@ const TreeAutocompleteArrayInput = (props) => {
 
   const treeData = buildTreeData(data, props.parentProperty, props.defaultExpanded);
   return (
-    <div style={useStyles.root}>
-      <div style={useStyles.inputContainer}>
+    <div style={{display: "flex", alignItems: "top", width: isFullWidth ? "100%" : ""}}>
+      <div style={{ flexGrow: 1 }}>
         <AutocompleteArrayInput fullWidth {...props} />
       </div>
-      <div style={useStyles.iconContainer}>
+      <div style={{ paddingLeft: "15px", paddingTop: "14px" }}>
         <StyledEditIcon onClick={handleOpen} />
       </div>
       <Dialog fullWidth open={open} onClose={handleClose}>

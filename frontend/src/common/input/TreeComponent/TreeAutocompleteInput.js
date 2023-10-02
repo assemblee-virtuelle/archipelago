@@ -34,20 +34,6 @@ const StyledTree = styled(TreeView)({
   paddingLeft: "15px"
 });
 
-const useStyles = {
-    root: {
-      display: "flex",
-      alignItems: "top"
-    },
-    inputContainer: {
-      flexGrow: 1
-    },
-    iconContainer: {
-      paddingTop: "20px",
-      paddingLeft: "10px"
-    }
-  };
-
 const TreeAutocompleteInput = (props) => {
     const {field} = useInput({source:"pair:broader"});
 
@@ -72,7 +58,7 @@ const TreeAutocompleteInput = (props) => {
                 <AutocompleteInput {...props} />
             </div>
             <div style={{paddingTop: "20px", paddingLeft: "10px"}}>
-                <StyledEditIcon className={useStyles.editIcon} onClick={handleOpen} />
+                <StyledEditIcon onClick={handleOpen} />
             </div>
             <Dialog fullWidth open={open} onClose={handleClose}>
                 <DialogTitle >Choix du {props.treeReference} </DialogTitle>
@@ -80,7 +66,6 @@ const TreeAutocompleteInput = (props) => {
                     defaultExpanded={treeData.expendedNodes}
                     defaultCollapseIcon={<ExpandMoreIcon />}
                     defaultExpandIcon={<ChevronRightIcon />}
-                    className={useStyles.treeStyle}
                 >
                     {generateTreeItem(props.parentProperty, props.optionText, treeData.allItems, treeData.routeTree, false, [], handleSelect)}
                 </StyledTree >

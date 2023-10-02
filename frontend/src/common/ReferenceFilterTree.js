@@ -35,7 +35,6 @@ function generateFilterTree(broader, label, allItems, routeTree, parentId) {
   const listToUse = isParentLevel ? routeTree : allItems.filter(({ [broader]: itemSource }) => itemSource === parentId);
   return (
     listToUse.map((route) =>
-    <div>
       <CustomTreeItem
         route={route}
         label={<div
@@ -53,7 +52,6 @@ function generateFilterTree(broader, label, allItems, routeTree, parentId) {
         selected={true} >
           {generateFilterTree(broader, label, allItems, [], route["id"])}
       </CustomTreeItem>
-    </div>
     )
   )
 }
@@ -159,7 +157,7 @@ const ReferenceFilterTree = ({ reference, source, broader, label, limit, sort, f
   }
 
   /*
-  * We utilize the `onNodeSelect` function to mimic a click on a single node.
+  * We use the `onNodeSelect` function to mimic a click on a single node.
   * If the node is already selected, we render an empty array (`[]`), and we retain only the last selected node using `[0]`.
   */
   const handleSelect = (event, nodes) => {
