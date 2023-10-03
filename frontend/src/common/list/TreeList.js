@@ -12,7 +12,7 @@ const TreeList =({source, label, reference , defaultExpanded = true}) => {
   if (isLoading) return null;
   
   const handleSelect = (event, nodes) => {
-    redirect(reference+encodeURIComponent(nodes.id));
+    redirect('/'+reference+'/'+encodeURIComponent(nodes.id));
   }
 
   const treeListData = buildTreeData(data, source, defaultExpanded)
