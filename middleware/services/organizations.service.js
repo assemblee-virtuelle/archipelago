@@ -1,4 +1,3 @@
-// Votre fichier principal
 const CONFIG = require('../config/config');
 const { ControlledContainerMixin, DisassemblyMixin } = require('@semapps/ldp');
 const { LDPNavigator, FetchAdapter } = require('fix-esm').require('ldp-navigator');

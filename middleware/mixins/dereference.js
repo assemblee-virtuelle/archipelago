@@ -11,6 +11,7 @@ module.exports = {
       },
     methods: {
         async handleAfterGet(ctx, res) {    
+            const dereferencePlan = this.settings.dereferencePlan || [];
             const headers = {
                 'accept': 'application/ld+json',
             };
@@ -30,7 +31,7 @@ module.exports = {
             // The context needs to be replaced because the jsonld library does not support URLs with localhost
             res['@context'] = defaultContext['@context'];
             await ldpNavigator.init(res);
-            res = await ldpNavigator.dereference(res, [{ p: 'pair:organizationOfMembership' }]);
+            res = await ldpNavigator.dereference(res, dereferencePlan);
             // Framing is necessary because ldp-navigator returns '@id' instead of 'id' in dereferenced data
             res = await jsonld.frame(res, { '@context': res['@context'], 'id': ctx.params.resourceUri });
             res['@context'] = oldContext;

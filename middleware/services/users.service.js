@@ -13,5 +13,6 @@ module.exports = {
     preferredView: '/Person',
     acceptedTypes: ['pair:Person'],
     disassembly: [{ path: 'pair:actorOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }],
+    dereferencePlan: [{ p: 'pair:actorOfMembership' }],
   },
 }
