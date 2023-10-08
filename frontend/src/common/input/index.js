@@ -12,9 +12,9 @@ export const OrganizationsInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
-export const ActorsInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Actor" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
+export const ActorsInput = ({ source, ...props }) => (
+  <ReferenceArrayInput reference="Actor" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth size="small" {...props} />
   </ReferenceArrayInput>
 );
 
@@ -54,10 +54,10 @@ export const SkillsInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
-export const ThemesInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Theme" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+export const ThemesInput = ({ source, ...props }) => (
+  <ReferenceArrayInput reference="Theme" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
     <AutocompleteArrayInput
-      optionText="pair:label" 
+      optionText="pair:label"
       create={
         <LexiconCreateDialog
           fetchLexicon={fetchWikidata()}
@@ -68,6 +68,8 @@ export const ThemesInput = ({ label, source }) => (
           })}
       />}
       fullWidth
+      size="small"
+      {...props}
     />
   </ReferenceArrayInput>
 );

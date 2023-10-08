@@ -1,5 +1,5 @@
-import CreateOrImport from '../../../../common/CreateOrImport';
 import EventEdit from './EventEdit';
+import EventCreate from './EventCreate';
 import EventList from './EventList';
 import EventShow from './EventShow';
 import EventIcon from '@mui/icons-material/Event';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: EventList,
     show: EventShow,
-    create: CreateOrImport,
+    create: EventCreate,
     edit: EventEdit,
     icon: EventIcon,
     options: {
@@ -30,7 +30,7 @@ export default {
     fr: {
       name: 'Evénement |||| Evénements',
       fields: {
-        'pair:label': 'Titre',
+        'pair:label': 'Nom',
         'pair:description': 'Description',
         'pair:comment': 'Courte description',
         'pair:aboutPage': 'Site web',

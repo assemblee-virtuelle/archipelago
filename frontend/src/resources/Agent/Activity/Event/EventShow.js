@@ -12,7 +12,7 @@ const EventShow = props => (
   <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
-        <Hero>
+        <Hero image="image">
           <TextField source="pair:comment" />
           <DateField source="pair:startDate" showTime />
           <DateField source="pair:endDate" showTime />
