@@ -13,19 +13,16 @@ module.exports = [
     path: '/groups',
     preferredView: '/Group',
     acceptedTypes: ['pair:Group', 'og:Circle'],
-    // dereference: ['sec:publicKey']
   },
   {
     path: '/projects',
     preferredView: '/Project',
     acceptedTypes: ['pair:Project', 'og:Circle'],
-    // dereference: ['sec:publicKey']
   },
   {
     path: '/events',
     preferredView: '/Event',
     acceptedTypes: ['pair:Event'],
-    // dereference: ['pair:hasLocation/pair:hasPostalAddress']
   },
   {
     path: '/tasks',
@@ -35,7 +32,6 @@ module.exports = [
   {
     path: '/bots',
     acceptedTypes: [ACTOR_TYPES.APPLICATION],
-    // dereference: ['sec:publicKey'],
     excludeFromMirror: true
   },
   {
