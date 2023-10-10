@@ -3,11 +3,10 @@ import { SimpleForm, TextInput, ImageField } from 'react-admin';
 import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { UsersInput, EventsInput, ThemesInput, DocumentsInput } from '../../../../common/input';
-import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
 
 export const GroupEdit = props => (
-  <Edit title={<Title />} redirect="show" {...props}>
+  <Edit redirect="show" {...props}>
     <SimpleForm>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />

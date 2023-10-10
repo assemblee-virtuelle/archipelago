@@ -3,13 +3,11 @@ import { ImageField, TabbedForm, TextInput, FormTab, AutocompleteInput, SelectIn
 import { ReferenceInput } from '@semapps/input-components';
 import { ImageInput } from '@semapps/input-components';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
-import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
 import ReificationArrayInput from '../../../../common/input/ReificationArrayInput';
 
 export const PersonEdit = props => (
   <Edit
-    title={<Title />}
     redirect="show"
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}

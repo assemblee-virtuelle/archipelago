@@ -5,9 +5,6 @@ import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   title: {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
     paddingTop: 20,
     paddingBottom: 10,
     [theme.breakpoints.down('sm')]: {
@@ -19,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   actions: {
     [theme.breakpoints.down('sm')]: {
       '& .MuiToolbar-root': {
-        backgroundColor: '#efefef',
+        backgroundColor: theme.palette.background.default,
         minHeight: 0,
         paddingTop: 0
       },
@@ -35,14 +32,11 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     flex: '1 1 auto',
     [theme.breakpoints.down('sm')]: {
-      boxShadow: 'none',
       '& > .MuiBox-root, .MuiCardContent-root': {
         paddingRight: theme.spacing(1.5),
         paddingLeft: theme.spacing(1.5)
       }
     },
-    overflow: 'hidden',
-    maxWidth: '100vw'
   }
 }));
 
@@ -50,16 +44,16 @@ const BaseView = ({ title, actions, aside, context, children }) => {
   const classes = useStyles();
   return(
     <Grid container>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={8}>
         <Typography variant="h4" color="primary" component="h1" className={classes.title}>
-          {title || context.defaultTitle}
+          {title ?? context.defaultTitle}
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={6} className={classes.actions}>
+      <Grid item xs={12} sm={4} className={classes.actions}>
         {actions}
       </Grid>
       <Grid item xs={12}>
-        <Box display="flex">
+        <Box sx={{ display: 'flex' }}>
           <Card className={classes.card}>
             {children}
           </Card>
