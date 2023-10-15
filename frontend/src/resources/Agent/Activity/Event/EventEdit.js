@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 import Edit from "../../../../layout/edit/Edit";
-import Title from "../../../../layout/Title";
-import EventForm from './EventForm';
+import EventForm from "./EventForm";
+import { SimpleForm } from "react-admin";
 
-const EventEdit = props => (
+const EventEdit = (props) => (
   <Edit redirect="show" {...props}>
-    <EventForm />
+    <SimpleForm spacing={2} useFlexGap>
+      <EventForm />
+    </SimpleForm>
   </Edit>
 );
 
