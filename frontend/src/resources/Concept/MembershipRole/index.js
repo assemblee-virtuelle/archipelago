@@ -12,7 +12,8 @@ export default {
     options: {
       label: 'Rôle',
       parent: 'Concept'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:MembershipRole'],

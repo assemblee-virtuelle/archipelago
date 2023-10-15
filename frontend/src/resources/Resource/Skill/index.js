@@ -14,7 +14,8 @@ export default {
     options: {
       label: 'Compétences',
       parent: 'Resource'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Skill'],

@@ -1,18 +1,17 @@
 import React from 'react';
-import { useResourceContext, useShowContext } from 'react-admin';
+import { useGetRecordRepresentation, useResourceContext, useShowContext } from 'react-admin';
 import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import { useDataModel } from '@semapps/semantic-data-provider';
 import BaseView from "../BaseView";
 
 const ShowView = ({ title, actions, children }) => {
   const showContext = useShowContext();
   useCheckPermissions(showContext?.record?.id, 'show');
 
-  const resource = useResourceContext({});
-  const dataModel = useDataModel(resource);
+  const resource = useResourceContext();
+  const getRecordRepresentation = useGetRecordRepresentation(resource);
 
-  const recordTitle = showContext?.record?.[dataModel?.fieldsMapping?.title] || '';
+  const recordTitle = getRecordRepresentation(showContext?.record);
 
   return(
     <BaseView title={title || recordTitle} actions={actions} context={showContext}>

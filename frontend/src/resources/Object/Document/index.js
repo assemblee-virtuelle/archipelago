@@ -13,7 +13,8 @@ export default {
     icon: DescriptionIcon,
     options: {
       label: 'Documents'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Document'],
