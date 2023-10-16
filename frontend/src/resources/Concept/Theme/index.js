@@ -14,7 +14,8 @@ export default {
     options: {
       label: 'Thèmes',
       parent: 'Concept'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Theme'],

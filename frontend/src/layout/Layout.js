@@ -7,15 +7,12 @@ import TreeMenu from './TreeMenu/TreeMenu';
 const useStyles = makeStyles(theme => ({
   layout: {
     '& .RaLayout-content': {
-      backgroundColor: theme.palette.background.default,
       paddingTop: theme.spacing(1),
       paddingRight: theme.spacing(2),
       paddingBottom: theme.spacing(2),
       [theme.breakpoints.down('sm')]: {
         padding: theme.spacing(1),
-        marginBottom: 80,
       },
-      maxWidth: '100vw',
       '& a:not(.MuiListItemButton-root):not(.MuiButtonBase-root)': {
         overflowWrap: 'break-word',
         color: theme.palette.primary.main

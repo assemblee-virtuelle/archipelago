@@ -12,7 +12,8 @@ export default {
     options: {
       label: 'Statuts',
       parent: 'Concept'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: [

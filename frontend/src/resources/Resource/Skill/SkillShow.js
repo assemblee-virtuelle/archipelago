@@ -2,12 +2,11 @@ import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
-import Title from "../../../layout/Title";
 import Show from "../../../layout/show/Show";
 import { SideList } from '../../../common/list';
 
 const SkillShow = props => (
-  <Show title={<Title />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />

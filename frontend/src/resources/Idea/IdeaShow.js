@@ -5,11 +5,10 @@ import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@
 import { GridList } from '@semapps/list-components';
 import { MarkdownField } from '../../common/field';
 import Show from "../../layout/show/Show";
-import Title from '../../layout/Title';
 import { Hero, MainList, SideList } from '../../common/list';
 
 const IdeaShow = props => (
-  <Show title={<Title fieldName="pair:label" />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">

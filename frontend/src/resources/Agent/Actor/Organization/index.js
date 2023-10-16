@@ -14,7 +14,8 @@ export default {
     options: {
       label: 'Organisations',
       parent: 'Actor'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Organization'],

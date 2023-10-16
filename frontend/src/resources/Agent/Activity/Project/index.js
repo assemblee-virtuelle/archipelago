@@ -14,7 +14,8 @@ export default {
     options: {
       label: 'Projets',
       parent: 'Activity'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Project'],
