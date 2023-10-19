@@ -57,28 +57,33 @@ yarn start
 
 ## Linking to SemApps packages
 
-To modify packages on the [SemApps repository](https://github.com/assemblee-virtuelle/semapps) and see the changes before they are published, we recommend to use [`yarn link`](https://classic.yarnpkg.com/en/docs/cli/link/).
+To modify packages on the [SemApps repository](https://github.com/assemblee-virtuelle/semapps) and see the changes before they are published on NPM, see the following instructions.
 
-### Linking middleware packages
+### Linking backend packages
+
+To link backend packages, you can use [`yarn link`](https://classic.yarnpkg.com/en/docs/cli/link/).
 
 ```bash
 cd /SEMAPPS_REPO/src/middleware
 yarn run link-all
-cd /ARCHIPELAGO_REPO/middleware
+cd /ARCHIPELAGO_REPO
 yarn run link-semapps-packages
 ```
 
 ### Linking frontend packages
 
+Linking frontend packages with `yarn link` doesn't work because it causes version mismatch errors for React and MUI (see [this PR](https://github.com/assemblee-virtuelle/semapps/pull/1180) for explainations). So you should use [Yalc](https://github.com/wclr/yalc) instead. Fortunately, we make it easy for you.
+
 ```bash
 cd /SEMAPPS_REPO/src/frontend
-yarn run link-all
+yarn run yalc:publish
 cd /ARCHIPELAGO_REPO/frontend
 yarn run link-semapps-packages
 ```
 
-Additionally, frontend packages need to be rebuilt, or your changes will not be taken into account by Archipelago. 
-You can use `yarn run build` to build a package once, or `yarn run dev` to rebuild a package on every change.
+Additionally, frontend packages need to be rebuilt on every changes, or they will not be taken into account by Archipelago. You can use `yarn run build` to build a package once, or `yarn run watch` to rebuild a package on every change. On every build, the new package will be published to Yalc.
+
+Thanks to git hooks, the frontend packages will also be published to Yalc whenever git branches are changed.
 
 
 ## Deploying to production
