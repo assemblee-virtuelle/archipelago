@@ -3,15 +3,15 @@ import {
   TextInput,
   SelectInput,
   TabbedForm,
-  ImageField
+  ImageField,
 } from 'react-admin';
-import { ReferenceInput, ImageInput, ReferenceArrayInput } from '@semapps/input-components';
+import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
-import TreeAutocompleteArrayInput from '../../../../common/input/TreeComponent/TreeAutocompleteArrayInput';
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeselectArrayInput';
 
 export const OrganizationEdit = props => (
   <Edit title={<Title />} redirect="show" {...props}>
@@ -48,17 +48,8 @@ export const OrganizationEdit = props => (
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
-        <ReferenceArrayInput label="Thèmes" reference="Theme" source="pair:hasTopic" >
-          <TreeAutocompleteArrayInput
-            optionText="pair:label"
-            parentProperty="pair:broader"
-            treeReference="Theme"
-            source="pair:hasTopic"
-            defaultExpanded={true}
-            fullWidth
-          />
-        </ReferenceArrayInput>        
-        <DocumentsInput source="pair:documentedBy" />
+        <DocumentsInput source="pair:documentedBy" />   
+        <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="Thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>

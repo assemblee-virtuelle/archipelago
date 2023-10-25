@@ -1,11 +1,10 @@
 import React from 'react';
-import { FormTab, TabbedForm, TextInput, useGetList, choices, useGetRecordId } from 'react-admin';
+import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { AgentsInput } from '../../../common/input';
 import Edit from "../../../layout/edit/Edit";
 import Title from "../../../layout/Title";
-import { ReferenceInput } from '@semapps/input-components';
-import TreeAutocompleteInput from '../../../common/input/TreeComponent/TreeAutocompleteInput';
+import CustomTreeSelectInput from '../../../common/input/TreeComponent/CustomTreeSelectInput';
 
 export const ThemeEdit = props => {
   const recordId = useGetRecordId();
@@ -24,7 +23,7 @@ export const ThemeEdit = props => {
         </FormTab>
         <FormTab label="Relations">
           <AgentsInput source="pair:topicOf" />
-          <ReferenceInput label="Thème Parent" reference="Theme" source="pair:broader" >
+          {/* <ReferenceInput label="Thème Parent" reference="Theme" source="pair:broader" >
               <TreeAutocompleteInput 
                 label="Thème parent"
                 optionText="pair:label" 
@@ -35,7 +34,8 @@ export const ThemeEdit = props => {
                 defaultExpanded={true}
                 validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
               />
-            </ReferenceInput>
+            </ReferenceInput> */}
+            <CustomTreeSelectInput label="Thème Parent" source="pair:broader" reference="Theme" broader="pair:broader" fullWidth />
         </FormTab>
       </TabbedForm>
     </Edit>

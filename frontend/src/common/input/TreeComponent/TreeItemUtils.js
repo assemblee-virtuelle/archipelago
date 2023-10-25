@@ -24,18 +24,83 @@ const generateTreeItem = (parentProperty, optionText, allItems, routeTree, paren
     )
 }
 
-const buildTreeData = (data, source, defaultExpanded) => {
-    let routeTree = [], allItems = [], expendedNodes = [];
+const buildTreeData = (data, source) => {
+    let routeTree = [], allItems = [];
     for (const item in data) {
-        if (defaultExpanded) {
-            expendedNodes.push(data[item].id);
-        }
+  
         if (data[item][source] === undefined ) {
             routeTree.push(data[item]);
         }
         allItems = allItems.concat(data[item]);
     }
-    return {routeTree, allItems, expendedNodes};
+    return {routeTree, allItems};
 }
 
-export { generateTreeItem, buildTreeData } 
+const getTreeData = (data, parentProperty, parentId, dejavueItem) => {
+    const { routeTree, allItems } = buildTreeData (data, parentProperty)
+    
+    const isParentLevel = !parentId;
+    const listToUse = isParentLevel
+        ? routeTree
+        : allItems.filter(({ [parentProperty]: itemParentProperty }) => itemParentProperty === parentId);
+
+    const result = listToUse.map((item) => {
+        const test = dejavueItem.includes(item.id);
+        if (!test) {
+            dejavueItem.push(item.id);
+
+            const children = getTreeData(data, parentProperty, item.id, dejavueItem);
+
+            const newItem = {
+                id: item.id,
+                name: item["pair:label"],
+            };
+
+            if (children.length > 0) {
+                newItem.children = children;
+            }
+
+            return newItem;
+        }
+
+        return null; // Skip already processed items
+    });
+
+    return result.filter((item) => item !== null);
+};
+
+class Node {
+    constructor(data, parent) {
+      this.name = data.name;
+      this.id = data.id;
+      this.parent = parent;
+      this.children = data.children?.map((child) => new Node(child, this));
+    }
+
+    getParent() {
+      if (this.parent) {
+        return this.parent;
+      } else {
+        return null;
+      }
+    }
+  
+    getChildren() {
+      return this.children;
+    }
+  
+    isBranch() {
+      return this.children && this.children.length > 0;
+    }
+  
+    isEqual(to) {
+      return to && this.id === to.id;
+    }
+  
+    toString() {
+      return this.name;
+    }
+  }
+
+
+export { generateTreeItem, buildTreeData, getTreeData, Node } 
