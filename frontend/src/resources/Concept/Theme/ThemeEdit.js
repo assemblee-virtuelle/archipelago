@@ -23,18 +23,6 @@ export const ThemeEdit = props => {
         </FormTab>
         <FormTab label="Relations">
           <AgentsInput source="pair:topicOf" />
-          {/* <ReferenceInput label="Thème Parent" reference="Theme" source="pair:broader" >
-              <TreeAutocompleteInput 
-                label="Thème parent"
-                optionText="pair:label" 
-                treeReference="Theme" 
-                parentProperty="pair:broader" 
-                resettable={true} 
-                // shouldRenderSuggestions={value => false} 
-                defaultExpanded={true}
-                validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
-              />
-            </ReferenceInput> */}
             <CustomTreeSelectInput 
               label="Thème Parent" 
               source="pair:broader" 

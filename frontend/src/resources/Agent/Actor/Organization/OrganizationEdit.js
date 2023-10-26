@@ -11,7 +11,7 @@ import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
-import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeselectArrayInput';
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 
 export const OrganizationEdit = props => (
   <Edit title={<Title />} redirect="show" {...props}>

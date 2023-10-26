@@ -1,5 +1,5 @@
 import React from 'react';
-import { useRedirect, useListContext } from "react-admin";
+import { useRedirect, useListContext, useCreatePath } from "react-admin";
 import { TreeView } from '@mui/x-tree-view';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRight';
@@ -8,11 +8,12 @@ import { buildTreeData, generateTreeItem } from '../input/TreeComponent/TreeItem
 
 const TreeList =({source, label, reference , defaultExpanded = true}) => {
   const redirect = useRedirect()
+  const createPath = useCreatePath();
   const { data, isLoading } = useListContext();
   if (isLoading) return null;
 
-  const handleSelect = (event, nodes) => {
-    redirect('/'+reference+'/'+encodeURIComponent(nodes.id));
+  const handleSelect = (event, node) => {
+    redirect(createPath({resource: 'Theme',type: 'show',id: node.id}));
   }
 
   const treeListData = buildTreeData(data, source, defaultExpanded)
