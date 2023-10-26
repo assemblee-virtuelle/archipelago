@@ -10,20 +10,19 @@ const TreeList =({source, label, reference , defaultExpanded = true}) => {
   const redirect = useRedirect()
   const { data, isLoading } = useListContext();
   if (isLoading) return null;
-  
+
   const handleSelect = (event, nodes) => {
     redirect('/'+reference+'/'+encodeURIComponent(nodes.id));
   }
 
   const treeListData = buildTreeData(data, source, defaultExpanded)
-
   return (
     <TreeView
       defaultCollapseIcon={<SubdirectoryArrowRightIcon />}
       defaultExpandIcon={<ArrowForwardIcon />}
       defaultExpanded={treeListData.expendedNodes}
     >
-        {generateTreeItem(source, label, treeListData.allItems, treeListData.routeTree, false, [], handleSelect)}
+        {generateTreeItem(source, label, treeListData.allItems, treeListData.roots, false, [], handleSelect)}
     </TreeView>
   )
 }

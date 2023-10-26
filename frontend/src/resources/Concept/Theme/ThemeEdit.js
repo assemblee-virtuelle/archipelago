@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId } from 'react-admin';
+import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId, choices } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { AgentsInput } from '../../../common/input';
 import Edit from "../../../layout/edit/Edit";
@@ -13,7 +13,7 @@ export const ThemeEdit = props => {
   if (isLoading) return null;
 
   const validateIds = data.filter((theme => theme.id !== recordId)).map(theme => theme.id);
-
+  
   return (
     <Edit title={<Title />} redirect="show" {...props}>
       <TabbedForm>
@@ -35,7 +35,13 @@ export const ThemeEdit = props => {
                 validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
               />
             </ReferenceInput> */}
-            <CustomTreeSelectInput label="Thème Parent" source="pair:broader" reference="Theme" broader="pair:broader" fullWidth />
+            <CustomTreeSelectInput 
+              label="Thème Parent" 
+              source="pair:broader" 
+              reference="Theme" 
+              broader="pair:broader" 
+              validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
+              fullWidth />
         </FormTab>
       </TabbedForm>
     </Edit>

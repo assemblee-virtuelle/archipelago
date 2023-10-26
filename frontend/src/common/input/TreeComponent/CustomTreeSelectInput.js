@@ -3,7 +3,6 @@ import TreeSelect, {  DefaultOption, getDefaultOptionProps } from "mui-tree-sele
 import { getTreeData, Node } from "./TreeItemUtils";
 import { useGetList, useInput } from "react-admin";
 import { TextField } from "@mui/material";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 const findNode = (id, roots) => {
   for (let root of roots) {
@@ -20,8 +19,6 @@ const findNode = (id, roots) => {
 const CustomTreeSelect = (props) => {
   const {
     field,
-    fieldState: { isTouched, invalid, error },
-    formState: { isSubmitted }
   } = useInput(props);
 
   const [selected, setSelected] = useState(null);
@@ -29,36 +26,35 @@ const CustomTreeSelect = (props) => {
 
   let nodes = [];
   if (!isLoading) {
-    nodes = getTreeData(data, props.broader, null, []).map((item) => new Node(item));
+      nodes = getTreeData(data, props.broader).map((item) => {
+        return new Node(item);
+      })
   }
 
   useEffect(() => {
     const finded = findNode(field.value, nodes);
     setSelected(finded);
-  }, [field.value, isLoading]);
+  }, [field.value, isLoading, nodes]);
 
-  const handleIconClick = (node, e) => {
-    setSelected(node);
+  const handleIconClick = (event, node) => {
     const selectedId = node ? node.id : null;
     field.onChange(selectedId);
+    event.stopPropagation();
   };
 
-  const handleChange = (event, value) => {
-    setSelected(value);
-    const selectedId = value ? value.id : null;
+  const handleChange = (event, node) => {
+    const selectedId = node ? node.id : null;
     field.onChange(selectedId);
   };
 
   return (
     <TreeSelect
-      fullWidth={props.fullWidth}
-      getChildren={(node) => (node ? node.getChildren() : nodes)}
+      disableCloseOnSelect
+      getChildren={(node) => (node ? node.getChildren(nodes) : nodes.filter(node => node.parent === undefined))}
       getParent={(node) => {
-        if (node.getParent) {
-          return node.getParent();
-        } else {
-          return null;
-        }
+          if (node.getParent) {
+              return node.getParent(nodes);
+          } else { return null; }
       }}
       isBranch={(node) => (node ? node.isBranch() : true)}
       value={selected}
@@ -68,29 +64,28 @@ const CustomTreeSelect = (props) => {
           {...props}
           {...field}
           label={props.label}
-          fullWidth
         />
       }
       renderOption={(...args) => (
         <DefaultOption
-          
           {...((props, node) => {
-            var _a, _b;
             return {
               ...props,
               ListItemTextProps: {
                 ...props.ListItemTextProps,
-                primary: (
+                primary: node.children ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: "20px"}}>
-                    <span >{node.name}</span>
-                    <AddCircleOutlineIcon onClick={(e) => handleIconClick(node, e)} />
+                    <div onClick={(e) => handleIconClick(e, node)} style={{width:"100%"}}>
+                      <span >{node.name}</span>
+                    </div>
                   </div>
-                ),
+                ) : <span >{node.name}</span>,
               },
             };
           })(getDefaultOptionProps(...args), args[1])}
         />
       )}
+      {...props}
     />
   );
 };

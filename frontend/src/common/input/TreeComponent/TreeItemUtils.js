@@ -1,92 +1,74 @@
 import React from "react";
 import { TreeItem } from '@mui/x-tree-view';
 
-const generateTreeItem = (parentProperty, optionText, allItems, routeTree, parentId, dejavueItem, onLabelClick) => {
+const generateTreeItem = (parentProperty, optionText, allItems, root, parentId, dejavueItem, onLabelClick) => {
     const isParentLevel = !parentId;
-    const listToUse = isParentLevel ? routeTree : allItems.filter(({ [parentProperty]: itemParentProperty }) => itemParentProperty === parentId);
+    const listToUse = isParentLevel ? root : allItems.filter(({ [parentProperty]: itemParentProperty }) => itemParentProperty === parentId);
 
     return (
-        listToUse.map((route) => {
-            const test = dejavueItem.filter(item => item === route.id)
+        listToUse.map((root) => {
+            const test = dejavueItem.filter(item => item === root.id)
             if (test.length < 1) {
-                dejavueItem.push(route.id)
+                dejavueItem.push(root.id)
                 return (
                     <TreeItem 
-                        nodeId={route["id"]} 
-                        label={<div onClick={e => onLabelClick(e, route )}>{route[optionText]}</div>} 
-                        key={route["id"]}
+                        nodeId={root["id"]} 
+                        label={<div onClick={e => onLabelClick(e, root )}>{root[optionText]}</div>} 
+                        key={root["id"]}
                     >
-                        {generateTreeItem(parentProperty, optionText, allItems, [], route["id"], [...dejavueItem], onLabelClick)}
+                        {generateTreeItem(parentProperty, optionText, allItems, [], root["id"], [...dejavueItem], onLabelClick)}
                     </TreeItem>
                 )
             }
+            return null;
         })
     )
 }
 
 const buildTreeData = (data, source) => {
-    let routeTree = [], allItems = [];
-    for (const item in data) {
-  
-        if (data[item][source] === undefined ) {
-            routeTree.push(data[item]);
-        }
-        allItems = allItems.concat(data[item]);
-    }
-    return {routeTree, allItems};
+  let roots = [], allItems = [];
+  for (const item in data) {
+
+      if (data[item][source] === undefined ) {
+        roots.push(data[item]);
+      }
+      allItems = allItems.concat(data[item]);
+  }
+  return {roots, allItems};
 }
 
-const getTreeData = (data, parentProperty, parentId, dejavueItem) => {
-    const { routeTree, allItems } = buildTreeData (data, parentProperty)
-    
-    const isParentLevel = !parentId;
-    const listToUse = isParentLevel
-        ? routeTree
-        : allItems.filter(({ [parentProperty]: itemParentProperty }) => itemParentProperty === parentId);
+const getTreeData = (data, parentProperty) => {
+    let dejavueItem = [];
+    const out = [];
 
-    const result = listToUse.map((item) => {
-        const test = dejavueItem.includes(item.id);
-        if (!test) {
-            dejavueItem.push(item.id);
-
-            const children = getTreeData(data, parentProperty, item.id, dejavueItem);
-
-            const newItem = {
-                id: item.id,
-                name: item["pair:label"],
-            };
-
-            if (children.length > 0) {
-                newItem.children = children;
-            }
-
-            return newItem;
-        }
-
-        return null; // Skip already processed items
-    });
-
-    return result.filter((item) => item !== null);
+    for (let item of data) {
+      let children = data.filter(candidate => candidate[parentProperty] === item.id);
+      children = children.filter(child => !dejavueItem.includes(child.id))
+      const parent = item[parentProperty];
+      dejavueItem = dejavueItem.concat(children.map(child => child.id));
+      out.push({...item, children, parent});
+    }
+    return out;
 };
 
 class Node {
-    constructor(data, parent) {
-      this.name = data.name;
+    constructor(data) {
+      this.name = data["pair:label"];
       this.id = data.id;
-      this.parent = parent;
-      this.children = data.children?.map((child) => new Node(child, this));
+      this.parent = data.parent;
+      this.children = data.children;
     }
 
-    getParent() {
+    getParent(nodes) {
       if (this.parent) {
-        return this.parent;
+        return nodes.findLast(n => n.id === this.parent);
       } else {
         return null;
       }
     }
   
-    getChildren() {
-      return this.children;
+    getChildren(nodes) {
+      return nodes.filter(n => n.parent === this.id);
     }
   
     isBranch() {
