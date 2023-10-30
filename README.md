@@ -85,6 +85,41 @@ Additionally, frontend packages need to be rebuilt on every changes, or they wil
 
 Thanks to git hooks, the frontend packages will also be published to Yalc whenever git branches are changed.
 
+## Run database migrations
+
+You can use `dbMigrate` script to create database migrations and/or runs them.
+Migrations files are created by default in `middleware/migrations` folder.
+
+```bash
+cd middleware
+yarn run dbMigrate
+
+# To create a new migration file
+yarn run dbMigrate create --name archipelago-changeResourceAttribute
+
+# To list all migrations
+yarn run dbMigrate status
+
+# To apply next not applied migration
+yarn run dbMigration up
+
+# To apply a given migration
+yarn run dbMigration up --name archipelago-changeResourceAttribute
+
+# To apply all not applied migrations
+yarn run dbMigration up --latest
+
+# To rollback previous applied migration
+yarn run dbMigration down
+
+# To rollback a migration
+yarn run dbMigration down --name archipelago-changeResourceAttribute
+
+# To rollback all applied migrations
+yarn run dbMigration down --earliest
+```
+
+You can also call dbMigration actions from REPL middleware with `call dbMigration.status` for example.
 
 ## Deploying to production
 
