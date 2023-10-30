@@ -49,7 +49,7 @@ export const OrganizationEdit = props => (
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
         <DocumentsInput source="pair:documentedBy" />   
-        <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="Thème" broader="pair:broader" fullWidth />
+        <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>

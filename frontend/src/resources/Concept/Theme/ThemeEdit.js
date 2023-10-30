@@ -23,13 +23,14 @@ export const ThemeEdit = props => {
         </FormTab>
         <FormTab label="Relations">
           <AgentsInput source="pair:topicOf" />
-            <CustomTreeSelectInput 
-              label="Thème Parent" 
-              source="pair:broader" 
-              reference="Theme" 
-              broader="pair:broader" 
-              validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
-              fullWidth />
+          <CustomTreeSelectInput 
+            label="Thème Parent" 
+            source="pair:broader" 
+            reference="Theme" 
+            broader="pair:broader" 
+            validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
+            fullWidth 
+          />
         </FormTab>
       </TabbedForm>
     </Edit>

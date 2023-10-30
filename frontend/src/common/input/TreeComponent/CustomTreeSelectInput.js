@@ -10,7 +10,9 @@ const findNode = (id, roots) => {
       return root;
     } else if (root.children?.length > 0) {
       const finded = findNode(id, root.children);
-      if (finded) return finded;
+      if (finded) {
+        return new Node(finded);
+      }
     }
   }
   return undefined;
@@ -59,13 +61,16 @@ const CustomTreeSelect = (props) => {
       isBranch={(node) => (node ? node.isBranch() : true)}
       value={selected}
       onChange={handleChange}
-      renderInput={(props) =>
-        <TextField
-          {...props}
-          {...field}
-          label={props.label}
-        />
-      }
+      renderInput={(params) => {
+        return (
+          <TextField
+            {...params}
+            {...field}
+            label={props.label}
+            helperText="Choisissez un thème qui sera le parent de celui-ci dans l'arborescence."
+          />
+        )
+      }}
       renderOption={(...args) => (
         <DefaultOption
           {...((props, node) => {
