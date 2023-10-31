@@ -6,33 +6,23 @@ module.exports = [
     path: '/'
   },
   {
-    path: '/organizations',
-    acceptedTypes: ['pair:Organization'],
-    preferredView: '/Organization',
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress'],
-    disassembly: [{ path: 'pair:organizationOfMembership', container: CONFIG.HOME_URL + 'membership-associations' }]
-  },
-  {
     path: '/membership-associations',
-    acceptedTypes: ['pair:MembershipAssociation']
+    acceptedTypes: ['pair:MembershipAssociation'],
   },
   {
     path: '/groups',
     preferredView: '/Group',
     acceptedTypes: ['pair:Group', 'og:Circle'],
-    dereference: ['sec:publicKey']
   },
   {
     path: '/projects',
     preferredView: '/Project',
     acceptedTypes: ['pair:Project', 'og:Circle'],
-    dereference: ['sec:publicKey']
   },
   {
     path: '/events',
     preferredView: '/Event',
     acceptedTypes: ['pair:Event'],
-    dereference: ['pair:hasLocation/pair:hasPostalAddress']
   },
   {
     path: '/tasks',
@@ -40,15 +30,8 @@ module.exports = [
     acceptedTypes: ['pair:Task']
   },
   {
-    path: '/users',
-    preferredView: '/Person',
-    acceptedTypes: ['pair:Person'],
-    dereference: ['sec:publicKey', 'pair:hasLocation/pair:hasPostalAddress']
-  },
-  {
     path: '/bots',
     acceptedTypes: [ACTOR_TYPES.APPLICATION],
-    dereference: ['sec:publicKey'],
     excludeFromMirror: true
   },
   {

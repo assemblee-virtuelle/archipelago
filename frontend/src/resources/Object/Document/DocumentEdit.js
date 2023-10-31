@@ -3,11 +3,10 @@ import { FormTab, SelectInput, TabbedForm, TextInput } from 'react-admin';
 import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { AgentsInput } from '../../../common/input';
-import Title from "../../../layout/Title";
 import Edit from "../../../layout/edit/Edit";
 
 export const DocumentEdit = props => (
-  <Edit title={<Title />} redirect="show" {...props}>
+  <Edit redirect="show" {...props}>
     <TabbedForm>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />

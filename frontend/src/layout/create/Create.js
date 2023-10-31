@@ -2,9 +2,9 @@ import React from 'react';
 import { CreateActions, CreateBase } from 'react-admin';
 import CreateView from "./CreateView";
 
-const Create = ({ actions, children, ...rest }) => (
+const Create = ({ title, actions, children, ...rest }) => (
   <CreateBase {...rest}>
-    <CreateView actions={actions}>
+    <CreateView actions={actions} title={title}>
       {children}
     </CreateView>
   </CreateBase>

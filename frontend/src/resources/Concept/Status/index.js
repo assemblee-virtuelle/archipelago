@@ -12,7 +12,8 @@ export default {
     options: {
       label: 'Statuts',
       parent: 'Concept'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: [
@@ -26,7 +27,8 @@ export default {
       'pair:TaskStatus'
     ],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'

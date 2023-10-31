@@ -4,7 +4,6 @@ import { Grid } from '@mui/material';
 import { QuickAppendReferenceArrayField } from '@semapps/field-components';
 import { ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
-import Title from "../../../../layout/Title";
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 
@@ -19,7 +18,7 @@ import Show from "../../../../layout/show/Show";
 // };
 
 const PersonShow = props => (
-  <Show title={<Title />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">

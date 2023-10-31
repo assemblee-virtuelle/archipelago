@@ -5,7 +5,7 @@ import { useCreateContainer } from '@semapps/semantic-data-provider';
 import BaseView from "../BaseView";
 
 const CreateView = ({ title, actions, children }) => {
-  const createContext = useCreateContext();
+  const createContext = useCreateContext({ defaultTitle: title });
   const createContainerUri = useCreateContainer(createContext.resource);
   useCheckPermissions(createContainerUri, 'create');
   return(

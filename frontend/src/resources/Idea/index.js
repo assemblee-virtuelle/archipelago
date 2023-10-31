@@ -13,7 +13,8 @@ export default {
     icon: IdeaIcon,
     options: {
       label: 'Idées'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Idea'],

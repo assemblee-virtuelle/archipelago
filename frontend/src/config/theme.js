@@ -98,9 +98,6 @@ const theme = createTheme({
         root: {
           backgroundColor: '#efefef',
         },
-        input: {
-          paddingTop: 12
-        }
       }
     },
     MuiAutocomplete: {

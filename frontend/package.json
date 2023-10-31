@@ -6,15 +6,15 @@
     "@mui/material": "^5.0.2",
     "@mui/styles": "^5.0.2",
     "@mui/x-tree-view": "6.0.0-beta.0",
-    "@semapps/auth-provider": "0.5.0",
-    "@semapps/date-components": "0.5.0",
-    "@semapps/field-components": "0.5.0",
-    "@semapps/geo-components": "0.5.0",
-    "@semapps/input-components": "0.5.0",
-    "@semapps/interop-components": "0.5.0",
-    "@semapps/list-components": "0.5.0",
-    "@semapps/markdown-components": "0.5.0",
-    "@semapps/semantic-data-provider": "0.5.0",
+    "@semapps/auth-provider": "0.6.0-alpha.1",
+    "@semapps/date-components": "0.6.0-alpha.1",
+    "@semapps/field-components": "0.6.0-alpha.1",
+    "@semapps/geo-components": "0.6.0-alpha.1",
+    "@semapps/input-components": "0.6.0-alpha.1",
+    "@semapps/interop-components": "0.6.0-alpha.1",
+    "@semapps/list-components": "0.6.0-alpha.1",
+    "@semapps/markdown-components": "0.6.0-alpha.1",
+    "@semapps/semantic-data-provider": "0.6.0-alpha.1",
     "date-fns": "~2.8.1",
     "leaflet": "^1.8.0",
     "leaflet-defaulticon-compatibility": "^0.1.1",
@@ -30,7 +30,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react-scripts": "3.4.0",
-    "source-map-explorer": "^2.5.2"
+    "source-map-explorer": "^2.5.2",
+    "yalc": "1.0.0-pre.53"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,8 +39,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "link-semapps-packages": "yarn link @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/interop-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider",
-    "unlink-semapps-packages": "yarn unlink @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/interop-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider"
+    "link-semapps-packages": "yalc link @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider",
+    "unlink-semapps-packages": "yalc remove --all && rm -rf node_modules/@semapps && yarn install --force"
   },
   "eslintConfig": {
     "extends": "react-app"

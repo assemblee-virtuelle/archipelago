@@ -1,13 +1,13 @@
 import React from 'react';
-import { ImageField, TabbedForm, TextInput, FormTab } from 'react-admin';
+import { ImageField, TabbedForm, TextInput, FormTab, AutocompleteInput, SelectInput } from 'react-admin';
+import { ReferenceInput } from '@semapps/input-components';
 import { ImageInput } from '@semapps/input-components';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
-import Title from "../../../../layout/Title";
 import Edit from "../../../../layout/edit/Edit";
+import ReificationArrayInput from '../../../../common/input/ReificationArrayInput';
 
 export const PersonEdit = props => (
   <Edit
-    title={<Title />}
     redirect="show"
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}
@@ -21,6 +21,24 @@ export const PersonEdit = props => (
         <ImageInput source="image" accept="image/*">
           <ImageField source="src" />
         </ImageInput>
+      </FormTab>
+      <FormTab label="Rôles">
+        <ReificationArrayInput source="pair:actorOfMembership" reificationClass="pair:MembershipAssociation"  >
+          <ReferenceInput reference="Organization" source="pair:membershipOrganization">
+          <AutocompleteInput label="Organization" optionText="pair:label"
+            size='small'
+            sx={{
+              mt: 1,
+              mb: '4px',
+              minWidth: 300,
+            }}
+            shouldRenderSuggestions={value => value && value.length > 1}
+          />
+          </ReferenceInput>
+          <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
+            <SelectInput label="Rôle" optionText="pair:label" />
+          </ReferenceInput>
+        </ReificationArrayInput>
       </FormTab>
       <FormTab label="Relations">
         <ActivitiesInput source="pair:involvedIn" />

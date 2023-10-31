@@ -6,14 +6,13 @@ import { GridList, ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import Title from "../../../../layout/Title";
 import Show from "../../../../layout/show/Show";
 
 const EventShow = props => (
-  <Show title={<Title />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
-        <Hero>
+        <Hero image="image">
           <TextField source="pair:comment" />
           <DateField source="pair:startDate" showTime />
           <DateField source="pair:endDate" showTime />
