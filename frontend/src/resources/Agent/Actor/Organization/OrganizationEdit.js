@@ -4,6 +4,7 @@ import {
   SelectInput,
   TabbedForm,
   ImageField,
+  AutocompleteInput,
 } from 'react-admin';
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';

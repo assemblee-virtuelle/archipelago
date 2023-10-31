@@ -3,7 +3,6 @@ import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId, choices } f
 import { MarkdownInput } from '@semapps/markdown-components';
 import { AgentsInput } from '../../../common/input';
 import Edit from "../../../layout/edit/Edit";
-import Title from "../../../layout/Title";
 import CustomTreeSelectInput from '../../../common/input/TreeComponent/CustomTreeSelectInput';
 
 export const ThemeEdit = props => {
@@ -15,7 +14,7 @@ export const ThemeEdit = props => {
   const validateIds = data.filter((theme => theme.id !== recordId)).map(theme => theme.id);
   
   return (
-    <Edit title={<Title />} redirect="show" {...props}>
+    <Edit redirect="show" {...props}>
       <TabbedForm>
         <FormTab label="Données">
           <TextInput source="pair:label" fullWidth />
