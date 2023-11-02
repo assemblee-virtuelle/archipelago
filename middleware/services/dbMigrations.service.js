@@ -40,7 +40,7 @@ module.exports = {
   name: "dbMigrations",
   settings: {
     migrationsFolder: path.join(__dirname, "../migrations"),
-    graphName: 'http://semapps.org/migrations',
+    dataset: 'settings',
     baseUrl: CONFIG.HOME_URL,
   },
 
@@ -76,12 +76,11 @@ module.exports = {
         }));
 
       const databaseMigrations = await this.broker.call("triplestore.query", {
+        dataset: this.settings.dataset,
         query: `
           SELECT ?name ?appliedDate
           WHERE {
-            GRAPH <${this.settings.graphName}> {
-              ?name <http://purl.org/dc/terms/created> ?appliedDate
-            }
+            ?name <http://purl.org/dc/terms/created> ?appliedDate
           }
         `,
       });
@@ -133,7 +132,7 @@ module.exports = {
           this.settings.baseUrl
         ).href;
         await this.broker.call("triplestore.insert", {
-          graphName: this.settings.graphName,
+          dataset: this.settings.dataset,
           resource: `<${resourceUri}> <http://purl.org/dc/terms/created> "${new Date().toISOString()}"`,
         });
 
@@ -183,8 +182,8 @@ module.exports = {
           this.settings.baseUrl
         ).href;
         await this.broker.call("triplestore.update", {
+          dataset: this.settings.dataset,
           query: `
-            WITH <${this.settings.graphName}>
             DELETE { <${resourceUri}> ?p ?o }
             WHERE { <${resourceUri}> ?p ?o }
           `,
@@ -415,7 +414,14 @@ module.exports = {
         } else {
           try {
             await this.broker.call("triplestore.update", {
-              query: `DROP GRAPH <${this.settings.graphName}>`,
+              dataset: this.settings.dataset,
+              query: `
+                DELETE { ?s ?p ?o }
+                WHERE {
+                  ?s ?p ?o .
+                  FILTER(regex(str(?s), "/migrations/" ) )
+                }
+              `,
             });
             this.logSuccess('Migration graph successfully deleted');
             return true;
