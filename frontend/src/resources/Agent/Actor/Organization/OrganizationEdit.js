@@ -9,8 +9,9 @@ import {
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
-import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
+import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 import ReificationArrayInput from '../../../../common/input/ReificationArrayInput';
 
 export const OrganizationEdit = props => (
@@ -54,8 +55,8 @@ export const OrganizationEdit = props => (
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
-        <ThemesInput source="pair:hasTopic" />
-        <DocumentsInput source="pair:documentedBy" />
+        <DocumentsInput source="pair:documentedBy" />   
+        <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>
