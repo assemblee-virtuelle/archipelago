@@ -3,14 +3,12 @@ const { LDPNavigator, FetchAdapter } = require('fix-esm').require('ldp-navigator
 const jsonld = require('jsonld');
 const { defaultContext } = require('@semapps/core');
 
-let ldpNavigator;
 
 module.exports = {
-    created() {
-        ldpNavigator = new LDPNavigator();
-      },
     methods: {
-        async handleAfterGet(ctx, res) {    
+        async handleAfterGet(ctx, res) {  
+            const ldpNavigator = new LDPNavigator(); // To resolve predicates asked in dereferencePlan without using data in memory, it's necessary to create a new instance of LDPNavigator. Dereferencing the relation won't fetch the URL unless LDPNavigator is a new instance.
+
             const dereferencePlan = this.settings.dereferencePlan || [];
             const headers = {
                 'accept': 'application/ld+json',
