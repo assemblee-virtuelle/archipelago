@@ -8,11 +8,11 @@ import CustomTreeSelectInput from '../../../common/input/TreeComponent/CustomTre
 export const ThemeEdit = props => {
   const recordId = useGetRecordId();
 
-  const {data, isLoading} = useGetList("Theme", { page: 1, perPage: Infinity });
+  const { data, isLoading } = useGetList("Theme", { pagination:{page: 1, perPage: Infinity}});
   if (isLoading) return null;
 
   const validateIds = data.filter((theme => theme.id !== recordId)).map(theme => theme.id);
-  
+
   return (
     <Edit redirect="show" {...props}>
       <TabbedForm>
