@@ -4,7 +4,7 @@ import { EditActionsWithPermissions } from "@semapps/auth-provider";
 import EditView from "./EditView";
 
 const Edit = ({ title, actions, children, ...rest }) => (
-  <EditBase {...rest}>
+  <EditBase mutationMode="pessimistic" {...rest}>
     <EditView title={title} actions={actions}>
       {children}
     </EditView>
