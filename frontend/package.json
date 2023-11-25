@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "@fullcalendar/core": "^5.7.2",
-    "@mui/material": "^5.0.2",
-    "@mui/styles": "^5.0.2",
+    "@mui/material": "^5.14.18",
+    "@mui/styles": "^5.14.18",
     "@mui/x-tree-view": "6.0.0-beta.0",
     "@semapps/auth-provider": "0.6.0",
     "@semapps/date-components": "0.6.0",
@@ -16,20 +16,20 @@
     "@semapps/markdown-components": "0.6.0",
     "@semapps/semantic-data-provider": "0.6.0",
     "date-fns": "~2.8.1",
-    "leaflet": "^1.8.0",
-    "leaflet-defaulticon-compatibility": "^0.1.1",
+    "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet.markercluster": "^1.5.3",
     "mui-tree-select": "^1.0.0-beta.11",
-    "ra-language-french": "^4.11.0",
+    "ra-language-french": "^4.16.1",
     "react": "^18.1.0",
-    "react-admin": "^4.11.0",
-    "react-dom": "^18.1.0"
+    "react-admin": "^4.16.1",
+    "react-dom": "^18.1.0",
+    "react-scripts": "5.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "react-scripts": "3.4.0",
     "source-map-explorer": "^2.5.2",
     "yalc": "1.0.0-pre.53"
   },
@@ -49,5 +49,8 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "engines": {
+    "node": ">=18"
+  }
 }

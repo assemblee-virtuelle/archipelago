@@ -10,7 +10,7 @@ import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
 import theme from './config/theme';
-import * as resources from './resources';
+import resources from './resources';
 
 import Layout from './layout/Layout';
 
