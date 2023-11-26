@@ -15,7 +15,7 @@ const AgentRedirect = props => (
   </ShowBase>
 );
 
-export default {
+const resource = {
   config: {
     show: AgentRedirect
   },
@@ -26,3 +26,5 @@ export default {
     }
   }
 };
+
+export default resource;
