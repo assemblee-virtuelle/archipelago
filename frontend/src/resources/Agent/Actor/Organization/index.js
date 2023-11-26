@@ -4,7 +4,7 @@ import OrganizationList from './OrganizationList';
 import OrganizationShow from './OrganizationShow';
 import HomeIcon from '@mui/icons-material/Home';
 
-export default {
+const resource = {
   config: {
     list: OrganizationList,
     show: OrganizationShow,
@@ -52,3 +52,5 @@ export default {
     }
   }
 };
+
+export default resource;

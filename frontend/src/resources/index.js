@@ -33,7 +33,7 @@ import MembershipRole from './Concept/MembershipRole';
 // Pages
 import Page from './Page';
 
-export default {
+const resources = {
   Agent,
 
   // Actors
@@ -69,3 +69,5 @@ export default {
   // Pages
   Page,
 };
+
+export default resources;

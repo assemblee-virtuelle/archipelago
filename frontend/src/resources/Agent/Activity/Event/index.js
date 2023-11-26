@@ -4,7 +4,7 @@ import EventList from './EventList';
 import EventShow from './EventShow';
 import EventIcon from '@mui/icons-material/Event';
 
-export default {
+const resource = {
   config: {
     list: EventList,
     show: EventShow,
@@ -43,3 +43,5 @@ export default {
     }
   }
 };
+
+export default resource;

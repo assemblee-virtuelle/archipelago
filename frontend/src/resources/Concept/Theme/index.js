@@ -4,7 +4,7 @@ import ThemeList from './ThemeList';
 import ThemeShow from './ThemeShow';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
-export default {
+const resource = {
   config: {
     list: ThemeList,
     show: ThemeShow,
@@ -39,3 +39,5 @@ export default {
     }
   }
 };
+
+export default resource;
