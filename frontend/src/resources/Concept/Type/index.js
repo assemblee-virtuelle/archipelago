@@ -3,7 +3,7 @@ import TypeEdit from './TypeEdit';
 import TypeList from './TypeList';
 import StyleIcon from '@mui/icons-material/Style';
 
-export default {
+const resource = {
   config: {
     list: TypeList,
     create: TypeCreate,
@@ -52,3 +52,5 @@ export default {
     }
   }
 };
+
+export default resource;

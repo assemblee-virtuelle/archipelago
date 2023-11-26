@@ -1,6 +1,6 @@
 import PersonIcon from '@mui/icons-material/Person';
 
-export default {
+const resource = {
   config: {
     icon: PersonIcon,
     options: {
@@ -19,3 +19,5 @@ export default {
     }
   }
 };
+
+export default resource;

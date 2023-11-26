@@ -4,7 +4,7 @@ import DocumentList from './DocumentList';
 import DocumentShow from './DocumentShow';
 import DescriptionIcon from '@mui/icons-material/Description';
 
-export default {
+const resource = {
   config: {
     list: DocumentList,
     show: DocumentShow,
@@ -39,3 +39,5 @@ export default {
     }
   }
 };
+
+export default resource;

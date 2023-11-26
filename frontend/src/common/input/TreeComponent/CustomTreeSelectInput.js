@@ -26,6 +26,7 @@ const CustomTreeSelect = (props) => {
   const [selected, setSelected] = useState(null);
   const { data, isLoading } = useGetList(props.reference, { pagination: { page: 1, perPage: Infinity } });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   let nodes = [];
   if (!isLoading) {
       nodes = getTreeData(data, props.broader).map((item) => {

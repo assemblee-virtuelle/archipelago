@@ -4,7 +4,7 @@ import PageList from './PageList';
 import PageShow from './PageShow';
 import DescriptionIcon from '@mui/icons-material/Description';
 
-export default {
+const resource = {
   config: {
     list: PageList,
     show: PageShow,
@@ -35,3 +35,5 @@ export default {
     }
   }
 };
+
+export default resource;

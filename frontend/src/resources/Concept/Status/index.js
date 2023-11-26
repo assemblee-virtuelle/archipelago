@@ -3,7 +3,7 @@ import TypeEdit from './StatusEdit';
 import StatusList from './StatusList';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-export default {
+const resource = {
   config: {
     list: StatusList,
     create: StatusCreate,
@@ -44,3 +44,5 @@ export default {
     }
   }
 };
+
+export default resource;

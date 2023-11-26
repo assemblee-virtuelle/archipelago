@@ -12,6 +12,7 @@ const CustomTreeSelectArrayInput = (props) => {
   const [selected, setSelected] = useState([]);
   const { data, isLoading } = useGetList(props.reference, { pagination: { page: 1, perPage: Infinity } });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   let nodes = [];
   if (!isLoading) {
       nodes = getTreeData(data, props.broader).map((item) => {
@@ -50,7 +51,7 @@ const CustomTreeSelectArrayInput = (props) => {
         isBranch={(node) => (node ? node.isBranch() : true)}
         value={selected}
         onChange={handleChange}
-        renderInput={(params) => 
+        renderInput={(params) =>
             <TextField
                 {...params}
                 {...field}
@@ -59,7 +60,7 @@ const CustomTreeSelectArrayInput = (props) => {
             />
         }
         renderOption={(...args) => {
-      
+
           return (
               <DefaultOption
                   {...((props, node) => ({

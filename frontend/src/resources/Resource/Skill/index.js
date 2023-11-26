@@ -4,7 +4,7 @@ import SkillList from './SkillList';
 import SkillShow from './SkillShow';
 import PersonIcon from '@mui/icons-material/Person';
 
-export default {
+const resource = {
   config: {
     list: SkillList,
     create: CreateOrImport,
@@ -38,3 +38,5 @@ export default {
     }
   }
 };
+
+export default resource;
