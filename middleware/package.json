@@ -28,5 +28,8 @@
     "moleculer-repl": "^0.6.3",
     "moleculer-web": "^0.10.0-beta1",
     "url-join": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
