@@ -30,8 +30,9 @@ export default {
       name: 'Document |||| Documents',
       fields: {
         'pair:label': 'Titre',
-        'pair:description': 'Description',
-        'pair:comment': 'Courte description',
+        'pair:comment': 'Extrait',
+        'pair:description': 'Contenu',
+        'pair:image': 'Image',
         'pair:hasType': 'Type',
         'pair:documents': 'Documente'
       }
