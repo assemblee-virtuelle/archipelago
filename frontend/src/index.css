@@ -16,3 +16,11 @@ code {
 body, .layout, .mde-text {
   background-color: #efefef;
 }
+
+#main-list img {
+  width: 100% !important;
+  height: unset !important;
+  max-width: 100% !important;
+  max-height: 350px !important;
+  object-fit: contain;
+}
