@@ -23,8 +23,8 @@ module.exports = {
     this.turndownService = new TurndownService();
   },
   methods: {
-    transform(data) {
-      const image = data['wp:featuredmedia']?.[0]?.href && this.retrieveMedia(data['wp:featuredmedia']?.href);
+    async transform(data) {
+      const image = data.featured_media && await this.retrieveMedia(data.featured_media);
 
       // Convert HTML to Markdown
       let content = this.turndownService.turndown(data.content?.rendered)
