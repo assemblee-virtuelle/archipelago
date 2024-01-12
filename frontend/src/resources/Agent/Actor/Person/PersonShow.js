@@ -39,7 +39,7 @@ const PersonShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <GroupedReferenceHandler
+          {/* <GroupedReferenceHandler
             source="pair:actorOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"
@@ -57,7 +57,7 @@ const PersonShow = props => (
                 </Box>
               </ArrayField>
             </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler>
+          </GroupedReferenceHandler> */}
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>

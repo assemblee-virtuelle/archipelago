@@ -34,7 +34,7 @@ export const OrganizationEdit = props => (
           <ImageField source="src" />
         </ImageInput>
       </TabbedForm.Tab>
-      <TabbedForm.Tab label="Membres">
+      {/* <TabbedForm.Tab label="Membres">
         <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation"  >
           <ReferenceInput reference="Person" source="pair:membershipActor">
           <AutocompleteInput label="Membre" optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
@@ -51,7 +51,7 @@ export const OrganizationEdit = props => (
             <SelectInput label="Rôle" optionText="pair:label" />
           </ReferenceInput>
         </ReificationArrayInput>
-      </TabbedForm.Tab>
+      </TabbedForm.Tab> */}
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
