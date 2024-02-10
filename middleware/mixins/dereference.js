@@ -1,4 +1,3 @@
-// organizations.mixin.js
 const isObject = require('isobject');
 
 /**
