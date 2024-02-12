@@ -20,8 +20,6 @@ const isObject = require('isobject');
  * 
  * Example moleculer service:
  * ```javascript
-
- * 
  * module.exports = {
  * name: 'resources',
  * mixins: [ControlledContainerMixin, DereferenceMixin],
