@@ -18,20 +18,30 @@ const isObject = require('isobject');
  * effective LDP data interaction, emphasizing the need for a supportive ecosystem that includes necessary 
  * LDP resource management capabilities.
  * 
- * Example Configuration:
+ * Example moleculer service:
  * ```javascript
- * const settings = {
+
+ * 
+ * module.exports = {
+ * name: 'resources',
+ * mixins: [ControlledContainerMixin, DereferenceMixin],
+ * settings: {
+ *   path: '/resources',
+ *   acceptedTypes: ['prefix:Classe'],
+ *   preferredView: '/Resource',
  *   dereferencePlan: [
  *     {
- *       "p": "http://schema.org/member",
+ *       "p": "schema:member",
  *       "n": [
- *         { "p": "http://schema.org/affiliation" }
+ *         { "p": "schema:affiliation" }
  *       ]
  *     }
  *   ]
- * };
+ *  }
+ * }
  * ```
  */
+
 module.exports = {
     methods: {
 
@@ -67,7 +77,7 @@ module.exports = {
             if (Array.isArray(mainData)) {
                 let result = [];
                 for (var mainDataIteration of mainData) {
-                    result.push(await this.dereference(ctx,mainDataIteration, propertiesSchema, depth))
+                    result.push(await this.dereference(ctx,mainDataIteration, propertiesSchema))
                 }
                 return result;
             } else if (isObject(mainData)) {
@@ -81,9 +91,9 @@ module.exports = {
         
                 for (var propertySchema of propertiesSchemaArray) {
                     const property = propertySchema.p;
-                    const reference = await this.get(ctx,mainData, property, true, depth);
+                    const reference = await this.get(ctx,mainData, property, true);
                     if (propertySchema.n && reference != undefined) {
-                        resultData[property] = await this.dereference(ctx,reference, propertySchema.n, depth + 1);
+                        resultData[property] = await this.dereference(ctx,reference, propertySchema.n);
                     } else {
                         resultData[property] = reference;
                     }
