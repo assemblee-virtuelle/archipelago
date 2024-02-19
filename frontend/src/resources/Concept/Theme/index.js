@@ -1,4 +1,4 @@
-import ThemeCreate from "./ThemeCreate";
+import ThemeCreate from './ThemeCreate';
 import ThemeEdit from './ThemeEdit';
 import ThemeList from './ThemeList';
 import ThemeShow from './ThemeShow';
@@ -14,12 +14,14 @@ export default {
     options: {
       label: 'Thèmes',
       parent: 'Concept'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Theme'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      blankNodes: []
     },
     fieldsMapping: {
       title: 'pair:label'

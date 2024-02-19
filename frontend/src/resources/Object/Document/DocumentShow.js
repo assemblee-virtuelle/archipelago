@@ -2,13 +2,12 @@ import React from 'react';
 import { SingleFieldList, ChipField } from 'react-admin';
 import { Grid, Typography } from '@mui/material';
 import { ReferenceArrayField } from '@semapps/field-components';
-import Title from "../../../layout/Title";
 import Show from "../../../layout/show/Show";
 import { MarkdownField } from '../../../common/field';
 import { MainList, SideList } from '../../../common/list';
 
 const DocumentShow = props => (
-  <Show title={<Title />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />

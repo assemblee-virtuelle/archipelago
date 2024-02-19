@@ -3,17 +3,19 @@ import {
   TextInput,
   SelectInput,
   TabbedForm,
-  ImageField
+  ImageField,
+  AutocompleteInput,
 } from 'react-admin';
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { MultiLinesInput } from '@semapps/input-components';
-import { OrganizationsInput, EventsInput, ThemesInput, DocumentsInput, LocationInput } from '../../../../common/input';
-import Title from "../../../../layout/Title";
+import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
+import ReificationArrayInput from '../../../../common/input/ReificationArrayInput';
 
 export const OrganizationEdit = props => (
-  <Edit title={<Title />} redirect="show" {...props}>
+  <Edit redirect="show" {...props}>
     <TabbedForm>
       <TabbedForm.Tab label="Données">
         <TextInput source="pair:label" fullWidth />
@@ -32,23 +34,29 @@ export const OrganizationEdit = props => (
           <ImageField source="src" />
         </ImageInput>
       </TabbedForm.Tab>
-      {/* <TabbedForm.Tab label="Membres">
-        <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation">
+      <TabbedForm.Tab label="Membres">
+        <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation"  >
           <ReferenceInput reference="Person" source="pair:membershipActor">
-          <AutocompleteInput optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
-          shouldRenderSuggestions={value => value && value.length > 1}
+          <AutocompleteInput label="Membre" optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
+            size='small'
+            sx={{
+              mt: 1,
+              mb: '4px',
+              minWidth: 300,
+            }}
+            shouldRenderSuggestions={value => value && value.length > 1}
           />
           </ReferenceInput>
           <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
-            <SelectInput optionText="pair:label" />
+            <SelectInput label="Rôle" optionText="pair:label" />
           </ReferenceInput>
         </ReificationArrayInput>
-      </TabbedForm.Tab> */}
+      </TabbedForm.Tab>
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
-        <ThemesInput source="pair:hasTopic" />
-        <DocumentsInput source="pair:documentedBy" />
+        <DocumentsInput source="pair:documentedBy" />   
+        <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>

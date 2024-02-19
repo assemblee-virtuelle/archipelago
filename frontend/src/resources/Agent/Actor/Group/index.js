@@ -14,7 +14,8 @@ export default {
     options: {
       label: 'Groupes',
       parent: 'Actor'
-    }
+    },
+    recordRepresentation: (record) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Group'],

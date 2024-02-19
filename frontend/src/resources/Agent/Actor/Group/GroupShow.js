@@ -3,13 +3,12 @@ import { TextField } from 'react-admin';
 import { Grid } from '@mui/material';
 import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import Title from "../../../../layout/Title";
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 
 const GroupShow = props => (
-  <Show title={<Title />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">

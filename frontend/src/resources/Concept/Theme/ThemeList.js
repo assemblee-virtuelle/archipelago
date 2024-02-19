@@ -1,11 +1,11 @@
 import React from 'react';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import SimpleList from "../../../common/list/SimpleList";
 import List from "../../../layout/list/List";
+import TreeList from '../../../common/list/TreeList';
+import { Pagination } from 'react-admin';
 
 const ThemeList = props => (
-  <List {...props}>
-    <SimpleList primaryText={record => record['pair:label']} leftAvatar={() => <LocalOfferIcon />} linkType="show" />
+  <List perPage={10000} {...props}>
+    <TreeList source="pair:broader" label="pair:label" defaultExpanded={false} reference="Theme" />
   </List>
 );
 

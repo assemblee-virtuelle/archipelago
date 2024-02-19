@@ -3,14 +3,13 @@ import { TextField, UrlField, SimpleList } from 'react-admin';
 import { Grid } from '@mui/material';
 import { QuickAppendReferenceArrayField, AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
-import Title from "../../../../layout/Title";
 import DescriptionIcon from '@mui/icons-material/Description';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 
 const ProjectShow = props => (
-  <Show title={<Title />} {...props}>
+  <Show {...props}>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">

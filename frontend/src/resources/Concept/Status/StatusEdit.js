@@ -1,10 +1,9 @@
 import React from 'react';
 import { SimpleForm, TextInput } from 'react-admin';
-import Title from "../../../layout/Title";
 import Edit from "../../../layout/edit/Edit";
 
 export const ThemeEdit = props => (
-  <Edit title={<Title />} {...props}>
+  <Edit {...props}>
     <SimpleForm>
       <TextInput source="pair:label" fullWidth />
     </SimpleForm>

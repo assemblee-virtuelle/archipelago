@@ -13,7 +13,8 @@ export default {
     icon: DescriptionIcon,
     options: {
       label: 'Pages'
-    }
+    },
+    recordRepresentation: (record) => `${record['semapps:title']}`,
   },
   dataModel: {
     types: ['semapps:Page'],
