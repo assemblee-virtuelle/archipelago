@@ -10,7 +10,7 @@ const ResourceRedirect = props => (
   </Show>
 );
 
-export default {
+const resource = {
   config: {
     show: ResourceRedirect,
     icon: NaturePeopleIcon,
@@ -30,3 +30,5 @@ export default {
     }
   }
 };
+
+export default resource;

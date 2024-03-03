@@ -1,6 +1,6 @@
 import LanguageIcon from '@mui/icons-material/Language';
 
-export default {
+const resource = {
   config: {
     icon: LanguageIcon,
     options: {
@@ -19,3 +19,5 @@ export default {
     }
   }
 };
+
+export default resource;

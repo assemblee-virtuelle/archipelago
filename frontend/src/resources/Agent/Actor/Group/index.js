@@ -4,7 +4,7 @@ import GroupList from './GroupList';
 import GroupShow from './GroupShow';
 import GroupIcon from '@mui/icons-material/Group';
 
-export default {
+const resource = {
   config: {
     list: GroupList,
     show: GroupShow,
@@ -43,3 +43,5 @@ export default {
     }
   }
 };
+
+export default resource;

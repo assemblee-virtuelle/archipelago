@@ -15,7 +15,7 @@ const ActivityRedirect = props => (
   </Show>
 );
 
-export default {
+const resource = {
   config: {
     show: ActivityRedirect,
     icon: PanToolIcon,
@@ -38,3 +38,5 @@ export default {
     }
   }
 };
+
+export default resource;

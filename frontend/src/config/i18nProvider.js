@@ -1,7 +1,7 @@
 import polyglotI18nProvider from 'ra-i18n-polyglot';
 import frenchMessages from 'ra-language-french';
 import { frenchMessages as authFrenchMessages } from '@semapps/auth-provider';
-import * as resources from '../resources';
+import resources from '../resources';
 
 const getMessages = lang => ({
   ...frenchMessages,

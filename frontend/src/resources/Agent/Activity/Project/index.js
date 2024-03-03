@@ -4,7 +4,7 @@ import ProjectList from './ProjectList';
 import ProjectShow from './ProjectShow';
 import SettingsIcon from '@mui/icons-material/Settings';
 
-export default {
+const resource = {
   config: {
     list: ProjectList,
     show: ProjectShow,
@@ -44,3 +44,5 @@ export default {
     }
   }
 };
+
+export default resource;

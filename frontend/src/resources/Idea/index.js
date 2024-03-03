@@ -4,7 +4,7 @@ import IdeaList from './IdeaList';
 import IdeaShow from './IdeaShow';
 import IdeaIcon from '@mui/icons-material/EmojiObjects';
 
-export default {
+const resource = {
   config: {
     list: IdeaList,
     show: IdeaShow,
@@ -41,3 +41,5 @@ export default {
     }
   }
 };
+
+export default resource;
