@@ -11,9 +11,9 @@ const generateTreeItem = (parentProperty, optionText, allItems, root, parentId, 
             if (test.length < 1) {
                 dejavueItem.push(root.id)
                 return (
-                    <TreeItem 
-                        nodeId={root["id"]} 
-                        label={<div onClick={e => onLabelClick(e, root )}>{root[optionText]}</div>} 
+                    <TreeItem
+                        nodeId={root["id"]}
+                        label={<div onClick={e => onLabelClick(e, root )}>{root[optionText]}</div>}
                         key={root["id"]}
                     >
                         {generateTreeItem(parentProperty, optionText, allItems, [], root["id"], [...dejavueItem], onLabelClick)}
@@ -43,6 +43,7 @@ const getTreeData = (data, parentProperty) => {
 
     for (let item of data) {
       let children = data.filter(candidate => candidate[parentProperty] === item.id);
+      // eslint-disable-next-line no-loop-func
       children = children.filter(child => !dejavueItem.includes(child.id))
       const parent = item[parentProperty];
       dejavueItem = dejavueItem.concat(children.map(child => child.id));
@@ -66,23 +67,23 @@ class Node {
         return null;
       }
     }
-  
+
     getChildren(nodes) {
       return nodes.filter(n => n.parent === this.id);
     }
-  
+
     isBranch() {
       return this.children && this.children.length > 0;
     }
-  
+
     isEqual(to) {
       return to && this.id === to.id;
     }
-  
+
     toString() {
       return this.name;
     }
   }
 
 
-export { generateTreeItem, buildTreeData, getTreeData, Node } 
+export { generateTreeItem, buildTreeData, getTreeData, Node }

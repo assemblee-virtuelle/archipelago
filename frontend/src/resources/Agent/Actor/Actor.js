@@ -9,7 +9,7 @@ const ActorRedirect = props => (
   </Show>
 );
 
-export default {
+const resource = {
   config: {
     show: ActorRedirect,
     icon: PersonIcon,
@@ -29,3 +29,5 @@ export default {
     }
   }
 };
+
+export default resource;

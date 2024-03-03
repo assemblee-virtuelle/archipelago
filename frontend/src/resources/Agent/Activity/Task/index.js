@@ -4,7 +4,7 @@ import TaskList from './TaskList';
 import TaskShow from './TaskShow';
 import TaskIcon from '@mui/icons-material/PlaylistAddCheck';
 
-export default {
+const resource = {
   config: {
     list: TaskList,
     show: TaskShow,
@@ -48,3 +48,5 @@ export default {
     }
   }
 };
+
+export default resource;

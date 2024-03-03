@@ -3,7 +3,7 @@ import RoleEdit from './RoleEdit';
 import RoleList from './RoleList';
 import FavoriteBorderIcon from '@mui/icons-material/Class';
 
-export default {
+const resource = {
   config: {
     list: RoleList,
     create: RoleCreate,
@@ -36,3 +36,5 @@ export default {
     }
   }
 };
+
+export default resource;

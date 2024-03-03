@@ -3,7 +3,7 @@ import PersonList from './PersonList';
 import PersonShow from './PersonShow';
 import PersonIcon from '@mui/icons-material/Person';
 
-export default {
+const resource = {
   config: {
     list: PersonList,
     show: PersonShow,
@@ -43,3 +43,5 @@ export default {
     }
   }
 };
+
+export default resource;
