@@ -5,6 +5,7 @@ const isObject = require('isobject');
  * Provides resource dereferencing after ldp.resource.get execution
  * 
  * @module MoleculerJS Mixin - Dereference
+ * @requires module:services.ldp.resource
  * 
  * Features include:
  * - `get`: Retrieve a specific property from the main data.
@@ -15,8 +16,7 @@ const isObject = require('isobject');
  * 
  * Usage:
  * This mixin requires the presence of an `ldp.resource.get` service within the MoleculerJS environment for 
- * effective LDP data interaction, emphasizing the need for a supportive ecosystem that includes necessary 
- * LDP resource management capabilities.
+ * effective LDP data interaction.
  * 
  * Example moleculer service:
  * ```javascript
@@ -41,21 +41,20 @@ const isObject = require('isobject');
  */
 
 module.exports = {
+    dependencies: ['ldp.resource'],
     methods: {
-
         /**
         * Get a property from main data. This is a wrapper around ldp.resource.get to allow us to pass in the property to the API
         * 
         * @param ctx - moleculer context
-        * @param mainData - The main data to get the property from
-        * @param property - The property to get from mainData. It must be a property of mainData
+        * @param resourceUri - The resourceUri to get the property from ldp.resource.get service
         * 
         * @return { Promise } The result of the get operation as a JSON object with @context removed from the result
         */
-        async get(ctx,mainData, property) {
+        async getWithoutContext(ctx,resourceUri) {
             // Call the ldp.resource.get method to get the resource
             let result = await ctx.call(
-                'ldp.resource.get',{resourceUri:mainData[property],accept:'application/ld+json'}
+                'ldp.resource.get',{resourceUri:resourceUri,accept:'application/ld+json'}
             );
             // Delete the context from the result
             delete(result['@context']);
@@ -74,7 +73,7 @@ module.exports = {
         async dereference(ctx,mainData, propertiesSchema) {
             if (Array.isArray(mainData)) {
                 let result = [];
-                for (var mainDataIteration of mainData) {
+                for (let mainDataIteration of mainData) {
                     result.push(await this.dereference(ctx,mainDataIteration, propertiesSchema))
                 }
                 return result;
@@ -87,9 +86,9 @@ module.exports = {
                     propertiesSchemaArray = [...propertiesSchema]
                 }
         
-                for (var propertySchema of propertiesSchemaArray) {
+                for (let propertySchema of propertiesSchemaArray) {
                     const property = propertySchema.p;
-                    const reference = await this.get(ctx,mainData, property, true);
+                    const reference = await this.getWithoutContext(ctx,mainData[property]);
                     if (propertySchema.n && reference != undefined) {
                         resultData[property] = await this.dereference(ctx,reference, propertySchema.n);
                     } else {

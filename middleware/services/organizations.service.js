@@ -6,6 +6,7 @@ const jsonld = require('jsonld');
 const DereferenceMixin = require('../mixins/dereference');
 
 module.exports = {
+  dependencies: ['ldp.resource'],
   name: 'organizations',
   mixins: [ControlledContainerMixin, DisassemblyMixin, DereferenceMixin],
   settings: {
