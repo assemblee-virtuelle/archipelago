@@ -1,6 +1,8 @@
+import config from "./config";
+
 const dataServers = {
   default: {
-    baseUrl: process.env.REACT_APP_MIDDLEWARE_URL,
+    baseUrl: config.middlewareUrl,
     authServer: true,
     default: true,
     uploadsContainer: '/files'
