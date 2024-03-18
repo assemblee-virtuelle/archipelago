@@ -87,7 +87,7 @@ const AppBar = props => {
         <div className={classes.presContainer}>
           <div className={classes.logoContainer}>
             <Zoom in={true} timeout={2000}>
-              <img className={classes.logo} src={process.env.PUBLIC_URL + '/logo192.png'} alt="logo" />
+              <img className={classes.logo} src={'/logo192.png'} alt="logo" />
             </Zoom>
           </div>
           <Typography className={classes.title} variant="h6" noWrap>

@@ -39,7 +39,7 @@ const Hero = ({ children, image, defaultImage }) => {
 };
 
 Hero.defaultProps = {
-  defaultImage: process.env.PUBLIC_URL + '/logo512.png'
+  defaultImage: '/logo512.png'
 };
 
 export default Hero;

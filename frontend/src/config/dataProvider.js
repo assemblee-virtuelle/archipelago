@@ -3,12 +3,13 @@ import ontologies from './ontologies.json';
 import dataServers from './dataServers';
 import resources from '../resources';
 import { withLifecycleCallbacks } from 'react-admin';
+import config from './config';
 
 const baseDataProvider = semanticDataProvider({
   dataServers,
   resources: Object.fromEntries(Object.entries(resources).map(([k, v]) => [k, v.dataModel])),
   ontologies,
-  jsonContext: process.env.REACT_APP_MIDDLEWARE_URL + 'context.json'
+  jsonContext: config.middlewareUrl + 'context.json'
 });
 
 /** Adds a meta param 'filesToDelete' to indicate which files should be deleted with the resource */

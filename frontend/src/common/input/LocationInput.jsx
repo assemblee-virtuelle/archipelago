@@ -1,10 +1,11 @@
 import React from 'react';
 import { extractContext, LocationInput as SemAppsLocationInput } from '@semapps/geo-components';
+import config from '../../config/config';
 
 const LocationInput = props => (
   <SemAppsLocationInput
     mapboxConfig={{
-      access_token: process.env.REACT_APP_MAPBOX_ACCESS_TOKEN,
+      access_token: config.mapboxAccessToken,
       types: ['place', 'address'],
       country: ['fr', 'be', 'ch']
     }}
