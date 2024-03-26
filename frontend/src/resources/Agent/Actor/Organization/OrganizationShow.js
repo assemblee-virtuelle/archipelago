@@ -90,7 +90,7 @@ const OrganizationShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          {/* <GroupedReferenceHandler
+          <GroupedReferenceHandler
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"
@@ -109,7 +109,7 @@ const OrganizationShow = props => (
                 </Box>
               </ArrayField>
             </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler> */}
+          </GroupedReferenceHandler>
           <ReferenceArrayField reference="Organization" source="pair:partnerOf">
             <GridList xs={6} linkType="show" externalLinks>
               <AvatarWithLabelField label="pair:label" image="image">

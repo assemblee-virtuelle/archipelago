@@ -22,7 +22,7 @@ export const PersonEdit = props => (
           <ImageField source="src" />
         </ImageInput>
       </FormTab>
-      {/* <FormTab label="Rôles">
+      <FormTab label="Rôles">
         <ReificationArrayInput source="pair:actorOfMembership" reificationClass="pair:MembershipAssociation"  >
           <ReferenceInput reference="Organization" source="pair:membershipOrganization">
           <AutocompleteInput label="Organization" optionText="pair:label"
@@ -39,7 +39,7 @@ export const PersonEdit = props => (
             <SelectInput label="Rôle" optionText="pair:label" />
           </ReferenceInput>
         </ReificationArrayInput>
-      </FormTab> */}
+      </FormTab>
       <FormTab label="Relations">
         <ActivitiesInput source="pair:involvedIn" />
         <SkillsInput source="pair:offers" />
