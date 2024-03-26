@@ -1,6 +1,8 @@
 import React from 'react';
+import { SimpleList } from 'react-admin';
+import { Avatar } from '@mui/material';
 import { MultiViewsList } from '@semapps/list-components';
-import { CalendarList, DaysList } from '@semapps/date-components';
+import { CalendarList } from '@semapps/date-components';
 import frLocale from '@fullcalendar/core/locales/fr';
 import ListIcon from '@mui/icons-material/List';
 import EventIcon from '@mui/icons-material/Event';
@@ -30,18 +32,20 @@ const EventList = props => (
       list: {
         label: 'Liste',
         icon: ListIcon,
-        perPage: 1000,
-        pagination: false,
+        sort: { field: 'pair:startDate', order: 'DESC' },
+        perPage: 25,
         list: (
-          <DaysList
-            locale={frLocale}
-            label="pair:label"
-            startDate="pair:startDate"
-            endDate="pair:endDate"
+          <SimpleList
+            primaryText={record => record['pair:label']}
+            leftAvatar={record => (
+              <Avatar src={record['image']} width="100%">
+                <EventIcon />
+              </Avatar>
+            )}
             linkType="show"
           />
         )
-      }
+      },
     }}
     {...props}
   />

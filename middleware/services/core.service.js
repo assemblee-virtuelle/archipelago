@@ -18,6 +18,10 @@ module.exports = {
     },
     ontologies: [pair],
     containers,
+    // Sub-services settings
+    activitypub: { 
+      activitiesPath: "/activities" 
+    },
     api: {
       port: CONFIG.PORT,
     },
