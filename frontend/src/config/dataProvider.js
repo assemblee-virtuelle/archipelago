@@ -8,7 +8,10 @@ const baseDataProvider = semanticDataProvider({
   dataServers,
   resources: Object.fromEntries(Object.entries(resources).map(([k, v]) => [k, v.dataModel])),
   ontologies,
-  jsonContext: process.env.REACT_APP_MIDDLEWARE_URL + 'context.json'
+  jsonContext: [
+    'https://www.w3.org/ns/activitystreams',
+    process.env.REACT_APP_MIDDLEWARE_URL + '.well-known/context.jsonld'
+  ]
 });
 
 /** Adds a meta param 'filesToDelete' to indicate which files should be deleted with the resource */

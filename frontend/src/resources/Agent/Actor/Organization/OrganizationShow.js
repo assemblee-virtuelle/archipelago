@@ -90,7 +90,7 @@ const OrganizationShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-        <GroupedReferenceHandler
+          <GroupedReferenceHandler
             source="pair:organizationOfMembership"
             groupReference="MembershipRole"
             groupLabel="pair:label"
