@@ -1,4 +1,4 @@
-const isObject = require('isobject');
+const {isObject} = require('@semapps/ldp');
 
 /**
  * @description MoleculerJS mixin to be applied on the ControlledContainerMixin within a Semapps project.
@@ -88,7 +88,15 @@ module.exports = {
         
                 for (let propertySchema of propertiesSchemaArray) {
                     const property = propertySchema.p;
-                    const reference = await this.getWithoutContext(ctx,mainData[property]);
+                    let reference;
+                    if (Array.isArray(mainData[property])){
+                        reference=[];
+                        for (const uri of mainData[property]) {
+                            reference.push(await this.getWithoutContext(ctx,uri));
+                        }
+                    }else if (typeof mainData[property]=== "string"){
+                        reference = await this.getWithoutContext(ctx,mainData[property]);
+                    }
                     if (propertySchema.n && reference != undefined) {
                         resultData[property] = await this.dereference(ctx,reference, propertySchema.n);
                     } else {
@@ -109,7 +117,7 @@ module.exports = {
         * 
         * @return { Promise } - the result of the operation or an error if there was a problem with the result
         */
-        async handleAfterGet(ctx, res) {  
+        async handleAfterGet(ctx, res) { 
             const dereferencePlan = this.settings.dereferencePlan || [];
             const result = await this.dereference(ctx,res, dereferencePlan);
             return result;
