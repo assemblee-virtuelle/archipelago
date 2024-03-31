@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import React, { useState, useEffect, useMemo } from "react";
 import { useResourceDefinitions, Logout, Menu, useGetIdentity, MenuItemLink, useTranslate } from "react-admin";
 import { useLocation } from "react-router";

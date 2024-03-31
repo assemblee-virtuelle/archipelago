@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import checker from 'vite-plugin-checker';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -8,6 +9,12 @@ dotenv.config();
 export default defineConfig({
   plugins: [
     react(),
+    checker({
+      typescript: true,
+      eslint: {
+        lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
+      },
+    }),
   ],
   define: {
     'process.env.MIDDLEWARE_URL': `"${process.env.REACT_APP_MIDDLEWARE_URL}"`,

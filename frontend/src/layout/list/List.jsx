@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { ListBase } from 'react-admin';
 import ListView from "./ListView";

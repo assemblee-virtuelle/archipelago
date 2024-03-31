@@ -2,11 +2,11 @@ import React from 'react';
 import { TextField, SimpleList, EmailField, ArrayField } from 'react-admin';
 import { Grid, Avatar, Box } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
-import { 
-  ReferenceArrayField, 
-  QuickAppendReferenceArrayField, 
-  MultiUrlField, 
-  AvatarWithLabelField, 
+import {
+  ReferenceArrayField,
+  QuickAppendReferenceArrayField,
+  MultiUrlField,
+  AvatarWithLabelField,
   SeparatedListField,
   ReferenceField
 } from '@semapps/field-components';
@@ -23,7 +23,7 @@ import GroupedReferenceHandler from '../../../../common/GroupedReferenceHandler'
 
 const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
   if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
-    return React.Children.map(children, (child, i) => {
+    return React.Children.map(children, (child) => {
       return React.cloneElement(child, { ...otherProps, record, source });
     });
   } else {
