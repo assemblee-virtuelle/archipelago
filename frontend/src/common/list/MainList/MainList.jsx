@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import LargeLabel from './LargeLabel';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   divider: {
     paddingTop: 5,
     paddingBottom: 20,

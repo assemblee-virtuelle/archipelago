@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 import Agent from './Agent/Agent';
 
 // Actors

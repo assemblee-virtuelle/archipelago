@@ -47,8 +47,8 @@ function generateFilterTree(broader, label, allItems, routeTree, parentId) {
             maxWidth: "140px"
           }}>{route["pair:label"]}
         </div>}
-        nodeId={route["id"]} 
-        key={route["id"]} 
+        nodeId={route["id"]}
+        key={route["id"]}
         selected={true} >
           {generateFilterTree(broader, label, allItems, [], route["id"])}
       </CustomTreeItem>
@@ -58,7 +58,7 @@ function generateFilterTree(broader, label, allItems, routeTree, parentId) {
 
 const CustomContent = React.forwardRef(function CustomContent(props, ref) {
   const { filterValues } = useListFilterContext();
-  
+
   const {
     classes,
     className,
@@ -89,7 +89,7 @@ const CustomContent = React.forwardRef(function CustomContent(props, ref) {
     handleExpansion(event);
   };
 
-  const handleSelectionClick = (event, b) => {
+  const handleSelectionClick = (event) => {
     handleSelection(event);
   };
 
@@ -143,7 +143,7 @@ function CustomTreeItem(props) {
   return <TreeItem ContentComponent={CustomContent} {...props} />;
 }
 
-const ReferenceFilterTree = ({ reference, source, broader, label, limit, sort, filter, icon, predicate, title }) => {
+const ReferenceFilterTree = ({ reference, source, broader, label, sort, filter, title }) => {
   const { data } = useGetList(reference, { pagination:{page: 1, perPage: Infinity} , sort, filter});
   const { filterValues, setFilters } = useListFilterContext();
   const [ selected, setSelected ] = useState();

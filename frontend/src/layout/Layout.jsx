@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Layout as RaLayout } from 'react-admin';
 import makeStyles from '@mui/styles/makeStyles';

@@ -6,7 +6,7 @@ import SubdirectoryArrowRightIcon from '@mui/icons-material/SubdirectoryArrowRig
 import { buildTreeData, generateTreeItem } from '../input/TreeComponent/TreeItemUtils';
 
 
-const TreeList =({source, label, reference , defaultExpanded = true}) => {
+const TreeList =({source, label, defaultExpanded = true}) => {
   const redirect = useRedirect()
   const createPath = useCreatePath();
   const { data, isLoading } = useListContext();

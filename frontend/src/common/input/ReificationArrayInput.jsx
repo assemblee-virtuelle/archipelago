@@ -11,7 +11,7 @@ const useHideInputStyles = makeStyles({
       display: 'none'
     }
   });
-  
+
 const ReificationArrayInput = props => {
     const { reificationClass, children, ...otherProps } = props;
     const hideInputStyles = useHideInputStyles();
@@ -19,11 +19,11 @@ const ReificationArrayInput = props => {
     return (
         <ArrayInput {...otherProps}>
         <SimpleFormIterator inline>
-            {props.children}
+            {children}
             <TextInput className={hideInputStyles.root} source="type" defaultValue={reificationClass} />
         </SimpleFormIterator>
         </ArrayInput>
     );
 };
-  
+
 export default ReificationArrayInput;

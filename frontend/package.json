@@ -16,9 +16,15 @@
     "@semapps/list-components": "0.6.0",
     "@semapps/markdown-components": "0.6.0",
     "@semapps/semantic-data-provider": "0.6.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
     "@vitejs/plugin-react": "^4.2.1",
     "date-fns": "~2.8.1",
     "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet.markercluster": "^1.5.3",
@@ -28,7 +34,8 @@
     "react-admin": "^4.16.14",
     "react-dom": "^18.1.0",
     "typescript": "^5.4.3",
-    "vite": "^5.2.7"
+    "vite": "^5.2.7",
+    "vite-plugin-checker": "^0.6.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -39,14 +46,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
+    "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "link-semapps-packages": "yalc link @semapps/activitypub-components @semapps/auth-provider @semapps/date-components @semapps/field-components @semapps/geo-components @semapps/input-components @semapps/list-components @semapps/markdown-components @semapps/semantic-data-provider",
     "unlink-semapps-packages": "yalc remove --all && rm -rf node_modules/@semapps && yarn install --force"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",
@@ -55,5 +60,10 @@
   ],
   "engines": {
     "node": ">=18"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 120
   }
 }
