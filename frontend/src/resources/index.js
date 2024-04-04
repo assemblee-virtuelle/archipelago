@@ -27,6 +27,7 @@ export { default as Status } from './Concept/Status';
 export { default as Type } from './Concept/Type';
 export { default as Concept } from './Concept/Concept';
 export { default as MembershipRole } from './Concept/MembershipRole';
+export { default as MembershipAssociation } from './Concept/MembershipAssociation';
 
 // Pages
 export { default as Page } from './Page';

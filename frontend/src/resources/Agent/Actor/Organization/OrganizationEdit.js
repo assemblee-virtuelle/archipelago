@@ -4,7 +4,6 @@ import {
   SelectInput,
   TabbedForm,
   ImageField,
-  AutocompleteInput,
 } from 'react-admin';
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
@@ -12,7 +11,7 @@ import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
 import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
-import ReificationArrayInput from '../../../../common/input/ReificationArrayInput';
+import MembershipAssociationInput from '../../../../common/input/MembershipAssociationInput';
 
 export const OrganizationEdit = props => (
   <Edit redirect="show" {...props}>
@@ -35,27 +34,19 @@ export const OrganizationEdit = props => (
         </ImageInput>
       </TabbedForm.Tab>
       <TabbedForm.Tab label="Membres">
-        <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation"  >
-          <ReferenceInput reference="Person" source="pair:membershipActor">
-          <AutocompleteInput label="Membre" optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
-            size='small'
-            sx={{
-              mt: 1,
-              mb: '4px',
-              minWidth: 300,
-            }}
-            shouldRenderSuggestions={value => value && value.length > 1}
-          />
-          </ReferenceInput>
-          <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
-            <SelectInput label="Rôle" optionText="pair:label" />
-          </ReferenceInput>
-        </ReificationArrayInput>
+        <MembershipAssociationInput
+          source="pair:organizationOfMembership"
+          referenceInputProps={{
+            reference: "Person",
+            source: "pair:membershipActor"
+          }}
+          label="Membre"
+        />
       </TabbedForm.Tab>
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
-        <DocumentsInput source="pair:documentedBy" />   
+        <DocumentsInput source="pair:documentedBy" />
         <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>

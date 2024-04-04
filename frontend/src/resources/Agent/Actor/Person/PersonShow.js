@@ -1,23 +1,12 @@
 import React from 'react';
-import { TextField, ArrayField } from 'react-admin';
-import { Grid, Box } from '@mui/material';
-import { QuickAppendReferenceArrayField, ReferenceField, AvatarWithLabelField } from '@semapps/field-components';
-import { ChipList, GridList } from '@semapps/list-components';
+import { TextField } from 'react-admin';
+import { Grid } from '@mui/material';
+import { QuickAppendReferenceArrayField } from '@semapps/field-components';
+import { ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
-import RightLabel from '../../../../common/list/SideList/RightLabel';
-import GroupedReferenceHandler from '../../../../common/GroupedReferenceHandler';
-
-const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
-  if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
-    return React.Children.map(children, (child, i) => {
-      return React.cloneElement(child, { ...otherProps, record, source });
-    });
-  } else {
-    return <></>;
-  }
-};
+import MembershipAssociationField from '../../../../common/field/MembershipAssociationField';
 
 const PersonShow = props => (
   <Show {...props}>
@@ -39,25 +28,16 @@ const PersonShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <GroupedReferenceHandler
+          <MembershipAssociationField
             source="pair:actorOfMembership"
-            groupReference="MembershipRole"
-            groupLabel="pair:label"
-            filterProperty="pair:membershipRole"
-          >
-            <ConditionalSourceDefinedHandler>
-              <RightLabel mb={0} />
-              <ArrayField source="pair:actorOfMembership" >
-                <Box mb={4}>
-                  <GridList xs={6} linkType="show" externalLinks>
-                    <ReferenceField reference="Organization" source="pair:membershipOrganization" link="show" basePath="/Organization">
-                      <AvatarWithLabelField label="pair:label" image="image"/>
-                    </ReferenceField>
-                  </GridList>
-                </Box>
-              </ArrayField>
-            </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler>
+            referenceFieldProps={{
+              reference: "Organization",
+              source: "pair:membershipOrganization",
+              basePath: "/Organization",
+              link: "show"
+            }}
+          />
+
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>

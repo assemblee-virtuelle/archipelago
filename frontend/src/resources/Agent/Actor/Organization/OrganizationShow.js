@@ -2,13 +2,12 @@ import React from 'react';
 import { TextField, SimpleList, EmailField, ArrayField } from 'react-admin';
 import { Grid, Avatar, Box } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
-import { 
-  ReferenceArrayField, 
-  QuickAppendReferenceArrayField, 
-  MultiUrlField, 
-  AvatarWithLabelField, 
-  SeparatedListField,
-  ReferenceField
+import {
+  ReferenceArrayField,
+  QuickAppendReferenceArrayField,
+  MultiUrlField,
+  AvatarWithLabelField,
+  SeparatedListField
 } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -18,18 +17,7 @@ import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
-import RightLabel from '../../../../common/list/SideList/RightLabel';
-import GroupedReferenceHandler from '../../../../common/GroupedReferenceHandler';
-
-const ConditionalSourceDefinedHandler = ({ record, source, children, ...otherProps }) => {
-  if (record?.[source] && (!Array.isArray(record[source]) || record[source].length > 0)) {
-    return React.Children.map(children, (child, i) => {
-      return React.cloneElement(child, { ...otherProps, record, source });
-    });
-  } else {
-    return <></>;
-  }
-};
+import MembershipAssociationField from "../../../../common/field/MembershipAssociationField";
 
 const domainMapping = {
   'forums.assemblee-virtuelle.org': {
@@ -90,26 +78,17 @@ const OrganizationShow = props => (
       </Grid>
       <Grid item xs={12} sm={3}>
         <SideList>
-          <GroupedReferenceHandler
+          <MembershipAssociationField
             source="pair:organizationOfMembership"
-            groupReference="MembershipRole"
-            groupLabel="pair:label"
-            filterProperty="pair:membershipRole"
             label={false}
-          >
-            <ConditionalSourceDefinedHandler>
-              <RightLabel mb={0} />
-              <ArrayField source="pair:organizationOfMembership">
-                <Box mb={4}>
-                  <GridList xs={6} linkType={false} externalLinks>
-                    <ReferenceField reference="Person" source="pair:membershipActor" link="show" basePath="/Person">
-                      <AvatarWithLabelField label="pair:label" image="image" />
-                    </ReferenceField>
-                  </GridList>
-                </Box>
-              </ArrayField>
-            </ConditionalSourceDefinedHandler>
-          </GroupedReferenceHandler>
+            referenceFieldProps={{
+              reference: "Person",
+              source: "pair:membershipActor",
+              basePath: "/Person",
+              link: "show"
+            }}
+          />
+
           <ReferenceArrayField reference="Organization" source="pair:partnerOf">
             <GridList xs={6} linkType="show" externalLinks>
               <AvatarWithLabelField label="pair:label" image="image">
