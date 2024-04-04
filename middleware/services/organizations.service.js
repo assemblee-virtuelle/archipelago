@@ -5,7 +5,7 @@ const DereferenceMixin = require('../mixins/dereference');
 module.exports = {
   dependencies: ['ldp.resource'],
   name: 'organizations',
-  mixins: [ControlledContainerMixin, DisassemblyMixin/*, DereferenceMixin*/],
+  mixins: [ControlledContainerMixin, DisassemblyMixin, DereferenceMixin],
   settings: {
     path: '/organizations',
     acceptedTypes: ['pair:Organization'],
