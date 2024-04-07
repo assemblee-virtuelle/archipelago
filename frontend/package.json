@@ -20,7 +20,6 @@
     "@typescript-eslint/parser": "^7.4.0",
     "@vitejs/plugin-react": "^4.2.1",
     "date-fns": "~2.8.1",
-    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
