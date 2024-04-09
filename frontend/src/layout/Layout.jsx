@@ -4,6 +4,7 @@ import { Layout as RaLayout } from 'react-admin';
 import makeStyles from '@mui/styles/makeStyles';
 import AppBar from './AppBar';
 import TreeMenu from './TreeMenu/TreeMenu';
+import config from '../config';
 
 const useStyles = makeStyles(theme => ({
   layout: {
@@ -28,8 +29,8 @@ const Layout = ({ appBar, menu, children, ...otherProps }) => {
     <RaLayout
       {...otherProps}
       className={classes.layout}
-      appBar={AppBar}
-      menu={TreeMenu}
+      appBar={config.AppBar || AppBar}
+      menu={config.Menu || TreeMenu}
     >
       {children}
     </RaLayout>

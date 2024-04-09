@@ -9,8 +9,7 @@ import HomePage from './HomePage';
 import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
-import theme from './config/theme';
-import resources from './resources';
+import config from './config';
 
 import Layout from './layout/Layout';
 
@@ -25,21 +24,21 @@ const queryClient = new QueryClient({
 const App = () => (
   <StyledEngineProvider injectFirst>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={config.theme}>
         <Admin
           disableTelemetry
-          title="Archipel"
+          title={config.title}
           authProvider={authProvider}
           dataProvider={dataProvider}
           i18nProvider={i18nProvider}
-          layout={Layout}
-          theme={theme}
-          loginPage={LoginPage}
-          dashboard={HomePage}
+          layout={config.Layout || Layout}
+          theme={config.theme}
+          loginPage={config.LoginPage || LoginPage}
+          dashboard={config.HomePage || HomePage}
           store={memoryStore()}
           queryClient={queryClient}
         >
-          {Object.entries(resources).map(([key, resource]) => (
+          {Object.entries(config.resources).map(([key, resource]) => (
             <Resource key={key} name={key} {...resource.config} />
           ))}
         </Admin>

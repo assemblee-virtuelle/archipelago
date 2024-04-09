@@ -121,6 +121,26 @@ yarn run dbMigration down --earliest
 
 You can also call dbMigration actions from REPL middleware with `call dbMigration.status` for example.
 
+## How to customize
+
+You can customize Archipelago by copying the file `src/config.ts` in your deployment `app/src` folder.
+
+You can then edit this file and modify its properties:
+
+| Property      | Required | Description |
+|---------------|----|-------------|
+| middlewareUrl | yes | Middleware API url (ex: https://<host>:<port>/). Should contain a trailing slash |
+| mapboxAccessToken | yes | Mapbox Access Token used for addresses completion |
+| title | yes | App title (displayed in default AppBar) |
+| theme | yes | App theme. Should follow MaterialUI theme structure. Can inherit default theme
+| resources | yes | Resources handled by app. Can inherit default resources |
+| dataServers | - | Additional data servers used for fetching data |
+| Layout | - | App Layout component |
+| Menu | - | App menu component (can be overriden by custom Layout compoent) |
+| AppBar | - | App top bar (can be overriden by custom Layout component)
+| HomePage | - | Home page component |
+| LoginPage | - | Login page component |
+
 ## Deploying to production
 
 Follow the guide [here](deploy/README.md).

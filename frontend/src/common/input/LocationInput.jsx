@@ -1,6 +1,6 @@
 import React from 'react';
 import { extractContext, LocationInput as SemAppsLocationInput } from '@semapps/geo-components';
-import config from '../../config/config';
+import config from '../../config';
 
 const LocationInput = props => (
   <SemAppsLocationInput

@@ -3,11 +3,11 @@ import { CreateOrImportForm } from "@semapps/interop-components";
 import { useResourceContext, SimpleForm } from "react-admin";
 import Create from "../../../../layout/create/Create";
 import EventForm from "./EventForm";
-import config from '../../../../config/config';
+import config from '../../../../config';
 
 const EventCreate = () => {
   const resource = useResourceContext();
-  const isImportable = config.importableResources?.includes(resource);
+  const isImportable = config.resources[resource].config?.options?.importable ?? true;
 
   return (
     <Create title={"Créer un nouvel évènement"} redirect="show">

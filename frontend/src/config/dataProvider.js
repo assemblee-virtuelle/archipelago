@@ -1,13 +1,12 @@
 import { dataProvider as semanticDataProvider } from '@semapps/semantic-data-provider';
 import ontologies from './ontologies.json';
 import dataServers from './dataServers';
-import resources from '../resources';
 import { withLifecycleCallbacks } from 'react-admin';
-import config from './config';
+import config from '../config';
 
 const baseDataProvider = semanticDataProvider({
   dataServers,
-  resources: Object.fromEntries(Object.entries(resources).map(([k, v]) => [k, v.dataModel])),
+  resources: Object.fromEntries(Object.entries(config.resources).map(([k, v]) => [k, v.dataModel])),
   ontologies,
   jsonContext: [
     'https://www.w3.org/ns/activitystreams',

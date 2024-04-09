@@ -1,4 +1,4 @@
-import config from "./config";
+import config from "../config";
 
 const dataServers = {
   default: {
@@ -7,6 +7,7 @@ const dataServers = {
     default: true,
     uploadsContainer: '/files'
   },
+  ...config.dataServers,
 
   // You can add additionnal external servers in this file
   // Here is two examples:
