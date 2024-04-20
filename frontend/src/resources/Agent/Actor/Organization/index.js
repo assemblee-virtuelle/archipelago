@@ -21,7 +21,7 @@ const resource = {
     types: ['pair:Organization'],
     list: {
       servers: '@default',
-      forceArray: ['pair:organizationOfMembership']
+      forceArray: ['pair:organizationOfMembership', 'pair:homePage']
     },
     fieldsMapping: {
       title: 'pair:label'
