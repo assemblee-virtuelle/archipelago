@@ -15,20 +15,20 @@ export const ThemeEdit = props => {
 
   return (
     <Edit redirect="show" {...props}>
-      <TabbedForm>
+      <TabbedForm syncWithLocation={false}>
         <FormTab label="Données">
           <TextInput source="pair:label" fullWidth />
           <MarkdownInput source="pair:description" fullWidth />
         </FormTab>
         <FormTab label="Relations">
           <AgentsInput source="pair:topicOf" />
-          <CustomTreeSelectInput 
-            label="Thème Parent" 
-            source="pair:broader" 
-            reference="Theme" 
-            broader="pair:broader" 
+          <CustomTreeSelectInput
+            label="Thème Parent"
+            source="pair:broader"
+            reference="Theme"
+            broader="pair:broader"
             validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
-            fullWidth 
+            fullWidth
           />
         </FormTab>
       </TabbedForm>

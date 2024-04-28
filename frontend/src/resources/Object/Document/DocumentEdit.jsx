@@ -7,7 +7,7 @@ import Edit from "../../../layout/edit/Edit";
 
 export const DocumentEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm>
+    <TabbedForm syncWithLocation={false}>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />
