@@ -12,7 +12,7 @@ export const PersonEdit = props => (
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}
   >
-    <TabbedForm>
+    <TabbedForm syncWithLocation={false}>
       <FormTab label="Données">
         <TextInput source="pair:firstName" fullWidth />
         <TextInput source="pair:lastName" fullWidth />

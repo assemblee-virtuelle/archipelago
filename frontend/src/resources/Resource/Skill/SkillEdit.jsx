@@ -5,7 +5,7 @@ import { UsersInput, AgentsInput } from '../../../common/input';
 
 export const SkillEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm>
+    <TabbedForm syncWithLocation={false}>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
       </FormTab>

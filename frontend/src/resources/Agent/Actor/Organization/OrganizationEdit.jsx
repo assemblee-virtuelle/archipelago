@@ -16,7 +16,7 @@ import ReificationArrayInput from '../../../../common/input/ReificationArrayInpu
 
 export const OrganizationEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm>
+    <TabbedForm syncWithLocation={false}>
       <TabbedForm.Tab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />
@@ -55,7 +55,7 @@ export const OrganizationEdit = props => (
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
-        <DocumentsInput source="pair:documentedBy" />   
+        <DocumentsInput source="pair:documentedBy" />
         <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>

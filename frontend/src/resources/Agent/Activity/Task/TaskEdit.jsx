@@ -8,7 +8,7 @@ import Edit from "../../../../layout/edit/Edit";
 
 const TaskEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm>
+    <TabbedForm syncWithLocation={false}>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <MarkdownInput source="pair:description" fullWidth />
