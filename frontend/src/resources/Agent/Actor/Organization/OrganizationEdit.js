@@ -5,14 +5,15 @@ import {
   TabbedForm,
   ImageField,
   AutocompleteInput,
+  SimpleFormIterator,
 } from 'react-admin';
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
 import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 import ReificationArrayInput from '../../../../common/input/ReificationArrayInput';
+import JsonLDArrayInput from '../../../../common/input/JsonLDArrayInput';
 
 export const OrganizationEdit = props => (
   <Edit redirect="show" {...props}>
@@ -27,7 +28,11 @@ export const OrganizationEdit = props => (
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:OrganizationType' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
-        <MultiLinesInput source="pair:homePage" fullWidth />
+        <JsonLDArrayInput source="pair:homePage" fullWidth>
+          <SimpleFormIterator disableReordering disableClear fullWidth>
+            <TextInput fullWidth type="url" />
+          </SimpleFormIterator>
+        </JsonLDArrayInput>
         <TextInput source="pair:e-mail" fullWidth type="email" />
         <LocationInput source="pair:hasLocation" fullWidth />
         <ImageInput source="image" accept="image/*">
@@ -37,15 +42,15 @@ export const OrganizationEdit = props => (
       <TabbedForm.Tab label="Membres">
         <ReificationArrayInput source="pair:organizationOfMembership" reificationClass="pair:MembershipAssociation"  >
           <ReferenceInput reference="Person" source="pair:membershipActor">
-          <AutocompleteInput label="Membre" optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
-            size='small'
-            sx={{
-              mt: 1,
-              mb: '4px',
-              minWidth: 300,
-            }}
-            shouldRenderSuggestions={value => value && value.length > 1}
-          />
+            <AutocompleteInput label="Membre" optionText={record => record && `${record['pair:firstName']} ${record['pair:lastName']}`}
+              size='small'
+              sx={{
+                mt: 1,
+                mb: '4px',
+                minWidth: 300,
+              }}
+              shouldRenderSuggestions={value => value && value.length > 1}
+            />
           </ReferenceInput>
           <ReferenceInput reference="MembershipRole" source="pair:membershipRole">
             <SelectInput label="Rôle" optionText="pair:label" />
@@ -55,7 +60,7 @@ export const OrganizationEdit = props => (
       <TabbedForm.Tab label="Relations">
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
-        <DocumentsInput source="pair:documentedBy" />   
+        <DocumentsInput source="pair:documentedBy" />
         <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </TabbedForm.Tab>
     </TabbedForm>
