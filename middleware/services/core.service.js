@@ -1,7 +1,7 @@
 const path = require('path');
 const urlJoin = require("url-join");
 const { CoreService } = require('@semapps/core');
-const { pair } = require('@semapps/ontologies');
+const { pair, semapps, og, as } = require('@semapps/ontologies');
 const CONFIG = require('../config/config');
 const containers = require('../config/containers');
 
@@ -16,11 +16,11 @@ module.exports = {
       password: CONFIG.JENA_PASSWORD,
       mainDataset: CONFIG.MAIN_DATASET,
     },
-    ontologies: [pair],
+    ontologies: [pair, semapps, og, as],
     containers,
     // Sub-services settings
-    activitypub: { 
-      activitiesPath: "/activities" 
+    activitypub: {
+      activitiesPath: "/activities"
     },
     api: {
       port: CONFIG.PORT,

@@ -9,7 +9,7 @@ const GRAY = '\x1b[90m';
 const DEFAULT = '\x1b[0m';
 
 const MIGRATION_FILE_TEMPLATE = `module.exports = {
-  up: async ({ query, insert, update }) => {
+  up: async ({ query, insert, update, call }) => {
     /*
      * You can use 'query', 'insert' and 'update' actions from triplestore service
      * Documentation for these methods can be found here: https://semapps.org/docs/middleware/triplestore
@@ -23,10 +23,12 @@ const MIGRATION_FILE_TEMPLATE = `module.exports = {
      *     }
      *   \`,
      * });
+     *
+     * You can also call another moleculer service action via the generic 'call' method
      */
 
   },
-  down: async ({ query, insert, update }) => {
+  down: async ({ query, insert, update, call }) => {
     /*
      * This function must undo what is done in the above "up" function.
      * If things are not undoable, it must ensure that the database will be in a coherent working state
@@ -125,6 +127,7 @@ module.exports = {
           query: (opts) => this.broker.call('triplestore.query', opts),
           insert: (opts) => this.broker.call('triplestore.insert', opts),
           update: (opts) => this.broker.call('triplestore.update', opts),
+          call: (name, opts) => this.broker.call(name, opts),
         });
 
         const resourceUri = new URL(
@@ -174,6 +177,7 @@ module.exports = {
             query: (opts) => this.broker.call('triplestore.query', opts),
             insert: (opts) => this.broker.call('triplestore.insert', opts),
             update: (opts) => this.broker.call('triplestore.update', opts),
+            call: (name, opts) => this.broker.call(name, opts),
           });
         }
 
