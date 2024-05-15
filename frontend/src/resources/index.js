@@ -1,35 +1,74 @@
+/* eslint-disable no-redeclare */
+import Agent from './Agent/Agent';
+
 // Actors
-export { default as Organization } from './Agent/Actor/Organization';
-export { default as Group } from './Agent/Actor/Group';
-export { default as Person } from './Agent/Actor/Person';
-export { default as Actor } from './Agent/Actor/Actor';
+import Organization from './Agent/Actor/Organization';
+import Group from './Agent/Actor/Group';
+import Person from './Agent/Actor/Person';
+import Actor from './Agent/Actor/Actor';
 
 // Activities
-export { default as Project } from './Agent/Activity/Project';
-export { default as Event } from './Agent/Activity/Event';
-export { default as Task } from './Agent/Activity/Task';
-export { default as Activity } from './Agent/Activity/Activity';
+import Project from './Agent/Activity/Project';
+import Event from './Agent/Activity/Event';
+import Task from './Agent/Activity/Task';
+import Activity from './Agent/Activity/Activity';
 
 // Resources
-export { default as Skill } from './Resource/Skill';
-export { default as Resource } from './Resource/Resource';
+import Skill from './Resource/Skill';
+import Resource from './Resource/Resource';
 
 // Ideas
-export { default as Idea } from './Idea';
+import Idea from './Idea';
 
 // Objects
-export { default as Document } from './Object/Document';
-export { default as Object } from './Object/Object';
+import Document from './Object/Document';
+import Object from './Object/Object';
 
 // Concepts
-export { default as Theme } from './Concept/Theme';
-export { default as Status } from './Concept/Status';
-export { default as Type } from './Concept/Type';
-export { default as Concept } from './Concept/Concept';
-export { default as MembershipRole } from './Concept/MembershipRole';
+import Theme from './Concept/Theme';
+import Status from './Concept/Status';
+import Type from './Concept/Type';
+import Concept from './Concept/Concept';
+import MembershipRole from './Concept/MembershipRole';
 
 // Pages
-export { default as Page } from './Page';
+import Page from './Page';
 
-// Put this at the end, otherwise it will load as the homepage
-export { default as Agent } from './Agent/Agent';
+const resources = {
+  Agent,
+
+  // Actors
+  Organization,
+  Group,
+  Person,
+  Actor,
+
+  // Activities
+  Project,
+  Event,
+  Task,
+  Activity,
+
+  // Resources
+  Skill,
+  Resource,
+
+  // Ideas
+  Idea,
+
+  // Objects
+  Document,
+  Object,
+
+  // Concepts
+  Theme,
+  Status,
+  Type,
+  Concept,
+  MembershipRole,
+
+  // Pages
+  Page,
+};
+
+export default resources;

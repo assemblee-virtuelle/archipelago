@@ -1,5 +1,4 @@
 const CONFIG = require('./config');
-const { ACTOR_TYPES } = require("@semapps/activitypub");
 
 module.exports = [
   {
@@ -31,7 +30,7 @@ module.exports = [
   },
   {
     path: '/bots',
-    acceptedTypes: [ACTOR_TYPES.APPLICATION],
+    acceptedTypes: ['as:Application'],
     excludeFromMirror: true
   },
   {

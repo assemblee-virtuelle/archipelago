@@ -1,4 +1,4 @@
-FROM node:12.16-alpine
+FROM node:20-alpine
 
 # Default arguments
 ARG SELECTED_BRANCH=master
@@ -23,10 +23,10 @@ RUN git checkout $SELECTED_BRANCH
 ADD app /archipelago/frontend
 WORKDIR /archipelago/frontend
 
-RUN yarn install
+RUN yarn install --production --frozen-lockfile
 
 RUN yarn run build
 
 EXPOSE 4000
 
-CMD serve -s build -l 4000
+CMD serve -s dist -l 4000

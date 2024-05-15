@@ -1,4 +1,4 @@
-FROM node:14.16-alpine
+FROM node:20-alpine
 
 # Default arguments
 ARG SELECTED_BRANCH=master
@@ -23,7 +23,7 @@ RUN git checkout $SELECTED_BRANCH
 ADD app /archipelago/middleware
 WORKDIR /archipelago/middleware
 
-RUN yarn install
+RUN yarn install --production --frozen-lockfile
 
 EXPOSE 3000
 

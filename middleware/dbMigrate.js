@@ -3,6 +3,7 @@ const { ServiceBroker } = require('moleculer');
 const { CoreService } = require('@semapps/core');
 const CONFIG = require('./config/config');
 const dbMigrationsService = require('./services/dbMigrations.service');
+const archipelagoCore = require('./services/core.service');
 
 const broker = new ServiceBroker({
   logLevel: "warn",
@@ -13,25 +14,14 @@ broker.createService({
   name: 'core',
   mixins: [CoreService],
   settings: {
-    activitypub: false,
+    ...archipelagoCore.settings,
     api: {
       port: CONFIG.PORT + 1,
     },
-    jsonld: {},
-    ldp: false,
-    signature: false,
     sparqlEndpoint: false,
     void: false,
     webacl: false,
     webfinger: false,
-
-    baseUrl: CONFIG.HOME_URL,
-    triplestore: {
-      url: CONFIG.SPARQL_ENDPOINT,
-      user: CONFIG.JENA_USER,
-      password: CONFIG.JENA_PASSWORD,
-      mainDataset: CONFIG.MAIN_DATASET,
-    },
   }});
 
 broker.createService(dbMigrationsService);
