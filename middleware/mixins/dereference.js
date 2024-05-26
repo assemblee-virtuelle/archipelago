@@ -3,21 +3,21 @@ const {isObject} = require('@semapps/ldp');
 /**
  * @description MoleculerJS mixin to be applied on the ControlledContainerMixin within a Semapps project.
  * Provides resource dereferencing after ldp.resource.get execution
- * 
+ *
  * @module MoleculerJS Mixin - Dereference
  * @requires module:services.ldp.resource
- * 
+ *
  * Features include:
  * - `get`: Retrieve a specific property from the main data.
  * - `dereference`: Recursively dereference properties from the main data.
  * - `handleAfterGet`: Post-retrieval result processing applying a dereferencing plan.
- * 
+ *
  * The mixin also introduces an `after.get` hook for automated processing following each retrieval action.
- * 
+ *
  * Usage:
- * This mixin requires the presence of an `ldp.resource.get` service within the MoleculerJS environment for 
+ * This mixin requires the presence of an `ldp.resource.get` service within the MoleculerJS environment for
  * effective LDP data interaction.
- * 
+ *
  * Example moleculer service:
  * ```javascript
  * module.exports = {
@@ -45,29 +45,34 @@ module.exports = {
     methods: {
         /**
         * Get a property from main data. This is a wrapper around ldp.resource.get to allow us to pass in the property to the API
-        * 
+        *
         * @param ctx - moleculer context
         * @param resourceUri - The resourceUri to get the property from ldp.resource.get service
-        * 
+        *
         * @return { Promise } The result of the get operation as a JSON object with @context removed from the result
         */
         async getWithoutContext(ctx,resourceUri) {
-            // Call the ldp.resource.get method to get the resource
-            let result = await ctx.call(
-                'ldp.resource.get',{resourceUri:resourceUri,accept:'application/ld+json'}
-            );
-            // Delete the context from the result
-            delete(result['@context']);
-            return result
+            try {
+                // Call the ldp.resource.get method to get the resource
+                let result = await ctx.call(
+                    'ldp.resource.get',{resourceUri:resourceUri,accept:'application/ld+json'}
+                );
+                // Delete the context from the result
+                delete(result['@context']);
+                return result
+            } catch (error) {
+                console.error(`Error while dereferencing ${resourceUri}`, error.message);
+                return undefined;
+            }
         },
 
         /**
         * Dereferences properties from mainData according to propertiesSchema. This method is recursive so you can pass an array of propertiesSchema and it will dereference each element of the array to the result
-        * 
+        *
         * @param ctx - moleculer context
         * @param mainData - The main data to dereference. Can be an array or an object.
         * @param propertiesSchema - The properties schema to dereference the mainData with.
-        * 
+        *
         * @return { Promise } Resolves to the dereferenced data
         */
         async dereference(ctx,mainData, propertiesSchema) {
@@ -85,14 +90,17 @@ module.exports = {
                 } else {
                     propertiesSchemaArray = [...propertiesSchema]
                 }
-        
+
                 for (let propertySchema of propertiesSchemaArray) {
                     const property = propertySchema.p;
                     let reference;
                     if (Array.isArray(mainData[property])){
                         reference=[];
                         for (const uri of mainData[property]) {
-                            reference.push(await this.getWithoutContext(ctx,uri));
+                            const result = await this.getWithoutContext(ctx,uri);
+                            if (result) {
+                                reference.push(result);
+                            }
                         }
                     }else if (typeof mainData[property]=== "string"){
                         reference = await this.getWithoutContext(ctx,mainData[property]);
@@ -111,13 +119,13 @@ module.exports = {
 
         /**
         * Dereference and return the result after get. This is called after the result has been resolve thanks to ldp service
-        * 
+        *
         * @param ctx - moleculer context
         * @param res - the result of the operation. It can be any type
-        * 
+        *
         * @return { Promise } - the result of the operation or an error if there was a problem with the result
         */
-        async handleAfterGet(ctx, res) { 
+        async handleAfterGet(ctx, res) {
             const dereferencePlan = this.settings.dereferencePlan || [];
             const result = await this.dereference(ctx,res, dereferencePlan);
             return result;
