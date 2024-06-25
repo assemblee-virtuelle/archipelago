@@ -4,6 +4,7 @@ import { Grid, Box } from '@mui/material';
 import { QuickAppendReferenceArrayField, ReferenceField, AvatarWithLabelField } from '@semapps/field-components';
 import { ChipList, GridList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import Show from "../../../../layout/show/Show";
 import RightLabel from '../../../../common/list/SideList/RightLabel';
@@ -29,6 +30,7 @@ const PersonShow = props => (
           <TextField source="pair:comment" />
         </Hero>
         <MainList>
+          <MarkdownField source="pair:description" />
           <MapField
             source="pair:hasLocation"
             address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}

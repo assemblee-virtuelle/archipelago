@@ -32,6 +32,7 @@ const resource = {
         'pair:firstName': 'Prénom',
         'pair:lastName': 'Nom de famille',
         'pair:comment': 'En deux mots',
+        'pair:description': 'Description',
         image: 'Photo',
         'pair:involvedIn': 'Impliqué dans',
         'pair:affiliatedBy': 'Membre de',

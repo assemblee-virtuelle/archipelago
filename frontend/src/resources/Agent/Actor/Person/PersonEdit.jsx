@@ -1,6 +1,7 @@
 import React from 'react';
 import { ImageField, TabbedForm, TextInput, FormTab, AutocompleteInput, SelectInput } from 'react-admin';
 import { ReferenceInput } from '@semapps/input-components';
+import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageInput } from '@semapps/input-components';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
@@ -17,6 +18,7 @@ export const PersonEdit = props => (
         <TextInput source="pair:firstName" fullWidth />
         <TextInput source="pair:lastName" fullWidth />
         <TextInput source="pair:comment" fullWidth />
+        <MarkdownInput source="pair:description" fullWidth />
         <LocationInput source="pair:hasLocation" fullWidth />
         <ImageInput source="image" accept="image/*">
           <ImageField source="src" />
