@@ -6,8 +6,7 @@ const LocationInput = props => (
   <SemAppsLocationInput
     mapboxConfig={{
       access_token: config.mapboxAccessToken,
-      types: ['place', 'address'],
-      country: ['fr', 'be', 'ch']
+      types: ['country', 'place', 'address']
     }}
     parse={value => ({
       type: 'pair:Place',
