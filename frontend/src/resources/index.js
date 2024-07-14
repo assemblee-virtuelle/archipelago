@@ -30,6 +30,7 @@ import Status from './Concept/Status';
 import Type from './Concept/Type';
 import Concept from './Concept/Concept';
 import MembershipRole from './Concept/MembershipRole';
+import MembershipAssociation from './Concept/MembershipAssociation';
 
 // Pages
 import Page from './Page';
@@ -66,6 +67,7 @@ const resources = {
   Type,
   Concept,
   MembershipRole,
+  MembershipAssociation,
 
   // Pages
   Page,
