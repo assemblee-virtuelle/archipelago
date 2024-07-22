@@ -1,22 +1,26 @@
-/* eslint-disable react/no-children-prop */
-import React, { useState, useEffect, useMemo } from "react";
-import { useResourceDefinitions, Logout, Menu, useGetIdentity, MenuItemLink, useTranslate } from "react-admin";
-import { useLocation } from "react-router";
-import { useMediaQuery, Divider } from "@mui/material";
-import DefaultIcon from "@mui/icons-material/ViewList";
+import React, { useState, useEffect, useMemo } from 'react';
+import { useResourceDefinitions, Logout, Menu, useGetIdentity, MenuItemLink, useTranslate } from 'react-admin';
+import { useLocation } from 'react-router';
+import { useMediaQuery, Divider } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import DefaultIcon from '@mui/icons-material/ViewList';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LoginIcon from '@mui/icons-material/Login';
-import SubMenu from "./SubMenu";
-import ResourceMenuLink from "./ResourceMenuLink";
+import SubMenu from './SubMenu';
+import ResourceMenuLink from './ResourceMenuLink';
+import resources from '../../resources';
+
+export type ResourceOptions = {
+  label: string;
+  parent?: keyof typeof resources;
+}
 
 const TreeMenu = () => {
-  const isXSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  const theme = useTheme();
+  const isXSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const resourceDefinitions = useResourceDefinitions();
-  const resources = useMemo(
-    () => Object.values(resourceDefinitions),
-    [resourceDefinitions]
-  );
+  const resourceDefinitions = useResourceDefinitions<ResourceOptions>();
+  const resources = useMemo(() => Object.values(resourceDefinitions), [resourceDefinitions]);
 
   const location = useLocation();
   const matches = location.pathname.match(/^\/([^/]+)/);
@@ -27,20 +31,17 @@ const TreeMenu = () => {
 
   const translate = useTranslate();
 
-  const [openSubMenus, setOpenSubMenus] = useState({});
-  const handleToggle = (menu) => {
+  const [openSubMenus, setOpenSubMenus] = useState<Record<string, boolean>>({});
+  const handleToggle = (menu: string) => {
     setOpenSubMenus((state) => ({ ...state, [menu]: !state[menu] }));
   };
 
   // Get menu root items
-  const menuRootItems = useMemo(
-    () => resources.filter((r) => !r.options?.parent),
-    [resources]
-  );
+  const menuRootItems = useMemo(() => resources.filter((r) => !r.options?.parent), [resources]);
 
   // Calculate available categories
   const categories = useMemo(() => {
-    const names = resources.reduce((categories, resource) => {
+    const names = resources.reduce<string[]>((categories, resource) => {
       if (resource.options?.parent) {
         categories.push(resource.options.parent);
       }
@@ -51,15 +52,10 @@ const TreeMenu = () => {
 
   // Open submenu of current page
   useEffect(() => {
-    const currentResource = resources.find(
-      (resource) => resource.name === currentResourceName
-    );
+    const currentResource = resources.find((resource) => resource.name === currentResourceName);
 
     const currentCategory =
-      currentResource &&
-      categories.find(
-        (category) => category.name === currentResource.options?.parent
-      );
+      currentResource && categories.find((category) => category.name === currentResource.options?.parent);
 
     if (currentCategory) {
       setOpenSubMenus((state) => ({ ...state, [currentCategory.name]: true }));
@@ -76,15 +72,13 @@ const TreeMenu = () => {
         icon={menuRootItem.icon ? <menuRootItem.icon /> : <DefaultIcon />}
       >
         {resources
-          .filter(resource => resource.hasList && resource.options.parent === menuRootItem.name)
-          .map(resource => (
+          .filter((resource) => resource.hasList && resource.options?.parent === menuRootItem.name)
+          .map((resource) => (
             <ResourceMenuLink key={resource.name} resource={resource} />
           ))}
       </SubMenu>
     ) : (
-      menuRootItem.hasList && (
-        <ResourceMenuLink key={menuRootItem.name} resource={menuRootItem} />
-      )
+      menuRootItem.hasList && <ResourceMenuLink key={menuRootItem.name} resource={menuRootItem} root />
     );
   });
 
@@ -92,15 +86,17 @@ const TreeMenu = () => {
     menuItems.push(<Divider key="divider" />);
 
     if (isLogged) {
-      menuItems.push(<Logout key="logout" />)
+      menuItems.push(<Logout key="logout" />);
     } else {
       menuItems.push(
+        // @ts-expect-error Bad typing from react-admin
         <MenuItemLink
           key="signup"
           to={'/login?signup=true'}
           primaryText={translate('auth.action.signup')}
           leftIcon={<LockOpenIcon />}
         />,
+        // @ts-expect-error Bad typing from react-admin
         <MenuItemLink
           key="login"
           to={'/login'}
@@ -111,7 +107,7 @@ const TreeMenu = () => {
     }
   }
 
-  return <Menu children={menuItems} />;
+  return <Menu>{menuItems}</Menu>;
 };
 
 export default TreeMenu;
