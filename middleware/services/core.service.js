@@ -15,6 +15,7 @@ module.exports = {
       user: CONFIG.JENA_USER,
       password: CONFIG.JENA_PASSWORD,
       mainDataset: CONFIG.MAIN_DATASET,
+      fusekiBase: CONFIG.SEMAPPS_FUSEKI_BASE,
     },
     ontologies: [pair, semapps, og, as],
     containers,
@@ -37,6 +38,9 @@ module.exports = {
     },
     webacl: {
       superAdmins: []
-    }
+    },
+    webid: {
+      path: 'users',
+    },
   }
 };
