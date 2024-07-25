@@ -44,7 +44,7 @@
     "yalc": "1.0.0-pre.53"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",
