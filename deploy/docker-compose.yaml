@@ -45,6 +45,7 @@ services:
       - ./middleware/logs:/archipelago/middleware/logs
       - ./middleware/jwt:/archipelago/middleware/jwt
       - ./middleware/uploads:/archipelago/middleware/uploads
+      - ./data/fuseki:/archipelago/fuseki # Used for backup service
     expose:
       - "3000"
     labels:
