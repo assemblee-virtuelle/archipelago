@@ -4,10 +4,11 @@ import {
   SelectInput,
   TabbedForm,
   ImageField,
+  SimpleFormIterator,
+  ArrayInput,
 } from 'react-admin';
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { MultiLinesInput } from '@semapps/input-components';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import Edit from "../../../../layout/edit/Edit";
 import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
@@ -26,7 +27,11 @@ export const OrganizationEdit = props => (
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:OrganizationType' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
-        <MultiLinesInput source="pair:homePage" fullWidth />
+        <ArrayInput source="pair:homePage" fullWidth>
+          <SimpleFormIterator disableReordering disableClear fullWidth>
+            <TextInput fullWidth type="url" />
+          </SimpleFormIterator>
+        </ArrayInput>
         <TextInput source="pair:e-mail" fullWidth type="email" />
         <LocationInput source="pair:hasLocation" fullWidth />
         <ImageInput source="image" accept="image/*">
