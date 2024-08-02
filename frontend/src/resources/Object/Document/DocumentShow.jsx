@@ -12,7 +12,15 @@ const DocumentShow = props => (
       <Grid item xs={12} sm={9}>
         <Typography variant="h3" color="primary" component="h1" id="react-admin-title" />
         <MainList>
-          <ImageField source="image" title="pair:label" label={false} />
+          <ImageField source="image" title="pair:label" label={false} sx={{
+            '& img': {
+              width: '100% !important',
+              height: 'unset !important',
+              maxWidth: '100% !important',
+              maxHeight: '350px !important',
+              objectFit: 'contain',
+            }
+           }} />
           <MarkdownField source="pair:description" label={false} />
         </MainList>
       </Grid>
