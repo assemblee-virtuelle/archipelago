@@ -28,6 +28,11 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
+    "@typescript-eslint/no-misused-promises": [2, {
+      "checksVoidReturn": {
+        "attributes": false
+      }
+    }]
   },
   overrides: [
     {
