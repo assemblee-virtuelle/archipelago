@@ -16,7 +16,7 @@ import ForumIcon from '@mui/icons-material/Forum';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import Show from "../../../../layout/show/Show";
+import { Show } from '../../../../layout';
 import MembershipAssociationField from "../../../../common/field/MembershipAssociationField";
 
 const domainMapping = {

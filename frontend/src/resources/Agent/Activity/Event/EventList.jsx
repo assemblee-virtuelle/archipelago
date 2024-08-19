@@ -7,7 +7,7 @@ import frLocale from '@fullcalendar/core/locales/fr';
 import ListIcon from '@mui/icons-material/List';
 import EventIcon from '@mui/icons-material/Event';
 import EventFilterSidebar from './EventFilterSidebar';
-import List from "../../../../layout/list/List";
+import { List } from '../../../../layout';
 
 const EventList = props => (
   <MultiViewsList

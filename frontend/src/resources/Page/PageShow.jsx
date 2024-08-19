@@ -1,7 +1,7 @@
 import React from 'react';
 import { MarkdownField } from '../../common/field';
 import { MainList } from '../../common/list';
-import Show from "../../layout/show/Show";
+import { Show } from '../../layout';
 
 const PageShow = props => (
   <Show {...props}>

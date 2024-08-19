@@ -1,9 +1,9 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { useListContext, Pagination } from 'react-admin';
 import { Box } from '@mui/material';
-import BaseView from '../BaseView';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useCreateContainerUri } from '@semapps/semantic-data-provider';
+import { BaseView } from '../index';
 
 type Props = {
   title?: string | ReactElement;

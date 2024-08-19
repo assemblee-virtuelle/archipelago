@@ -1,8 +1,9 @@
 import React from 'react';
 import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId, choices } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { AgentsInput } from '../../../common/input';
-import Edit from "../../../layout/edit/Edit";
+import { Edit } from '../../../layout';
 import CustomTreeSelectInput from '../../../common/input/TreeComponent/CustomTreeSelectInput';
 
 export const ThemeEdit = props => {
@@ -15,7 +16,7 @@ export const ThemeEdit = props => {
 
   return (
     <Edit redirect="show" {...props}>
-      <TabbedForm syncWithLocation={false}>
+      <TabbedForm syncWithLocation={false} toolbar={<EditToolbarWithPermissions />}>
         <FormTab label="Données">
           <TextInput source="pair:label" fullWidth />
           <MarkdownInput source="pair:description" fullWidth />

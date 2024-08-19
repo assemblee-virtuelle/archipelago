@@ -2,12 +2,13 @@ import React from 'react';
 import { FormTab, SelectInput, TabbedForm, TextInput, ImageField } from 'react-admin';
 import { ReferenceInput, ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { AgentsInput } from '../../../common/input';
-import Edit from "../../../layout/edit/Edit";
+import { Edit } from '../../../layout';
 
 export const DocumentEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm syncWithLocation={false}>
+    <TabbedForm syncWithLocation={false} toolbar={<EditToolbarWithPermissions />}>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />

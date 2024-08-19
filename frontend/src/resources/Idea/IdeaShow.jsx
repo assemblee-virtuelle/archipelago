@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
 import { MarkdownField } from '../../common/field';
-import Show from "../../layout/show/Show";
+import { Show } from '../../layout';
 import { Hero, MainList, SideList } from '../../common/list';
 
 const IdeaShow = props => (

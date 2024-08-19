@@ -1,7 +1,7 @@
 import React from 'react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import SimpleList from "../../../common/list/SimpleList";
-import List from "../../../layout/list/List";
+import { List } from '../../../layout';
 
 const StatusList = props => (
   <List {...props}>

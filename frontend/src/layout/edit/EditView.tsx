@@ -1,8 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { RaRecord, useEditContext, useGetRecordRepresentation, useResourceContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import { EditToolbarWithPermissions } from '@semapps/auth-provider';
-import BaseView from '../BaseView';
+import { BaseView } from '../index';
 
 type Props = {
   title?: string | ReactElement;
@@ -22,9 +21,7 @@ const EditView = ({ title, actions, children }: PropsWithChildren<Props>) => {
 
   return (
     <BaseView title={title || recordTitle} actions={actions}>
-      {React.cloneElement(children as ReactElement, {
-        toolbar: <EditToolbarWithPermissions />
-      })}
+      {children}
     </BaseView>
   );
 };

@@ -4,11 +4,12 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ActorsInput, DocumentsInput, ThemesInput, ResourcesInput } from '../../../../common/input';
 import { ImageInput } from '@semapps/input-components';
 import { ReferenceInput } from '@semapps/input-components';
-import Edit from "../../../../layout/edit/Edit";
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
+import { Edit } from '../../../../layout';
 
 const ProjectEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm syncWithLocation={false}>
+    <TabbedForm syncWithLocation={false} toolbar={<EditToolbarWithPermissions />}>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <TextInput source="pair:comment" fullWidth />

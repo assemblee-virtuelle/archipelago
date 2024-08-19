@@ -1,10 +1,11 @@
 import React from 'react';
 import { SimpleForm, TextInput } from 'react-admin';
-import Edit from "../../../layout/edit/Edit";
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
+import { Edit } from '../../../layout';
 
 export const RoleEdit = props => (
   <Edit {...props}>
-    <SimpleForm>
+    <SimpleForm toolbar={<EditToolbarWithPermissions />}>
       <TextInput source="pair:label" fullWidth />
     </SimpleForm>
   </Edit>
