@@ -2,12 +2,13 @@ import React from 'react';
 import { SimpleForm, TextInput, ImageField } from 'react-admin';
 import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { UsersInput, EventsInput, ThemesInput, DocumentsInput } from '../../../../common/input';
-import Edit from "../../../../layout/edit/Edit";
+import { Edit } from '../../../../layout';
 
 export const GroupEdit = props => (
   <Edit redirect="show" {...props}>
-    <SimpleForm>
+    <SimpleForm toolbar={<EditToolbarWithPermissions />}>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
       <MarkdownInput source="pair:description" fullWidth />

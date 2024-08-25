@@ -1,5 +1,5 @@
 import React from 'react';
-import List from "../../../layout/list/List";
+import { List } from '../../../layout';
 import TreeList from '../../../common/list/TreeList';
 
 const ThemeList = props => (

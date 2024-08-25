@@ -3,7 +3,7 @@ import IdeaFilterSidebar from './IdeaFilterSidebar';
 import { Avatar } from '@mui/material';
 import IdeaIcon from '@mui/icons-material/EmojiObjects';
 import SimpleList from "../../common/list/SimpleList";
-import List from "../../layout/list/List";
+import { List } from '../../layout';
 
 const IdeaList = props => (
   <List aside={<IdeaFilterSidebar />} {...props}>

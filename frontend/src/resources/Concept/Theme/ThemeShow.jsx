@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 import { ReferenceArrayField } from '@semapps/field-components';
 import { MarkdownField } from '../../../common/field';
 import { MainList, SideList } from '../../../common/list';
-import Show from "../../../layout/show/Show";
+import { Show } from '../../../layout';
 
 const ThemeShow = props => (
   <Show {...props}>

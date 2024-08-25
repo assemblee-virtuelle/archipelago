@@ -1,7 +1,7 @@
 import React from 'react';
 import StyleIcon from '@mui/icons-material/Style';
 import SimpleList from "../../../common/list/SimpleList";
-import List from "../../../layout/list/List";
+import { List } from '../../../layout';
 
 const TypeList = props => (
   <List {...props}>

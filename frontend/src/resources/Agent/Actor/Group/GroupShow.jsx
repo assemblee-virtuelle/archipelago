@@ -5,7 +5,7 @@ import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayFie
 import { ChipList, GridList } from '@semapps/list-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import Show from "../../../../layout/show/Show";
+import { Show } from '../../../../layout';
 
 const GroupShow = props => (
   <Show {...props}>

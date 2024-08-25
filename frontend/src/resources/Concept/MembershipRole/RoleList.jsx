@@ -2,7 +2,7 @@ import React from 'react';
 import { Avatar } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/Class';
 import SimpleList from "../../../common/list/SimpleList";
-import List from "../../../layout/list/List";
+import { List } from '../../../layout';
 
 const RoleList = props => (
   <List {...props}>

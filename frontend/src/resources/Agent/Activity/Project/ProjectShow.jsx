@@ -6,7 +6,7 @@ import { ChipList, GridList } from '@semapps/list-components';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import Show from "../../../../layout/show/Show";
+import { Show } from '../../../../layout';
 
 const ProjectShow = props => (
   <Show {...props}>

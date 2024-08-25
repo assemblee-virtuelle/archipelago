@@ -6,7 +6,7 @@ import { ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import Show from "../../../../layout/show/Show";
+import { Show } from '../../../../layout';
 import MembershipAssociationField from '../../../../common/field/MembershipAssociationField';
 
 const PersonShow = props => (

@@ -2,12 +2,13 @@ import React from 'react';
 import { SimpleForm, TextInput, SelectInput } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ReferenceInput } from '@semapps/input-components';
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { ActorsInput, ActivitiesInput } from '../../common/input';
-import Edit from "../../layout/edit/Edit";
+import { Edit } from '../../layout';
 
 const IdeaEdit = props => (
   <Edit redirect="show" {...props}>
-    <SimpleForm>
+    <SimpleForm toolbar={<EditToolbarWithPermissions />}>
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
       <MarkdownInput source="pair:description" fullWidth />

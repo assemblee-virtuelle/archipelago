@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 import { CreateActions, CreateBase, CreateProps } from 'react-admin';
-import CreateView from "./CreateView";
+import { CreateView } from '../index';
 
 const Create = ({ title, actions, children, ...rest }: PropsWithChildren<CreateProps>) => (
   <CreateBase {...rest}>

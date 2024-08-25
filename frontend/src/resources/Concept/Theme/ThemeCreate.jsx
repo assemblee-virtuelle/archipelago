@@ -1,5 +1,5 @@
 import React from 'react';
-import Create from "../../../layout/create/Create";
+import { Create } from '../../../layout';
 import { LexiconImportForm, fetchWikidata } from "@semapps/interop-components";
 
 const ThemeCreate = (props) => (

@@ -9,7 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonFilterSidebar from './PersonFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
-import List from "../../../../layout/list/List";
+import { List } from '../../../../layout';
 
 const PersonList = props => (
   <MultiViewsList

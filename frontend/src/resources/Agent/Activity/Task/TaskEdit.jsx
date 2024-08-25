@@ -3,12 +3,13 @@ import { FormTab, TextInput, SelectInput, TabbedForm } from 'react-admin';
 import { ActorsInput, ThemesInput, TasksInput, SkillsInput, DocumentsInput, ActivitiesInput } from '../../../../common/input';
 import { ReferenceInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { DateTimeInput } from "../../../../common/input";
-import Edit from "../../../../layout/edit/Edit";
+import { Edit } from '../../../../layout';
 
 const TaskEdit = props => (
   <Edit redirect="show" {...props}>
-    <TabbedForm syncWithLocation={false}>
+    <TabbedForm syncWithLocation={false} toolbar={<EditToolbarWithPermissions />}>
       <FormTab label="Données">
         <TextInput source="pair:label" fullWidth />
         <MarkdownInput source="pair:description" fullWidth />

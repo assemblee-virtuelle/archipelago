@@ -2,8 +2,9 @@ import React from 'react';
 import { ImageField, TabbedForm, TextInput, FormTab } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageInput } from '@semapps/input-components';
+import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
-import Edit from "../../../../layout/edit/Edit";
+import { Edit } from '../../../../layout';
 import MembershipAssociationInput from '../../../../common/input/MembershipAssociationInput';
 
 export const PersonEdit = props => (
@@ -12,7 +13,7 @@ export const PersonEdit = props => (
     transform={data => ({ ...data, 'pair:label': `${data['pair:firstName']} ${data['pair:lastName']?.toUpperCase()}` })}
     {...props}
   >
-    <TabbedForm syncWithLocation={false}>
+    <TabbedForm syncWithLocation={false} toolbar={<EditToolbarWithPermissions />}>
       <FormTab label="Données">
         <TextInput source="pair:firstName" fullWidth />
         <TextInput source="pair:lastName" fullWidth />
