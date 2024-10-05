@@ -1,7 +1,6 @@
 import React from 'react';
-import { SimpleForm, TextInput, SelectInput } from 'react-admin';
+import { SimpleForm, TextInput, SelectInput, ReferenceInput } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ReferenceInput } from '@semapps/input-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { ActorsInput, ActivitiesInput } from '../../common/input';
 import { Edit } from '../../layout';
