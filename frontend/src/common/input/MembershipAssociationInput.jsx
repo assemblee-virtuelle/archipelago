@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   TextInput,
   ArrayInput,
@@ -11,6 +11,26 @@ import {
   RecordContextProvider,
   SelectInput,
 } from "react-admin";
+import { useFormContext } from 'react-hook-form';
+
+// We need to redeclare a container component here to set the initial value of the relationship in the form
+const ReferenceInputForm = ({ children, scopedSource, reference, source }) => {
+  const form = useFormContext();
+  const membershipAssociation = useRecordContext();
+  const value = membershipAssociation?.[scopedSource];
+
+  useEffect(() => {
+    if (value) {
+      form.setValue(source, value);
+    }
+  }, [form, source, value]);
+
+  return (
+    <ReferenceInput reference={reference} source={source}>
+      {children}
+    </ReferenceInput>
+  );
+};
 
 const MembershipAssociationInput = (props) => {
   const { source, referenceInputProps, label } = props;
@@ -18,24 +38,28 @@ const MembershipAssociationInput = (props) => {
 
   const toArray = (v) => Array.isArray(v) ? v : [v];
 
-  const { data } = useGetMany("MembershipAssociation", {
+  const { data: membershipAssociations } = useGetMany("MembershipAssociation", {
     ids: toArray(record?.[source] || []),
   });
 
-  if (!data) return null;
+  if (!membershipAssociations) return null;
 
   return (
     <ArrayInput source={source}>
       <SimpleFormIterator inline>
         <FormDataConsumer>
           {({ scopedFormData, getSource }) => {
-            const relationRecord = data?.find((r) => r.id === scopedFormData);
+            const membershipAssociation = membershipAssociations?.find((r) => r.id === scopedFormData);
 
             return (
-              <RecordContextProvider value={relationRecord}>
-                <ReferenceInput {...referenceInputProps}>
+              <RecordContextProvider value={membershipAssociation}>
+                <ReferenceInputForm
+                  reference={referenceInputProps.reference}
+                  scopedSource={referenceInputProps.source}
+                  source={getSource(referenceInputProps.source)}
+                >
                   <AutocompleteInput
-                    name={getSource(referenceInputProps.source)}
+                    source={getSource(referenceInputProps.source)}
                     label={label}
                     size="small"
                     sx={{
@@ -47,16 +71,17 @@ const MembershipAssociationInput = (props) => {
                       value && value.length > 1
                     }
                   />
-                </ReferenceInput>
-                <ReferenceInput
+                </ReferenceInputForm>
+                <ReferenceInputForm
                   reference="MembershipRole"
-                  source="pair:membershipRole"
+                  scopedSource={'pair:membershipRole'}
+                  source={getSource("pair:membershipRole")}
                 >
                   <SelectInput
-                    name={getSource("pair:membershipRole")}
+                    source={getSource("pair:membershipRole")}
                     label="Rôle"
                   />
-                </ReferenceInput>
+                </ReferenceInputForm>
                 <TextInput
                   source={getSource("type")}
                   defaultValue={"pair:MembershipAssociation"}
