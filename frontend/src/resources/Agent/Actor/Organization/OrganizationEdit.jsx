@@ -6,8 +6,9 @@ import {
   ImageField,
   SimpleFormIterator,
   ArrayInput,
+  ReferenceInput
 } from 'react-admin';
-import { ReferenceInput, ImageInput } from '@semapps/input-components';
+import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';

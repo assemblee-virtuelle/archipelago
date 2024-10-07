@@ -1,6 +1,6 @@
 import React from 'react';
-import { FormTab, SelectInput, TabbedForm, TextInput, ImageField } from 'react-admin';
-import { ReferenceInput, ImageInput } from '@semapps/input-components';
+import { FormTab, SelectInput, TabbedForm, TextInput, ImageField, ReferenceInput } from 'react-admin';
+import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { AgentsInput } from '../../../common/input';
