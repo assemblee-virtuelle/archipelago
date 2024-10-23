@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import { useCreateContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useCreateContainerUri } from '@semapps/semantic-data-provider';
-import { BaseView } from '../index';
+import { useLayoutContext } from '../../layouts/LayoutContext';
 
 type Props = {
   title?: string | ReactElement;
@@ -16,10 +16,12 @@ const CreateView = ({ title, actions, children }: PropsWithChildren<Props>) => {
   // @ts-expect-error Bad typing of Semapps
   useCheckPermissions(createContainerUri || {}, 'create');
 
+  const Layout = useLayoutContext();
+
   return(
-    <BaseView title={title ?? createContext.defaultTitle} actions={actions}>
+    <Layout.BaseView title={title ?? createContext.defaultTitle} actions={actions}>
       {children}
-    </BaseView>
+    </Layout.BaseView>
   )
 };
 

@@ -3,7 +3,7 @@ import { useListContext, Pagination } from 'react-admin';
 import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useCreateContainerUri } from '@semapps/semantic-data-provider';
-import { BaseView } from '../index';
+import { useLayoutContext } from '../../layouts/LayoutContext';
 
 type Props = {
   title?: string | ReactElement;
@@ -19,11 +19,13 @@ const ListView = ({ title, children, aside, actions, pagination }: PropsWithChil
   // @ts-expect-error Bad typing of Semapps
   useCheckPermissions(createContainerUri || {}, 'list');
 
+  const Layout = useLayoutContext();
+
   return (
-    <BaseView title={title ?? listContext.defaultTitle} actions={actions} aside={aside}>
+    <Layout.BaseView title={title ?? listContext.defaultTitle} actions={actions} aside={aside}>
       <Box p={3}>{children}</Box>
       {pagination === false ? null : pagination || <Pagination />}
-    </BaseView>
+    </Layout.BaseView>
   );
 };
 

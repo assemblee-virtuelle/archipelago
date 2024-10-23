@@ -6,13 +6,15 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient } from 'react-query';
 
 import HomePage from './HomePage';
+import config from './config/config';
 import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
 import theme from './config/theme';
 import resources from './resources';
 
-import { Layout } from './layout';
+import { LayoutProvider } from './layouts/LayoutContext';
+import Layout from './common/layout/Layout';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,23 +28,25 @@ const App = () => (
   <StyledEngineProvider injectFirst>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Admin
-          disableTelemetry
-          title="Archipel"
-          authProvider={authProvider}
-          dataProvider={dataProvider}
-          i18nProvider={i18nProvider}
-          layout={Layout}
-          theme={theme}
-          loginPage={LoginPage}
-          dashboard={HomePage}
-          store={memoryStore()}
-          queryClient={queryClient}
-        >
-          {Object.entries(resources).map(([key, resource]) => (
-            <Resource key={key} name={key} {...resource.config} />
-          ))}
-        </Admin>
+        <LayoutProvider layoutOptions={config.layout}>
+          <Admin
+            disableTelemetry
+            title="Archipel"
+            authProvider={authProvider}
+            dataProvider={dataProvider}
+            i18nProvider={i18nProvider}
+            layout={Layout}
+            theme={theme}
+            loginPage={LoginPage}
+            dashboard={HomePage}
+            store={memoryStore()}
+            queryClient={queryClient}
+          >
+            {Object.entries(resources).map(([key, resource]) => (
+              <Resource key={key} name={key} {...resource.config} />
+            ))}
+          </Admin>
+        </LayoutProvider>
       </ThemeProvider>
     </BrowserRouter>
   </StyledEngineProvider>

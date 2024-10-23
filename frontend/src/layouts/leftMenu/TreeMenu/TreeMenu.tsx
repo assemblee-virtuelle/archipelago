@@ -8,7 +8,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LoginIcon from '@mui/icons-material/Login';
 import SubMenu from './SubMenu';
 import ResourceMenuLink from './ResourceMenuLink';
-import resources from '../../resources';
+import resources from '../../../resources';
 
 export type ResourceOptions = {
   label: string;

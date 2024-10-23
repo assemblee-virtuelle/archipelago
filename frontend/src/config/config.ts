@@ -16,6 +16,13 @@ const config = {
     "Document",
     "Skill",
   ],
+
+  layout: {
+    name: 'topMenu',
+    options: {
+      sideBarPlacement: 'left',
+    }
+  }
 };
 
 export default config;
