@@ -1,7 +1,7 @@
 import React from 'react';
 import PanToolIcon from '@mui/icons-material/PanTool';
 import SimpleList from "../../../common/list/SimpleList";
-import { List } from '../../../layout';
+import { List } from '../../../common/layout';
 
 const SkillList = props => (
   <List {...props}>

@@ -3,7 +3,7 @@ import { useListContext, Pagination } from 'react-admin';
 import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useCreateContainerUri } from '@semapps/semantic-data-provider';
-import { BaseView } from '../index';
+import { BaseView } from '../../../layout';
 
 type Props = {
   title?: string | ReactElement;

@@ -12,7 +12,7 @@ import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
-import { Edit } from '../../../../layout';
+import { Edit } from '../../../../common/layout';
 import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 import MembershipAssociationInput from '../../../../common/input/MembershipAssociationInput';
 

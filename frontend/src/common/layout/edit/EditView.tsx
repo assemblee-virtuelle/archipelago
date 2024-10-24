@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { RaRecord, useEditContext, useGetRecordRepresentation, useResourceContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import { BaseView } from '../index';
+import { BaseView } from '../../../layout';
 
 type Props = {
   title?: string | ReactElement;

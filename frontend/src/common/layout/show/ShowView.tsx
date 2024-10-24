@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import { RaRecord, useGetRecordRepresentation, useResourceContext, useShowContext } from 'react-admin';
 import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import { BaseView } from '../index';
+import { BaseView } from '../../../layout';
 
 type Props = {
   title?: string | ReactElement;
