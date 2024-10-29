@@ -1,5 +1,6 @@
 export { default as Layout } from './Layout';
 export { default as BaseView } from './BaseView';
+export { default as Aside } from './Aside';
 
 export {default as Create } from './create/Create';
 export {default as CreateView } from './create/CreateView';
