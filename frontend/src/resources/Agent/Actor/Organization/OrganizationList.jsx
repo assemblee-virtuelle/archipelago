@@ -7,7 +7,7 @@ import ListIcon from '@mui/icons-material/List';
 import HomeIcon from '@mui/icons-material/Home';
 import OrganizationFilterSidebar from './OrganizationFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
-import { List } from '../../../../layout';
+import { List } from '../../../../common/layout';
 
 const OrganizationList = props => (
   <MultiViewsList

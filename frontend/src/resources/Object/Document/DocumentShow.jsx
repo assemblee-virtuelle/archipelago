@@ -2,7 +2,7 @@ import React from 'react';
 import { SingleFieldList, ChipField, ImageField } from 'react-admin';
 import { Grid, Typography } from '@mui/material';
 import { ReferenceArrayField } from '@semapps/field-components';
-import { Show } from '../../../layout';
+import { Show } from '../../../common/layout';
 import { MarkdownField } from '../../../common/field';
 import { MainList, SideList } from '../../../common/list';
 

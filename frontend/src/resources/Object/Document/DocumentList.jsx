@@ -1,7 +1,7 @@
 import React from 'react';
 import DescriptionIcon from '@mui/icons-material/Description';
 import SimpleList from "../../../common/list/SimpleList";
-import { List } from '../../../layout';
+import { List } from '../../../common/layout';
 
 const DocumentList = props => (
   <List {...props}>

@@ -4,7 +4,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ActorsInput, DocumentsInput, ThemesInput, ResourcesInput } from '../../../../common/input';
 import { ImageInput } from '@semapps/input-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
-import { Edit } from '../../../../layout';
+import { Edit } from '../../../../common/layout';
 
 const ProjectEdit = props => (
   <Edit redirect="show" {...props}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SimpleForm, TextInput, SelectArrayInput } from 'react-admin';
-import { Create } from '../../../layout';
+import { Create } from '../../../common/layout';
 
 const TypeCreate = props => (
   <Create {...props}>

@@ -2,7 +2,7 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import { useCreateContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useCreateContainerUri } from '@semapps/semantic-data-provider';
-import { BaseView } from '../index';
+import { BaseView } from '../../../layout';
 
 type Props = {
   title?: string | ReactElement;

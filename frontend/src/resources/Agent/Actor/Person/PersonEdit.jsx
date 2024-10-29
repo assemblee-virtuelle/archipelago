@@ -4,7 +4,7 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageInput } from '@semapps/input-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
-import { Edit } from '../../../../layout';
+import { Edit } from '../../../../common/layout';
 import MembershipAssociationInput from '../../../../common/input/MembershipAssociationInput';
 
 export const PersonEdit = props => (

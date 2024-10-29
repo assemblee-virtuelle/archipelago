@@ -3,7 +3,7 @@ import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId, choices } f
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { AgentsInput } from '../../../common/input';
-import { Edit } from '../../../layout';
+import { Edit } from '../../../common/layout';
 import CustomTreeSelectInput from '../../../common/input/TreeComponent/CustomTreeSelectInput';
 
 export const ThemeEdit = props => {

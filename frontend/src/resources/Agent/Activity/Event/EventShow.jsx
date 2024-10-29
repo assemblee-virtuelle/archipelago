@@ -6,7 +6,7 @@ import { GridList, ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
-import { Show } from '../../../../layout';
+import { Show } from '../../../../common/layout';
 
 const EventShow = props => (
   <Show {...props}>

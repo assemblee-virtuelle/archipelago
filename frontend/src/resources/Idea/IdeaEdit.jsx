@@ -3,7 +3,7 @@ import { SimpleForm, TextInput, SelectInput, ReferenceInput } from 'react-admin'
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { ActorsInput, ActivitiesInput } from '../../common/input';
-import { Edit } from '../../layout';
+import { Edit } from '../../common/layout';
 
 const IdeaEdit = props => (
   <Edit redirect="show" {...props}>

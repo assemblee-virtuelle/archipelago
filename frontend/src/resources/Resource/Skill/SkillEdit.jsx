@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormTab, TextInput, TabbedForm } from 'react-admin';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
-import { Edit } from '../../../layout';
+import { Edit } from '../../../common/layout';
 import { UsersInput, AgentsInput } from '../../../common/input';
 
 export const SkillEdit = props => (

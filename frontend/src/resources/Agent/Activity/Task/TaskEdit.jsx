@@ -4,7 +4,7 @@ import { ActorsInput, ThemesInput, TasksInput, SkillsInput, DocumentsInput, Acti
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { DateTimeInput } from "../../../../common/input";
-import { Edit } from '../../../../layout';
+import { Edit } from '../../../../common/layout';
 
 const TaskEdit = props => (
   <Edit redirect="show" {...props}>

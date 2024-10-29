@@ -2,7 +2,7 @@ import React from 'react';
 import { SimpleForm, TextInput } from 'react-admin';
 import { MarkdownInput, useLoadLinks } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
-import { Edit } from '../../layout';
+import { Edit } from '../../common/layout';
 
 export const PageEdit = props => {
   const loadLinks = useLoadLinks('Page', 'semapps:title');

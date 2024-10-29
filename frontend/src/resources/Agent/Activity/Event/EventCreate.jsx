@@ -1,7 +1,7 @@
 import React from "react";
 import { CreateOrImportForm } from "@semapps/interop-components";
 import { useResourceContext, SimpleForm } from "react-admin";
-import { Create } from "../../../../layout";
+import { Create } from "../../../../common/layout";
 import EventForm from "./EventForm";
 import config from '../../../../config/config';
 
