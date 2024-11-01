@@ -16,6 +16,12 @@ const config = {
     "Document",
     "Skill",
   ],
+
+  // UI layout configuration
+  layout: {
+    name: 'leftMenu',
+    options: {},
+  },
 };
 
 export default config;

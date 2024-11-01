@@ -1,10 +1,12 @@
 import React from 'react';
 import { ReferenceFilter } from '@semapps/list-components';
-import { Aside } from '../../../../layout';
+import { useLayoutContext } from '../../../../layouts/LayoutContext';
 
 const ProjectFilterSidebar = () => {
+  const Layout = useLayoutContext();
+
   return (
-    <Aside>
+    <Layout.Aside>
       <ReferenceFilter
         reference="Status"
         source="pair:hasStatus"
@@ -26,7 +28,7 @@ const ProjectFilterSidebar = () => {
         filter={{ a: 'pair:ProjectType' }}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
-    </Aside>
+    </Layout.Aside>
   );
 };
 

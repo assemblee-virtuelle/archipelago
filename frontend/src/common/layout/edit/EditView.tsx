@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { RaRecord, useEditContext, useGetRecordRepresentation, useResourceContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import { BaseView } from '../../../layout';
+import { useLayoutContext } from '../../../layouts/LayoutContext';
 
 type Props = {
   title?: string | ReactElement;
@@ -19,10 +19,12 @@ const EditView = ({ title, actions, children }: PropsWithChildren<Props>) => {
 
   const recordTitle = getRecordRepresentation(editContext?.record);
 
+  const Layout = useLayoutContext();
+
   return (
-    <BaseView title={title || recordTitle} actions={actions}>
+    <Layout.BaseView title={title || recordTitle} actions={actions}>
       {children}
-    </BaseView>
+    </Layout.BaseView>
   );
 };
 

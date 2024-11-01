@@ -1,11 +1,13 @@
 import React from 'react';
 import { ReferenceFilter } from '@semapps/list-components';
 import ReferenceFilterTree from '../../../../common/ReferenceFilterTree';
-import { Aside } from '../../../../layout';
+import { useLayoutContext } from '../../../../layouts/LayoutContext';
 
 const OrganizationFilterSidebar = () => {
+  const Layout = useLayoutContext();
+
   return (
-    <Aside>
+    <Layout.Aside>
       <ReferenceFilter
         reference="Type"
         source="pair:hasType"
@@ -20,11 +22,10 @@ const OrganizationFilterSidebar = () => {
         broader="pair:broader"
         source="pair:hasTopic"
         label="pair:label"
-        predicate="http://virtual-assembly.org/ontologies/pair#hasTopic"
-        limit={100}
+        filter={{}}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
-    </Aside>
+    </Layout.Aside>
   );
 };
 

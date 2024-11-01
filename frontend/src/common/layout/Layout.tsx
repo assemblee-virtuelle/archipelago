@@ -1,8 +1,9 @@
 import React from 'react';
 import { LayoutProps } from 'react-admin';
-import { Layout } from '../../layout';
+import { useLayoutContext } from '../../layouts/LayoutContext';
 
 const BaseLayout = (props: LayoutProps) => {
+  const { Layout } = useLayoutContext();
   return <Layout  {...props} />;
 };
 
