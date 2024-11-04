@@ -28,6 +28,7 @@ const resource = {
   translations: {
     fr: {
       name: 'Personne |||| Personnes',
+      searchLabel: 'Rechercher une personne',
       fields: {
         'pair:firstName': 'Prénom',
         'pair:lastName': 'Nom de famille',

@@ -8,6 +8,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import OrganizationFilterSidebar from './OrganizationFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
 import { List } from '../../../../common/layout';
+import MobileMapPopupContent from '../../../../common/list/MobileMapPopupContent';
 
 const OrganizationList = props => (
   <MultiViewsList
@@ -44,6 +45,7 @@ const OrganizationList = props => (
             label={record => record['pair:label']}
             description={record => record['pair:comment']}
             scrollWheelZoom
+            popupContent={MobileMapPopupContent}
           />
         )
       }

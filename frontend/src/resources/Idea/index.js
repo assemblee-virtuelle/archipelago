@@ -28,6 +28,7 @@ const resource = {
   translations: {
     fr: {
       name: 'Idée |||| Idées',
+      searchLabel: 'Rechercher une idée',
       fields: {
         'pair:label': 'Titre',
         'pair:description': 'Description',
