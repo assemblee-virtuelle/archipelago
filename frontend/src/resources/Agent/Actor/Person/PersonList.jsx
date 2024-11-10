@@ -10,6 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonFilterSidebar from './PersonFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
 import { List } from '../../../../common/layout';
+import MobileMapPopupContent from '../../../../common/list/MobileMapPopupContent';
 
 const PersonList = props => (
   <MultiViewsList
@@ -58,6 +59,7 @@ const PersonList = props => (
             label={record => record['pair:label']}
             description={record => record['pair:comment']}
             scrollWheelZoom
+            popupContent={MobileMapPopupContent}
           />
         )
       }

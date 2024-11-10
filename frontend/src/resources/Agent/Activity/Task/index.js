@@ -29,6 +29,7 @@ const resource = {
   translations: {
     fr: {
       name: 'Tâche |||| Tâches',
+      searchLabel: 'Rechercher une tâche',
       fields: {
         'pair:label': 'Titre',
         'pair:description': 'Description',

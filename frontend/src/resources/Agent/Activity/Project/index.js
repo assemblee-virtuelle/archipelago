@@ -29,6 +29,7 @@ const resource = {
   translations: {
     fr: {
       name: 'Projet |||| Projets',
+      searchLabel: 'Rechercher un projet',
       fields: {
         'pair:label': 'Nom',
         'pair:comment': 'Courte description',

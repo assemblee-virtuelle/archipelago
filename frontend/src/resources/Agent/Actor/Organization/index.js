@@ -30,6 +30,7 @@ const resource = {
   translations: {
     fr: {
       name: 'Organisation |||| Organisations',
+      searchLabel: 'Rechercher une organisation',
       fields: {
         'pair:label': 'Nom',
         'pair:comment': 'Courte description',

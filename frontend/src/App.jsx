@@ -1,6 +1,7 @@
 import React from 'react';
 import { Admin, Resource, memoryStore } from 'react-admin';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import { LoginPage } from '@semapps/auth-provider';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient } from 'react-query';
@@ -14,7 +15,7 @@ import theme from './config/theme';
 import resources from './resources';
 
 import { Layout } from './common/layout';
-import { LayoutProvider } from './layouts/LayoutContext';
+import { LayoutProvider } from './layouts/LayoutProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,10 +29,11 @@ const App = () => (
   <StyledEngineProvider injectFirst>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <LayoutProvider layoutOptions={config.layout}>
           <Admin
             disableTelemetry
-            title="Archipel"
+            title={config.title}
             authProvider={authProvider}
             dataProvider={dataProvider}
             i18nProvider={i18nProvider}

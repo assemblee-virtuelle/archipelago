@@ -1,4 +1,14 @@
-const config = {
+import { LayoutOptions } from "../layouts/LayoutContext";
+
+interface ConfigInterface {
+  middlewareUrl: string;
+  mapboxAccessToken: string;
+  importableResources: string[];
+  title: string;
+  layout: LayoutOptions;
+}
+
+const config: ConfigInterface = {
   // Middleware API url (ex: https://<host>:<port>/). Should contain a trailing slash.
   middlewareUrl: import.meta.env.VITE_MIDDLEWARE_URL,
 
@@ -16,6 +26,9 @@ const config = {
     "Document",
     "Skill",
   ],
+
+  // Application title
+  title: 'Archipelago',
 
   // UI layout configuration
   layout: {

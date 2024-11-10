@@ -28,7 +28,8 @@ const resource = {
   },
   translations: {
     fr: {
-      name: 'Evénement |||| Evénements',
+      name: 'Evènement |||| Evènements',
+      searchLabel: 'Rechercher un évènement',
       fields: {
         'pair:label': 'Nom',
         'pair:description': 'Description',
