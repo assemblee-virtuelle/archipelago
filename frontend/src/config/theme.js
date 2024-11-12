@@ -10,12 +10,12 @@ const theme = createTheme({
     grey: { main: '#e0e0e0' },
     background: {
       default: '#efefef',
-    }
+    },
   },
   typography: {
     details: {
-      fontSize: 8
-    }
+      fontSize: 8,
+    },
   },
   components: {
     RaChipField: {
@@ -24,19 +24,19 @@ const theme = createTheme({
           marginLeft: 0,
           marginTop: 0,
           marginRight: 8,
-          marginBottom: 8
-        }
-      }
+          marginBottom: 8,
+        },
+      },
     },
     RaShow: {
       styleOverrides: {
         card: {
           padding: 25,
           [defaultTheme.breakpoints.down('sm')]: {
-            padding: 15
-          }
-        }
-      }
+            padding: 15,
+          },
+        },
+      },
     },
     RaList: {
       styleOverrides: {
@@ -45,40 +45,49 @@ const theme = createTheme({
           [defaultTheme.breakpoints.down('sm')]: {
             padding: 15,
             paddingTop: 0,
-            marginTop: -8
-          }
-        }
-      }
+            marginTop: -8,
+          },
+        },
+      },
+    },
+    RaToolbar: {
+      styleOverrides: {
+        root: {
+          [`&.RaToolbar-mobileToolbar`]: {
+            position: 'static',
+          },
+        },
+      },
     },
     RaListToolbar: {
       styleOverrides: {
         toolbar: {
-          paddingLeft: '0 !important'
-        }
-      }
+          paddingLeft: '0 !important',
+        },
+      },
     },
     RaSingleFieldList: {
       styleOverrides: {
         root: {
           marginTop: 0,
-          marginBottom: 0
-        }
-      }
+          marginBottom: 0,
+        },
+      },
     },
     RaAutocompleteArrayInput: {
       styleOverrides: {
         chipContainerFilled: {
           '& .serverName': {
-            display: 'none'
-          }
-        }
-      }
+            display: 'none',
+          },
+        },
+      },
     },
     RaMenuItemLink: {
       styleOverrides: {
         root: ({ theme }) => ({
           '&.RaMenuItemLink-active': {
-              borderLeft: `3px solid ${theme.palette.primary.main}`,
+            borderLeft: `3px solid ${theme.palette.primary.main}`,
           },
         }),
       },
@@ -86,38 +95,38 @@ const theme = createTheme({
     MuiTab: {
       styleOverrides: {
         root: {
-          minWidth: 160
+          minWidth: 160,
         },
         labelIcon: {
-          paddingTop: 0
-        }
-      }
+          paddingTop: 0,
+        },
+      },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
           backgroundColor: '#efefef',
         },
-      }
+      },
     },
     MuiAutocomplete: {
       styleOverrides: {
         inputRoot: {
           paddingTop: 12,
-          paddingBottom: 5
-        }
-      }
+          paddingBottom: 5,
+        },
+      },
     },
     MuiCard: {
       styleOverrides: {
         root: {
           '@media print': {
-            boxShadow: 'none !important'
-          }
-        }
-      }
-    }
-  }
+            boxShadow: 'none !important',
+          },
+        },
+      },
+    },
+  },
 });
 
 export default theme;
