@@ -54,6 +54,12 @@ yarn install
 yarn start
 ```
 
+## Archipelago customization
+
+If you need to customize your Archipelago, you can follow the docs below:
+
+- [Configuration file](./docs/configuration.md)
+- [Layout configuration](./docs/layouts.md)
 
 ## Linking to SemApps packages
 
