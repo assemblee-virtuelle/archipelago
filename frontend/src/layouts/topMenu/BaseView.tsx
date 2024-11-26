@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, ReactNode } from 'react';
-import { Grid, Typography, Box, useMediaQuery } from '@mui/material';
-import { styled, useTheme } from '@mui/material/styles';
+import { Grid, Typography, Box } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import { LayoutOptions } from './index';
 import { useLayoutContext } from '../LayoutContext';
 
@@ -33,16 +33,12 @@ type Props = {
 
 const BaseView = ({ title, actions, aside, children }: PropsWithChildren<Props>) => {
   const layout = useLayoutContext<LayoutOptions>();
-
-  const side = layout.options.sideBarPlacement || 'left';
-  const asideWidth = '300px';
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const side = layout.options.sideBarPlacement;
 
   return (
     <>
-      <Box sx={{ [side === 'left' ? 'marginLeft' : 'marginRight']: aside && !isMobile ? asideWidth : 0 }}>
+      {(!side || side === 'left') && aside}
+      <Box sx={{ flex: 1 }}>
         <Grid container sx={{ paddingTop: 2 }}>
           <Grid item xs={9} sm={8}>
             <Title variant="h4" color="primary" component="h1">
@@ -57,7 +53,7 @@ const BaseView = ({ title, actions, aside, children }: PropsWithChildren<Props>)
           </Grid>
         </Grid>
       </Box>
-      {aside}
+      {side === 'right' && aside}
     </>
   );
 };

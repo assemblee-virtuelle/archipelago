@@ -22,7 +22,7 @@ const AppBar = () => {
   const logo = layout.options.logo;
 
   return (
-    <MuiAppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+    <MuiAppBar position="sticky" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
         {logo && (
           <Box sx={{ marginRight: { xs: 0, lg: 1 } }}>

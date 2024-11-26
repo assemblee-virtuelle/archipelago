@@ -14,7 +14,8 @@ export type LayoutOptions = {
       mobileLabel?: string;
       link: string;
       icon: SvgIconComponent;
-    }[]
+    }[];
+    footer: () => ReactNode;
   }>;
 };
 

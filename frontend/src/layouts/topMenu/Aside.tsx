@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, useState } from 'react';
-import { Box, Drawer, Fab, Toolbar, useMediaQuery } from '@mui/material';
+import { Box, Drawer, Fab, useMediaQuery } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import TuneIcon from '@mui/icons-material/Tune';
 import { useLayoutContext } from '../LayoutContext';
@@ -11,9 +11,25 @@ const ContentBox = styled(Box)(({ theme }) => ({
   minWidth: asideWidth,
   padding: 16,
   boxSizing: 'border-box',
+  position: 'sticky',
+  height: 'calc(100vh - 64px)',
+  top: '64px',
+  overflow: 'auto',
   [theme.breakpoints.down('md')]: {
     paddingBottom: 56 + 16,
+    height: 'calc(100vh - 56px)',
+    top: '56px',
   },
+}));
+
+const FloatingBox = styled(Box)(() => ({
+  position: 'absolute',
+  height: '100%',
+  '& .MuiFab-root': {
+    left: 10,
+    position: 'sticky',
+    top: 'calc(100% - 56px - 56px)'
+  }
 }));
 
 const Aside = ({ children }: PropsWithChildren) => {
@@ -27,19 +43,16 @@ const Aside = ({ children }: PropsWithChildren) => {
   return (
     <>
       {isMobile && (
-        <Fab
-          variant="extended"
-          color="primary"
-          sx={{
-            position: 'fixed',
-            bottom: 64,
-            left: 10,
-          }}
-          onClick={() => setAsideOpen(true)}
-        >
-          <TuneIcon sx={{ mr: 1 }} />
-          Filtres
-        </Fab>
+        <FloatingBox>
+          <Fab
+            variant="extended"
+            color="primary"
+            onClick={() => setAsideOpen(true)}
+          >
+            <TuneIcon sx={{ mr: 1 }} />
+            Filtres
+          </Fab>
+        </FloatingBox>
       )}
       <Drawer
         sx={{
@@ -48,6 +61,10 @@ const Aside = ({ children }: PropsWithChildren) => {
           '& .MuiDrawer-paper': {
             width: asideWidth,
             boxSizing: 'border-box',
+            position: {xs: 'fixed', md: 'absolute'},
+            overflow: 'unset',
+            left: (!side || side === 'left') ? 0 : 'auto',
+            right: (!side || side === 'left') ? 'auto' : 0,
           },
         }}
         variant={isMobile ? 'temporary' : 'permanent'}
@@ -55,7 +72,6 @@ const Aside = ({ children }: PropsWithChildren) => {
         anchor={side}
         onClose={() => setAsideOpen(false)}
       >
-        <Toolbar />
         <ContentBox>{children}</ContentBox>
       </Drawer>
     </>
