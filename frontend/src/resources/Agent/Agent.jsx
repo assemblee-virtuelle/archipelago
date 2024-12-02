@@ -23,6 +23,7 @@ const resource = {
     types: ['pair:Project', 'pair:Organization', 'pair:Person', 'pair:Group', 'pair:Event'],
     list: {
       servers: '@default',
+      fetchContainer: true,
     }
   }
 };

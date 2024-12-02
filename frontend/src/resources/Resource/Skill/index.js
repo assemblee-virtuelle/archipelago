@@ -21,6 +21,7 @@ const resource = {
     types: ['pair:Skill'],
     list: {
       servers: '@default',
+      fetchContainer: true,
       blankNodes: []
     },
     fieldsMapping: {

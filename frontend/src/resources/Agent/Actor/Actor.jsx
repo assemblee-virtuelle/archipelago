@@ -21,6 +21,7 @@ const resource = {
     types: ['pair:Organization', 'pair:Person', 'pair:Group'],
     list: {
       servers: '@default',
+      fetchContainer: true,
     }
   },
   translations: {

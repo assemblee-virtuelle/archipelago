@@ -19,7 +19,8 @@ const resource = {
   dataModel: {
     types: ['semapps:Page'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      fetchContainer: true,
     },
     fieldsMapping: {
       title: 'semapps:title'

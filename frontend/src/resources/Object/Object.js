@@ -11,6 +11,7 @@ const resource = {
     types: ['pair:Document'],
     list: {
       servers: '@default',
+      fetchContainer: true,
     }
   },
   translations: {

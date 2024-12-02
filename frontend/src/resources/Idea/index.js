@@ -19,7 +19,8 @@ const resource = {
   dataModel: {
     types: ['pair:Idea'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      fetchContainer: true,
     },
     fieldsMapping: {
       title: 'pair:label'

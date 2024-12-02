@@ -20,7 +20,8 @@ const resource = {
   dataModel: {
     types: ['pair:Event'],
     list: {
-      servers: '@default'
+      servers: '@default',
+      fetchContainer: true,
     },
     fieldsMapping: {
       title: 'pair:label'

@@ -21,6 +21,7 @@ const resource = {
     types: ['pair:Theme'],
     list: {
       servers: '@default',
+      fetchContainer: true,
       blankNodes: []
     },
     fieldsMapping: {
