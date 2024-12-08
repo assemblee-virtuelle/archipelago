@@ -19,6 +19,7 @@ const resource = {
     types: ['pair:MembershipRole'],
     list: {
       servers: '@default',
+      fetchContainer: true,
       blankNodes: []
     },
     fieldsMapping: {

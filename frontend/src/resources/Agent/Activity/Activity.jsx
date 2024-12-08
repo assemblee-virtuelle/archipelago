@@ -27,6 +27,7 @@ const resource = {
     types: ['pair:Project', 'pair:Event', 'pair:Task'],
     list: {
       servers: '@default',
+      fetchContainer: true,
     },
     fieldsMapping: {
       title: 'pair:label'

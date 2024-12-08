@@ -19,6 +19,7 @@ const resource = {
     types: ['pair:Person'],
     list: {
       servers: '@default',
+      fetchContainer: true,
       forceArray: ['pair:actorOfMembership']
     },
     fieldsMapping: {

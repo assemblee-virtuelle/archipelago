@@ -21,6 +21,7 @@ const resource = {
     types: ['pair:Organization'],
     list: {
       servers: '@default',
+      fetchContainer: true,
       forceArray: ['pair:organizationOfMembership', 'pair:homePage']
     },
     fieldsMapping: {

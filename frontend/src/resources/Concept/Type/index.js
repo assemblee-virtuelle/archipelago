@@ -36,6 +36,7 @@ const resource = {
     ],
     list: {
       servers: '@default',
+      fetchContainer: true,
       blankNodes: []
     },
     fieldsMapping: {
