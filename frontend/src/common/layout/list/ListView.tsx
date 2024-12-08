@@ -1,9 +1,26 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
-import { useListContext, Pagination } from 'react-admin';
+import { useListContext, Pagination, CreateButton, useResourceDefinition, usePermissions } from 'react-admin';
 import { Box } from '@mui/material';
-import { useCheckPermissions } from '@semapps/auth-provider';
+import { styled } from '@mui/material/styles';
+import { Permissions, useCheckPermissions } from '@semapps/auth-provider';
 import { useCreateContainerUri } from '@semapps/semantic-data-provider';
 import { useLayoutContext } from '../../../layouts/LayoutContext';
+
+const FloatingCreateButtonBox = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  right: 10,
+  height: '100%',
+  pointerEvents: 'none',
+  '& .RaCreateButton-floating': {
+    position: 'sticky',
+    top: 'calc(100% - 56px - 62px)',
+    pointerEvents: 'auto',
+  },
+  [theme.breakpoints.up('md')]: {
+    display: 'none',
+  },
+}));
 
 type Props = {
   title?: string | ReactElement;
@@ -21,10 +38,23 @@ const ListView = ({ title, children, aside, actions, pagination }: PropsWithChil
 
   const Layout = useLayoutContext();
 
+  const resourceDefinition = useResourceDefinition();
+  const { permissions } = usePermissions(createContainerUri) as { permissions: Permissions };
+
   return (
     <Layout.BaseView title={title ?? listContext.defaultTitle} actions={actions} aside={aside}>
-      <Box p={3}>{children}</Box>
+      <Box px={Layout.name === 'leftMenu' ? 3 : 0} py={3}>
+        {children}
+      </Box>
       {pagination === false ? null : pagination || <Pagination />}
+
+      {resourceDefinition.hasCreate &&
+        permissions &&
+        permissions.some((p) => ['acl:Append', 'acl:Write', 'acl:Control'].includes(p['acl:mode'])) && (
+          <FloatingCreateButtonBox>
+            <CreateButton />
+          </FloatingCreateButtonBox>
+        )}
     </Layout.BaseView>
   );
 };

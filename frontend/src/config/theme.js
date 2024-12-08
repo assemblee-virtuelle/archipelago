@@ -126,6 +126,24 @@ const theme = createTheme({
         },
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: () => ({
+        body: {
+          [theme.breakpoints.up('md')]: {
+            'overscrollBehaviorY': 'none'
+          },
+        },
+      }),
+    },
+    RaCreateButton: {
+      styleOverrides: {
+        root: {
+          '.MuiToolbar-root &.RaCreateButton-floating': {
+            display: 'none',
+          }
+        }
+      }
+    }
   },
 });
 
