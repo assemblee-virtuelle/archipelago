@@ -3,6 +3,18 @@ const { triple, namedNode, literal } = require('@rdfjs/data-model');
 const { AuthOIDCService } = require('@semapps/auth');
 const CONFIG = require('../config/config');
 
+const arrayOf = value => {
+  if (value === null || value === undefined) {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  return [value];
+};
+
 module.exports = {
   mixins: [AuthOIDCService],
   settings: {
@@ -16,7 +28,8 @@ module.exports = {
       name: authData.given_name,
       familyName: authData.family_name
     }),
-    accountsDataset: CONFIG.SEMAPPS_AUTH_ACCOUNTS_DATASET_NAME
+    accountsDataset: CONFIG.SEMAPPS_AUTH_ACCOUNTS_DATASET_NAME,
+    webIdSelection: ['uuid']
   },
   events: {
     async 'auth.registered'(ctx) {
@@ -28,14 +41,20 @@ module.exports = {
           resourceUri: webId,
           triplesToAdd: [
             triple(namedNode(webId), namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'), namedNode('http://virtual-assembly.org/ontologies/pair#Person')),
-            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#label'), literal(`${profileData.name} ${profileData.familyName.toUpperCase()}`)),
-            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#firstName'), literal(profileData.name)),
-            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#lastName'), literal(profileData.familyName)),
-            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#e-mail'), literal(profileData.email))
+            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#label'), literal(`${profileData.name || ''} ${(profileData.familyName || '').toUpperCase()}`)),
+            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#firstName'), literal(profileData.name || '')),
+            triple(namedNode(webId), namedNode('http://virtual-assembly.org/ontologies/pair#lastName'), literal(profileData.familyName || '')),
           ],
           webId: 'system'
         }
       );
-    }
+    },
+    async 'ldp.resource.deleted'(ctx) {
+      const { resourceUri, oldData } = ctx.params;
+
+      if (arrayOf(oldData.type).includes('Person')) {
+        await ctx.call('auth.account.deleteByWebId', { webId: resourceUri });
+      }
+    },
   }
 };
