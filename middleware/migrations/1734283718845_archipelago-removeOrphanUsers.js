@@ -5,7 +5,7 @@ module.exports = {
       query: `
         SELECT ?s
         WHERE {
-          ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://virtual-assembly.org/ontologies/pair#Person>
+          ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://www.w3.org/ns/activitystreams#Person>
         }
       `,
       webId: 'system',
