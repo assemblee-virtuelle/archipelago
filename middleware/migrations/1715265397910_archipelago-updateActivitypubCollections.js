@@ -1,10 +1,10 @@
 module.exports = {
   up: async ({ update, call }) => {
-    await call('activitypub.follow.updateCollectionsOptions');
-    await call('activitypub.inbox.updateCollectionsOptions');
-    await call('activitypub.outbox.updateCollectionsOptions');
-    await call('activitypub.like.updateCollectionsOptions');
-    await call('activitypub.reply.updateCollectionsOptions');
+    await call('activitypub.follow.updateCollectionsOptions', { dataset: 'localData' });
+    await call('activitypub.inbox.updateCollectionsOptions', { dataset: 'localData' });
+    await call('activitypub.outbox.updateCollectionsOptions', { dataset: 'localData' });
+    await call('activitypub.like.updateCollectionsOptions', { dataset: 'localData' });
+    await call('activitypub.reply.updateCollectionsOptions', { dataset: 'localData' });
 
     const collectionsContainerUri = await call('activitypub.collection.getContainerUri');
 

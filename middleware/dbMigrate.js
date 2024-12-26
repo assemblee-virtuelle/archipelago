@@ -4,6 +4,7 @@ const { CoreService } = require('@semapps/core');
 const CONFIG = require('./config/config');
 const dbMigrationsService = require('./services/dbMigrations.service');
 const archipelagoCore = require('./services/core.service');
+const authService = require('./services/auth.service');
 
 const broker = new ServiceBroker({
   logLevel: "warn",
@@ -24,6 +25,7 @@ broker.createService({
     webfinger: false,
   }});
 
+broker.createService(authService);
 broker.createService(dbMigrationsService);
 
 const executeAction = async (action, options) => {
