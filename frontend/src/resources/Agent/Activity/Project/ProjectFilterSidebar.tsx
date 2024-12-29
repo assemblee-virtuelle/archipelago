@@ -33,6 +33,12 @@ const ProjectFilterSidebar = () => {
         filter={{ a: 'pair:ProjectType' }}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
+      <ReferenceFilter
+        reference="Organization"
+        source="pair:involves"
+        limit={100}
+        sort={{ field: 'pair:label', order: 'DESC' }}
+      />
     </Layout.Aside>
   );
 };
