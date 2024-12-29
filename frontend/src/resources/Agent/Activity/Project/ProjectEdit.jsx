@@ -1,10 +1,11 @@
 import React from 'react';
 import { ImageField, SelectInput, TextInput, TabbedForm, FormTab, ReferenceInput } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ActorsInput, DocumentsInput, ThemesInput, ResourcesInput } from '../../../../common/input';
+import { ActorsInput, DocumentsInput, ResourcesInput } from '../../../../common/input';
 import { ImageInput } from '@semapps/input-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { Edit } from '../../../../common/layout';
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 
 const ProjectEdit = props => (
   <Edit redirect="show" {...props}>
@@ -28,7 +29,7 @@ const ProjectEdit = props => (
         <ActorsInput source="pair:involves" />
         <ResourcesInput source="pair:needs" />
         <DocumentsInput source="pair:documentedBy" />
-        <ThemesInput source="pair:hasTopic" />
+        <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       </FormTab>
     </TabbedForm>
   </Edit>

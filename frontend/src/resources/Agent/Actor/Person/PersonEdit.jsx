@@ -3,9 +3,10 @@ import { ImageField, TabbedForm, TextInput, FormTab, SaveButton, Toolbar as RaTo
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageInput } from '@semapps/input-components';
 import { DeleteButtonWithPermissions } from '@semapps/auth-provider';
-import { ActivitiesInput, LocationInput, SkillsInput, ThemesInput } from '../../../../common/input';
+import { ActivitiesInput, LocationInput, SkillsInput } from '../../../../common/input';
 import { Edit } from '../../../../common/layout';
 import MembershipAssociationInput from '../../../../common/input/MembershipAssociationInput';
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 
 export const PersonEdit = (props) => {
   const redirect = useRedirect();
@@ -67,8 +68,8 @@ export const PersonEdit = (props) => {
         <FormTab label="Relations">
           <ActivitiesInput source="pair:involvedIn" />
           <SkillsInput source="pair:offers" />
-          <ThemesInput source="pair:hasTopic" />
-        </FormTab>
+          <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
+          </FormTab>
       </TabbedForm>
     </Edit>
   );
