@@ -40,7 +40,7 @@ const resource = {
         'pair:e-mail': 'E-mail de contact',
         image: 'Logo',
         'pair:partnerOf': 'Partenaire de [ > Organisation(s) ]',
-        'pair:involvedIn': 'Impliqué dans [ > Projet(s) ]',
+        'pair:involvedIn': 'Impliqué dans [ > Projet(s), > Evenement(s) ]',
         'pair:hasType': 'Type',
         'pair:hasStatus': 'Statut',
         'pair:hasTopic': 'A pour thème',

@@ -36,7 +36,7 @@ const resource = {
         'pair:comment': 'En deux mots',
         'pair:description': 'Description',
         image: 'Photo',
-        'pair:involvedIn': 'Impliqué dans [ > Projet(s) ]',
+        'pair:involvedIn': 'Impliqué dans [ > Projet(s), > Evenement(s) ]',
         'pair:affiliatedBy': 'Membre de',
         'pair:offers': 'A pour compétences',
         'pair:hasTopic': 'A pour intérêt',
