@@ -37,9 +37,9 @@ const resource = {
         'pair:description': 'Description',
         'pair:hasStatus': 'Statut',
         'pair:homePage': 'Site web',
-        'pair:involves': 'Implique',
+        'pair:involves': 'Implique [ > Organisations(s), > Personnes(s)]',
         'pair:needs': 'Compétences requises',
-        'pair:documentedBy': 'Documenté par',
+        'pair:documentedBy': 'Documenté par [ > Document(s)]',
         'pair:hasTopic': 'A pour thème',
         'pair:hasType': 'Type',
       }
