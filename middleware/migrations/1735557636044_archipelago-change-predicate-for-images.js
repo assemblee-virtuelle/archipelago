@@ -3,7 +3,7 @@ module.exports = {
 //    await call('migration.replacePredicate', { oldPredicate: 'as:image', newPredicate:'pair:pictedBy', dataset: 'localData' });
 
     const oldPredicate = 'https://www.w3.org/ns/activitystreams#image';
-    const newPredicate = 'http://virtual-assembly.org/ontologies/pair#pictedBy';
+    const newPredicate = 'http://virtual-assembly.org/ontologies/pair#depictedBy';
 
     console.log(`Replacing predicate ${oldPredicate} with ${newPredicate}...`);
 
@@ -20,7 +20,7 @@ module.exports = {
   },
   down: async ({ query, insert, update, call }) => {
 
-    const oldPredicate = 'http://virtual-assembly.org/ontologies/pair#pictedBy';
+    const oldPredicate = 'http://virtual-assembly.org/ontologies/pair#depictedBy';
     const newPredicate = 'https://www.w3.org/ns/activitystreams#image';
 
     console.log(`Replacing predicate ${oldPredicate} with ${newPredicate}...`);
