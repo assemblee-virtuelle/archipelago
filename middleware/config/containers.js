@@ -1,4 +1,4 @@
-const CONFIG = require('./config');
+const { getDefaultRights } = require('./defaultRights');
 
 module.exports = [
   {
@@ -7,26 +7,31 @@ module.exports = [
   {
     path: '/membership-associations',
     acceptedTypes: ['pair:MembershipAssociation'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/groups',
     preferredView: '/Group',
     acceptedTypes: ['pair:Group', 'og:Circle'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/projects',
     preferredView: '/Project',
     acceptedTypes: ['pair:Project', 'og:Circle'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/events',
     preferredView: '/Event',
     acceptedTypes: ['pair:Event'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/tasks',
     preferredView: '/Task',
-    acceptedTypes: ['pair:Task']
+    acceptedTypes: ['pair:Task'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/bots',
@@ -36,27 +41,32 @@ module.exports = [
   {
     path: '/ideas',
     preferredView: '/Idea',
-    acceptedTypes: ['pair:Idea']
+    acceptedTypes: ['pair:Idea'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/themes',
     preferredView: '/Theme',
-    acceptedTypes: ['pair:Theme']
+    acceptedTypes: ['pair:Theme'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/skills',
     preferredView: '/Skill',
-    acceptedTypes: ['pair:Skill']
+    acceptedTypes: ['pair:Skill'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/membership-roles',
     preferredView: '/MembershipRole',
-    acceptedTypes: ['pair:MembershipRole']
+    acceptedTypes: ['pair:MembershipRole'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/documents',
     preferredView: '/Document',
-    acceptedTypes: ['pair:Document']
+    acceptedTypes: ['pair:Document'],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/status',
@@ -70,7 +80,8 @@ module.exports = [
       'pair:IdeaStatus',
       'pair:ProjectStatus',
       'pair:TaskStatus'
-    ]
+    ],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/types',
@@ -92,11 +103,13 @@ module.exports = [
       'pair:ResourceType',
       'pair:SubjectType',
       'pair:TaskType'
-    ]
+    ],
+    newResourcesPermissions: getDefaultRights
   },
   {
     path: '/pages',
     preferredView: '/Page',
-    acceptedTypes: ['semapps:Page']
+    acceptedTypes: ['semapps:Page'],
+    newResourcesPermissions: getDefaultRights
   }
 ];
