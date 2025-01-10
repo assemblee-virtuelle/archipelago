@@ -1,4 +1,5 @@
 const { ControlledContainerMixin, ImageProcessorMixin } = require("@semapps/ldp");
+const { getDefaultRights } = require('../config/defaultRights');
 
 module.exports = {
   name: 'file',
@@ -9,6 +10,7 @@ module.exports = {
     imageProcessor: {
       maxWidth: 1000,
       maxHeight: 1000
-    }
+    },
+    newResourcesPermissions: getDefaultRights,
   }
 }

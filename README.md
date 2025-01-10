@@ -60,6 +60,7 @@ If you need to customize your Archipelago, you can follow the docs below:
 
 - [Configuration file](./docs/configuration.md)
 - [Layout configuration](./docs/layouts.md)
+- [Resources permissions](./docs/permissions.md)
 
 ## Linking to SemApps packages
 
