@@ -39,6 +39,7 @@ module.exports = {
     webacl: {
       superAdmins: CONFIG.SUPER_ADMINS ? CONFIG.SUPER_ADMINS.split(',') : [],
     },
+    sparqlEndpoint: false,
     webid: {
       path: 'users',
     },
