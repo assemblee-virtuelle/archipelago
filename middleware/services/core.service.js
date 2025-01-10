@@ -37,7 +37,7 @@ module.exports = {
       description: CONFIG.INSTANCE_DESCRIPTION
     },
     webacl: {
-      superAdmins: []
+      superAdmins: CONFIG.SUPER_ADMINS ? CONFIG.SUPER_ADMINS.split(',') : [],
     },
     webid: {
       path: 'users',
