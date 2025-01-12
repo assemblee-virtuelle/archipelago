@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilterLiveSearch, useTranslate } from 'react-admin';
-import { ReferenceFilter } from '@semapps/list-components';
 import { useLayoutContext } from '../../../../layouts/LayoutContext';
+import ReferenceFilterTree from '../../../../common/ReferenceFilterTree';
 
 const EventFilterSidebar = () => {
   const Layout = useLayoutContext();
@@ -12,11 +12,13 @@ const EventFilterSidebar = () => {
       {Layout.name === 'topMenu' && (
         <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Event.searchLabel')} />
       )}
-      <ReferenceFilter
+      <ReferenceFilterTree
         reference="Theme"
+        title="Thèmes"
+        broader="pair:broader"
         source="pair:hasTopic"
-        inverseSource="pair:topicOf"
-        limit={100}
+        label="pair:label"
+        filter={{}}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
     </Layout.Aside>
