@@ -2,6 +2,7 @@ import React from 'react';
 import { FilterLiveSearch, useTranslate } from 'react-admin';
 import { ReferenceFilter } from '@semapps/list-components';
 import { useLayoutContext } from '../../../../layouts/LayoutContext';
+import ReferenceFilterTree from '../../../../common/ReferenceFilterTree';
 
 const ProjectFilterSidebar = () => {
   const Layout = useLayoutContext();
@@ -19,11 +20,13 @@ const ProjectFilterSidebar = () => {
         filter={{ a: 'pair:ProjectStatus' }}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
-      <ReferenceFilter
+      <ReferenceFilterTree
         reference="Theme"
+        title="Thèmes"
+        broader="pair:broader"
         source="pair:hasTopic"
-        inverseSource="pair:topicOf"
-        limit={100}
+        label="pair:label"
+        filter={{}}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
       <ReferenceFilter
