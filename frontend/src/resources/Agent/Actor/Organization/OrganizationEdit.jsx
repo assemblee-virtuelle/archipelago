@@ -24,7 +24,7 @@ export const OrganizationEdit = props => (
         <TextInput source="pair:comment" fullWidth />
         <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:AgentStatus' }}>
-          <SelectInput optionText="pair:label" />
+          <SelectInput optionText="pair:label" size="small"/>
         </ReferenceInput>
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:OrganizationType' }}>
           <SelectInput optionText="pair:label" />
@@ -36,7 +36,7 @@ export const OrganizationEdit = props => (
         </ArrayInput>
         <TextInput source="pair:e-mail" fullWidth type="email" />
         <LocationInput source="pair:hasLocation" fullWidth />
-        <ImageInput source="image" accept="image/*">
+        <ImageInput source="image" accept={{ 'image/*': ['.png', '.jpg'] }}>
           <ImageField source="src" />
         </ImageInput>
       </TabbedForm.Tab>

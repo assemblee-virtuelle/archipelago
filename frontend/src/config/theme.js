@@ -9,7 +9,7 @@ const theme = createTheme({
     secondary: { main: '#bcef5b' },
     grey: { main: '#e0e0e0' },
     background: {
-      default: '#efefef',
+      default: '#ffffff',
     },
   },
   typography: {
@@ -143,7 +143,12 @@ const theme = createTheme({
           }
         }
       }
-    }
+    },
+    MuiTextField: {
+      defaultProps: {
+        size: "small"
+      }
+    },
   },
 });
 

@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const MainList = ({ children, divider, Label }) => {
+const MainList = ({ children, divider, Label = LargeLabel }) => {
   const translate = useTranslate();
   const classes = useStyles();
   const { isLoading, record, resource } = useShowContext();
@@ -47,10 +47,6 @@ const MainList = ({ children, divider, Label }) => {
       )}
     </Box>
   );
-};
-
-MainList.defaultProps = {
-  Label: LargeLabel
 };
 
 export default MainList;
