@@ -10,20 +10,22 @@ import {
   FormDataConsumer,
   RecordContextProvider,
   SelectInput,
+  useWrappedSource,
 } from "react-admin";
 import { useFormContext } from 'react-hook-form';
 
 // We need to redeclare a container component here to set the initial value of the relationship in the form
 const ReferenceInputForm = ({ children, scopedSource, reference, source }) => {
   const form = useFormContext();
+  const finalSource = useWrappedSource(source);
   const membershipAssociation = useRecordContext();
   const value = membershipAssociation?.[scopedSource];
 
   useEffect(() => {
     if (value) {
-      form.setValue(source, value);
+      form.setValue(finalSource, value);
     }
-  }, [form, source, value]);
+  }, [form, finalSource, value]);
 
   return (
     <ReferenceInput reference={reference} source={source}>
@@ -48,7 +50,7 @@ const MembershipAssociationInput = (props) => {
     <ArrayInput source={source}>
       <SimpleFormIterator inline>
         <FormDataConsumer>
-          {({ scopedFormData, getSource }) => {
+          {({ scopedFormData }) => {
             const membershipAssociation = membershipAssociations?.find((r) => r.id === scopedFormData);
 
             return (
@@ -56,10 +58,10 @@ const MembershipAssociationInput = (props) => {
                 <ReferenceInputForm
                   reference={referenceInputProps.reference}
                   scopedSource={referenceInputProps.source}
-                  source={getSource(referenceInputProps.source)}
+                  source={referenceInputProps.source}
                 >
                   <AutocompleteInput
-                    source={getSource(referenceInputProps.source)}
+                    source={referenceInputProps.source}
                     label={label}
                     size="small"
                     sx={{
@@ -70,20 +72,21 @@ const MembershipAssociationInput = (props) => {
                     shouldRenderSuggestions={(value) =>
                       value && value.length > 1
                     }
+                    noOptionsText="Veuillez saisir au moins deux lettres pour afficher les suggestions"
                   />
                 </ReferenceInputForm>
                 <ReferenceInputForm
                   reference="MembershipRole"
                   scopedSource={'pair:membershipRole'}
-                  source={getSource("pair:membershipRole")}
+                  source={"pair:membershipRole"}
                 >
                   <SelectInput
-                    source={getSource("pair:membershipRole")}
+                    source={"pair:membershipRole"}
                     label="Rôle"
                   />
                 </ReferenceInputForm>
                 <TextInput
-                  source={getSource("type")}
+                  source={"type"}
                   defaultValue={"pair:MembershipAssociation"}
                   sx={{ display: "none" }}
                 />

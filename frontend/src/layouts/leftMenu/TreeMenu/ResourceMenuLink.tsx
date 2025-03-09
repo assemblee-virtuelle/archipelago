@@ -17,7 +17,6 @@ const ResourceMenuLink = ({ resource, root }: Props) => {
   const [sidebarIsOpen] = useSidebarState();
 
   return (
-    // @ts-expect-error Bad typing from react-admin
     <MenuItemLink
       to={`/${resource.name}`}
       primaryText={resource.options?.label || resource.name}

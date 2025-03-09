@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Hero = ({ children, image, defaultImage }) => {
+const Hero = ({ children, image, defaultImage = '/logo512.png' }) => {
   const classes = useStyles();
   const { isLoading } = useShowContext();
   if (isLoading) return null;
@@ -36,10 +36,6 @@ const Hero = ({ children, image, defaultImage }) => {
       </Grid>
     </div>
   );
-};
-
-Hero.defaultProps = {
-  defaultImage: '/logo512.png'
 };
 
 export default Hero;

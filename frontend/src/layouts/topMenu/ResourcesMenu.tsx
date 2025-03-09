@@ -47,8 +47,6 @@ const ResourcesMenu = () => {
             primaryText={options?.label || name}
             leftIcon={<Icon />}
             to={`/${name}`}
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined}
             onClick={() => setAnchorEl(null)}
           />
         ))}

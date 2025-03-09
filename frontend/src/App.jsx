@@ -4,7 +4,7 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { LoginPage } from '@semapps/auth-provider';
 import { BrowserRouter } from 'react-router-dom';
-import { QueryClient } from 'react-query';
+import { QueryClient } from '@tanstack/react-query';
 
 import HomePage from './HomePage';
 import config from './config/config';
@@ -16,6 +16,7 @@ import resources from './resources';
 
 import { Layout } from './common/layout';
 import { LayoutProvider } from './layouts/LayoutProvider';
+import { Avatar, Button } from '@mui/material';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +25,8 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+const Login = () => <LoginPage buttons={[<Button key="lescommuns" startIcon={<Avatar src="/lescommuns.jpg" />}>Les Communs</Button>]} />
 
 const App = () => (
   <StyledEngineProvider injectFirst>
@@ -39,7 +42,7 @@ const App = () => (
             i18nProvider={i18nProvider}
             layout={Layout}
             theme={theme}
-            loginPage={LoginPage}
+            loginPage={Login}
             dashboard={HomePage}
             store={memoryStore()}
             queryClient={queryClient}
