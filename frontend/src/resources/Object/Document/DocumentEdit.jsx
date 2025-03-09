@@ -16,7 +16,7 @@ export const DocumentEdit = props => (
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:DocumentType' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
-        <ImageInput source="image" accept="image/*">
+        <ImageInput source="image" accept={{ 'image/*': ['.png', '.jpg'] }}>
           <ImageField source="src" />
         </ImageInput>
       </FormTab>

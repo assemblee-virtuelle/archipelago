@@ -26,13 +26,9 @@ const List = ({ aside, pagination, children, ...rest }: ListProps) => (
           </TopToolbar>
           <ListActionsWithPermissions
             exporter={false}
-            bulkActions={undefined}
-            sort={undefined}
             displayedFilters={undefined}
             filters={undefined}
             filterValues={undefined}
-            onUnselectItems={undefined}
-            selectedIds={undefined}
             showFilter={undefined}
             total={undefined}
           />

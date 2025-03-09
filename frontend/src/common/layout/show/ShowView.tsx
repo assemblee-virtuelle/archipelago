@@ -1,19 +1,18 @@
-import React, { PropsWithChildren, ReactElement } from 'react';
-import { RaRecord, useGetRecordRepresentation, useResourceContext, useShowContext } from 'react-admin';
+import React, { PropsWithChildren } from 'react';
+import { RaRecord, ShowProps, useGetRecordRepresentation, useResourceContext, useShowContext } from 'react-admin';
 import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useLayoutContext } from '../../../layouts/LayoutContext';
 
 type Props = {
-  title?: string | ReactElement;
+  title?: ShowProps['title'];
   actions: JSX.Element;
 };
 
 const ShowView = ({ title, actions, children }: PropsWithChildren<Props>) => {
   const showContext = useShowContext<RaRecord<string>>();
 
-  // @ts-expect-error Bad typing of Semapps
-  useCheckPermissions(showContext?.record?.id || {}, 'show');
+  useCheckPermissions(showContext?.record?.id, 'show');
 
   const resource = useResourceContext();
   const getRecordRepresentation = useGetRecordRepresentation(resource);

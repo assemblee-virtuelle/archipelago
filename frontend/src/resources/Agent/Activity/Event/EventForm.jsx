@@ -83,7 +83,7 @@ const EventForm = () => {
         label="Page web de l'évènement"
         helperText="Billetterie, page d'inscription, etc."
       />
-      <ImageInput source="image" accept="image/*">
+      <ImageInput source="image" accept={{ 'image/*': ['.png', '.jpg'] }}>
         <ImageField source="src" />
       </ImageInput>
       </>
