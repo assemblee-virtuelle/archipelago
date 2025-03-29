@@ -1,55 +1,28 @@
 import { createTheme } from '@mui/material/styles';
 
-// Allow to use breakpoints
-const defaultTheme = createTheme();
+declare module "@mui/material/styles" {
+  interface Components {
+    RaToolbar?: unknown;
+    RaListToolbar?: unknown;
+    RaSingleFieldList?: unknown;
+    RaAutocompleteArrayInput?: unknown;
+    RaMenuItemLink?: unknown;
+    RaCreateButton?: unknown;
+  }
+}
 
-const theme = createTheme({
+const colorTheme = createTheme({
   palette: {
     primary: { main: '#28ccfb', contrastText: '#ffffff' },
     secondary: { main: '#bcef5b' },
-    grey: { main: '#e0e0e0' },
     background: {
       default: '#efefef',
     },
   },
-  typography: {
-    details: {
-      fontSize: 8,
-    },
-  },
+});
+
+const theme = createTheme(colorTheme, {
   components: {
-    RaChipField: {
-      styleOverrides: {
-        chip: {
-          marginLeft: 0,
-          marginTop: 0,
-          marginRight: 8,
-          marginBottom: 8,
-        },
-      },
-    },
-    RaShow: {
-      styleOverrides: {
-        card: {
-          padding: 25,
-          [defaultTheme.breakpoints.down('sm')]: {
-            padding: 15,
-          },
-        },
-      },
-    },
-    RaList: {
-      styleOverrides: {
-        content: {
-          padding: 25,
-          [defaultTheme.breakpoints.down('sm')]: {
-            padding: 15,
-            paddingTop: 0,
-            marginTop: -8,
-          },
-        },
-      },
-    },
     RaToolbar: {
       styleOverrides: {
         root: {
@@ -85,11 +58,11 @@ const theme = createTheme({
     },
     RaMenuItemLink: {
       styleOverrides: {
-        root: ({ theme }) => ({
+        root: {
           '&.RaMenuItemLink-active': {
-            borderLeft: `3px solid ${theme.palette.primary.main}`,
+            borderLeft: `3px solid ${colorTheme.palette.primary.main}`,
           },
-        }),
+        },
       },
     },
     MuiTab: {

@@ -1,4 +1,5 @@
-import { LayoutOptions } from "../layouts/LayoutContext";
+import { LayoutOptions } from './layouts/LayoutContext';
+import { Theme } from '@mui/material';
 
 interface ConfigInterface {
   middlewareUrl: string;
@@ -6,6 +7,10 @@ interface ConfigInterface {
   importableResources: string[];
   title: string;
   layout: LayoutOptions;
+  theme?: (baseTheme: Theme) => Theme;
+  HomePage?: JSX.Element;
+  LoginPage?: JSX.Element;
+  resources?: (baseResources: Record<string, object>) => Record<string, object>;
 }
 
 const config: ConfigInterface = {
@@ -16,16 +21,7 @@ const config: ConfigInterface = {
   mapboxAccessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
 
   // Displays import tab when creating resource if it is listed here
-  importableResources: [
-    "Event",
-    "Project",
-    "Task",
-    "Group",
-    "Organization",
-    "Idea",
-    "Document",
-    "Skill",
-  ],
+  importableResources: ['Event', 'Project', 'Task', 'Group', 'Organization', 'Idea', 'Document', 'Skill'],
 
   // Application title
   title: 'Archipelago',

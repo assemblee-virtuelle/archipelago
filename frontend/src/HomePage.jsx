@@ -1,7 +1,7 @@
 import React from 'react';
 import { useShowController, ShowContextProvider } from 'react-admin';
 import PageShow from './resources/Page/PageShow';
-import config from './config/config';
+import config from './config';
 
 const HomePage = () => {
   const showConfig = {

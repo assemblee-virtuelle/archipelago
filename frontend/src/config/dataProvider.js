@@ -1,9 +1,11 @@
 import { dataProvider as semanticDataProvider } from '@semapps/semantic-data-provider';
 import ontologies from './ontologies.json';
 import dataServers from './dataServers';
-import resources from '../resources';
+import baseResources from '../resources';
 import { withLifecycleCallbacks } from 'react-admin';
-import config from './config';
+import config from '../config';
+
+const resources = config.resources?.(baseResources) || baseResources;
 
 const baseDataProvider = semanticDataProvider({
   dataServers,

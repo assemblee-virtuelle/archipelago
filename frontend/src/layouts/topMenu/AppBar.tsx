@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar as MuiAppBar, Box, Button, Stack, Toolbar, Typography, Link } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Link as RRLink } from 'react-router-dom';
-import config from '../../config/config';
+import config from '../../config';
 import UserMenu from './UserMenu';
 import ResourcesMenu from './ResourcesMenu';
 import { useLayoutContext } from '../LayoutContext';
