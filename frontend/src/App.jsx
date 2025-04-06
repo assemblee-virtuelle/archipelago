@@ -7,12 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient } from 'react-query';
 
 import HomePage from './HomePage';
-import config from './config/config';
+import config from './config';
 import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
-import theme from './config/theme';
-import resources from './resources';
+import baseTheme from './config/theme';
+import baseResources from './resources';
 
 import { Layout } from './common/layout';
 import { LayoutProvider } from './layouts/LayoutProvider';
@@ -24,6 +24,9 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+const theme = config.theme?.(baseTheme) || baseTheme;
+const resources = config.resources?.(baseResources) || baseResources;
 
 const App = () => (
   <StyledEngineProvider injectFirst>
@@ -39,8 +42,8 @@ const App = () => (
             i18nProvider={i18nProvider}
             layout={Layout}
             theme={theme}
-            loginPage={LoginPage}
-            dashboard={HomePage}
+            loginPage={config.LoginPage || LoginPage}
+            dashboard={config.HomePage || HomePage}
             store={memoryStore()}
             queryClient={queryClient}
           >

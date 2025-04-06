@@ -1,6 +1,6 @@
 # Archipelago layouts
 
-You can choose the UI layout of Archipelago by updating the `layout` configuration in the `/frontend/src/config/config.ts` file.
+You can choose the UI layout of Archipelago by updating the `layout` configuration in the `/frontend/src/config.ts` file.
 
 Structure of the `layout` configuration attribute is as below:
 
