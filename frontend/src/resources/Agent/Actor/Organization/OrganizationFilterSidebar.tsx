@@ -30,6 +30,14 @@ const OrganizationFilterSidebar = () => {
         filter={{}}
         sort={{ field: 'pair:label', order: 'DESC' }}
       />
+      <ReferenceFilter
+        reference="Project"
+        source="pair:involvedIn"
+        inverseSource="pair:involves"
+        limit={100}
+        filter={{}}
+        sort={{ field: 'pair:label', order: 'DESC' }}
+      />
     </Layout.Aside>
   );
 };
