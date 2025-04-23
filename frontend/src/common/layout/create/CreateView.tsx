@@ -1,7 +1,7 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 import { useCreateContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
-import { useCreateContainerUri } from '@semapps/semantic-data-provider';
+import { useGetCreateContainerUri } from '@semapps/semantic-data-provider';
 import { useLayoutContext } from '../../../layouts/LayoutContext';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 
 const CreateView = ({ title, actions, children }: PropsWithChildren<Props>) => {
   const createContext = useCreateContext();
-  const createContainerUri = useCreateContainerUri()(createContext.resource);
+  const createContainerUri = useGetCreateContainerUri()(createContext.resource);
 
   // @ts-expect-error Bad typing of Semapps
   useCheckPermissions(createContainerUri || {}, 'create');

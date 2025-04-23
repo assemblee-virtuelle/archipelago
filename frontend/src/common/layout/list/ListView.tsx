@@ -3,7 +3,7 @@ import { useListContext, Pagination, CreateButton, useResourceDefinition, usePer
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Permissions, useCheckPermissions } from '@semapps/auth-provider';
-import { useCreateContainerUri } from '@semapps/semantic-data-provider';
+import { useGetCreateContainerUri } from '@semapps/semantic-data-provider';
 import { useLayoutContext } from '../../../layouts/LayoutContext';
 
 const FloatingCreateButtonBox = styled(Box)(({ theme }) => ({
@@ -31,7 +31,7 @@ type Props = {
 
 const ListView = ({ title, children, aside, actions, pagination }: PropsWithChildren<Props>) => {
   const listContext = useListContext();
-  const createContainerUri = useCreateContainerUri()(listContext.resource);
+  const createContainerUri = useGetCreateContainerUri()(listContext.resource);
 
   // @ts-expect-error Bad typing of Semapps
   useCheckPermissions(createContainerUri || {}, 'list');

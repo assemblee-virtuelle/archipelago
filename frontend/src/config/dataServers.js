@@ -5,7 +5,6 @@ const dataServers = {
     baseUrl: config.middlewareUrl,
     authServer: true,
     default: true,
-    uploadsContainer: '/files'
   },
 
   // You can add additionnal external servers in this file
