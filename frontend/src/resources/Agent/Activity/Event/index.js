@@ -31,6 +31,7 @@ const resource = {
     fr: {
       name: 'Evènement |||| Evènements',
       searchLabel: 'Rechercher un évènement',
+      addToCalendar: 'Ajouter à mon agenda',
       fields: {
         'pair:label': 'Nom',
         'pair:description': 'Description',
