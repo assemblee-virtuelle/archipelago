@@ -29,12 +29,12 @@ docker-compose up -d fuseki
 Add a `.env.local` file in the `/middleware` directory and fill the required OIDC configurations:
 
 ```dotenv
-SEMAPPS_OIDC_ISSUER=
-SEMAPPS_OIDC_CLIENT_ID=
-SEMAPPS_OIDC_CLIENT_SECRET=
+SEMAPPS_OIDC_ISSUER=required
+SEMAPPS_OIDC_CLIENT_ID=required
+SEMAPPS_OIDC_CLIENT_SECRET=optional
 ```
 
-Launch the middleware on port 3000:
+Launch the middleware on port 5173:
 
 ```bash
 cd middleware
