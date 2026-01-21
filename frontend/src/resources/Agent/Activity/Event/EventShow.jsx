@@ -24,7 +24,7 @@ const EventShow = props => (
               <AddToCalendarButton 
                 title={record['pair:label']}
                 description={record['pair:comment']}
-                location={record['pair:hasLocation']['pair:label']} 
+                location={record['pair:hasLocation']?.['pair:label']} 
                 startTime={record['pair:startDate']}
                 endTime={record['pair:endDate']}
                 id={record.id}

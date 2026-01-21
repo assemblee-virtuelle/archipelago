@@ -3,25 +3,25 @@ import { useTranslate } from 'react-admin';
 import EventIcon from '@mui/icons-material/Event';
 
 type AddToCalendarButtonProps = {
-    id?: string;
     title: string;
-    description: string;
-    location: string;
     startTime: string;
-    endTime: string;
+    id?: string;
+    description?: string;
+    location?: string;
+    endTime?: string;
     url?: string;
     showIcon?: boolean;
 }
 
 
 const AddToCalendarButton = ({
-    id='',
     title,
+    startTime,
+    id,
     description,
     location,
-    startTime,
     endTime,
-    url='',
+    url,
     showIcon = false
 }: AddToCalendarButtonProps) => {
     const translate =  useTranslate();
@@ -29,14 +29,14 @@ const AddToCalendarButton = ({
     const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
-UID:${id}
+${id ? `UID:${id}` : ''}
 SUMMARY:${title}
-DESCRIPTION:${description}
-LOCATION:${location}
+${description ? `DESCRIPTION:${description}` : ''}
+${location ? `LOCATION:${location}` : ''}
 DTSTAMP:${formatDateToICS(now.toISOString())}
 DTSTART:${formatDateToICS(startTime)}
-DTEND:${formatDateToICS(endTime)}
-URL:${url}
+${endTime ? `DTEND:${formatDateToICS(endTime)}` : '' }
+${url ? `URL:${url}` : ''}
 END:VEVENT
 END:VCALENDAR`;
 
