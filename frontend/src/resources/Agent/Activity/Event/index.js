@@ -39,7 +39,7 @@ const resource = {
         'pair:hasLocation': 'Lieu',
         'pair:startDate': 'Date de début',
         'pair:endDate': 'Date de fin',
-        'pair:involves': 'Implique',
+        'pair:involves': 'Implique [ > Organisations(s), > Personnes(s)]',
         'pair:hasTopic': 'A pour thème'
       }
     }
