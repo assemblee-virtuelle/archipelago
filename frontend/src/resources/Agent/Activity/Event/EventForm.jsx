@@ -9,10 +9,10 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageInput } from "@semapps/input-components";
 import {
   ActorsInput,
-  ThemesInput,
   DateTimeInput,
   LocationInput,
 } from "../../../../common/input";
+import CustomTreeSelectArrayInput from '../../../../common/input/TreeComponent/CustomTreeSelectArrayInput';
 
 import LargeLabel from "../../../../common/list/MainList/LargeLabel";
 import { Stack } from "@mui/material";
@@ -76,7 +76,7 @@ const EventForm = () => {
         source="pair:involves"
         helperText="Indiquez ici les organisations, groupes ou personnes qui sont impliqués dans l'évènement"
       />
-      <ThemesInput source="pair:hasTopic" />
+      <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth />
       <TextInput
         source="pair:aboutPage"
         fullWidth
