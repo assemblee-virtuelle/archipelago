@@ -1,6 +1,5 @@
 import React from 'react';
 import { Avatar } from '@mui/material';
-import { AvatarWithLabelField } from '@semapps/field-components';
 import { MultiViewsList, GridList } from '@semapps/list-components';
 import { MapList } from '@semapps/geo-components';
 import MapIcon from '@mui/icons-material/Map';
@@ -10,6 +9,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonFilterSidebar from './PersonFilterSidebar';
 import SimpleList from "../../../../common/list/SimpleList";
 import { List } from '../../../../common/layout';
+import { AvatarWithLabelField } from '../../../../common/field';
 import MobileMapPopupContent from '../../../../common/list/MobileMapPopupContent';
 
 const PersonList = props => (
@@ -26,6 +26,7 @@ const PersonList = props => (
         list: (
           <GridList xs={6} sm={2} linkType="show" externalLinks>
             <AvatarWithLabelField label="pair:label" image="image" />
+            {/* <div>avatar</div> */}
           </GridList>
         )
       },

@@ -45,7 +45,7 @@ const App = () => (
             i18nProvider={i18nProvider}
             layout={Layout}
             theme={theme}
-            loginPage={config.LoginPage || LoginPage} // FIXME:
+            loginPage={config.LoginPage || Login}
             dashboard={config.HomePage || HomePage}
             store={memoryStore()}
             queryClient={queryClient}

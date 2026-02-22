@@ -1,8 +1,9 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
+import { QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
 import { Show } from '../../../common/layout';
+import { AvatarWithLabelField } from '../../../common/field';
 import { SideList } from '../../../common/list';
 
 const SkillShow = props => (
