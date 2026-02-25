@@ -18,7 +18,7 @@ const ActionsBox = styled(Box)(({ theme }) => ({
 const List = ({ aside, pagination, children, ...rest }: ListProps) => (
   <ListBase {...rest}>
     <ListView
-      aside={aside}
+      aside={aside as JSX.Element}
       actions={
         <ActionsBox>
           <TopToolbar>
@@ -34,7 +34,7 @@ const List = ({ aside, pagination, children, ...rest }: ListProps) => (
           />
         </ActionsBox>
       }
-      pagination={pagination}
+      pagination={pagination as JSX.Element}
     >
       {children}
     </ListView>

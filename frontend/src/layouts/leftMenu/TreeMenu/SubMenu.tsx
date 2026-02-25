@@ -18,7 +18,7 @@ const SubMenu = ({ handleToggle, isOpen, name, icon, children }: PropsWithChildr
       to={`/${name}`}
       primaryText={name}
       leftIcon={isOpen ? <ExpandMore /> : icon}
-      onClick={(e) => {
+      onClick={(e: Event) => {
         e.preventDefault();
         setSidebarIsOpen(true);
         handleToggle();
