@@ -11,7 +11,11 @@ type Props = MenuItemProps & {
 };
 
 const UserMenuItem = forwardRef(function UserMenuItem({ label, icon: IconComponent, to, ...rest }: Props, ref) {
-  const { onClose } = useUserMenu();
+  const userMenuContext = useUserMenu();
+  if (!userMenuContext) {
+      throw new Error("<UserMenuItem> should be used inside a <UserMenu>");
+  }
+  const { onClose } = userMenuContext;
 
   return (
     <MenuItem component={Link} href={to} onClick={onClose} ref={ref} {...rest}>

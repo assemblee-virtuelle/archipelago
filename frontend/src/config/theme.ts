@@ -16,7 +16,7 @@ const colorTheme = createTheme({
     primary: { main: '#28ccfb', contrastText: '#ffffff' },
     secondary: { main: '#bcef5b' },
     background: {
-      default: '#efefef',
+      default: '#ffffff',
     },
   },
 });
@@ -116,7 +116,12 @@ const theme = createTheme(colorTheme, {
           }
         }
       }
-    }
+    },
+    MuiTextField: {
+      defaultProps: {
+        size: "small"
+      }
+    },
   },
 });
 

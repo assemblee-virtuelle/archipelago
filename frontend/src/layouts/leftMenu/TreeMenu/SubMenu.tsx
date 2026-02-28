@@ -14,12 +14,11 @@ const SubMenu = ({ handleToggle, isOpen, name, icon, children }: PropsWithChildr
   const [sidebarIsOpen, setSidebarIsOpen] = useSidebarState();
 
   const header = (
-    // @ts-expect-error Bad typing from react-admin
     <MenuItemLink
       to={`/${name}`}
       primaryText={name}
       leftIcon={isOpen ? <ExpandMore /> : icon}
-      onClick={(e) => {
+      onClick={(e: Event) => {
         e.preventDefault();
         setSidebarIsOpen(true);
         handleToggle();

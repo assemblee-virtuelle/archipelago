@@ -33,13 +33,12 @@ const ListView = ({ title, children, aside, actions, pagination }: PropsWithChil
   const listContext = useListContext();
   const createContainerUri = useGetCreateContainerUri()(listContext.resource);
 
-  // @ts-expect-error Bad typing of Semapps
-  useCheckPermissions(createContainerUri || {}, 'list');
+  useCheckPermissions(createContainerUri, 'list');
 
   const Layout = useLayoutContext();
 
   const resourceDefinition = useResourceDefinition();
-  const { permissions } = usePermissions(createContainerUri) as { permissions: Permissions };
+  const { permissions } = usePermissions({ uri: createContainerUri }) as { permissions: Permissions };
 
   return (
     <Layout.BaseView title={title ?? listContext.defaultTitle} actions={actions} aside={aside}>
