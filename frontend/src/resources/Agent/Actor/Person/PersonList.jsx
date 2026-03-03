@@ -1,16 +1,15 @@
 import React from 'react';
 import { Avatar } from '@mui/material';
 import { MultiViewsList, GridList } from '@semapps/list-components';
-import { MapList } from '@semapps/geo-components';
 import MapIcon from '@mui/icons-material/Map';
 import ListIcon from '@mui/icons-material/List';
 import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonFilterSidebar from './PersonFilterSidebar';
+import MapList from '../../../../common/list/MapList/MapList';
 import SimpleList from "../../../../common/list/SimpleList";
 import { List } from '../../../../common/layout';
 import { AvatarWithLabelField } from '../../../../common/field';
-import MobileMapPopupContent from '../../../../common/list/MobileMapPopupContent';
 
 const PersonList = props => (
   <MultiViewsList
@@ -26,7 +25,6 @@ const PersonList = props => (
         list: (
           <GridList xs={6} sm={2} linkType="show" externalLinks>
             <AvatarWithLabelField label="pair:label" image="image" />
-            {/* <div>avatar</div> */}
           </GridList>
         )
       },
@@ -60,7 +58,6 @@ const PersonList = props => (
             label={record => record['pair:label']}
             description={record => record['pair:comment']}
             scrollWheelZoom
-            popupContent={MobileMapPopupContent}
           />
         )
       }

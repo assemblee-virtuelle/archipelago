@@ -1,10 +1,15 @@
 import React from 'react';
-import { ShowButton, EditButton, useResourceDefinition, useRecordContext } from 'react-admin';
+import { ShowButton, EditButton, useResourceDefinition, useRecordContext, RaRecord } from 'react-admin';
 import { Box, Typography } from '@mui/material';
-import { useLayoutContext } from '../../layouts/LayoutContext';
+import { useLayoutContext } from '../../../layouts/LayoutContext';
 
-const MobileMapPopupContent = () => {
-  const record = useRecordContext();
+interface GeoRecord extends RaRecord {
+  label: string;
+  description: string;
+}
+
+const DefaultPopupContent = () => {
+  const record = useRecordContext<GeoRecord>();
   const resourceDefinition = useResourceDefinition({});
   const layout = useLayoutContext();
 
@@ -24,4 +29,4 @@ const MobileMapPopupContent = () => {
   );
 };
 
-export default MobileMapPopupContent;
+export default DefaultPopupContent;

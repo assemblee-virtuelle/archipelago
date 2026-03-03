@@ -10,6 +10,7 @@
     "@mui/material": "^5.15.14",
     "@mui/styles": "^5.15.14",
     "@mui/x-tree-view": "6.0.0-beta.0",
+    "@react-leaflet/core": "^2.0.0",
     "@semapps/auth-provider": "1.2.0",
     "@semapps/date-components": "1.2.0",
     "@semapps/field-components": "1.2.0",
@@ -35,6 +36,7 @@
     "react": "^18.3.1",
     "react-admin": "^5.14.3",
     "react-dom": "^18.3.1",
+    "react-leaflet": "^4.0.0",
     "typescript": "^5.9.3",
     "vite": "^6.2.1",
     "vite-plugin-checker": "^0.8.0"
@@ -43,6 +45,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/leaflet": "^1.9.21",
     "source-map-explorer": "^2.5.2",
     "yalc": "1.0.0-pre.53"
   },

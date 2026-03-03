@@ -1,14 +1,13 @@
 import React from 'react';
 import { MultiViewsList } from '@semapps/list-components';
-import { MapList } from '@semapps/geo-components';
 import { Avatar } from '@mui/material';
 import MapIcon from '@mui/icons-material/Map';
 import ListIcon from '@mui/icons-material/List';
 import HomeIcon from '@mui/icons-material/Home';
 import OrganizationFilterSidebar from './OrganizationFilterSidebar';
+import MapList from '../../../../common/list/MapList/MapList';
 import SimpleList from "../../../../common/list/SimpleList";
 import { List } from '../../../../common/layout';
-import MobileMapPopupContent from '../../../../common/list/MobileMapPopupContent';
 
 const OrganizationList = props => (
   <MultiViewsList
@@ -45,7 +44,6 @@ const OrganizationList = props => (
             label={record => record['pair:label']}
             description={record => record['pair:comment']}
             scrollWheelZoom
-            popupContent={MobileMapPopupContent}
           />
         )
       }
