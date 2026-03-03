@@ -89,14 +89,12 @@ const TreeMenu = () => {
       menuItems.push(<Logout key="logout" />);
     } else {
       menuItems.push(
-        // @ts-expect-error Bad typing from react-admin
         <MenuItemLink
           key="signup"
           to={'/login?signup=true'}
           primaryText={translate('auth.action.signup')}
           leftIcon={<LockOpenIcon />}
         />,
-        // @ts-expect-error Bad typing from react-admin
         <MenuItemLink
           key="login"
           to={'/login'}

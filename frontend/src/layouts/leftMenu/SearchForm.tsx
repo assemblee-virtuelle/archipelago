@@ -56,9 +56,9 @@ const SearchForm = () => {
 
   const onSubmit: SubmitHandler<Fields> = ({ filter, type }) => {
     if (filter) {
-      navigate(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
+      void navigate(`/${type}?filter=${encodeURIComponent(`{"q": "${filter}"}`)}`);
     } else {
-      navigate(`/${type}?filter=${encodeURIComponent(`{}`)}`);
+      void navigate(`/${type}?filter=${encodeURIComponent(`{}`)}`);
     }
   };
 

@@ -12,7 +12,7 @@ export const GroupEdit = props => (
       <TextInput source="pair:label" fullWidth />
       <TextInput source="pair:comment" fullWidth />
       <MarkdownInput source="pair:description" fullWidth />
-      <ImageInput source="image" accept="image/*">
+      <ImageInput source="image" accept={{ 'image/*': ['.png', '.jpg'] }}>
         <ImageField source="src" />
       </ImageInput>
       <UsersInput source="pair:affiliates" />

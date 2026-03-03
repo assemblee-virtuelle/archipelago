@@ -26,9 +26,9 @@ const useStyles = makeStyles(theme => ({
 
 const MainImage = ({ source, defaultImage, ...rest }) => {
   const classes = useStyles();
-  const { isLoading, record } = useShowContext();
+  const { isPending, isLoading, record } = useShowContext();
 
-  if (isLoading) return null;
+  if (isPending || isLoading || !record) return null;
 
   let image = record[source] || defaultImage;
   image = Array.isArray(image) ? image[0] : image;

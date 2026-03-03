@@ -45,12 +45,12 @@ export const PersonEdit = (props) => {
         </RaToolbar>
       }>
         <FormTab label="Données">
-          <TextInput source="pair:firstName" fullWidth validate={[required()]} />
+          <TextInput source="pair:firstName" fullWidth validate={[required()]} size="small" />
           <TextInput source="pair:lastName" fullWidth />
           <TextInput source="pair:comment" fullWidth />
           <MarkdownInput source="pair:description" fullWidth />
           <LocationInput source="pair:hasLocation" fullWidth />
-          <ImageInput source="image" accept="image/*">
+          <ImageInput source="image" accept={{ 'image/*': ['.png', '.jpg'] }}>
             <ImageField source="src" />
           </ImageInput>
         </FormTab>

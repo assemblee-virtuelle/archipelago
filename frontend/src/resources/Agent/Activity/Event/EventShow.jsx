@@ -1,10 +1,10 @@
 import React from 'react';
 import { TextField, UrlField, DateField, FunctionField } from 'react-admin';
 import { Grid } from '@mui/material';
-import { AvatarWithLabelField, QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
+import { QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
 import { GridList, ChipList } from '@semapps/list-components';
 import { MapField } from '@semapps/geo-components';
-import { MarkdownField } from '../../../../common/field';
+import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import AddToCalendarButton from './AddToCalendarButton';
@@ -17,14 +17,14 @@ const EventShow = props => (
           <TextField source="pair:comment" />
           <DateField source="pair:startDate" showTime />
           <DateField source="pair:endDate" showTime />
-          <FunctionField 
+          <FunctionField
             source="pair:startDate"
             label=""
-            render={(record) => 
-              <AddToCalendarButton 
+            render={(record) =>
+              <AddToCalendarButton
                 title={record['pair:label']}
                 description={record['pair:comment']}
-                location={record['pair:hasLocation']?.['pair:label']} 
+                location={record['pair:hasLocation']?.['pair:label']}
                 startTime={record['pair:startDate']}
                 endTime={record['pair:endDate']}
                 id={record.id}

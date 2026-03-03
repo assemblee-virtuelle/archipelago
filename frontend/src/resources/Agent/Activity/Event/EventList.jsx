@@ -1,6 +1,7 @@
 import React from 'react';
 import { MultiViewsList } from '@semapps/list-components';
-import { CalendarList, DaysList } from '@semapps/date-components';
+import CalendarList from '../../../../common/list/calendar/CalendarList';
+import DaysList from '../../../../common/list/calendar/DaysList';
 import frLocale from '@fullcalendar/core/locales/fr';
 import ListIcon from '@mui/icons-material/List';
 import EventIcon from '@mui/icons-material/Event';

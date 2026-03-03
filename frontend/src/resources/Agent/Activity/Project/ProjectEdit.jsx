@@ -20,7 +20,7 @@ const ProjectEdit = props => (
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
         <TextInput source="pair:homePage" fullWidth />
-        <ImageInput source="image" accept="image/*">
+        <ImageInput source="image" accept={{ 'image/*': ['.png', '.jpg'] }}>
           <ImageField source="src" />
         </ImageInput>
       </FormTab>

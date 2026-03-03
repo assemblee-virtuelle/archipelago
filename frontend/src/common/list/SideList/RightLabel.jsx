@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const RightLabel = ({ label, children, source, mb }) => {
+const RightLabel = ({ label, children, source, mb = 4 }) => {
   const classes = useStyles();
   const { record, resource } = useShowContext();
   const translate = useTranslate();
@@ -37,10 +37,6 @@ const RightLabel = ({ label, children, source, mb }) => {
       )}
     </Box>
   );
-};
-
-RightLabel.defaultProps = {
-  mb: 4
 };
 
 export default RightLabel;

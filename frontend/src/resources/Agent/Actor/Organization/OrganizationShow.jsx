@@ -6,15 +6,15 @@ import {
   ReferenceArrayField,
   QuickAppendReferenceArrayField,
   MultiUrlField,
-  AvatarWithLabelField,
   SeparatedListField
 } from '@semapps/field-components';
+
 import { ChipList, GridList } from '@semapps/list-components';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import ForumIcon from '@mui/icons-material/Forum';
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
-import { MarkdownField } from '../../../../common/field';
+import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import MembershipAssociationField from "../../../../common/field/MembershipAssociationField";

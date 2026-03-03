@@ -1,9 +1,9 @@
 import React from 'react';
 import { SingleFieldList, TextField, DateField } from 'react-admin';
 import { Grid } from '@mui/material';
-import { AvatarWithLabelField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
+import { ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
-import { MarkdownField } from '../../../../common/field';
+import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 

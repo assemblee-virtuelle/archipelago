@@ -3,9 +3,9 @@ import { EditBase, EditProps } from 'react-admin';
 import { EditActionsWithPermissions } from '@semapps/auth-provider';
 import { EditView } from '../index';
 
-const Edit = ({ title, actions, children, ...rest }: PropsWithChildren<EditProps>) => (
+const Edit = ({ title, children, ...rest }: PropsWithChildren<EditProps>) => (
   <EditBase mutationMode="pessimistic" {...rest}>
-    <EditView title={title} actions={actions || <EditActionsWithPermissions />}>
+    <EditView title={title} actions={<EditActionsWithPermissions />}>
       {children}
     </EditView>
   </EditBase>

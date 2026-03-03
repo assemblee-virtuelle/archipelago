@@ -7,7 +7,7 @@ import {
 } from "react-admin";
 import RightLabel from "../list/SideList/RightLabel";
 import { Box, Grid } from "@mui/material";
-import { AvatarWithLabelField } from "@semapps/field-components";
+import AvatarWithLabelField from "./AvatarWithLabelField";
 
 const MembershipAssociationField = (props) => {
   const { source, referenceFieldProps } = props;

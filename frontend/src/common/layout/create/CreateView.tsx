@@ -1,11 +1,11 @@
-import React, { PropsWithChildren, ReactElement } from 'react';
-import { useCreateContext } from 'react-admin';
+import React, { PropsWithChildren } from 'react';
+import { CreateProps, useCreateContext } from 'react-admin';
 import { useCheckPermissions } from '@semapps/auth-provider';
 import { useGetCreateContainerUri } from '@semapps/semantic-data-provider';
 import { useLayoutContext } from '../../../layouts/LayoutContext';
 
 type Props = {
-  title?: string | ReactElement;
+  title?: CreateProps['title'];
   actions: JSX.Element;
 };
 
@@ -13,8 +13,7 @@ const CreateView = ({ title, actions, children }: PropsWithChildren<Props>) => {
   const createContext = useCreateContext();
   const createContainerUri = useGetCreateContainerUri()(createContext.resource);
 
-  // @ts-expect-error Bad typing of Semapps
-  useCheckPermissions(createContainerUri || {}, 'create');
+  useCheckPermissions(createContainerUri, 'create');
 
   const Layout = useLayoutContext();
 

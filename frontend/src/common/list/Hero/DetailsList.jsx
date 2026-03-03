@@ -18,7 +18,9 @@ const useStyles = makeStyles(() => ({
 const DetailsList = ({ children }) => {
   const classes = useStyles();
   const translate = useTranslate();
-  const { record, resource } = useShowContext();
+  const { isLoading, isPending, record, resource } = useShowContext();
+
+  if (isPending || isLoading || !record) return null;
 
   return (
     <Box>

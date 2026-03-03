@@ -15,11 +15,12 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const MainList = ({ children, divider, Label }) => {
+const MainList = ({ children, divider, Label = LargeLabel }) => {
   const translate = useTranslate();
   const classes = useStyles();
-  const { isLoading, record, resource } = useShowContext();
-  if (isLoading) return null;
+  const { isPending, isLoading, record, resource } = useShowContext();
+
+  if (isPending || isLoading || !record) return null;
 
   return (
     <Box>
@@ -47,10 +48,6 @@ const MainList = ({ children, divider, Label }) => {
       )}
     </Box>
   );
-};
-
-MainList.defaultProps = {
-  Label: LargeLabel
 };
 
 export default MainList;
