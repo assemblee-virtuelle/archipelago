@@ -10,7 +10,6 @@ import DaysList from "../../common/list/calendar/DaysList";
 export default function EmbeddedCalendar(props) {
     const [searchParams] = useSearchParams();
 
-    // On initialise une seule fois au chargement
     const [view, setView] = React.useState(() => {
         const v = searchParams.get("view");
         return v === "list" ? "list" : "calendar";
@@ -18,13 +17,12 @@ export default function EmbeddedCalendar(props) {
 
     const [embed] = React.useState(() => searchParams.get("embed") === "1");
 
-    // Et ensuite : on met à jour seulement si le paramètre "view" existe et est valide
     React.useEffect(() => {
         const v = searchParams.get("view");
         if (v === "list" || v === "calendar") {
             setView(v);
         }
-        // si v est null (ou autre), on NE FAIT RIEN -> on garde la vue actuelle
+
     }, [searchParams]);
 
     return (
