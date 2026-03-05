@@ -54,7 +54,7 @@ const App = () => (
             {Object.entries(resources).map(([key, resource]) => (
               <Resource key={key} name={key} {...resource.config} />
             ))}
-            <CustomRoutes>
+            <CustomRoutes noLayout>
               <Route path="/embeddedcalendar" element={<EmbeddedCalendar />} />
             </CustomRoutes>
           </Admin>
