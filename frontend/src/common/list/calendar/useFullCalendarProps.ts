@@ -8,9 +8,10 @@ export type Props = {
   startDate: string;
   endDate: string;
   linkType: 'show' | 'edit';
+  openLinksInNewTab?: boolean;
 };
 
-const useFullCalendarProps = ({ label, startDate, endDate, linkType = 'edit' }: Props) => {
+const useFullCalendarProps = ({ label, startDate, endDate, linkType = 'edit', openLinksInNewTab = false }: Props) => {
   interface EventRecord extends RaRecord {
     [label]: string;
     [startDate]: string;
@@ -26,9 +27,17 @@ const useFullCalendarProps = ({ label, startDate, endDate, linkType = 'edit' }: 
   const eventClick = useCallback(
     ({ event, jsEvent }: EventClickArg) => {
       jsEvent.preventDefault();
+
+      if (!event.url) return;
+
+      if (openLinksInNewTab) {
+        window.open(event.url, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
       void navigate(event.url);
     },
-    [navigate],
+    [navigate, openLinksInNewTab],
   );
 
   // Change the query string when month change

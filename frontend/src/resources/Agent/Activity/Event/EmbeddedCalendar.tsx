@@ -7,6 +7,13 @@ import { List } from "react-admin";
 import CalendarList from "../../../../common/list/calendar/CalendarList";
 import DaysList from "../../../../common/list/calendar/DaysList";
 
+type SelectOption = { value: string; label: string; };
+type ThemeItem = { id: string; "pair:label"?: string; };
+type ThemesResponse = { "ldp:contains"?: ThemeItem[]; };
+type OrganizationItem = { id: string; "pair:label"?: string; };
+type OrganizationsResponse = { "ldp:contains"?: OrganizationItem[]; };
+
+
 export default function EmbeddedCalendar(props: Record<string, unknown>) {
     const [searchParams] = useSearchParams();
 
@@ -29,6 +36,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
     const [embed] = React.useState(() => searchParams.get("embed") === "1");
 
+    // FILTRES
     React.useEffect(() => {
         const v = searchParams.get("view");
         if (v === "list" || v === "calendar") {
@@ -37,11 +45,73 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
     }, [searchParams]);
 
+    React.useEffect(() => {
+        const fetchThemes = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/themes", {
+                    headers: {
+                        Accept: "application/ld+json",
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.log("REPONSE ERREUR THEMES =", errorText);
+                    throw new Error("Erreur lors du chargement des thèmes");
+                }
+                const data: ThemesResponse = (await response.json()) as ThemesResponse;
+
+                const themes: SelectOption[] = (data["ldp:contains"] ?? []).map((item: ThemeItem) => ({
+                    value: getSlugFromUrl(item.id),
+                    label: item["pair:label"] ?? getSlugFromUrl(item.id),
+                }));
+
+                setThemeOptions(themes);
+            } catch (error) {
+                console.error("Erreur chargement thèmes :", error);
+            }
+        };
+        void fetchThemes();
+    }, []);
+
+    React.useEffect(() => {
+        const fetchOrganizations = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/organizations", {
+                    headers: {
+                        Accept: "application/ld+json",
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.log("REPONSE ERREUR ORGANIZATIONS =", errorText);
+                    throw new Error("Erreur lors du chargement des organisations");
+                }
+                const data: OrganizationsResponse = (await response.json()) as OrganizationsResponse;
+
+                const organizations: SelectOption[] = (data["ldp:contains"] ?? []).map((item: OrganizationItem) => ({
+                    value: getSlugFromUrl(item.id),
+                    label: item["pair:label"] ?? getSlugFromUrl(item.id),
+                }));
+
+                setOrganizationOptions(organizations);
+            } catch (error) {
+                console.error("Erreur chargement organisations :", error);
+            }
+        };
+
+        void fetchOrganizations();
+    }, []);
+
     const [draftOrg, setDraftOrg] = React.useState("");
     const [draftTheme, setDraftTheme] = React.useState("");
 
     const [appliedOrg, setAppliedOrg] = React.useState("");
     const [appliedTheme, setAppliedTheme] = React.useState("");
+
+    const [organizationOptions, setOrganizationOptions] = React.useState<SelectOption[]>([]);
+    const [themeOptions, setThemeOptions] = React.useState<SelectOption[]>([]);
 
     const params = new URLSearchParams();
     params.set("view", view);
@@ -53,7 +123,6 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
     const baseEmbedUrl = `/embeddedcalendar?${params.toString()}`;
     const iframeCode = `<iframe src="${baseEmbedUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
 
-    // FILTRES
     const raFilter: Record<string, string> = {};
     if (appliedOrg) {
         raFilter["pair:involves"] = `http://localhost:3000/organizations/${appliedOrg}`;
@@ -62,13 +131,17 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
         raFilter["pair:hasTopic"] = `http://localhost:3000/themes/${appliedTheme}`;
     }
 
+
     const buildToolUrl = (nextView: "list" | "calendar") => {
         const p = new URLSearchParams();
         p.set("view", nextView);
-        // pas embed=1 ici : on reste sur la page outil
         if (appliedOrg) p.set("organization", appliedOrg);
         if (appliedTheme) p.set("theme", appliedTheme);
         return `/embeddedcalendar?${p.toString()}`;
+    };
+
+    const getSlugFromUrl = (url: string) => {
+        return url.split("/").filter(Boolean).pop() || "";
     };
 
 
@@ -153,7 +226,11 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                                         onChange={(e) => setDraftOrg(e.target.value)}
                                     >
                                         <MenuItem value="">Aucune</MenuItem>
-                                        <MenuItem value="organisation-creative">Organisation créative</MenuItem>
+                                        {organizationOptions.map((organization) => (
+                                            <MenuItem key={organization.value} value={organization.value}>
+                                                {organization.label}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
 
@@ -166,7 +243,11 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                                         onChange={(e) => setDraftTheme(e.target.value)}
                                     >
                                         <MenuItem value="">Aucun</MenuItem>
-                                        <MenuItem value="jeunesse">Jeunesse</MenuItem>
+                                        {themeOptions.map((theme) => (
+                                            <MenuItem key={theme.value} value={theme.value}>
+                                                {theme.label}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
 
@@ -227,6 +308,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                         startDate="pair:startDate"
                         endDate="pair:endDate"
                         linkType="show"
+                        openLinksInNewTab={embed}
                     />
                 ) : (
                     <CalendarList
@@ -235,6 +317,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                         startDate="pair:startDate"
                         endDate="pair:endDate"
                         linkType="show"
+                        openLinksInNewTab={embed}
 
                     />
                 )}
