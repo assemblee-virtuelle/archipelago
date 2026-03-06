@@ -17,7 +17,7 @@ import baseResources from './resources';
 import { Layout } from './common/layout';
 import { LayoutProvider } from './layouts/LayoutProvider';
 import { Avatar, Button } from '@mui/material';
-import EmbeddedCalendar from './resources/Page/embeddedCalendar';
+import EmbeddedCalendar from './resources/Agent/Activity/Event/EmbeddedCalendar';
 
 const queryClient = new QueryClient({
   defaultOptions: {

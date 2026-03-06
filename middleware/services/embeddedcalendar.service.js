@@ -25,7 +25,7 @@ module.exports = {
                 return { error: 'Missing required query param: organization' };
             }
 
-            const baseUrl = CONFIG.HOME_URL?.replace(/\/$/, '') || 'http://localhost:3000';
+            const baseUrl = CONFIG.HOME_URL.replace(/\/$/, '');
             const orgUri = `${baseUrl}/organizations/${orgSlug}`;
 
             let org;
