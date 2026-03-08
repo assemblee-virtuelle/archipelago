@@ -68,7 +68,7 @@ export const PersonEdit = (props) => {
         <FormTab label="Relations">
           <ActivitiesInput source="pair:involvedIn" />
           <SkillsInput source="pair:offers" />
-          <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
+          <DropDownTreeSelect source="pair:hasTopic" reference="Theme" labelKey="pair:label" parentKey="pair:broader" label="A pour thème" multiple />
         </FormTab>
       </TabbedForm>
     </Edit>

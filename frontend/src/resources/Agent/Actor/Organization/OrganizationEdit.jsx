@@ -24,7 +24,7 @@ export const OrganizationEdit = props => (
         <TextInput source="pair:comment" fullWidth />
         <MarkdownInput source="pair:description" fullWidth />
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'pair:AgentStatus' }}>
-          <SelectInput optionText="pair:label" size="small"/>
+          <SelectInput optionText="pair:label" size="small" />
         </ReferenceInput>
         <ReferenceInput reference="Type" source="pair:hasType" filter={{ a: 'pair:OrganizationType' }}>
           <SelectInput optionText="pair:label" />
@@ -54,7 +54,7 @@ export const OrganizationEdit = props => (
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
         <DocumentsInput source="pair:documentedBy" />
-        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
+        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" labelKey="pair:label" parentKey="pair:broader" label="A pour thème" multiple />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>

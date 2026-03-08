@@ -76,7 +76,7 @@ const EventForm = () => {
         source="pair:involves"
         helperText="Indiquez ici les organisations, groupes ou personnes qui sont impliqués dans l'évènement"
       />
-      <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
+      <DropDownTreeSelect source="pair:hasTopic" reference="Theme" labelKey="pair:label" parentKey="pair:broader" label="A pour thème" multiple />
       <TextInput
         source="pair:aboutPage"
         fullWidth

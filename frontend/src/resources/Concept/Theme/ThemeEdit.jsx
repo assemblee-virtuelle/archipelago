@@ -28,6 +28,8 @@ export const ThemeEdit = props => {
             label="Thème Parent"
             source="pair:broader"
             reference="Theme"
+            labelKey="pair:label"
+            parentKey="pair:broader"
             helperText="Choisissez un thème qui sera le parent de celui-ci dans l'arborescence."
             validate={validateParent(`Le thème ne peut pas être son propre parent`)}
           />

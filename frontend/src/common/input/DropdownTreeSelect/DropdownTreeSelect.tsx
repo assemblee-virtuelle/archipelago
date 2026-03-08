@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Chip, MenuItem, TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import { InputHelperText, RaRecord, useGetList, useInput, Validator } from 'react-admin';
@@ -6,17 +6,12 @@ import { TreeItem, TreeView } from '@mui/x-tree-view';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-export type RecursiveValue = {
+type RecursiveValue = {
   id: string;
   label: string;
   children: RecursiveValue[];
   allChildrenLabels: string[];
 };
-
-interface TreeRecord extends RaRecord {
-  'pair:label': string;
-  'pair:broader': string;
-}
 
 // Remove accents and uppercase
 const normalize = (str: string) =>
@@ -25,21 +20,9 @@ const normalize = (str: string) =>
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '');
 
-const buildTree = (list: TreeRecord[], parent?: string): RecursiveValue[] => {
-  return list
-    .filter((item) => item['pair:broader'] === parent && item['pair:label'])
-    .map((item) => {
-      const children = buildTree(list, item.id as string);
-      return {
-        id: item.id as string,
-        label: item['pair:label'],
-        children,
-        allChildrenLabels: [...children.map((c) => c.allChildrenLabels), ...children.map((c) => c.label)].flat(),
-      };
-    });
-};
-
 type DropDownTreeSelectProps = {
+  labelKey: string;
+  parentKey: string;
   label: string;
   disabled?: boolean;
   reference: string;
@@ -50,6 +33,8 @@ type DropDownTreeSelectProps = {
 };
 
 const DropDownTreeSelect = ({
+  labelKey,
+  parentKey,
   label,
   disabled,
   reference,
@@ -58,6 +43,11 @@ const DropDownTreeSelect = ({
   multiple = false,
   validate,
 }: DropDownTreeSelectProps) => {
+  interface TreeRecord extends RaRecord<string> {
+    [labelKey]: string;
+    [parentKey]: string;
+  }
+
   const { data } = useGetList<TreeRecord>(reference, {
     pagination: { page: 1, perPage: Infinity },
   });
@@ -68,8 +58,7 @@ const DropDownTreeSelect = ({
     isRequired,
   } = useInput<number>({ source, validate });
 
-  const options = data?.map((item) => item.id as string) || [];
-  const tree = useMemo(() => buildTree(data || []), [data]);
+  const options = data?.map((item) => item.id) || [];
 
   const [inputText, setInputText] = useState<string>('');
   const [expandedNodes, setExpandedNodes] = useState<string[]>([]);
@@ -95,6 +84,25 @@ const DropDownTreeSelect = ({
     [inputText],
   );
 
+  const buildTree = useCallback(
+    (list: TreeRecord[], parent?: string): RecursiveValue[] => {
+      return list
+        .filter((item) => item[parentKey] === parent && item[labelKey])
+        .map((item) => {
+          const children = buildTree(list, item.id);
+          return {
+            id: item.id,
+            label: item[labelKey],
+            children,
+            allChildrenLabels: [...children.map((c) => c.allChildrenLabels), ...children.map((c) => c.label)].flat(),
+          };
+        });
+    },
+    [parentKey, labelKey],
+  );
+
+  const tree = useMemo(() => buildTree(data || []), [data, buildTree]);
+
   useEffect(() => {
     setExpandedNodes(getExpandedNodes(tree, inputText));
   }, [getExpandedNodes, inputText, tree]);
@@ -115,7 +123,7 @@ const DropDownTreeSelect = ({
                       field.onChange((field.value as string[]).filter((v) => v !== value));
                     }
               }
-              label={data?.find((v) => v.id === value)?.['pair:label'] ?? ''}
+              label={data?.find((v) => v.id === value)?.[labelKey] ?? ''}
             />
           );
         })}
@@ -186,7 +194,7 @@ const DropDownTreeSelect = ({
         setInputText('');
       }}
       renderTags={multiple ? renderChips : undefined}
-      getOptionLabel={(option) => data?.find((i) => i.id === option)?.['pair:label'] || ''}
+      getOptionLabel={(option) => data?.find((i) => i.id === option)?.[labelKey] || ''}
       disableCloseOnSelect
       inputValue={multiple ? inputText : undefined}
       renderInput={(params) => (
@@ -212,7 +220,7 @@ const DropDownTreeSelect = ({
                 setExpandedNodes(nodeIds);
               }
             }}
-            onNodeSelect={(event: SyntheticEvent, id: string) => {
+            onNodeSelect={(event: React.SyntheticEvent, id: string) => {
               if ((event.target as HTMLElement).tagName === 'LI') {
                 if (multiple) {
                   field.onChange([...(field.value as string[]), id]);

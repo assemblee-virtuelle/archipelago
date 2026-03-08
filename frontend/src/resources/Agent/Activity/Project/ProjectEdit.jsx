@@ -29,7 +29,7 @@ const ProjectEdit = props => (
         <ActorsInput source="pair:involves" />
         <ResourcesInput source="pair:needs" />
         <DocumentsInput source="pair:documentedBy" />
-        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
+        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" labelKey="pair:label" parentKey="pair:broader" label="A pour thème" multiple />
       </FormTab>
     </TabbedForm>
   </Edit>
