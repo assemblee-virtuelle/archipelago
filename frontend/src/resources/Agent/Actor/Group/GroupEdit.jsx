@@ -18,7 +18,7 @@ export const GroupEdit = props => (
       </ImageInput>
       <UsersInput source="pair:affiliates" />
       <EventsInput source="pair:involvedIn" />
-      <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" />
+      <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
       <DocumentsInput source="pair:documentedBy" />
     </SimpleForm>
   </Edit>

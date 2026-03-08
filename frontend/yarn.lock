@@ -4326,11 +4326,6 @@ ms@2.1.2:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-mui-tree-select@^1.0.0-beta.11:
-  version "1.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/mui-tree-select/-/mui-tree-select-1.0.0-beta.11.tgz#5b5f1b62a5d2dd9c2b8b10fffcfa3f1fb35ef6d3"
-  integrity sha512-CCRUvXO0paxB+yKYmpjAZw+piqHC37mXmIWQDWqB3QiwfIgmt+Qw6bxrSzaOA82EFDdECyRTelS33WbZqlzFPQ==
-
 n3@^1.17.1, n3@^1.17.2:
   version "1.26.0"
   resolved "https://registry.yarnpkg.com/n3/-/n3-1.26.0.tgz#3d69de04bee680b9ebec9dbc1033dc1e6934d351"

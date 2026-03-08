@@ -31,7 +31,6 @@
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet.markercluster": "^1.5.3",
-    "mui-tree-select": "^1.0.0-beta.11",
     "ra-language-french": "^5.14.3",
     "react": "^18.3.1",
     "react-admin": "^5.14.3",

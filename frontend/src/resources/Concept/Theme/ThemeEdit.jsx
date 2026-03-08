@@ -1,18 +1,19 @@
 import React from 'react';
-import { FormTab, TabbedForm, TextInput, useGetList, useGetRecordId, choices } from 'react-admin';
+import { FormTab, TabbedForm, TextInput, useGetRecordId } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { AgentsInput } from '../../../common/input';
 import { Edit } from '../../../common/layout';
-import CustomTreeSelectInput from '../../../common/input/TreeComponent/CustomTreeSelectInput';
+import DropDownTreeSelect from '../../../common/input/DropdownTreeSelect/DropdownTreeSelect';
 
 export const ThemeEdit = props => {
   const recordId = useGetRecordId();
 
-  const { data, isLoading } = useGetList("Theme", { pagination:{page: 1, perPage: Infinity}});
-  if (isLoading) return null;
-
-  const validateIds = data.filter((theme => theme.id !== recordId)).map(theme => theme.id);
+  const validateParent = (message) => (value) => {
+    if (value === recordId) {
+      return message;
+    }
+  };
 
   return (
     <Edit redirect="show" {...props}>
@@ -23,13 +24,12 @@ export const ThemeEdit = props => {
         </FormTab>
         <FormTab label="Relations">
           <AgentsInput source="pair:topicOf" />
-          <CustomTreeSelectInput
+          <DropDownTreeSelect
             label="Thème Parent"
             source="pair:broader"
             reference="Theme"
-            broader="pair:broader"
-            validate={choices(validateIds, `La selection ne peut pas être l'élément courant`)}
-            fullWidth
+            helperText="Choisissez un thème qui sera le parent de celui-ci dans l'arborescence."
+            validate={validateParent(`Le thème ne peut pas être son propre parent`)}
           />
         </FormTab>
       </TabbedForm>

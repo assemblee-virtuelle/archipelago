@@ -28,7 +28,7 @@ const TaskEdit = props => (
         <ActorsInput source="pair:hasFollower" />
         <ActorsInput source="pair:involves" />
         <TasksInput source="pair:inspiredBy" />
-        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" />
+        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
         <SkillsInput source="pair:needs" />
         <DocumentsInput source="pair:uses" />
       </FormTab>

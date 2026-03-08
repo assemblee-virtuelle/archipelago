@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Chip, MenuItem, TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
-import { RaRecord, useGetList, useInput } from 'react-admin';
+import { InputHelperText, RaRecord, useGetList, useInput, Validator } from 'react-admin';
 import { TreeItem, TreeView } from '@mui/x-tree-view';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -44,37 +44,56 @@ type DropDownTreeSelectProps = {
   disabled?: boolean;
   reference: string;
   source: string;
+  helperText?: string | false;
+  multiple?: boolean;
+  validate?: Validator | Validator[];
 };
 
-const DropDownTreeSelect = ({ label, disabled, reference, source }: DropDownTreeSelectProps) => {
+const DropDownTreeSelect = ({
+  label,
+  disabled,
+  reference,
+  source,
+  helperText,
+  multiple = false,
+  validate,
+}: DropDownTreeSelectProps) => {
   const { data } = useGetList<TreeRecord>(reference, {
     pagination: { page: 1, perPage: Infinity },
   });
 
-  const { field } = useInput({ source });
+  const {
+    field,
+    fieldState: { invalid, error },
+    isRequired,
+  } = useInput<number>({ source, validate });
 
   const options = data?.map((item) => item.id as string) || [];
   const tree = useMemo(() => buildTree(data || []), [data]);
 
   const [inputText, setInputText] = useState<string>('');
   const [expandedNodes, setExpandedNodes] = useState<string[]>([]);
+  const [open, setOpen] = useState(false);
 
-  const getExpandedNodes = useCallback((rootTree: RecursiveValue[], searchText: string) => {
-    const expanded: string[] = [];
+  const getExpandedNodes = useCallback(
+    (rootTree: RecursiveValue[], searchText: string) => {
+      const expanded: string[] = [];
 
-    rootTree.map((node) => {
-      const childrenMatched =
-        inputText !== '' && node.allChildrenLabels.some((v) => normalize(v).indexOf(normalize(searchText)) !== -1);
+      rootTree.map((node) => {
+        const childrenMatched =
+          inputText !== '' && node.allChildrenLabels.some((v) => normalize(v).indexOf(normalize(searchText)) !== -1);
 
-      if (childrenMatched) {
-        expanded.push(node.id);
-      }
+        if (childrenMatched) {
+          expanded.push(node.id);
+        }
 
-      expanded.push(...getExpandedNodes(node.children, searchText));
-    });
+        expanded.push(...getExpandedNodes(node.children, searchText));
+      });
 
-    return expanded;
-  }, [inputText]);
+      return expanded;
+    },
+    [inputText],
+  );
 
   useEffect(() => {
     setExpandedNodes(getExpandedNodes(tree, inputText));
@@ -148,12 +167,15 @@ const DropDownTreeSelect = ({ label, disabled, reference, source }: DropDownTree
 
   return (
     <Autocomplete
-      multiple
+      open={open}
+      onOpen={() => setOpen(true)}
+      onClose={() => setOpen(false)}
+      multiple={multiple}
       fullWidth
       clearOnEscape={false}
       options={options}
       disabled={disabled}
-      value={(field.value as string[]) || []}
+      value={multiple ? (field.value as string[]) || [] : (field.value as string) || ''}
       filterOptions={(v) => v}
       onBlur={(event) => {
         field.onBlur(event);
@@ -163,10 +185,22 @@ const DropDownTreeSelect = ({ label, disabled, reference, source }: DropDownTree
         field.onChange(values);
         setInputText('');
       }}
-      renderTags={renderChips}
+      renderTags={multiple ? renderChips : undefined}
+      getOptionLabel={(option) => data?.find((i) => i.id === option)?.['pair:label'] || ''}
       disableCloseOnSelect
-      inputValue={inputText}
-      renderInput={(params) => <TextField {...params} onChange={(v) => setInputText(v.target.value)} label={label} />}
+      inputValue={multiple ? inputText : undefined}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          onChange={(v) => setInputText(v.target.value)}
+          label={label}
+          helperText={
+            helperText !== false || invalid ? <InputHelperText error={error?.message} helperText={helperText} /> : ''
+          }
+          required={isRequired}
+          error={invalid}
+        />
+      )}
       ListboxComponent={(props) => {
         return (
           <TreeView
@@ -180,8 +214,13 @@ const DropDownTreeSelect = ({ label, disabled, reference, source }: DropDownTree
             }}
             onNodeSelect={(event: SyntheticEvent, id: string) => {
               if ((event.target as HTMLElement).tagName === 'LI') {
-                field.onChange([...(field.value as string[]), id]);
+                if (multiple) {
+                  field.onChange([...(field.value as string[]), id]);
+                } else {
+                  field.onChange(id);
+                }
                 setInputText('');
+                !multiple && setOpen(false);
               }
             }}
             {...props}

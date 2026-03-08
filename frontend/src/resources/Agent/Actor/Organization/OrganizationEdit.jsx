@@ -54,7 +54,7 @@ export const OrganizationEdit = props => (
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
         <DocumentsInput source="pair:documentedBy" />
-        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" />
+        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" multiple />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>
