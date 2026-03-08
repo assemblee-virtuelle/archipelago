@@ -11,9 +11,10 @@ import {
 import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
-import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput, ThemesInput } from '../../../../common/input';
+import { OrganizationsInput, EventsInput, DocumentsInput, LocationInput } from '../../../../common/input';
 import { Edit } from '../../../../common/layout';
 import MembershipAssociationInput from '../../../../common/input/MembershipAssociationInput';
+import DropDownTreeSelect from '../../../../common/input/DropdownTreeSelect/DropdownTreeSelect';
 
 export const OrganizationEdit = props => (
   <Edit redirect="show" {...props}>
@@ -53,8 +54,7 @@ export const OrganizationEdit = props => (
         <OrganizationsInput source="pair:partnerOf" />
         <EventsInput source="pair:involvedIn" />
         <DocumentsInput source="pair:documentedBy" />
-        {/* <CustomTreeSelectArrayInput source="pair:hasTopic" reference="Theme" label="A pour thème" broader="pair:broader" fullWidth /> */}
-        <ThemesInput source="pair:hasTopic" label="A pour thème" />
+        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" />
       </TabbedForm.Tab>
     </TabbedForm>
   </Edit>
