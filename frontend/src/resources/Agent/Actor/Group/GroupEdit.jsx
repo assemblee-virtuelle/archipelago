@@ -3,8 +3,9 @@ import { SimpleForm, TextInput, ImageField } from 'react-admin';
 import { ImageInput } from '@semapps/input-components';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
-import { UsersInput, EventsInput, ThemesInput, DocumentsInput } from '../../../../common/input';
+import { UsersInput, EventsInput, DocumentsInput } from '../../../../common/input';
 import { Edit } from '../../../../common/layout';
+import DropDownTreeSelect from '../../../../common/input/DropdownTreeSelect/DropdownTreeSelect';
 
 export const GroupEdit = props => (
   <Edit redirect="show" {...props}>
@@ -17,7 +18,7 @@ export const GroupEdit = props => (
       </ImageInput>
       <UsersInput source="pair:affiliates" />
       <EventsInput source="pair:involvedIn" />
-      <ThemesInput source="pair:hasTopic" />
+      <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" />
       <DocumentsInput source="pair:documentedBy" />
     </SimpleForm>
   </Edit>

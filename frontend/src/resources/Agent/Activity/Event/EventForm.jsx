@@ -9,7 +9,6 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageInput } from "@semapps/input-components";
 import {
   ActorsInput,
-  ThemesInput,
   DateTimeInput,
   LocationInput,
 } from "../../../../common/input";
@@ -17,6 +16,7 @@ import {
 import LargeLabel from "../../../../common/list/MainList/LargeLabel";
 import { Stack } from "@mui/material";
 import { useWatch } from "react-hook-form";
+import DropDownTreeSelect from "../../../../common/input/DropdownTreeSelect/DropdownTreeSelect";
 
 const EndDateInput = () => {
   const startDate = useWatch({ name: 'pair:startDate' });
@@ -76,7 +76,7 @@ const EventForm = () => {
         source="pair:involves"
         helperText="Indiquez ici les organisations, groupes ou personnes qui sont impliqués dans l'évènement"
       />
-      <ThemesInput source="pair:hasTopic" />
+      <DropDownTreeSelect source="pair:hasTopic" reference="Theme" label="A pour thème" />
       <TextInput
         source="pair:aboutPage"
         fullWidth
