@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Stack, Paper, Typography, Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import frLocale from "@fullcalendar/core/locales/fr";
 import { Link, useSearchParams } from "react-router-dom";
+import config from "../../../../config";
 
 import { List } from "react-admin";
 import CalendarList from "../../../../common/list/calendar/CalendarList";
@@ -18,8 +19,8 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
     const [searchParams] = useSearchParams();
 
     const [view, setView] = React.useState(() => {
-        const v = searchParams.get("view");
-        return v === "list" ? "list" : "calendar";
+        const viewParam = searchParams.get("view");
+        return viewParam === "list" ? "list" : "calendar";
     });
 
     // BUTTON COPIE FONCTION
@@ -34,13 +35,17 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
         }
     };
 
-    const [embed] = React.useState(() => searchParams.get("embed") === "1");
+    const debugMode = searchParams.get("debug") === "1";
+
+    const getSlugFromUrl = (url: string) => {
+        return url.split("/").filter(Boolean).pop() || "";
+    };
 
     // FILTRES
     React.useEffect(() => {
-        const v = searchParams.get("view");
-        if (v === "list" || v === "calendar") {
-            setView(v);
+        const viewParam = searchParams.get("view");
+        if (viewParam === "list" || viewParam === "calendar") {
+            setView(viewParam);
         }
 
     }, [searchParams]);
@@ -48,7 +53,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
     React.useEffect(() => {
         const fetchThemes = async () => {
             try {
-                const response = await fetch("http://localhost:3000/themes", {
+                const response = await fetch(`${config.middlewareUrl}themes`, {
                     headers: {
                         Accept: "application/ld+json",
                     },
@@ -71,13 +76,16 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 console.error("Erreur chargement thèmes :", error);
             }
         };
-        void fetchThemes();
-    }, []);
+
+        if (debugMode) {
+            void fetchThemes();
+        }
+    }, [debugMode]);
 
     React.useEffect(() => {
         const fetchOrganizations = async () => {
             try {
-                const response = await fetch("http://localhost:3000/organizations", {
+                const response = await fetch(`${config.middlewareUrl}organizations`, {
                     headers: {
                         Accept: "application/ld+json",
                     },
@@ -101,8 +109,10 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
             }
         };
 
-        void fetchOrganizations();
-    }, []);
+        if (debugMode) {
+            void fetchOrganizations();
+        }
+    }, [debugMode]);
 
     const [draftOrg, setDraftOrg] = React.useState("");
     const [draftTheme, setDraftTheme] = React.useState("");
@@ -115,46 +125,43 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
     const params = new URLSearchParams();
     params.set("view", view);
-    params.set("embed", "1");
 
     if (appliedOrg) params.set("organization", appliedOrg);
     if (appliedTheme) params.set("theme", appliedTheme);
 
-    const baseEmbedUrl = `/embeddedcalendar?${params.toString()}`;
-    const iframeCode = `<iframe src="${baseEmbedUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
+
+    const iframeUrl = `/embeddedcalendar?${params.toString()}`;
+    const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
 
     const raFilter: Record<string, string> = {};
     if (appliedOrg) {
-        raFilter["pair:involves"] = `http://localhost:3000/organizations/${appliedOrg}`;
+        raFilter["pair:involves"] = `${config.middlewareUrl}organizations/${appliedOrg}`;
     }
     if (appliedTheme) {
-        raFilter["pair:hasTopic"] = `http://localhost:3000/themes/${appliedTheme}`;
+        raFilter["pair:hasTopic"] = `${config.middlewareUrl}themes/${appliedTheme}`;
     }
 
 
     const buildToolUrl = (nextView: "list" | "calendar") => {
-        const p = new URLSearchParams();
-        p.set("view", nextView);
-        if (appliedOrg) p.set("organization", appliedOrg);
-        if (appliedTheme) p.set("theme", appliedTheme);
-        return `/embeddedcalendar?${p.toString()}`;
-    };
-
-    const getSlugFromUrl = (url: string) => {
-        return url.split("/").filter(Boolean).pop() || "";
+        const params = new URLSearchParams();
+        params.set("view", nextView);
+        params.set("debug", "1");
+        if (appliedOrg) params.set("organization", appliedOrg);
+        if (appliedTheme) params.set("theme", appliedTheme);
+        return `/embeddedcalendar?${params.toString()}`;
     };
 
 
     return (
         <Box
             sx={{
-                height: embed ? "100vh" : "100%",
+                height: debugMode ? "100%" : "100vh",
                 display: "flex",
                 flexDirection: "column",
             }}
         >
             {/* HEADER */}
-            {!embed && (
+            {debugMode && (
                 <Box sx={{ p: 2 }}>
                     <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
 
@@ -196,13 +203,13 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                                     overflowX: "auto",
                                 }}
                             >
-                                {baseEmbedUrl}
+                                {iframeUrl}
                             </Box>
 
                             {/* BUTTON COPIE */}
                             <Button
                                 size="small"
-                                onClick={() => copyToClipboard(baseEmbedUrl, "url")}
+                                onClick={() => copyToClipboard(iframeUrl, "url")}
                                 sx={{ alignSelf: "flex-start", mb: 1 }}
                             >
                                 {copied === "url" ? "Copié !" : "Copier l’URL"}
@@ -308,7 +315,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                         startDate="pair:startDate"
                         endDate="pair:endDate"
                         linkType="show"
-                        openLinksInNewTab={embed}
+                        openLinksInNewTab={!debugMode}
                     />
                 ) : (
                     <CalendarList
@@ -317,7 +324,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                         startDate="pair:startDate"
                         endDate="pair:endDate"
                         linkType="show"
-                        openLinksInNewTab={embed}
+                        openLinksInNewTab={!debugMode}
 
                     />
                 )}
