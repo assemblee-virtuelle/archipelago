@@ -20,6 +20,8 @@ module.exports = {
     actions: {
         async getEvents(ctx) {
             const orgSlug = ctx.params.organization;
+            const themeSlug = ctx.params.theme;
+
             if (!orgSlug) {
                 ctx.meta.$statusCode = 400;
                 return { error: 'Missing required query param: organization' };
@@ -27,6 +29,7 @@ module.exports = {
 
             const baseUrl = CONFIG.HOME_URL.replace(/\/$/, '');
             const orgUri = `${baseUrl}/organizations/${orgSlug}`;
+            const themeUri = themeSlug ? `${baseUrl}/themes/${themeSlug}` : null;
 
             let org;
             try {
@@ -58,13 +61,28 @@ module.exports = {
                 )
             );
 
-            const events = settled
+            const allEvents = settled
                 .filter(r => r.status === 'fulfilled')
                 .map(r => r.value);
+
+            const events = themeUri
+                ? allEvents.filter(event => {
+                    const topicsRaw = event['pair:hasTopic'] || [];
+                    const topicsArr = Array.isArray(topicsRaw) ? topicsRaw : [topicsRaw];
+
+                    const topicUris = topicsArr
+                        .map(v => (typeof v === 'string' ? v : v?.id || v?.['@id']))
+                        .filter(Boolean);
+
+                    return topicUris.includes(themeUri);
+                })
+                : allEvents;
 
             return {
                 organization: orgSlug,
                 organizationUri: org.id || org['@id'] || orgUri,
+                theme: themeSlug,
+                themeUri,
                 eventUris,
                 events
             };

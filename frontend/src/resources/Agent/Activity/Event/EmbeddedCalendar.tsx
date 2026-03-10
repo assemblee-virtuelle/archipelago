@@ -4,9 +4,11 @@ import frLocale from "@fullcalendar/core/locales/fr";
 import { Link, useSearchParams } from "react-router-dom";
 import config from "../../../../config";
 
-import { List } from "react-admin";
+import { useList, ListContextProvider } from "react-admin";
 import CalendarList from "../../../../common/list/calendar/CalendarList";
 import DaysList from "../../../../common/list/calendar/DaysList";
+
+
 
 type SelectOption = { value: string; label: string; };
 type ThemeItem = { id: string; "pair:label"?: string; };
@@ -114,14 +116,67 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
         }
     }, [debugMode]);
 
-    const [draftOrg, setDraftOrg] = React.useState("");
-    const [draftTheme, setDraftTheme] = React.useState("");
+    const [draftOrg, setDraftOrg] = React.useState(() => searchParams.get("organization") ?? "");
+    const [draftTheme, setDraftTheme] = React.useState(() => searchParams.get("theme") ?? "");
 
-    const [appliedOrg, setAppliedOrg] = React.useState("");
-    const [appliedTheme, setAppliedTheme] = React.useState("");
+    const [appliedOrg, setAppliedOrg] = React.useState(() => searchParams.get("organization") ?? "");
+    const [appliedTheme, setAppliedTheme] = React.useState(() => searchParams.get("theme") ?? "");
 
     const [organizationOptions, setOrganizationOptions] = React.useState<SelectOption[]>([]);
     const [themeOptions, setThemeOptions] = React.useState<SelectOption[]>([]);
+
+    const [events, setEvents] = React.useState([]);
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState<string | null>(null);
+
+    const listContext = useList({ data: events, isPending: loading })
+
+    React.useEffect(() => {
+        const fetchEvents = async () => {
+            if (!appliedOrg) {
+                setEvents([]);
+                setError(null);
+                return;
+            }
+
+            try {
+                setLoading(true);
+                setError(null);
+
+                const url = new URL(`${config.middlewareUrl}api/embeddedcalendar/events`);
+                url.searchParams.set("organization", appliedOrg);
+
+                if (appliedTheme) {
+                    url.searchParams.set("theme", appliedTheme);
+                }
+
+                const response = await fetch(url.toString(), {
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.log("REPONSE ERREUR EVENTS =", errorText);
+                    throw new Error("Erreur lors du chargement des événements");
+                }
+
+                const data = await response.json();
+                setEvents(data.events ?? []);
+            } catch (error) {
+                console.error("Erreur chargement événements :", error);
+                setError("Erreur lors du chargement des événements");
+                setEvents([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        void fetchEvents();
+    }, [appliedOrg, appliedTheme]);
+
+
 
     const params = new URLSearchParams();
     params.set("view", view);
@@ -129,18 +184,8 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
     if (appliedOrg) params.set("organization", appliedOrg);
     if (appliedTheme) params.set("theme", appliedTheme);
 
-
     const iframeUrl = `/embeddedcalendar?${params.toString()}`;
     const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
-
-    const raFilter: Record<string, string> = {};
-    if (appliedOrg) {
-        raFilter["pair:involves"] = `${config.middlewareUrl}organizations/${appliedOrg}`;
-    }
-    if (appliedTheme) {
-        raFilter["pair:hasTopic"] = `${config.middlewareUrl}themes/${appliedTheme}`;
-    }
-
 
     const buildToolUrl = (nextView: "list" | "calendar") => {
         const params = new URLSearchParams();
@@ -150,7 +195,6 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
         if (appliedTheme) params.set("theme", appliedTheme);
         return `/embeddedcalendar?${params.toString()}`;
     };
-
 
     return (
         <Box
@@ -298,15 +342,9 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 </Box>
             )}
 
-            <List
-                {...props}
-                resource="Event"
-                perPage={1000}
-                pagination={false}
-                exporter={false}
-                actions={false}
-                filter={raFilter}
-                sx={{ flex: 1 }}
+            <ListContextProvider
+                value={listContext}
+            // sx={{ flex: 1 }}
             >
                 {view === "list" ? (
                     <DaysList
@@ -328,7 +366,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
                     />
                 )}
-            </List>
+            </ListContextProvider>
         </Box>
     );
 }
