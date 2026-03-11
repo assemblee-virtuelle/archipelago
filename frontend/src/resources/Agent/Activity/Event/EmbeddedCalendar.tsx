@@ -3,8 +3,9 @@ import { Box, Stack, Paper, Typography, Button, FormControl, InputLabel, Select,
 import frLocale from "@fullcalendar/core/locales/fr";
 import { Link, useSearchParams } from "react-router-dom";
 import config from "../../../../config";
+import type { RaRecord } from 'react-admin';
 
-import { useList, ListContextProvider } from "react-admin";
+import { useList, ListContextProvider, ResourceContextProvider } from "react-admin";
 import CalendarList from "../../../../common/list/calendar/CalendarList";
 import DaysList from "../../../../common/list/calendar/DaysList";
 
@@ -15,9 +16,25 @@ type ThemeItem = { id: string; "pair:label"?: string; };
 type ThemesResponse = { "ldp:contains"?: ThemeItem[]; };
 type OrganizationItem = { id: string; "pair:label"?: string; };
 type OrganizationsResponse = { "ldp:contains"?: OrganizationItem[]; };
+type EmbeddedEvent = RaRecord & {
+    '@id'?: string;
+    title?: string;
+    'pair:hasTopic'?: Array<string | { id?: string; '@id'?: string }> | string | { id?: string; '@id'?: string };
+    [key: string]: unknown;
+};
+
+type EmbeddedCalendarResponse = {
+    organization?: string | null;
+    organizationUri?: string | null;
+    theme?: string | null;
+    themeUri?: string | null;
+    eventUris?: string[];
+    events?: Array<Partial<EmbeddedEvent>>;
+};
 
 
-export default function EmbeddedCalendar(props: Record<string, unknown>) {
+
+export default function EmbeddedCalendar() {
     const [searchParams] = useSearchParams();
 
     const [view, setView] = React.useState(() => {
@@ -25,7 +42,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
         return viewParam === "list" ? "list" : "calendar";
     });
 
-    // BUTTON COPIE FONCTION
+    // Copy button state and handler
     const [copied, setCopied] = React.useState<"url" | "iframe" | null>(null);
     const copyToClipboard = async (text: string, what: "url" | "iframe") => {
         try {
@@ -43,7 +60,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
         return url.split("/").filter(Boolean).pop() || "";
     };
 
-    // FILTRES
+    // Sync view with URL params
     React.useEffect(() => {
         const viewParam = searchParams.get("view");
         if (viewParam === "list" || viewParam === "calendar") {
@@ -52,6 +69,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
     }, [searchParams]);
 
+    // Load themes in debug mode
     React.useEffect(() => {
         const fetchThemes = async () => {
             try {
@@ -62,9 +80,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 });
 
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.log("REPONSE ERREUR THEMES =", errorText);
-                    throw new Error("Erreur lors du chargement des thèmes");
+                    throw new Error("Failed to load themes");
                 }
                 const data: ThemesResponse = (await response.json()) as ThemesResponse;
 
@@ -75,7 +91,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
                 setThemeOptions(themes);
             } catch (error) {
-                console.error("Erreur chargement thèmes :", error);
+                console.error("Failed to load themes :", error);
             }
         };
 
@@ -83,7 +99,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
             void fetchThemes();
         }
     }, [debugMode]);
-
+    // Load organizations in debug mode
     React.useEffect(() => {
         const fetchOrganizations = async () => {
             try {
@@ -94,9 +110,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 });
 
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.log("REPONSE ERREUR ORGANIZATIONS =", errorText);
-                    throw new Error("Erreur lors du chargement des organisations");
+                    throw new Error("Failed to load organizations");
                 }
                 const data: OrganizationsResponse = (await response.json()) as OrganizationsResponse;
 
@@ -107,7 +121,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
 
                 setOrganizationOptions(organizations);
             } catch (error) {
-                console.error("Erreur chargement organisations :", error);
+                console.error("Failed to load organizations :", error);
             }
         };
 
@@ -125,26 +139,23 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
     const [organizationOptions, setOrganizationOptions] = React.useState<SelectOption[]>([]);
     const [themeOptions, setThemeOptions] = React.useState<SelectOption[]>([]);
 
-    const [events, setEvents] = React.useState([]);
+    const [events, setEvents] = React.useState<EmbeddedEvent[]>([]);
     const [loading, setLoading] = React.useState(false);
-    const [error, setError] = React.useState<string | null>(null);
 
-    const listContext = useList({ data: events, isPending: loading })
+
+    const listContext = useList<EmbeddedEvent>({ data: events, isPending: loading });
 
     React.useEffect(() => {
         const fetchEvents = async () => {
-            if (!appliedOrg) {
-                setEvents([]);
-                setError(null);
-                return;
-            }
-
             try {
                 setLoading(true);
-                setError(null);
+
 
                 const url = new URL(`${config.middlewareUrl}api/embeddedcalendar/events`);
-                url.searchParams.set("organization", appliedOrg);
+
+                if (appliedOrg) {
+                    url.searchParams.set("organization", appliedOrg);
+                }
 
                 if (appliedTheme) {
                     url.searchParams.set("theme", appliedTheme);
@@ -157,16 +168,20 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 });
 
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.log("REPONSE ERREUR EVENTS =", errorText);
-                    throw new Error("Erreur lors du chargement des événements");
+                    throw new Error("Failed to load events");
                 }
 
-                const data = await response.json();
-                setEvents(data.events ?? []);
+                const raw: unknown = await response.json();
+                const data = raw as EmbeddedCalendarResponse;
+
+                const normalizedEvents: EmbeddedEvent[] = (data.events ?? []).map((event, index) => ({
+                    ...event,
+                    id: String(event.id ?? event['@id'] ?? index)
+                }));
+
+                setEvents(normalizedEvents);
             } catch (error) {
-                console.error("Erreur chargement événements :", error);
-                setError("Erreur lors du chargement des événements");
+                console.error("Failed to load events :", error);
                 setEvents([]);
             } finally {
                 setLoading(false);
@@ -184,7 +199,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
     if (appliedOrg) params.set("organization", appliedOrg);
     if (appliedTheme) params.set("theme", appliedTheme);
 
-    const iframeUrl = `/embeddedcalendar?${params.toString()}`;
+    const iframeUrl = `${window.location.origin}/embeddedcalendar?${params.toString()}`;
     const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
 
     const buildToolUrl = (nextView: "list" | "calendar") => {
@@ -204,12 +219,12 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 flexDirection: "column",
             }}
         >
-            {/* HEADER */}
+            {/* Debug header */}
             {debugMode && (
                 <Box sx={{ p: 2 }}>
                     <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
 
-                        {/* CASE 1 */}
+                        {/* Display mode and iframe URL */}
                         <Paper sx={{ p: 2, flex: 1 }}>
                             <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                                 Affichage
@@ -250,7 +265,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                                 {iframeUrl}
                             </Box>
 
-                            {/* BUTTON COPIE */}
+                            {/* Copy button */}
                             <Button
                                 size="small"
                                 onClick={() => copyToClipboard(iframeUrl, "url")}
@@ -260,13 +275,13 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                             </Button>
                         </Paper>
 
-                        {/* CASE 2 */}
+                        {/* Filters and iframe code */}
                         <Paper sx={{ p: 2, flex: 1 }}>
                             <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5 }}>
                                 Code iframe (à copier)
                             </Typography>
 
-                            {/* SELECTS Organisation et thèmes */}
+                            {/* Organization and theme filters */}
                             <Stack spacing={2} sx={{ mb: 2 }}>
                                 <FormControl size="small" fullWidth>
                                     <InputLabel id="org-label">Organisation</InputLabel>
@@ -327,7 +342,7 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                                 {iframeCode}
                             </Box>
 
-                            {/* BUTTON COPIE */}
+                            {/* Copy button */}
                             <Button
                                 size="small"
                                 onClick={() => copyToClipboard(iframeCode, "iframe")}
@@ -342,31 +357,32 @@ export default function EmbeddedCalendar(props: Record<string, unknown>) {
                 </Box>
             )}
 
-            <ListContextProvider
-                value={listContext}
-            // sx={{ flex: 1 }}
-            >
-                {view === "list" ? (
-                    <DaysList
-                        locale={frLocale}
-                        label="pair:label"
-                        startDate="pair:startDate"
-                        endDate="pair:endDate"
-                        linkType="show"
-                        openLinksInNewTab={!debugMode}
-                    />
-                ) : (
-                    <CalendarList
-                        locale={frLocale}
-                        label="pair:label"
-                        startDate="pair:startDate"
-                        endDate="pair:endDate"
-                        linkType="show"
-                        openLinksInNewTab={!debugMode}
+            <ResourceContextProvider value="Event">
+                <ListContextProvider
+                    value={{ ...listContext, resource: "Event" }}
+                >
+                    {view === "list" ? (
+                        <DaysList
+                            locale={frLocale}
+                            label="pair:label"
+                            startDate="pair:startDate"
+                            endDate="pair:endDate"
+                            linkType="show"
+                            openLinksInNewTab={!debugMode}
+                        />
+                    ) : (
+                        <CalendarList
+                            locale={frLocale}
+                            label="pair:label"
+                            startDate="pair:startDate"
+                            endDate="pair:endDate"
+                            linkType="show"
+                            openLinksInNewTab={!debugMode}
+                        />
+                    )}
+                </ListContextProvider>
+            </ResourceContextProvider>
 
-                    />
-                )}
-            </ListContextProvider>
         </Box>
     );
 }
