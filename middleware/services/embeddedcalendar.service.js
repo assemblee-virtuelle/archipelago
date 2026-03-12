@@ -19,21 +19,18 @@ module.exports = {
 
     actions: {
         async getEvents(context) {
-            const orgSlug = context.params.organization;
             const themeSlug = context.params.theme;
 
             const baseUrl = CONFIG.HOME_URL.replace(/\/$/, '');
 
-
-            const orgUri = orgSlug ? `${baseUrl}/organizations/${orgSlug}` : null;
             const themeUri = themeSlug ? `${baseUrl}/themes/${themeSlug}` : null;
             const eventsContainerUri = `${baseUrl}/events`;
 
-            let organization = null;
+            let theme = null;
 
-            if (orgUri) {
-                organization = await context.call('ldp.resource.get', {
-                    resourceUri: orgUri,
+            if (themeUri) {
+                theme = await context.call('ldp.resource.get', {
+                    resourceUri: themeUri,
                     accept: 'application/ld+json'
                 });
             }
@@ -64,22 +61,8 @@ module.exports = {
                 .map(result => result.value);
 
             let events = allEvents;
+            const resolvedThemeUri = theme?.id || theme?.['@id'] || themeUri;
 
-
-            // Filtre Organization
-            if (orgUri) {
-                events = events.filter(event => {
-
-                    const involvesRaw = event['pair:involves'] || [];
-                    const involvesArray = Array.isArray(involvesRaw) ? involvesRaw : [involvesRaw];
-
-                    const involvesUris = involvesArray
-                        .map(value => (typeof value === 'string' ? value : value?.id || value?.['@id']))
-                        .filter(Boolean);
-
-                    return involvesUris.includes(orgUri);
-                });
-            }
 
             // Filtre Themes
             if (themeUri) {
@@ -90,15 +73,14 @@ module.exports = {
                         .map(value => (typeof value === 'string' ? value : value?.id || value?.['@id']))
                         .filter(Boolean);
 
-                    return topicUris.includes(themeUri);
+
+                    return topicUris.includes(resolvedThemeUri);
                 });
             }
 
             return {
-                organization: orgSlug,
-                organizationUri: organization?.id || organization?.['@id'] || orgUri,
                 theme: themeSlug,
-                themeUri,
+                themeUri: resolvedThemeUri,
                 eventUris,
                 events
             };
