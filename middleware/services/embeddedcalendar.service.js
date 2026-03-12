@@ -81,7 +81,6 @@ module.exports = {
             return {
                 theme: themeSlug,
                 themeUri: resolvedThemeUri,
-                eventUris,
                 events
             };
         }

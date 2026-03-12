@@ -27,7 +27,6 @@ type EmbeddedEvent = RaRecord & {
 type EmbeddedCalendarResponse = {
     theme?: string | null;
     themeUri?: string | null;
-    eventUris?: string[];
     events?: Array<Partial<EmbeddedEvent>>;
 };
 
