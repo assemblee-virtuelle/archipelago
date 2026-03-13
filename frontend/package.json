@@ -9,7 +9,7 @@
     "@fullcalendar/react": "^6.1.20",
     "@mui/material": "^5.15.14",
     "@mui/styles": "^5.15.14",
-    "@mui/x-tree-view": "6.0.0-beta.0",
+    "@mui/x-tree-view": "^6.17.0",
     "@react-leaflet/core": "^2.0.0",
     "@semapps/auth-provider": "1.2.0",
     "@semapps/date-components": "1.2.0",
@@ -31,7 +31,6 @@
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet.markercluster": "^1.5.3",
-    "mui-tree-select": "^1.0.0-beta.11",
     "ra-language-french": "^5.14.3",
     "react": "^18.3.1",
     "react-admin": "^5.14.3",
@@ -50,7 +49,7 @@
     "yalc": "1.0.0-pre.53"
   },
   "scripts": {
-    "dev": "vite --force",
+    "dev": "vite --force --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}'",

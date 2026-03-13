@@ -1,7 +1,5 @@
 import React from 'react';
-import { AutocompleteArrayInput } from 'react-admin';
 import { ReferenceArrayInput, MultiServerAutocompleteArrayInput } from "@semapps/input-components";
-import { LexiconCreateDialog, fetchWikidata } from '@semapps/interop-components';
 
 const ifTwoLetters = ({ q }) => !!(q && q.length > 1);
 const filterOnlyLabel = { _predicates: ['pair:label'] };
@@ -51,26 +49,6 @@ export const TasksInput = ({ label, source }) => (
 export const SkillsInput = ({ label, source }) => (
   <ReferenceArrayInput label={label} reference="Skill" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
     <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
-  </ReferenceArrayInput>
-);
-
-export const ThemesInput = ({ source, ...props }) => (
-  <ReferenceArrayInput reference="Theme" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <AutocompleteArrayInput
-      optionText="pair:label"
-      create={
-        <LexiconCreateDialog
-          fetchLexicon={fetchWikidata()}
-          selectData={data => ({
-            'pair:label': data.label,
-            'pair:comment': data.summary,
-            'http://www.w3.org/ns/prov#wasDerivedFrom': data.uri,
-          })}
-      />}
-      fullWidth
-      size="small"
-      {...props}
-    />
   </ReferenceArrayInput>
 );
 

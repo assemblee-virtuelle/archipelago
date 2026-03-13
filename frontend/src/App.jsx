@@ -21,7 +21,8 @@ import { Avatar, Button } from '@mui/material';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false
+      refetchOnWindowFocus: false,
+      staleTime: 10000
     },
   },
 });
