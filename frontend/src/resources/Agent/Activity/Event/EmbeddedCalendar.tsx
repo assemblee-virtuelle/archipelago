@@ -16,17 +16,23 @@ type SelectOption = { value: string; label: string; };
 type ThemeItem = { id?: string; '@id'?: string; "pair:label"?: string; };
 type ThemesResponse = { "ldp:contains"?: ThemeItem[]; };
 
+type OrgItem = { id?: string; '@id'?: string; "pair:label"?: string; };
+type OrgsResponse = { "ldp:contains"?: OrgItem[]; };
+
 
 type EmbeddedEvent = RaRecord & {
     '@id'?: string;
     title?: string;
     'pair:hasTopic'?: Array<string | { id?: string; '@id'?: string }> | string | { id?: string; '@id'?: string };
+    'pair:involves'?: Array<string | { id?: string; '@id'?: string }> | string | { id?: string; '@id'?: string };
     [key: string]: unknown;
 };
 
 type EmbeddedCalendarResponse = {
     theme?: string | null;
     themeUri?: string | null;
+    organization?: string | null;
+    organizationUri?: string | null;
     events?: Array<Partial<EmbeddedEvent>>;
 };
 
@@ -72,42 +78,70 @@ export default function EmbeddedCalendar() {
         const fetchThemes = async () => {
             try {
                 const response = await fetch(`${config.middlewareUrl}themes`, {
-                    headers: {
-                        Accept: "application/ld+json",
-                    },
+                    headers: { Accept: "application/ld+json" },
                 });
 
                 if (!response.ok) {
                     throw new Error("Failed to load themes");
                 }
+
                 const data: ThemesResponse = (await response.json()) as ThemesResponse;
 
                 const themes: SelectOption[] = (data["ldp:contains"] ?? []).map((item: ThemeItem) => {
-                    const itemUri = item.id ?? item['@id'] ?? "";
-
+                    const itemUri = item.id ?? item["@id"] ?? "";
                     return {
                         value: getSlugFromUrl(itemUri),
                         label: item["pair:label"] ?? getSlugFromUrl(itemUri),
                     };
                 });
 
-
                 setThemeOptions(themes);
             } catch (error) {
-                console.error("Failed to load themes :", error);
+                console.error("Failed to load themes:", error);
+            }
+        };
+
+        const fetchOrganizations = async () => {
+            try {
+                const response = await fetch(`${config.middlewareUrl}organizations`, {
+                    headers: { Accept: "application/ld+json" },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to load organizations");
+                }
+
+                const data: OrgsResponse = (await response.json()) as OrgsResponse;
+
+                const orgs: SelectOption[] = (data["ldp:contains"] ?? []).map((item: OrgItem) => {
+                    const itemUri = item.id ?? item["@id"] ?? "";
+                    return {
+                        value: getSlugFromUrl(itemUri),
+                        label: item["pair:label"] ?? getSlugFromUrl(itemUri),
+                    };
+                });
+
+                setOrgOptions(orgs);
+            } catch (error) {
+                console.error("Failed to load organizations:", error);
             }
         };
 
         if (debugMode) {
             void fetchThemes();
+            void fetchOrganizations();
         }
     }, [debugMode]);
 
+
     const [draftTheme, setDraftTheme] = React.useState(() => searchParams.get("theme") ?? "");
+    const [draftOrg, setDraftOrg] = React.useState(() => searchParams.get("organization") ?? "");
 
     const [appliedTheme, setAppliedTheme] = React.useState(() => searchParams.get("theme") ?? "");
+    const [appliedOrg, setAppliedOrg] = React.useState(() => searchParams.get("organization") ?? "");
 
     const [themeOptions, setThemeOptions] = React.useState<SelectOption[]>([]);
+    const [orgOptions, setOrgOptions] = React.useState<SelectOption[]>([]);
 
     const [events, setEvents] = React.useState<EmbeddedEvent[]>([]);
     const [loading, setLoading] = React.useState(false);
@@ -120,11 +154,14 @@ export default function EmbeddedCalendar() {
             try {
                 setLoading(true);
 
-
                 const url = new URL(`${config.middlewareUrl}api/embeddedcalendar/events`);
 
                 if (appliedTheme) {
                     url.searchParams.set("theme", appliedTheme);
+                }
+
+                if (appliedOrg) {
+                    url.searchParams.set("organization", appliedOrg);
                 }
 
                 const response = await fetch(url.toString(), {
@@ -142,12 +179,12 @@ export default function EmbeddedCalendar() {
 
                 const normalizedEvents: EmbeddedEvent[] = (data.events ?? []).map((event, index) => ({
                     ...event,
-                    id: String(event.id ?? event['@id'] ?? index)
+                    id: String(event.id ?? event["@id"] ?? index),
                 }));
 
                 setEvents(normalizedEvents);
             } catch (error) {
-                console.error("Failed to load events :", error);
+                console.error("Failed to load events:", error);
                 setEvents([]);
             } finally {
                 setLoading(false);
@@ -155,8 +192,7 @@ export default function EmbeddedCalendar() {
         };
 
         void fetchEvents();
-    }, [
-        appliedTheme]);
+    }, [appliedTheme, appliedOrg]);
 
 
 
@@ -164,6 +200,7 @@ export default function EmbeddedCalendar() {
     params.set("view", view);
 
     if (appliedTheme) params.set("theme", appliedTheme);
+    if (appliedOrg) params.set("organization", appliedOrg);
 
     const iframeUrl = `${window.location.origin}/embeddedcalendar?${params.toString()}`;
     const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
@@ -174,6 +211,8 @@ export default function EmbeddedCalendar() {
         params.set("debug", "1");
 
         if (appliedTheme) params.set("theme", appliedTheme);
+        if (appliedOrg) params.set("organization", appliedOrg);
+
         return `/embeddedcalendar?${params.toString()}`;
     };
 
@@ -266,10 +305,28 @@ export default function EmbeddedCalendar() {
                                     </Select>
                                 </FormControl>
 
+                                <FormControl size="small" fullWidth>
+                                    <InputLabel id="org-label">Organisation</InputLabel>
+                                    <Select
+                                        labelId="org-label"
+                                        label="Organisation"
+                                        value={draftOrg}
+                                        onChange={(e) => setDraftOrg(e.target.value)}
+                                    >
+                                        <MenuItem value="">Aucun</MenuItem>
+                                        {orgOptions.map((org) => (
+                                            <MenuItem key={org.value} value={org.value}>
+                                                {org.label}
+                                            </MenuItem>
+                                        ))}
+                                    </Select>
+                                </FormControl>
+
                                 <Button
                                     variant="contained"
                                     onClick={() => {
                                         setAppliedTheme(draftTheme);
+                                        setAppliedOrg(draftOrg);
                                     }}
                                 >
                                     OK
