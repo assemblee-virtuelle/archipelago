@@ -7,80 +7,44 @@ module.exports = {
     async started() {
         await this.broker.call('api.addRoute', {
             route: {
-                path: '/api/embeddedcalendar',
-                name: 'embeddedcalendar-endpoint',
                 bodyParsers: { json: true },
                 aliases: {
-                    'GET /events': 'embeddedcalendar.getEvents'
+                    'GET /api/embeddedcalendar/events': 'embeddedcalendar.getEvents'
                 }
-            }
+            },
         });
     },
 
     actions: {
         async getEvents(context) {
             const themeSlug = context.params.theme;
+            const organizationSlug = context.params.organization;
 
             const baseUrl = CONFIG.HOME_URL.replace(/\/$/, '');
 
             const themeUri = themeSlug ? `${baseUrl}/themes/${themeSlug}` : null;
+            const organizationUri = organizationSlug ? `${baseUrl}/organizations/${organizationSlug}` : null;
             const eventsContainerUri = `${baseUrl}/events`;
 
-            let theme = null;
-
+            const filters = {};
             if (themeUri) {
-                theme = await context.call('ldp.resource.get', {
-                    resourceUri: themeUri,
-                    accept: 'application/ld+json'
-                });
+                filters['http://virtual-assembly.org/ontologies/pair#hasTopic'] = themeUri;
+
+            }
+            if (organizationUri) {
+                filters['http://virtual-assembly.org/ontologies/pair#involves'] = organizationUri;
             }
 
-            const eventsContainer = await context.call('ldp.resource.get', {
-                resourceUri: eventsContainerUri,
-                accept: 'application/ld+json'
+            const eventsContainer = await context.call('ldp.container.get', {
+                containerUri: eventsContainerUri,
+                accept: 'application/ld+json',
+                filters: filters,
             });
+            console.log(eventsContainer);
 
-            const containedRaw = eventsContainer['ldp:contains'] || [];
-            const containedArray = Array.isArray(containedRaw) ? containedRaw : [containedRaw];
-
-            const eventUris = containedArray
-                .map(value => (typeof value === 'string' ? value : value?.id || value?.['@id']))
-                .filter(Boolean);
-
-            const settled = await Promise.allSettled(
-                eventUris.map(resourceUri =>
-                    context.call('ldp.resource.get', {
-                        resourceUri,
-                        accept: 'application/ld+json'
-                    })
-                )
-            );
-
-            const allEvents = settled
-                .filter(result => result.status === 'fulfilled')
-                .map(result => result.value);
-
-            let events = allEvents;
-            const resolvedThemeUri = theme?.id || theme?.['@id'] || themeUri;
-
-
-            // Filtre Themes
-            if (themeUri) {
-                events = events.filter(event => {
-                    const topicsRaw = event['pair:hasTopic'] || [];
-                    const topicsArray = Array.isArray(topicsRaw) ? topicsRaw : [topicsRaw];
-                    const topicUris = topicsArray
-                        .map(value => (typeof value === 'string' ? value : value?.id || value?.['@id']))
-                        .filter(Boolean);
-
-
-                    return topicUris.includes(resolvedThemeUri);
-                });
-            }
+            let events = eventsContainer['ldp:contains'] || [];
 
             return {
-                theme: themeSlug,
-                themeUri: resolvedThemeUri,
                 events
             };
         }
