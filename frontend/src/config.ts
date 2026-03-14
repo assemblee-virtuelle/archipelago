@@ -9,7 +9,7 @@ type MapboxOptions = {
 type PhotonOptions = {
   type: 'photon';
   url: string;
-  params: { key: string; value: string }[];
+  params?: { key: string; value: string }[];
 };
 
 interface ConfigInterface {
@@ -35,21 +35,6 @@ const config: ConfigInterface = {
     type: 'mapbox',
     accessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
   },
-
-  // geocoder: {
-  //   type: 'photon',
-  //   url: 'http://localhost:2322/api',
-  //   params: [
-  //     { key: 'lang', value: 'fr' },
-  //     { key: 'lon', value: '-1.5541362' },
-  //     { key: 'lat', value: '47.2186371' },
-  //     { key: 'zoom', value: '10' },
-  //     { key: 'location_bias_scale', value: '0' },
-  //     { key: 'osm_tag', value: 'place' },
-  //     { key: 'osm_tag', value: 'amenity' },
-  //     { key: 'osm_tag', value: 'office' },
-  //   ],
-  // },
 
   // Application title
   title: 'Archipelago',

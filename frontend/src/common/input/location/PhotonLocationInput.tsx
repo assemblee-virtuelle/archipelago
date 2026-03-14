@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Autocomplete, debounce, Grid, TextField, Typography } from '@mui/material';
+import { Autocomplete, Box, debounce, Grid, TextField, Typography } from '@mui/material';
 import { CommonInputProps, FieldTitle, InputHelperText, useInput, useTranslate } from 'react-admin';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
@@ -39,11 +39,11 @@ type PhotonResult = {
   };
 };
 
-const getFullAddress = (l: Location) => [l.housenumber, l.street, l.postcode, l.city].filter(p => p).join(' ');
-const getInputName = (l: Location) => l ? l.name : '';
+const getFullAddress = (l: Location) => [l.housenumber, l.street, l.postcode, l.city].filter((p) => p).join(' ');
+const getInputName = (l: Location) => (l ? l.name : '');
 
 type Props = CommonInputProps & {
-  apiUrl: string;
+  apiUrl?: string;
   apiParams?: { key: string; value: string }[];
 };
 
@@ -57,6 +57,7 @@ const PhotonLocationInput = ({ source, label, helperText, format, parse, validat
   const translate = useTranslate();
   const [inputValue, setInputValue] = useState<string>(getInputName(field.value as Location));
   const [options, setOptions] = useState<Location[]>([]);
+  const [serverError, setServerError] = useState(false);
   const previousValue = useRef<string>();
 
   useEffect(() => {
@@ -68,21 +69,28 @@ const PhotonLocationInput = ({ source, label, helperText, format, parse, validat
 
   const fetchApi = useMemo(
     () =>
-      debounce(async (text: string, callback: (results: PhotonResult[]) => void) => {
-        const params = new URLSearchParams();
-        params.append('q', text);
-        apiParams?.forEach(p => params.append(p.key, p.value));
-
-        const response = await fetch(`${apiUrl}?${params.toString()}`);
-
-        if (!response.ok) {
-          callback([]);
-          return;
+      debounce(async (text: string, callback: (results: PhotonResult[], error: boolean) => void) => {
+        if (!apiUrl) {
+          return callback([], true);
         }
 
-        const payload = (await response.json()) as { features: PhotonResult[] };
+        try {
+          const params = new URLSearchParams();
+          params.append('q', text);
+          apiParams?.forEach((p) => params.append(p.key, p.value));
+          const response = await fetch(`${apiUrl}?${params.toString()}`);
 
-        callback(payload.features);
+          if (!response.ok) {
+            callback([], true);
+            return;
+          }
+
+          const payload = (await response.json()) as { features: PhotonResult[] };
+
+          callback(payload.features, false);
+        } catch (err) {
+          callback([], true);
+        }
       }, 500),
     [apiUrl, apiParams],
   );
@@ -93,32 +101,38 @@ const PhotonLocationInput = ({ source, label, helperText, format, parse, validat
       return undefined;
     }
 
-    void fetchApi(inputValue, (results) => {
+    void fetchApi(inputValue, (results, error) => {
+      setServerError(error);
+
       const fetchedIds: string[] = [];
-      const opt: (Location | null)[] = results.map((result) => {
-        const { osm_type, osm_id, name, housenumber, street, postcode, city, country } = result.properties;
-        const locName = name ? name : [housenumber, street, postcode, city].filter(p => p).join(' ');
-        const locId = `${osm_type}${osm_id}`;
+      const opt: (Location | null)[] = results
+        .map((result) => {
+          const { osm_type, osm_id, name, housenumber, street, postcode, city, country } = result.properties;
+          const locName = name ? name : [housenumber, street, postcode, city].filter((p) => p).join(' ');
+          const locId = `${osm_type}${osm_id}`;
 
-        // Results can contain duplicates, so we clean that here
-        if (fetchedIds.includes(locId)) return null;
-        fetchedIds.push(locId);
+          // Results can contain duplicates, so we clean that here
+          if (fetchedIds.includes(locId)) return null;
+          fetchedIds.push(locId);
 
-        return {
-          id: locId,
-          coordinates: result.geometry.coordinates,
-          name: locName,
-          housenumber,
-          street,
-          postcode,
-          city,
-          country,
-        };
-      }).filter(o => o);
+          return {
+            id: locId,
+            coordinates: result.geometry.coordinates,
+            name: locName,
+            housenumber,
+            street,
+            postcode,
+            city,
+            country,
+          };
+        })
+        .filter((o) => o);
 
       setOptions(opt as Location[]);
     });
   }, [inputValue, fetchApi]);
+
+  const photonErrorBox = <Box component="span" sx={{ color: 'warning.main' }}>Serveur d&apos;adresses injoignable</Box>;
 
   return (
     <Autocomplete
@@ -137,7 +151,11 @@ const PhotonLocationInput = ({ source, label, helperText, format, parse, validat
             ) : null
           }
           helperText={
-            helperText !== false || invalid ? <InputHelperText error={error?.message} helperText={helperText} /> : ''
+            helperText !== false || invalid ? (
+              <InputHelperText error={error?.message} helperText={serverError ? photonErrorBox : helperText} />
+            ) : (
+              ''
+            )
           }
           error={invalid}
         />
@@ -160,7 +178,7 @@ const PhotonLocationInput = ({ source, label, helperText, format, parse, validat
           </li>
         );
       }}
-      noOptionsText={translate('ra.navigation.no_results')}
+      noOptionsText={serverError ? photonErrorBox : translate('ra.navigation.no_results')}
       onBlur={(event) => {
         if (inputValue !== '' && (field.value as Location)?.name !== inputValue) {
           setInputValue(getInputName(field.value as Location));
