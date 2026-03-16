@@ -22,7 +22,8 @@ import EmbeddedCalendar from './resources/Agent/Activity/Event/EmbeddedCalendar'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false
+      refetchOnWindowFocus: false,
+      staleTime: 10000
     },
   },
 });

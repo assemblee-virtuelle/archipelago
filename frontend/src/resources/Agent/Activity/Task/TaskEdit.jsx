@@ -1,10 +1,11 @@
 import React from 'react';
 import { FormTab, TextInput, SelectInput, TabbedForm, ReferenceInput } from 'react-admin';
-import { ActorsInput, ThemesInput, TasksInput, SkillsInput, DocumentsInput, ActivitiesInput } from '../../../../common/input';
+import { ActorsInput, TasksInput, SkillsInput, DocumentsInput, ActivitiesInput } from '../../../../common/input';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { DateTimeInput } from "../../../../common/input";
 import { Edit } from '../../../../common/layout';
+import DropDownTreeSelect from '../../../../common/input/DropdownTreeSelect/DropdownTreeSelect';
 
 const TaskEdit = props => (
   <Edit redirect="show" {...props}>
@@ -27,7 +28,7 @@ const TaskEdit = props => (
         <ActorsInput source="pair:hasFollower" />
         <ActorsInput source="pair:involves" />
         <TasksInput source="pair:inspiredBy" />
-        <ThemesInput source="pair:hasTopic" />
+        <DropDownTreeSelect source="pair:hasTopic" reference="Theme" labelKey="pair:label" parentKey="pair:broader" label="A pour thème" multiple />
         <SkillsInput source="pair:needs" />
         <DocumentsInput source="pair:uses" />
       </FormTab>
