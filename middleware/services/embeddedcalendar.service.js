@@ -40,7 +40,6 @@ module.exports = {
                 accept: 'application/ld+json',
                 filters: filters,
             });
-            console.log(eventsContainer);
 
             let events = eventsContainer['ldp:contains'] || [];
 

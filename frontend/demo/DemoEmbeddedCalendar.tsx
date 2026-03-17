@@ -1,14 +1,7 @@
 import React from "react";
 import { Box, Stack, Paper, Typography, Button, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
-import frLocale from "@fullcalendar/core/locales/fr";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import config from "../src/config";
-import type { RaRecord } from 'react-admin';
-
-import { useList, ListContextProvider, ResourceContextProvider } from "react-admin";
-import CalendarList from "../src/common/list/calendar/CalendarList";
-import DaysList from "../src/common/list/calendar/DaysList";
-
 
 
 type SelectOption = { value: string; label: string; };
@@ -20,25 +13,7 @@ type OrgItem = { id?: string; '@id'?: string; "pair:label"?: string; };
 type OrgsResponse = { "ldp:contains"?: OrgItem[]; };
 
 
-type EmbeddedEvent = RaRecord & {
-    '@id'?: string;
-    title?: string;
-    'pair:hasTopic'?: Array<string | { id?: string; '@id'?: string }> | string | { id?: string; '@id'?: string };
-    'pair:involves'?: Array<string | { id?: string; '@id'?: string }> | string | { id?: string; '@id'?: string };
-    [key: string]: unknown;
-};
-
-type EmbeddedCalendarResponse = {
-    theme?: string | null;
-    themeUri?: string | null;
-    organization?: string | null;
-    organizationUri?: string | null;
-    events?: Array<Partial<EmbeddedEvent>>;
-};
-
-
-
-export default function EmbeddedCalendar() {
+export default function DemoEmbeddedCalendar() {
     const [searchParams] = useSearchParams();
 
     const [view, setView] = React.useState(() => {
@@ -58,8 +33,6 @@ export default function EmbeddedCalendar() {
         }
     };
 
-    // const debugMode = searchParams.get("debug") === "1";
-
     const getSlugFromUrl = (url: string) => {
         return url.split("/").filter(Boolean).pop() || "";
     };
@@ -73,7 +46,6 @@ export default function EmbeddedCalendar() {
 
     }, [searchParams]);
 
-    // Load themes in debug mode
     React.useEffect(() => {
         const fetchThemes = async () => {
             try {
@@ -127,11 +99,8 @@ export default function EmbeddedCalendar() {
             }
         };
 
-        // if (debugMode) {
         void fetchThemes();
         void fetchOrganizations();
-        // }
-        // }, [debugMode]);
     }, []);
 
 
@@ -144,58 +113,6 @@ export default function EmbeddedCalendar() {
     const [themeOptions, setThemeOptions] = React.useState<SelectOption[]>([]);
     const [orgOptions, setOrgOptions] = React.useState<SelectOption[]>([]);
 
-    const [events, setEvents] = React.useState<EmbeddedEvent[]>([]);
-    const [loading, setLoading] = React.useState(false);
-
-
-    const listContext = useList<EmbeddedEvent>({ data: events, isPending: loading });
-
-    React.useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                setLoading(true);
-
-                const url = new URL(`${config.middlewareUrl}api/embeddedcalendar/events`);
-
-                if (appliedTheme) {
-                    url.searchParams.set("theme", appliedTheme);
-                }
-
-                if (appliedOrg) {
-                    url.searchParams.set("organization", appliedOrg);
-                }
-
-                const response = await fetch(url.toString(), {
-                    headers: {
-                        Accept: "application/json",
-                    },
-                });
-
-                if (!response.ok) {
-                    throw new Error("Failed to load events");
-                }
-
-                const raw: unknown = await response.json();
-                const data = raw as EmbeddedCalendarResponse;
-
-                const normalizedEvents: EmbeddedEvent[] = (data.events ?? []).map((event, index) => ({
-                    ...event,
-                    id: String(event.id ?? event["@id"] ?? index),
-                }));
-
-                setEvents(normalizedEvents);
-            } catch (error) {
-                console.error("Failed to load events:", error);
-                setEvents([]);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        void fetchEvents();
-    }, [appliedTheme, appliedOrg]);
-
-
 
     const params = new URLSearchParams();
     params.set("view", view);
@@ -206,28 +123,14 @@ export default function EmbeddedCalendar() {
     const iframeUrl = `${window.location.origin}/embeddedcalendar?${params.toString()}`;
     const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
 
-    const buildToolUrl = (nextView: "list" | "calendar") => {
-        const params = new URLSearchParams();
-        params.set("view", nextView);
-        params.set("debug", "1");
-
-        if (appliedTheme) params.set("theme", appliedTheme);
-        if (appliedOrg) params.set("organization", appliedOrg);
-
-        return `/embeddedcalendar?${params.toString()}`;
-    };
-
     return (
         <Box
             sx={{
-                // height: debugMode ? "100%" : "100vh",
                 height: "100vh",
                 display: "flex",
                 flexDirection: "column",
             }}
         >
-            {/* Debug header */}
-            {/* {debugMode && ( */}
             <Box sx={{ p: 2 }}>
                 <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
 
@@ -241,8 +144,6 @@ export default function EmbeddedCalendar() {
                             <Button
                                 variant={view === "calendar" ? "contained" : "outlined"}
                                 onClick={() => setView("calendar")}
-                            // component={Link}
-                            // to={buildToolUrl("calendar")}
                             >
                                 Calendrier
                             </Button>
@@ -250,8 +151,6 @@ export default function EmbeddedCalendar() {
                             <Button
                                 variant={view === "list" ? "contained" : "outlined"}
                                 onClick={() => setView("list")}
-                            // component={Link}
-                            // to={buildToolUrl("list")}
                             >
                                 Liste
                             </Button>
@@ -367,7 +266,6 @@ export default function EmbeddedCalendar() {
 
                 </Stack>
             </Box>
-            {/* )} */}
 
             <Box sx={{ flex: 1 }}>
                 <iframe
@@ -378,32 +276,6 @@ export default function EmbeddedCalendar() {
                     title="Calendrier Transiscope"
                 />
             </Box>
-            {/* <ResourceContextProvider value="Event">
-                <ListContextProvider
-                    value={{ ...listContext, resource: "Event" }}
-                >
-                    {view === "list" ? (
-                        <DaysList
-                            locale={frLocale}
-                            label="pair:label"
-                            startDate="pair:startDate"
-                            endDate="pair:endDate"
-                            linkType="show"
-                            openLinksInNewTab={!debugMode}
-                        />
-                    ) : (
-                        <CalendarList
-                            locale={frLocale}
-                            label="pair:label"
-                            startDate="pair:startDate"
-                            endDate="pair:endDate"
-                            linkType="show"
-                            openLinksInNewTab={!debugMode}
-                        />
-                    )}
-                </ListContextProvider>
-            </ResourceContextProvider> */}
-
         </Box>
     );
 }
