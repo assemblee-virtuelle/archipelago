@@ -1,4 +1,3 @@
-/* eslint-disable no-redeclare */
 import Agent from './Agent/Agent';
 
 // Actors
@@ -34,6 +33,12 @@ import MembershipAssociation from './Concept/MembershipAssociation';
 
 // Pages
 import Page from './Page';
+
+export interface ResourceOptions {
+  label?: string;
+  parent?: string;
+  isImportable?: boolean;
+}
 
 const resources = {
   Agent,

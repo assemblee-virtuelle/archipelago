@@ -12,7 +12,9 @@ const resource = {
     edit: DocumentEdit,
     icon: DescriptionIcon,
     options: {
-      label: 'Documents'
+      label: 'Documents',
+
+      isImportable: true, // Can this resource be imported from another server
     },
     recordRepresentation: (record) => `${record['pair:label']}`,
   },

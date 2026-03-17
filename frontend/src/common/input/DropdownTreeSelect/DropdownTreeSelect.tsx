@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Chip, MenuItem, TextField } from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
-import { InputHelperText, RaRecord, useGetList, useInput, Validator } from 'react-admin';
+import { CommonInputProps, FieldTitle, InputHelperText, RaRecord, useGetList, useInput } from 'react-admin';
 import { TreeItem, TreeView } from '@mui/x-tree-view';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -20,16 +20,12 @@ const normalize = (str: string) =>
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '');
 
-type DropDownTreeSelectProps = {
+type DropDownTreeSelectProps = CommonInputProps & {
   labelKey: string;
   parentKey: string;
-  label: string;
   disabled?: boolean;
   reference: string;
-  source: string;
-  helperText?: string | false;
   multiple?: boolean;
-  validate?: Validator | Validator[];
 };
 
 const DropDownTreeSelect = ({
@@ -201,7 +197,11 @@ const DropDownTreeSelect = ({
         <TextField
           {...params}
           onChange={(v) => setInputText(v.target.value)}
-          label={label}
+          label={
+            label !== '' && label !== false ? (
+              <FieldTitle label={label} source={source} isRequired={isRequired} />
+            ) : null
+          }
           helperText={
             helperText !== false || invalid ? <InputHelperText error={error?.message} helperText={helperText} /> : ''
           }

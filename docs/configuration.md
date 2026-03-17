@@ -9,7 +9,6 @@ The table below lists all configurable options:
 | `title`               | `string`           | **required**      | Your app title displayed in the top bar
 | `middlewareUrl`       | `string`           | **required**      | Middleware API url (ex: https://<host>:<port>/). It should contain a trailing slash
 | `geocoder`            | `GeocoderOptions`  | **required**      | Geocoding server type (Mapbox or Photon) and its options. See [Geocoding configuration](./geocoder.md)
-| `importableResources` | array of `string`  | **required**      | Lists resources which should display import tab in its creation form
 | `layout`              | `LayoutOptions`    | **required**      | UI layout configuration. See [layout configuration](./layouts.md)
 | `theme`               | `function`         | default theme     | Customizes app theme. Function is of type (baseTheme: MuiTheme) => MuiTheme
 | `HomePage`            | `React component`  | default homePage  | React component to override default home page
@@ -55,8 +54,11 @@ const config: ConfigInterface = {
     // Example 1: Change "Organization" to "Structure" wording
     customizedResources['Organization'].translations.fr.name = 'Structure |||| Structures';
 
-    // Exemple 2: Customize resource edition page
+    // Example 2: Customize resource edition page
     customizedResources['Organization'].config.edit = MyCustomOrganizationEditPage;
+
+    // Example 3: Change if a resource is importable or not
+    customizedResources['Organization'].config.options.isImportable = false;
 
     return customizedResources;
   },
