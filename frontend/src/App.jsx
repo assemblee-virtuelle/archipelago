@@ -6,7 +6,6 @@ import { LoginPage } from '@semapps/auth-provider';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient } from '@tanstack/react-query';
 
-import HomePage from './HomePage';
 import config from './config';
 import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
@@ -17,6 +16,8 @@ import baseResources from './resources';
 import { Layout } from './common/layout';
 import { LayoutProvider } from './layouts/LayoutProvider';
 import { Avatar, Button } from '@mui/material';
+
+const HomePage = React.lazy(() => import('./HomePage'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
