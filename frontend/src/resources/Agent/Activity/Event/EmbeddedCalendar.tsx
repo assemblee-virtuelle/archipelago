@@ -34,6 +34,9 @@ export default function EmbeddedCalendar() {
         return viewParam === "list" ? "list" : "calendar";
     });
 
+    const [appliedTheme, setAppliedTheme] = React.useState(() => searchParams.get("theme") ?? "");
+    const [appliedOrg, setAppliedOrg] = React.useState(() => searchParams.get("organization") ?? "");
+
     const [events, setEvents] = React.useState<EmbeddedEvent[]>([]);
     const [loading, setLoading] = React.useState(false);
 
@@ -47,10 +50,17 @@ export default function EmbeddedCalendar() {
         if (viewParam === "list" || viewParam === "calendar") {
             setView(viewParam);
         }
+        const themeParam = searchParams.get("theme");
+        if (themeParam) {
+            setAppliedTheme(themeParam);
+        }
+
+        const orgParam = searchParams.get("organization");
+        if (orgParam) {
+            setAppliedOrg(orgParam);
+        }
     }, [searchParams]);
 
-    const appliedTheme = searchParams.get("theme") ?? "";
-    const appliedOrg = searchParams.get("organization") ?? "";
 
     React.useEffect(() => {
         const fetchEvents = async () => {
@@ -58,20 +68,20 @@ export default function EmbeddedCalendar() {
                 setLoading(true);
 
                 const url = new URL(`${config.middlewareUrl}api/embeddedcalendar/events`);
+
                 if (appliedTheme) {
                     url.searchParams.set("theme", appliedTheme);
                 }
+
                 if (appliedOrg) {
                     url.searchParams.set("organization", appliedOrg);
                 }
-                const response = await fetch(
-                    url.toString(),
-                    {
-                        headers: {
-                            Accept: "application/json",
-                        },
-                    }
-                );
+
+                const response = await fetch(url.toString(), {
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
 
                 if (!response.ok) {
                     throw new Error("Failed to load events");

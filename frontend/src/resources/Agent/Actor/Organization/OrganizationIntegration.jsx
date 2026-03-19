@@ -3,19 +3,23 @@ import { Box, Typography, Button, Tooltip, IconButton } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CodeIcon from '@mui/icons-material/Code';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-
 import { useRecordContext } from 'react-admin';
 
 
 const OrganizationIntegration = () => {
 
     const record = useRecordContext();
-
     const orgId = record?.id || record?.['@id'];
     const slug = orgId?.split('/').filter(Boolean).pop();
 
     const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
     const [view, setView] = React.useState('calendar');
+    // const [view, setView] = React.useState('list');
+
+    const [copied, setCopied] = React.useState(null);
+
+    const [showHelp, setShowHelp] = React.useState(false);
+    const [showAdvanced, setShowAdvanced] = React.useState(false);
 
     const params = new URLSearchParams();
     params.set('organization', slug);
@@ -26,7 +30,6 @@ const OrganizationIntegration = () => {
 
     const iframeUrl = `${window.location.origin}/embeddedcalendar?${params.toString()}`;
 
-    const [copied, setCopied] = React.useState(null);
     const handleCopy = async (text, type) => {
         await navigator.clipboard.writeText(text);
         setCopied(type);
@@ -37,6 +40,7 @@ const OrganizationIntegration = () => {
     };
 
     const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
+
 
     return (
         <Box mb={4}>
@@ -91,7 +95,22 @@ const OrganizationIntegration = () => {
                             </Button>
                         </Box>
 
-                        <Box>Aperçu ici</Box>
+                        <Box
+                            sx={{
+                                border: '1px solid #eee',
+                                borderRadius: 2,
+                                overflow: 'hidden',
+                                backgroundColor: '#fff'
+                            }}
+                        >
+                            <iframe
+                                src={iframeUrl}
+                                width="100%"
+                                height="500"
+                                style={{ border: 0 }}
+                                title="Aperçu du calendrier"
+                            />
+                        </Box>
                     </Box>
                 )}
             </Box>
@@ -140,36 +159,57 @@ const OrganizationIntegration = () => {
             }}
             >
                 <IconButton
-                    component="a"
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => setShowHelp(!showHelp)}
                     size="small"
                     sx={{ mb: 1 }}
                 >
                     <HelpOutlineIcon sx={{ fontSize: 22, color: 'rgb(0, 82, 89)' }} />
                 </IconButton>
             </Tooltip>
+            {showHelp && (
+                <Box sx={{ mt: 1, p: 2, border: '1px solid #ddd', borderRadius: 2 }}>
+                    <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                        Comment faire ?
+                    </Typography>
 
+                    <Typography variant="body2" sx={{ mb: 1 }}>
+                        <strong>Aperçu</strong> : permet de choisir l’affichage des événements (calendrier ou liste), puis de copier le lien ou le code correspondant.
+                    </Typography>
 
+                    <Typography variant="body2" sx={{ mb: 1 }}>
+                        <strong>Copier le lien</strong> : pour partager la vue des événements selon votre choix dans l’aperçu.
+                    </Typography>
 
-            {/* <Typography variant="body2" sx={{ mt: 1 }}>
-                <Link
-                    href="#"
-                    underline="hover"
-                    sx={{
-                        mt: 1,
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 0.5,
+                    <Typography variant="body2" sx={{ mb: 1 }}>
+                        <strong>Copier le code</strong> : pour afficher les événements sur votre site selon votre choix dans l’aperçu.
+                    </Typography>
 
-                    }}
-                >
-                    Comment faire
-                    <HelpOutlineIcon sx={{ fontSize: 16 }} />
-                </Link>
+                    <Typography variant="body2">
+                        <strong>Astuce</strong> : collez le code dans un bloc HTML (iframe) si votre site en propose un.
+                        Par défaut, le calendrier est sélectionné. Pour afficher en liste, choisissez ce mode dans l’aperçu avant de copier.
+                    </Typography>
 
-            </Typography> */}
+                    <Button
+                        size="small"
+                        onClick={() => setShowAdvanced(!showAdvanced)}
+                        sx={{ textTransform: 'none', px: 0, minWidth: 'auto' }}
+                    >
+                        {showAdvanced ? 'Masquer les options avancées' : 'Options avancées'}
+                    </Button>
+                    {showAdvanced && (
+                        <Box sx={{ mt: 1 }}>
+                            <Typography variant="body2" sx={{ mb: 1 }}>
+                                <strong>Taille</strong> : vous pouvez ajuster <code>width</code> et <code>height</code> selon votre mise en page.
+                            </Typography>
+
+                            <Typography variant="body2" sx={{ opacity: 0.7 }}>
+                                <strong>Avancé</strong> : le code proposé est en HTML. Selon votre outil ou framework (React, Vue, Angular...), certaines écritures peuvent demander une légère adaptation, notamment pour les styles.
+                            </Typography>
+                        </Box>
+                    )}
+
+                </Box>
+            )}
         </Box>
     );
 };
