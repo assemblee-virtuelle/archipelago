@@ -51,7 +51,7 @@ Launch the frontend on port 4000:
 ```bash
 cd frontend
 yarn install
-yarn start
+yarn dev
 ```
 
 ## Archipelago customization
