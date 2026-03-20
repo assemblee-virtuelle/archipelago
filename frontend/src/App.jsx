@@ -1,9 +1,9 @@
 import React from 'react';
-import { Admin, Resource, memoryStore } from 'react-admin';
+import { Admin, Resource, memoryStore, CustomRoutes } from 'react-admin';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { LoginPage } from '@semapps/auth-provider';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { QueryClient } from '@tanstack/react-query';
 
 import HomePage from './HomePage';
@@ -17,6 +17,9 @@ import baseResources from './resources';
 import { Layout } from './common/layout';
 import { LayoutProvider } from './layouts/LayoutProvider';
 import { Avatar, Button } from '@mui/material';
+import EmbeddedCalendar from './resources/Agent/Activity/Event/EmbeddedCalendar';
+import DemoEmbeddedCalendar from "../demo/DemoEmbeddedCalendar";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,6 +57,10 @@ const App = () => (
             {Object.entries(resources).map(([key, resource]) => (
               <Resource key={key} name={key} {...resource.config} />
             ))}
+            <CustomRoutes noLayout>
+              <Route path="/embeddedcalendar" element={<EmbeddedCalendar />} />
+              <Route path="/demo-embeddedcalendar" element={<DemoEmbeddedCalendar />} />
+            </CustomRoutes>
           </Admin>
         </LayoutProvider>
       </ThemeProvider>

@@ -28,7 +28,7 @@ const DaysList = (props: Props) => {
         locale={props.locale}
         initialView="listMonth"
         {...fullCalendarProps}
-      />;
+      />
     </>
   );
 };

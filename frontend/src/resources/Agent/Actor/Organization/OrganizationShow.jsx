@@ -18,6 +18,7 @@ import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import MembershipAssociationField from "../../../../common/field/MembershipAssociationField";
+import OrganizationIntegration from './OrganizationIntegration';
 
 const domainMapping = {
   'forums.assemblee-virtuelle.org': {
@@ -103,6 +104,9 @@ const OrganizationShow = props => (
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
         </SideList>
+
+        <OrganizationIntegration />
+
       </Grid>
     </Grid>
   </Show>
