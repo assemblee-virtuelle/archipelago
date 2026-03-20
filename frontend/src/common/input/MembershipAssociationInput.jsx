@@ -11,6 +11,7 @@ import {
   RecordContextProvider,
   SelectInput,
   useWrappedSource,
+  useTranslate,
 } from "react-admin";
 import { useFormContext } from 'react-hook-form';
 
@@ -35,8 +36,9 @@ const ReferenceInputForm = ({ children, scopedSource, reference, source }) => {
 };
 
 const MembershipAssociationInput = (props) => {
-  const { source, referenceInputProps, label } = props;
+  const { source, referenceInputProps } = props;
   const record = useRecordContext();
+  const translate = useTranslate();
 
   const toArray = (v) => Array.isArray(v) ? v : [v];
 
@@ -48,7 +50,7 @@ const MembershipAssociationInput = (props) => {
 
   return (
     <ArrayInput source={source}>
-      <SimpleFormIterator inline>
+      <SimpleFormIterator inline disableReordering>
         <FormDataConsumer>
           {({ scopedFormData }) => {
             const membershipAssociation = membershipAssociations?.find((r) => r.id === scopedFormData);
@@ -62,7 +64,7 @@ const MembershipAssociationInput = (props) => {
                 >
                   <AutocompleteInput
                     source={referenceInputProps.source}
-                    label={label}
+                    label={translate('resources.Organization.fields.pair:membershipActor')}
                     size="small"
                     sx={{
                       mt: 1,
@@ -82,7 +84,7 @@ const MembershipAssociationInput = (props) => {
                 >
                   <SelectInput
                     source={"pair:membershipRole"}
-                    label="Rôle"
+                    label={translate('resources.Organization.fields.pair:membershipRole')}
                   />
                 </ReferenceInputForm>
                 <TextInput
