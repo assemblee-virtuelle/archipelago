@@ -1,8 +1,8 @@
 import React from 'react';
 import { FilterLiveSearch, useTranslate } from 'react-admin';
-import { ReferenceFilter } from '@semapps/list-components';
 import ReferenceFilterTree from '../../../../common/ReferenceFilterTree';
 import { useLayoutContext } from '../../../../layouts/LayoutContext';
+import ReferenceFilter from '../../../../common/list/ReferenceFilter';
 
 const OrganizationFilterSidebar = () => {
   const Layout = useLayoutContext();

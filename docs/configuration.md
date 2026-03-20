@@ -8,7 +8,7 @@ The table below lists all configurable options:
 |-----------------------|--------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `title`               | `string`           | **required**      | Your app title displayed in the top bar
 | `middlewareUrl`       | `string`           | **required**      | Middleware API url (ex: https://<host>:<port>/). It should contain a trailing slash
-| `mapboxAccessToken`   | `string`           | **required**      | Mapbox Access Token used for addresses completion
+| `geocoder`            | `GeocoderOptions`  | **required**      | Geocoding server type (Mapbox or Photon) and its options. See [Geocoding configuration](./geocoder.md)
 | `importableResources` | array of `string`  | **required**      | Lists resources which should display import tab in its creation form
 | `layout`              | `LayoutOptions`    | **required**      | UI layout configuration. See [layout configuration](./layouts.md)
 | `theme`               | `function`         | default theme     | Customizes app theme. Function is of type (baseTheme: MuiTheme) => MuiTheme
