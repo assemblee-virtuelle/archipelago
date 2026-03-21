@@ -48,7 +48,7 @@ const config: ConfigInterface = {
 
   // UI layout configuration
   layout: {
-    name: 'leftMenu',
+    name: 'topMenu',
     options: {},
   },
 };
