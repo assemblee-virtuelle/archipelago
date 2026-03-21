@@ -13,7 +13,9 @@ const resource = {
     icon: GroupIcon,
     options: {
       label: 'Groupes',
-      parent: 'Actor'
+
+      parent: 'Actor', // Used in tree menu in leftMenu layout
+      isImportable: true, // Can this resource be imported from another server
     },
     recordRepresentation: (record) => `${record['pair:label']}`,
   },

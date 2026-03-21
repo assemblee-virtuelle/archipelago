@@ -12,7 +12,9 @@ const resource = {
     edit: IdeaEdit,
     icon: IdeaIcon,
     options: {
-      label: 'Idées'
+      label: 'Idées',
+
+      isImportable: true, // Can this resource be imported from another server
     },
     recordRepresentation: (record) => `${record['pair:label']}`,
   },

@@ -13,7 +13,9 @@ const resource = {
     icon: PersonIcon,
     options: {
       label: 'Compétences',
-      parent: 'Resource'
+
+      parent: 'Resource', // Used in tree menu in leftMenu layout
+      isImportable: true, // Can this resource be imported from another server
     },
     recordRepresentation: (record) => `${record['pair:label']}`,
   },

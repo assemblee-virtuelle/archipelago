@@ -13,7 +13,9 @@ const resource = {
     icon: SettingsIcon,
     options: {
       label: 'Projets',
-      parent: 'Activity'
+
+      parent: 'Activity', // Used in tree menu in leftMenu layout
+      isImportable: true, // Can this resource be imported from another server
     },
     recordRepresentation: (record) => `${record['pair:label']}`,
   },
