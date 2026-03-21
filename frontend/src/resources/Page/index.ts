@@ -1,20 +1,26 @@
-import PageCreate from './PageCreate';
-import PageEdit from './PageEdit';
+import { lazy } from 'react';
 import PageList from './PageList';
 import PageShow from './PageShow';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { BaseRecord } from '..';
+
+export type PageRecord = BaseRecord & {
+  type: 'semapps:Page';
+  'semapps:title': string;
+  'semapps:content': string;
+};
 
 const resource = {
   config: {
     list: PageList,
     show: PageShow,
-    create: PageCreate,
-    edit: PageEdit,
+    create: lazy(() => import('./PageCreate')),
+    edit: lazy(() => import('./PageEdit')),
     icon: DescriptionIcon,
     options: {
       label: 'Pages'
     },
-    recordRepresentation: (record) => `${record['semapps:title']}`,
+    recordRepresentation: (record: PageRecord) => `${record['semapps:title']}`,
   },
   dataModel: {
     types: ['semapps:Page'],
@@ -29,9 +35,10 @@ const resource = {
   translations: {
     fr: {
       name: 'Page |||| Pages',
+      create: 'Créer une nouvelle page',
       fields: {
-        'semapps:title': 'Titre',
-        'semapps:content': 'Contenu'
+        'semapps:title': 'Titre de la page',
+        'semapps:content': 'Contenu',
       }
     }
   }
