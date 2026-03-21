@@ -1,10 +1,9 @@
 import React from 'react';
-import { Show } from 'react-admin';
+import { Show, ShowBaseProps } from 'react-admin';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import RedirectByType from "../../common/RedirectByType";
 
-
-const ResourceRedirect = props => (
+const ResourceRedirect = (props: ShowBaseProps) => (
   <Show {...props}>
     <RedirectByType typesMap={{ Skill: 'pair:Skill' }} />
   </Show>
