@@ -6,6 +6,9 @@ import { TreeItem, TreeView } from '@mui/x-tree-view';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
+// Converts an element to array or returns it if it's already an array
+const toArray = <T,>(v: T | T[]) => Array.isArray(v) ? v : v ? [v] : [];
+
 type RecursiveValue = {
   id: string;
   label: string;
@@ -179,7 +182,7 @@ const DropDownTreeSelect = ({
       clearOnEscape={false}
       options={options}
       disabled={disabled}
-      value={multiple ? (field.value as string[]) || [] : (field.value as string) || ''}
+      value={multiple ? (toArray(field.value) as string[]) || [] : (field.value as string) || ''}
       filterOptions={(v) => v}
       onBlur={(event) => {
         field.onBlur(event);
@@ -223,7 +226,7 @@ const DropDownTreeSelect = ({
             onNodeSelect={(event: React.SyntheticEvent, id: string) => {
               if ((event.target as HTMLElement).tagName === 'LI') {
                 if (multiple) {
-                  field.onChange([...(field.value as string[]), id]);
+                  field.onChange([...(toArray(field.value) as string[]), id]);
                 } else {
                   field.onChange(id);
                 }

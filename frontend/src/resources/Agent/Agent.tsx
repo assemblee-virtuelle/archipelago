@@ -1,8 +1,22 @@
 import React from 'react';
-import { ShowBase } from 'react-admin';
+import { ShowBase, ShowBaseProps } from 'react-admin';
 import RedirectByType from "../../common/RedirectByType";
 
-const AgentRedirect = props => (
+export type PairLocation = {
+  type: 'pair:Place';
+  'pair:label': string;
+  'pair:hasPostalAddress'?: {
+    type: 'pair:PostalAddress';
+    'pair:addressCountry'?: string;
+    'pair:addressLocality'?: string;
+    'pair:addressStreet'?: string;
+    'pair:addressZipCode'?: string;
+  };
+  'pair:latitude': number;
+  'pair:longitude': number;
+};
+
+const AgentRedirect = (props: ShowBaseProps) => (
   <ShowBase {...props}>
     <RedirectByType
       typesMap={{

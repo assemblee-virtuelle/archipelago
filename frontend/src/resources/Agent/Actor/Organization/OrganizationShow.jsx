@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, SimpleList, EmailField } from 'react-admin';
-import { Grid, Avatar } from '@mui/material';
+import { Grid } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
 import {
   ReferenceArrayField,
@@ -12,33 +12,10 @@ import {
 import { ChipList, GridList } from '@semapps/list-components';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
-import ForumIcon from '@mui/icons-material/Forum';
-import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import MembershipAssociationField from "../../../../common/field/MembershipAssociationField";
-
-const domainMapping = {
-  'forums.assemblee-virtuelle.org': {
-    label: 'Forum',
-    icon: <ForumIcon />,
-    color: '#28ccfb',
-    contrastText: 'white'
-  },
-  'peertube.virtual-assembly.org': {
-    label: 'Peertube',
-    icon: <VideocamOutlinedIcon />,
-    color: 'white',
-    contrastText: '#f2690d'
-  },
-  'chat.lescommuns.org': {
-    label: 'Chat',
-    icon: <Avatar src="/lescommuns.jpg" />,
-    color: 'white',
-    contrastText: 'black'
-  }
-}
 
 const OrganizationShow = props => (
   <Show {...props}>
@@ -46,7 +23,7 @@ const OrganizationShow = props => (
       <Grid item xs={12} sm={9}>
         <Hero image="image">
           <TextField source="pair:comment" />
-          <MultiUrlField source="pair:homePage" domainMapping={domainMapping} />
+          <MultiUrlField source="pair:homePage" />
           <EmailField source="pair:e-mail" />
           <ReferenceArrayField reference="Status" source="pair:hasStatus">
             <SeparatedListField link={false}>
@@ -57,6 +34,9 @@ const OrganizationShow = props => (
             <SeparatedListField link={false}>
               <TextField source="pair:label" />
             </SeparatedListField>
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </ReferenceArrayField>
         </Hero>
         <MainList>
@@ -97,9 +77,6 @@ const OrganizationShow = props => (
             </GridList>
           </ReferenceArrayField>
           <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
-            <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </QuickAppendReferenceArrayField>
         </SideList>
