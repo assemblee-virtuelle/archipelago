@@ -4,6 +4,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CodeIcon from '@mui/icons-material/Code';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import { useRecordContext } from 'react-admin';
+import RightLabel from '../../../../common/list/SideList/RightLabel';
 
 
 const OrganizationIntegration = () => {
@@ -41,18 +42,12 @@ const OrganizationIntegration = () => {
 
     const iframeCode = `<iframe src="${iframeUrl}" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>`;
 
+    const actionButtonSx = { borderRadius: '50px', px: 2, fontSize: '13px', fontWeight: 400, textTransform: 'none' };
 
     return (
         <Box mb={4}>
-            <Box sx={{
-                color: 'grey',
-                textAlign: 'right',
-                borderBottom: '1px dashed #c0c0c0',
-                paddingBottom: '10px',
-                marginBottom: '10px',
-            }}>
-                Intégration
-            </Box>
+            <RightLabel label="Intégration" source="pair:involvedIn">
+            </RightLabel>
 
             <Typography variant="body2" sx={{ mb: 2 }}>
                 Affichez les événements de cette organisation sur votre site.
@@ -62,13 +57,9 @@ const OrganizationIntegration = () => {
                 <Button variant="contained" color="secondary" size="small"
                     onClick={() => setIsPreviewOpen(!isPreviewOpen)}
                     sx={{
+                        ...actionButtonSx,
                         mr: 1,
                         mb: 1,
-                        borderRadius: '50px',
-                        px: 2,
-                        fontSize: '13px',
-                        fontWeight: 400,
-                        textTransform: 'none',
                     }}
                 >
                     {isPreviewOpen ? 'Masquer l’aperçu' : 'Aperçu'}
@@ -119,13 +110,9 @@ const OrganizationIntegration = () => {
                 onClick={() => handleCopy(iframeUrl, 'link')}
                 endIcon={<ContentCopyIcon sx={{ fontSize: 16, opacity: 0.7 }} />}
                 sx={{
+                    ...actionButtonSx,
                     mr: 1,
                     mb: 1,
-                    borderRadius: '50px',
-                    px: 2,
-                    fontSize: '13px',
-                    fontWeight: 400,
-                    textTransform: 'none',
                 }}
             >
                 {copied === 'link' ? 'Copié !' : 'Copier le lien'}
@@ -135,13 +122,9 @@ const OrganizationIntegration = () => {
                 onClick={() => handleCopy(iframeCode, 'code')}
                 endIcon={<CodeIcon sx={{ fontSize: 16, opacity: 0.7 }} />}
                 sx={{
+                    ...actionButtonSx,
                     mr: 0.5,
                     mb: 1,
-                    borderRadius: '50px',
-                    px: 2,
-                    fontSize: '13px',
-                    fontWeight: 400,
-                    textTransform: 'none',
                 }}
             >
                 {copied === 'code' ? 'Copié !' : 'Copier le code'}
