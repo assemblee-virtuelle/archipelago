@@ -10,7 +10,6 @@ import LargeLabel from '../../../../common/list/MainList/LargeLabel';
 
 export const OrganizationForm = () => {
   const translate = useTranslate();
-
   const translateHelper = (field: string) => translate(`resources.Organization.fields.helpers.${field}`, { _: '' });
 
   return (

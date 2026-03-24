@@ -1,15 +1,33 @@
-import CreateOrImport from '../../../../common/CreateOrImport';
-import TaskEdit from './TaskEdit';
+import { lazy } from 'react';
 import TaskList from './TaskList';
 import TaskShow from './TaskShow';
 import TaskIcon from '@mui/icons-material/PlaylistAddCheck';
+import { BaseRecord, ForeignId, ImportableRecord } from '../../..';
+
+export type PairTaskRecord = BaseRecord & ImportableRecord & {
+  type: 'pair:Project';
+  'pair:label': string;
+  'pair:description'?: string;
+  'pair:dueDate'?: string;
+  'pair:endDate'?: string;
+  'pair:hasType'?: ForeignId;
+  'pair:hasStatus'?: ForeignId;
+  'pair:assignedTo'?: ForeignId[];
+  'pair:partOf'?: ForeignId[];
+  'pair:hasFollower'?: ForeignId[];
+  'pair:involves'?: ForeignId[];
+  'pair:inspiredBy'?: ForeignId[];
+  'pair:hasTopic'?: ForeignId[];
+  'pair:needs'?: ForeignId[];
+  'pair:uses'?: ForeignId[];
+};
 
 const resource = {
   config: {
     list: TaskList,
     show: TaskShow,
-    create: CreateOrImport,
-    edit: TaskEdit,
+    create: lazy(() => import('./TaskCreate')),
+    edit: lazy(() => import('./TaskEdit')),
     icon: TaskIcon,
     options: {
       label: 'Tâches',
@@ -17,7 +35,7 @@ const resource = {
       parent: 'Activity', // Used in tree menu in leftMenu layout
       isImportable: true, // Can this resource be imported from another server
     },
-    recordRepresentation: (record) => `${record['pair:label']}`,
+    recordRepresentation: (record: PairTaskRecord) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Task'],
@@ -33,6 +51,7 @@ const resource = {
     fr: {
       name: 'Tâche |||| Tâches',
       searchLabel: 'Rechercher une tâche',
+      create: 'Créer une nouvelle tâche',
       fields: {
         'pair:label': 'Titre',
         'pair:description': 'Description',
@@ -48,7 +67,12 @@ const resource = {
         'pair:hasTopic': 'A pour thème',
         'pair:needs': 'A besoin de',
         'pair:uses': 'Utilise'
-      }
+      },
+      form: {
+        basicInformation: 'Informations de base',
+        description: 'Description',
+        other: 'Autres informations',
+      },
     }
   }
 };

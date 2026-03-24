@@ -1,9 +1,9 @@
 import React from 'react';
 import PersonIcon from '@mui/icons-material/Person';
-import { Show } from 'react-admin';
+import { Show, ShowBaseProps } from 'react-admin';
 import RedirectByType from "../../../common/RedirectByType";
 
-const ActorRedirect = props => (
+const ActorRedirect = (props: ShowBaseProps) => (
   <Show {...props}>
     <RedirectByType typesMap={{ Person: 'pair:Person', Organization: 'pair:Organization' }} />
   </Show>
