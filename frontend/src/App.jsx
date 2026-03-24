@@ -18,7 +18,6 @@ import { Layout } from './common/layout';
 import { LayoutProvider } from './layouts/LayoutProvider';
 import { Avatar, Button } from '@mui/material';
 import EmbeddedCalendar from './resources/Agent/Activity/Event/EmbeddedCalendar';
-import DemoEmbeddedCalendar from "../demo/DemoEmbeddedCalendar";
 
 
 const queryClient = new QueryClient({
@@ -59,7 +58,6 @@ const App = () => (
             ))}
             <CustomRoutes noLayout>
               <Route path="/embeddedcalendar" element={<EmbeddedCalendar />} />
-              <Route path="/demo-embeddedcalendar" element={<DemoEmbeddedCalendar />} />
             </CustomRoutes>
           </Admin>
         </LayoutProvider>
