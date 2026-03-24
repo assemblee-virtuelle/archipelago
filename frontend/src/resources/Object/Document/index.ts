@@ -1,22 +1,32 @@
-import CreateOrImport from '../../../common/CreateOrImport';
-import DocumentEdit from './DocumentEdit';
+import { lazy } from 'react';
 import DocumentList from './DocumentList';
 import DocumentShow from './DocumentShow';
 import DescriptionIcon from '@mui/icons-material/Description';
+import { BaseRecord, ForeignId } from '../..';
+
+export type DocumentRecord = BaseRecord & {
+  type: 'pair:Document';
+  'pair:label': string;
+  'pair:comment'?: string;
+  'pair:description'?: string;
+  'pair:hasType'?: ForeignId;
+  'pair:documents'?: ForeignId[];
+  image?: string;
+};
 
 const resource = {
   config: {
     list: DocumentList,
     show: DocumentShow,
-    create: CreateOrImport,
-    edit: DocumentEdit,
+    create: lazy(() => import('./DocumentCreate')),
+    edit: lazy(() => import('./DocumentEdit')),
     icon: DescriptionIcon,
     options: {
       label: 'Documents',
 
       isImportable: true, // Can this resource be imported from another server
     },
-    recordRepresentation: (record) => `${record['pair:label']}`,
+    recordRepresentation: (record: DocumentRecord) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Document'],
@@ -31,6 +41,7 @@ const resource = {
   translations: {
     fr: {
       name: 'Document |||| Documents',
+      create: 'Ajouter un nouveau document',
       fields: {
         'pair:label': 'Titre',
         'pair:comment': 'Extrait',

@@ -1,15 +1,22 @@
-import CreateOrImport from '../../../common/CreateOrImport';
-import SkillEdit from './SkillEdit';
+import { lazy } from 'react';
 import SkillList from './SkillList';
 import SkillShow from './SkillShow';
 import PersonIcon from '@mui/icons-material/Person';
+import { BaseRecord, ForeignId } from '../..';
+
+export type SkillRecord = BaseRecord & {
+  type: 'pair:Skill';
+  'pair:label': string;
+  'pair:neededBy': ForeignId[];
+  'pair:offeredBy': ForeignId[];
+};
 
 const resource = {
   config: {
     list: SkillList,
-    create: CreateOrImport,
-    edit: SkillEdit,
     show: SkillShow,
+    create: lazy(() => import('./SkillCreate')),
+    edit: lazy(() => import('./SkillEdit')),
     icon: PersonIcon,
     options: {
       label: 'Compétences',
@@ -17,7 +24,7 @@ const resource = {
       parent: 'Resource', // Used in tree menu in leftMenu layout
       isImportable: true, // Can this resource be imported from another server
     },
-    recordRepresentation: (record) => `${record['pair:label']}`,
+    recordRepresentation: (record: SkillRecord) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Skill'],
@@ -33,8 +40,9 @@ const resource = {
   translations: {
     fr: {
       name: 'Compétence |||| Compétences',
+      create: 'Ajouter une nouvelle compétence',
       fields: {
-        'pair:label': 'Titre',
+        'pair:label': 'Nom',
         'pair:offeredBy': 'Proposé par',
         'pair:neededBy': 'Requis par'
       }

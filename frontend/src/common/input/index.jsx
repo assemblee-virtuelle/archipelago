@@ -22,9 +22,9 @@ export const ResourcesInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
-export const ActivitiesInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Activity" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
+export const ActivitiesInput = ({ source, helperText }) => (
+  <ReferenceArrayInput reference="Activity" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth helperText={helperText} />
   </ReferenceArrayInput>
 );
 
@@ -58,9 +58,9 @@ export const UsersInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
-export const AgentsInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Agent" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
+export const AgentsInput = ({ source, helperText }) => (
+  <ReferenceArrayInput reference="Agent" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth helperText={helperText} />
   </ReferenceArrayInput>
 );
 
