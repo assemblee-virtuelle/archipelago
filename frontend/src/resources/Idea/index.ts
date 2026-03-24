@@ -1,10 +1,10 @@
 import { lazy } from 'react';
 import IdeaIcon from '@mui/icons-material/EmojiObjects';
-import { BaseRecord, ForeignId } from '..';
+import { BaseRecord, ForeignId, ImportableRecord } from '..';
 import IdeaList from './IdeaList';
 import IdeaShow from './IdeaShow';
 
-export type IdeaRecord = BaseRecord & {
+export type PairIdeaRecord = BaseRecord & ImportableRecord & {
   type: 'pair:Idea';
   'pair:label': string;
   'pair:comment'?: string;
@@ -27,7 +27,7 @@ const resource = {
 
       isImportable: true, // Can this resource be imported from another server
     },
-    recordRepresentation: (record: IdeaRecord) => `${record['pair:label']}`,
+    recordRepresentation: (record: PairIdeaRecord) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Idea'],

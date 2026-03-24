@@ -6,8 +6,8 @@ import { MarkdownField } from '../../../common/field';
 import { MainList, SideList } from '../../../common/list';
 import { Show } from '../../../common/layout';
 
-const ThemeShow = props => (
-  <Show {...props}>
+const ThemeShow = () => (
+  <Show>
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <MainList>

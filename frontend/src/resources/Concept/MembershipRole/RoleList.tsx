@@ -3,13 +3,14 @@ import { Avatar } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/Class';
 import SimpleList from "../../../common/list/SimpleList";
 import { List } from '../../../common/layout';
+import { PairMembershipRoleRecord } from '.';
 
-const RoleList = props => (
-  <List {...props}>
+const RoleList = () => (
+  <List>
     <SimpleList
-      primaryText={record => record['pair:label']}
+      primaryText={(record: PairMembershipRoleRecord) => record['pair:label']}
       leftAvatar={() => (
-        <Avatar width="100%">
+        <Avatar sx={{width: '100%'}}>
           <FavoriteBorderIcon />
         </Avatar>
       )}

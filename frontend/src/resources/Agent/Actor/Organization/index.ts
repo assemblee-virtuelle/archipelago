@@ -3,9 +3,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import OrganizationList from './OrganizationList';
 import OrganizationShow from './OrganizationShow';
 import { PairLocation } from '../../Agent';
-import { BaseRecord, ForeignId } from '../../..';
+import { BaseRecord, ForeignId, ImportableRecord } from '../../..';
 
-export type PairOrganizationRecord = BaseRecord & {
+export type PairOrganizationRecord = BaseRecord & ImportableRecord & {
   type: 'pair:Organization';
   'pair:label': string;
   'pair:comment'?: string;

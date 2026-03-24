@@ -2,9 +2,9 @@ import { lazy } from 'react';
 import SkillList from './SkillList';
 import SkillShow from './SkillShow';
 import PersonIcon from '@mui/icons-material/Person';
-import { BaseRecord, ForeignId } from '../..';
+import { BaseRecord, ForeignId, ImportableRecord } from '../..';
 
-export type SkillRecord = BaseRecord & {
+export type PairSkillRecord = BaseRecord & ImportableRecord & {
   type: 'pair:Skill';
   'pair:label': string;
   'pair:neededBy': ForeignId[];
@@ -24,7 +24,7 @@ const resource = {
       parent: 'Resource', // Used in tree menu in leftMenu layout
       isImportable: true, // Can this resource be imported from another server
     },
-    recordRepresentation: (record: SkillRecord) => `${record['pair:label']}`,
+    recordRepresentation: (record: PairSkillRecord) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Skill'],

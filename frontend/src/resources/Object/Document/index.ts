@@ -2,9 +2,9 @@ import { lazy } from 'react';
 import DocumentList from './DocumentList';
 import DocumentShow from './DocumentShow';
 import DescriptionIcon from '@mui/icons-material/Description';
-import { BaseRecord, ForeignId } from '../..';
+import { BaseRecord, ForeignId, ImportableRecord } from '../..';
 
-export type DocumentRecord = BaseRecord & {
+export type PairDocumentRecord = BaseRecord & ImportableRecord & {
   type: 'pair:Document';
   'pair:label': string;
   'pair:comment'?: string;
@@ -26,7 +26,7 @@ const resource = {
 
       isImportable: true, // Can this resource be imported from another server
     },
-    recordRepresentation: (record: DocumentRecord) => `${record['pair:label']}`,
+    recordRepresentation: (record: PairDocumentRecord) => `${record['pair:label']}`,
   },
   dataModel: {
     types: ['pair:Document'],
