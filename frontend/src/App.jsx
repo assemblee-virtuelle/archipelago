@@ -58,12 +58,12 @@ const App = () => (
             ))}
             <CustomRoutes noLayout>
               <Route path="/embeddedcalendar" element={<EmbeddedCalendar />} />
-            </CustomRoutes>
-          </Admin>
-        </LayoutProvider>
-      </ThemeProvider>
-    </BrowserRouter>
-  </StyledEngineProvider>
+            </CustomRoutes >
+          </Admin >
+        </LayoutProvider >
+      </ThemeProvider >
+    </BrowserRouter >
+  </StyledEngineProvider >
 );
 
 export default App;
