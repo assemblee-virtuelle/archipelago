@@ -4,9 +4,9 @@ import { ReferenceArrayInput, MultiServerAutocompleteArrayInput } from "@semapps
 const ifTwoLetters = ({ q }) => !!(q && q.length > 1);
 const filterOnlyLabel = { _predicates: ['pair:label'] };
 
-export const OrganizationsInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Organization" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
+export const OrganizationsInput = ({ source, helperText }) => (
+  <ReferenceArrayInput reference="Organization" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth helperText={helperText} />
   </ReferenceArrayInput>
 );
 
@@ -28,15 +28,15 @@ export const ActivitiesInput = ({ label, source }) => (
   </ReferenceArrayInput>
 );
 
-export const DocumentsInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Document" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
+export const DocumentsInput = ({ source, helperText }) => (
+  <ReferenceArrayInput reference="Document" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth helperText={helperText} />
   </ReferenceArrayInput>
 );
 
-export const EventsInput = ({ label, source }) => (
-  <ReferenceArrayInput label={label} reference="Event" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
-    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth />
+export const EventsInput = ({ source, helperText }) => (
+  <ReferenceArrayInput reference="Event" source={source} enableGetChoices={ifTwoLetters} filter={filterOnlyLabel}>
+    <MultiServerAutocompleteArrayInput optionText="pair:label" shouldRenderSuggestions={value => value.length > 1} noOptionsText="Tapez au moins deux lettres" fullWidth helperText={helperText} />
   </ReferenceArrayInput>
 );
 

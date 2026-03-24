@@ -1,35 +1,22 @@
 import { lazy } from 'react';
+import EventIcon from '@mui/icons-material/Event';
 import EventList from './EventList';
 import EventShow from './EventShow';
-import EventIcon from '@mui/icons-material/Event';
+import { PairLocation } from '../../Agent';
+import { BaseRecord, ForeignId } from '../../..';
 
-type PairLocation = {
-  type: 'pair:Place';
-  'pair:label': string;
-  'pair:hasPostalAddress'?: {
-    type: 'pair:PostalAddress';
-    'pair:addressCountry'?: string;
-    'pair:addressLocality'?: string;
-    'pair:addressStreet'?: string;
-    'pair:addressZipCode'?: string;
-  };
-  'pair:latitude': number;
-  'pair:longitude': number;
-};
-
-export type PairEventRecord = {
+export type PairEventRecord = BaseRecord & {
   type: 'pair:Event';
-  id: string;
   'pair:label': string;
   'pair:startDate': string;
   'pair:endDate'?: string;
   'pair:hasLocation'?: PairLocation;
   'pair:comment'?: string;
   'pair:description'?: string;
-  'pair:involves'?: string[];
-  'pair:hasTopic'?: string[];
+  'pair:involves'?: ForeignId[];
+  'pair:hasTopic'?: ForeignId[];
   'pair:aboutPage'?: string;
-  image: string;
+  image?: string;
 };
 
 const resource = {

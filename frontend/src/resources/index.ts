@@ -40,6 +40,15 @@ export interface ResourceOptions {
   isImportable?: boolean;
 }
 
+export type ForeignId = string;
+
+export type BaseRecord = {
+  'dc:created': string;
+  'dc:creator': string;
+  'dc:modified': string;
+  id: string;
+};
+
 const resources = {
   Agent,
 
