@@ -14,6 +14,7 @@ The table below lists all configurable options:
 | `HomePage`            | `React component`  | default homePage  | React component to override default home page
 | `LoginPage`           | `React component`  | default loginPage | React component to override default login page
 | `resources`           | `function`         | default resources | Customizes app resources. Function is of type (baseResources) => customizedResources
+| `useShortId`          | `boolean`          | false             | Shorten resources ids for default server in page urls, skipping server and container base url
 
 To customize fully your deployment, you will need to override also the `/frontend/public/` folder to insert your own public assets, and the file `/frontend/index.html` for your HTML headers or if you need to insert further scripts.
 
