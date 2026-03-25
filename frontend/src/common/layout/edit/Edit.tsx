@@ -1,12 +1,26 @@
 import React, { PropsWithChildren } from 'react';
-import { EditBase, EditProps, useCreatePath, useNavigate, useParams, useResourceContext } from 'react-admin';
-import { EditActionsWithPermissions } from '@semapps/auth-provider';
+import {
+  EditBase,
+  EditProps,
+  SimpleForm,
+  SimpleFormProps,
+  useCreatePath,
+  useNavigate,
+  useParams,
+  useResourceContext,
+} from 'react-admin';
+import { EditActionsWithPermissions, EditToolbarWithPermissions } from '@semapps/auth-provider';
 import { EditView } from '../index';
 import { Container } from '@mui/material';
 import useShortId from '../../useShortId';
 import config from '../../../config';
 
-const Edit = ({ title, children, ...rest }: PropsWithChildren<EditProps>) => {
+const Edit = ({
+  title,
+  children,
+  toolbar,
+  ...rest
+}: PropsWithChildren<EditProps> & Pick<SimpleFormProps, 'toolbar'>) => {
   const params = useParams();
   const navigate = useNavigate();
   const getShortId = useShortId();
@@ -24,10 +38,18 @@ const Edit = ({ title, children, ...rest }: PropsWithChildren<EditProps>) => {
   if (loading) return;
 
   return (
-    <EditBase mutationMode="pessimistic" id={fullId} {...rest}>
+    <EditBase mutationMode="pessimistic" id={fullId} redirect="show" {...rest}>
       <Container disableGutters>
         <EditView title={title} actions={<EditActionsWithPermissions />}>
-          {children}
+          <SimpleForm
+            spacing={2}
+            useFlexGap
+            toolbar={toolbar || <EditToolbarWithPermissions />}
+            mode="onBlur"
+            reValidateMode="onBlur"
+          >
+            {children}
+          </SimpleForm>
         </EditView>
       </Container>
     </EditBase>

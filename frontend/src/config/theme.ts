@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Components {
     RaToolbar?: unknown;
     RaListToolbar?: unknown;
@@ -9,9 +9,20 @@ declare module "@mui/material/styles" {
     RaMenuItemLink?: unknown;
     RaCreateButton?: unknown;
   }
+
+  interface Palette {
+    inputBackgroundColor: Palette['primary'];
+  }
+  interface PaletteOptions {
+    inputBackgroundColor?: PaletteOptions['primary'];
+  }
 }
 
-const colorTheme = createTheme();
+const colorTheme = createTheme({
+  palette: {
+    inputBackgroundColor: { main: '#efefef' },
+  },
+});
 
 const theme = createTheme(colorTheme, {
   components: {
@@ -70,7 +81,7 @@ const theme = createTheme(colorTheme, {
     MuiOutlinedInput: {
       styleOverrides: {
         root: {
-          backgroundColor: '#efefef',
+          backgroundColor: colorTheme.palette.inputBackgroundColor.main,
         },
       },
     },
@@ -95,7 +106,7 @@ const theme = createTheme(colorTheme, {
       styleOverrides: () => ({
         body: {
           [theme.breakpoints.up('md')]: {
-            'overscrollBehaviorY': 'none'
+            overscrollBehaviorY: 'none',
           },
         },
       }),
@@ -105,14 +116,14 @@ const theme = createTheme(colorTheme, {
         root: {
           '.MuiToolbar-root &.RaCreateButton-floating': {
             display: 'none',
-          }
-        }
-      }
+          },
+        },
+      },
     },
     MuiTextField: {
       defaultProps: {
-        size: "small"
-      }
+        size: 'small',
+      },
     },
   },
 });
