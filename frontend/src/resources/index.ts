@@ -49,6 +49,10 @@ export type BaseRecord = {
   id: string;
 };
 
+export type ImportableRecord = {
+  'http://www.w3.org/ns/prov#wasDerivedFrom'?: string;
+};
+
 const resources = {
   Agent,
 

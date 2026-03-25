@@ -3,9 +3,9 @@ import EventIcon from '@mui/icons-material/Event';
 import EventList from './EventList';
 import EventShow from './EventShow';
 import { PairLocation } from '../../Agent';
-import { BaseRecord, ForeignId } from '../../..';
+import { BaseRecord, ForeignId, ImportableRecord } from '../../..';
 
-export type PairEventRecord = BaseRecord & {
+export type PairEventRecord = BaseRecord & ImportableRecord & {
   type: 'pair:Event';
   'pair:label': string;
   'pair:startDate': string;

@@ -1,23 +1,10 @@
 import React from 'react';
 import { useTranslate, getFieldLabelTranslationArgs, useShowContext } from 'react-admin';
 import { Box } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
 import LargeLabel from './LargeLabel';
 
-const useStyles = makeStyles(() => ({
-  divider: {
-    paddingTop: 5,
-    paddingBottom: 20,
-    borderBottom: '1px lightgrey solid',
-    '&:last-child': {
-      borderBottom: 'none'
-    }
-  }
-}));
-
-const MainList = ({ children, divider, Label = LargeLabel }) => {
+const MainList = ({ children, Label = LargeLabel }) => {
   const translate = useTranslate();
-  const classes = useStyles();
   const { isPending, isLoading, record, resource } = useShowContext();
 
   if (isPending || isLoading || !record) return null;
@@ -26,7 +13,7 @@ const MainList = ({ children, divider, Label = LargeLabel }) => {
     <Box>
       {React.Children.map(children, field =>
         field && record[field.props.source] && (!Array.isArray(record[field.props.source]) || record[field.props.source].length > 0) && React.isValidElement(field) ? (
-          <div key={field.props.source} className={divider ? classes.divider : null}>
+          <div key={field.props.source}>
             {field.props.label !== false ? (
               <>
                 <Label>
