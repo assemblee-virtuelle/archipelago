@@ -11,7 +11,7 @@ const ProjectFilterSidebar = () => {
   return (
     <Layout.Aside>
       {Layout.name === 'topMenu' && (
-        <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Project.searchLabel')} />
+        <FilterLiveSearch fullWidth source="pair:label" hiddenLabel label={translate('resources.Project.searchLabel')} />
       )}
       <ReferenceFilter
         reference="Status"

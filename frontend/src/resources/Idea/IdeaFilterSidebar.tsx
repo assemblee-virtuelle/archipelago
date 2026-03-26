@@ -10,7 +10,7 @@ const IdeaFilterSidebar = () => {
   return (
     <Layout.Aside>
       {Layout.name === 'topMenu' && (
-        <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Idea.searchLabel')} />
+        <FilterLiveSearch fullWidth source="pair:label" hiddenLabel label={translate('resources.Idea.searchLabel')} />
       )}
       <ReferenceFilter
         reference="Status"

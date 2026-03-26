@@ -10,7 +10,7 @@ const PersonFilterSidebar = () => {
   return (
     <Layout.Aside>
       {Layout.name === 'topMenu' && (
-        <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Person.searchLabel')} />
+        <FilterLiveSearch fullWidth source="pair:label" hiddenLabel label={translate('resources.Person.searchLabel')} />
       )}
       <ReferenceFilter
         label="Intérêts"
