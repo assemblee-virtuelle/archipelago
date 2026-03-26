@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   TextInput,
   ArrayInput,
@@ -12,15 +12,20 @@ import {
   SelectInput,
   useWrappedSource,
   useTranslate,
-} from "react-admin";
+  CommonInputProps,
+  ReferenceInputProps,
+} from 'react-admin';
 import { useFormContext } from 'react-hook-form';
+import { BaseRecord } from '../../resources';
+
+const toArray = <T,>(v: T | T[]) => (Array.isArray(v) ? v : [v]);
 
 // We need to redeclare a container component here to set the initial value of the relationship in the form
-const ReferenceInputForm = ({ children, scopedSource, reference, source }) => {
+const ReferenceInputForm = ({ children, scopedSource, reference, source }: ReferenceInputProps) => {
   const form = useFormContext();
   const finalSource = useWrappedSource(source);
   const membershipAssociation = useRecordContext();
-  const value = membershipAssociation?.[scopedSource];
+  const value = membershipAssociation?.[scopedSource as string] as string;
 
   useEffect(() => {
     if (value) {
@@ -35,14 +40,16 @@ const ReferenceInputForm = ({ children, scopedSource, reference, source }) => {
   );
 };
 
-const MembershipAssociationInput = (props) => {
+type Props = CommonInputProps & {
+  referenceInputProps: ReferenceInputProps;
+};
+
+const MembershipAssociationInput = (props: Props) => {
   const { source, referenceInputProps } = props;
   const record = useRecordContext();
   const translate = useTranslate();
 
-  const toArray = (v) => Array.isArray(v) ? v : [v];
-
-  const { data: membershipAssociations } = useGetMany("MembershipAssociation", {
+  const { data: membershipAssociations } = useGetMany<BaseRecord>('MembershipAssociation', {
     ids: toArray(record?.[source] || []),
   });
 
@@ -53,7 +60,7 @@ const MembershipAssociationInput = (props) => {
       <SimpleFormIterator inline disableReordering>
         <FormDataConsumer>
           {({ scopedFormData }) => {
-            const membershipAssociation = membershipAssociations?.find((r) => r.id === scopedFormData);
+            const membershipAssociation = membershipAssociations?.find((r) => r.id === (scopedFormData as unknown as string));
 
             return (
               <RecordContextProvider value={membershipAssociation}>
@@ -68,30 +75,24 @@ const MembershipAssociationInput = (props) => {
                     size="small"
                     sx={{
                       mt: 1,
-                      mb: "4px",
+                      mb: '4px',
                       minWidth: 300,
                     }}
-                    shouldRenderSuggestions={(value) =>
-                      value && value.length > 1
-                    }
+                    shouldRenderSuggestions={(value: string) => value && value.length > 1}
                     noOptionsText="Veuillez saisir au moins deux lettres pour afficher les suggestions"
                   />
                 </ReferenceInputForm>
                 <ReferenceInputForm
                   reference="MembershipRole"
                   scopedSource={'pair:membershipRole'}
-                  source={"pair:membershipRole"}
+                  source={'pair:membershipRole'}
                 >
                   <SelectInput
-                    source={"pair:membershipRole"}
+                    source={'pair:membershipRole'}
                     label={translate('resources.Organization.fields.pair:membershipRole')}
                   />
                 </ReferenceInputForm>
-                <TextInput
-                  source={"type"}
-                  defaultValue={"pair:MembershipAssociation"}
-                  sx={{ display: "none" }}
-                />
+                <TextInput source={'type'} defaultValue={'pair:MembershipAssociation'} sx={{ display: 'none' }} />
               </RecordContextProvider>
             );
           }}

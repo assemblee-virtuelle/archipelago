@@ -26,7 +26,6 @@ const EndDateInput = ({ source, helperText }: Pick<CommonInputProps, 'source' | 
 
 const EventForm = () => {
   const translate = useTranslate();
-
   const translateHelper = (field: string) => translate(`resources.Event.fields.helpers.${field}`, { _: '' });
 
   return (
