@@ -16,7 +16,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 
   '& textarea': {
-    backgroundColor: theme.palette.grey[200],
+    backgroundColor: theme.palette.inputBackgroundColor.main,
   },
 }));
 

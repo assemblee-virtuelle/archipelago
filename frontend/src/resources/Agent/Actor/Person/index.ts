@@ -69,7 +69,7 @@ const resource = {
       deletePopup: {
         title: 'Suppression du compte utilisateur',
         content: 'Êtes-vous sûr·e de vouloir supprimer ce compte utilisateur ?',
-        warningMessage: 'Cette action est irréversible.'
+        warningMessage: 'Cette action est irréversible.',
       }
     }
   }

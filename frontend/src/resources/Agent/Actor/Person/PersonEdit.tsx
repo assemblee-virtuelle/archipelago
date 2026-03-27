@@ -1,5 +1,12 @@
 import React from 'react';
-import { useGetIdentity, useRedirect, SimpleForm, SaveButton, Toolbar as RaToolbar, useLogout, useTranslate } from 'react-admin';
+import {
+  useGetIdentity,
+  useRedirect,
+  SaveButton,
+  Toolbar as RaToolbar,
+  useLogout,
+  useTranslate,
+} from 'react-admin';
 import { Edit } from '../../../../common/layout';
 import PersonForm from './PersonForm';
 import { PairPersonRecord } from '.';
@@ -10,6 +17,8 @@ export const PersonEdit = () => {
   const redirect = useRedirect();
   const { data: identityData, refetch: refetchIdentity } = useGetIdentity();
   const logout = useLogout();
+
+  const warningMessage = translate('resources.Person.deletePopup.warningMessage', { _: '' });
 
   return (
     <Edit
@@ -23,40 +32,35 @@ export const PersonEdit = () => {
         ...data,
         'pair:label': `${data['pair:firstName']} ${(data['pair:lastName'] || '')?.toUpperCase()}`,
       })}
-    >
-      <SimpleForm
-        spacing={2}
-        useFlexGap
-        mode="onBlur"
-        reValidateMode="onBlur"
-        toolbar={
-          <RaToolbar sx={{ justifyContent: 'space-between' }}>
-            <SaveButton />
-            <DeleteButtonWithPermissions
-              confirmTitle={translate('resources.Person.deletePopup.title')}
-              confirmContent={
-                <div>
-                  <p>{translate('resources.Person.deletePopup.content')}</p>
+      toolbar={
+        <RaToolbar sx={{ justifyContent: 'space-between' }}>
+          <SaveButton />
+          <DeleteButtonWithPermissions
+            confirmTitle={translate('resources.Person.deletePopup.title')}
+            confirmContent={
+              <div>
+                <p>{translate('resources.Person.deletePopup.content')}</p>
+                {warningMessage !== '' && (
                   <p>
-                    <strong>{translate('resources.Person.deletePopup.warningMessage')}</strong>
+                    <strong>{warningMessage}</strong>
                   </p>
-                </div>
-              }
-              mutationOptions={{
-                onSuccess: (deletedRecord: PairPersonRecord) => {
-                  if (identityData?.id === deletedRecord?.id) {
-                    void logout();
-                  } else {
-                    redirect('list', 'Person');
-                  }
-                },
-              }}
-            />
-          </RaToolbar>
-        }
-      >
-        <PersonForm />
-      </SimpleForm>
+                )}
+              </div>
+            }
+            mutationOptions={{
+              onSuccess: (deletedRecord: PairPersonRecord) => {
+                if (identityData?.id === deletedRecord?.id) {
+                  void logout();
+                } else {
+                  redirect('list', 'Person');
+                }
+              },
+            }}
+          />
+        </RaToolbar>
+      }
+    >
+      <PersonForm />
     </Edit>
   );
 };
