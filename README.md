@@ -62,6 +62,7 @@ If you need to customize your Archipelago, you can follow the docs below:
 - [Layout configuration](./docs/layouts.md)
 - [Resources permissions](./docs/permissions.md)
 - [Geocoding configuration](./docs/permissions.md)
+- [Embedded calendar](./docs/embedded-calendar.md)
 
 ## Linking to SemApps packages
 
@@ -132,3 +133,6 @@ You can also call dbMigration actions from REPL middleware with `call dbMigratio
 ## Deploying to production
 
 Follow the guide [here](deploy/README.md).
+
+A demo for the embedded calendar is available in [demo/README.md](demo/README.md).
+
