@@ -88,11 +88,4 @@ Si l’aperçu ne s’affiche pas, vérifiez que :
 Capture sur les blocs de l'application :
 <img src="capture-demo.png" alt="Capture sur les blocs de l'application" />
 Capture d'intégration de l'iframe sur une page html :
-<img src="Capture-intégration-html.png" alt="Capture de l'application sur un site externe" />
-
-
-<!-- ### Fonctionnement global
-- Le frontend affiche le calendrier via le composant `EmbeddedCalendar.tsx`
-- Les paramètres dans l’URL (`view`, `theme`, `organization`) permettent de filtrer les événements
-- Le frontend appelle l’API `/api/embeddedcalendar/events`
-- Le backend récupère et filtre les événements selon les paramètres -->
+<img src="Capture-integration-html.png" alt="Capture de l'application sur un site externe" />
