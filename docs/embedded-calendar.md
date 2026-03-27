@@ -1,55 +1,53 @@
-# Calendrier embarquable
+# Embeddable Calendar
 
-## Objectif
-Le calendrier embarquable permet de générer une URL ou un code iframe afin d’afficher les événements du site Archipelago sur un autre site.
-Les événements peuvent être affichés soit en calendrier, soit en liste.
+## Purpose
+The embeddable calendar allows you to generate a URL or iframe code to display events from the Archipelago website on another website.
+Events can be displayed either in calendar view or in list view.
 
+## Usage
+The iframe code can be embedded into an external website.
+You simply need to copy this code and add it to an HTML file or to a dedicated area in a CMS.
+The URL can contain parameters to filter events by theme, by organization, or both.
 
-## Utilisation
-Le code iframe peut être intégré dans un site externe.
-Il suffit de copier ce code et de l’ajouter dans un fichier HTML ou dans une zone dédiée d’un CMS.
-L’URL peut contenir des paramètres permettant de filtrer les événements (par thème, par organisation, ou les deux).
+## General behavior
+When the iframe is displayed on an external website, it fetches events from Archipelago.
+Events can be displayed with or without filters, depending on the parameters defined in the URL.
+This allows an external website to display events without being directly on the Archipelago website.
+For example, an organization can display only the events relevant to it.
 
-
-## Fonctionnement général
-Lorsque l’iframe est affichée sur un site externe, elle récupère les événements depuis Archipelago.
-Les événements peuvent être affichés avec ou sans filtres, selon les paramètres définis dans l’URL.
-Cela permet à un site externe d’afficher des événements sans être directement sur le site Archipelago.
-Par exemple, une organisation peut afficher uniquement les événements qui la concernent.
-
-## Paramètres URL
-L’URL du calendrier accepte plusieurs paramètres permettant de modifier l’affichage et de filtrer les événements.
-Ces paramètres peuvent être utilisés séparément ou combinés.
+## URL parameters
+The calendar URL accepts several parameters to change the display and filter events.
+These parameters can be used separately or combined.
 
 ### view
-Permet de choisir la vue du calendrier :
-- `view=calendar` : affichage en vue calendrier
-- `view=list` : affichage en vue liste
+Used to choose the calendar view:
+- `view=calendar` : displays the calendar view
+- `view=list` : displays the list view
 
 ### theme
-Permet de filtrer les événements par thème.
-Exemple :
-- `theme=jeunesse` (affiche uniquement les événements liés au thème "jeunesse")
+Used to filter events by theme.
+Example:
+- `theme=youth` (displays only events related to the "youth" theme)
 
 ### organization
-Permet de filtrer les événements par organisation.
-Exemple :
-- `organization=organisation-creative` (affiche uniquement les événements de l’organisation "organisation créative")
+Used to filter events by organization.
+Example:
+- `organization=creative-organization` (displays only events from the "Creative Organization")
 
-### Exemples d’URL (en local)
-- Vue calendrier avec filtres thème et organisation :
+### Example URLs (local)
+- Calendar view with theme and organization filters:
 
-http://localhost:5173/embeddedcalendar?view=calendar&theme=sport&organization=organisation-creative
+http://localhost:5173/embeddedcalendar?view=calendar&theme=sport&organization=creative-organization
 
-- Vue liste avec filtre par thème :
+- List view with a theme filter:
 
-http://localhost:5173/embeddedcalendar?view=list&theme=jeunesse
+http://localhost:5173/embeddedcalendar?view=list&theme=youth
 
-- Vue liste avec filtre par organisation :
+- List view with an organization filter:
 
-http://localhost:5173/embeddedcalendar?view=list&organization=organisation-creative
+http://localhost:5173/embeddedcalendar?view=list&organization=creative-organization
 
-- Vue calendrier sans filtre :
+- Calendar view without filters:
 
 http://localhost:5173/embeddedcalendar?view=calendar
 
@@ -58,26 +56,26 @@ http://localhost:5173/embeddedcalendar?view=calendar
 - `frontend/src/resources/Agent/Event/EmbeddedCalendar.tsx`
 - `middleware/services/embeddedcalendar.service.js`
 
-`DemoEmbeddedCalendar.tsx` est l’application de démonstration qui permet de générer une URL ou un code iframe du calendrier, avec ou sans filtres.
+`DemoEmbeddedCalendar.tsx` is the demo application used to generate a calendar URL or iframe code, with or without filters.
 
-`EmbeddedCalendar.tsx` est le composant qui affiche le calendrier des événements. Il lit les paramètres dans l’URL (vue, thème, organisation) et affiche les événements correspondants.
+`EmbeddedCalendar.tsx` is the component that displays the event calendar. It reads the URL parameters (view, theme, organization) and displays the corresponding events.
 
-`embeddedcalendar.service.js` est le service backend qui permet de récupérer les événements et d’appliquer les filtres (thème, organisation). Il est utilisé par le frontend pour obtenir les données à afficher.
-Le service utilise un endpoint backend pour récupérer les événements :
+`embeddedcalendar.service.js` is the backend service used to fetch events and apply filters (theme, organization). It is used by the frontend to get the data to display.
+The service uses a backend endpoint to retrieve events:
 `GET /api/embeddedcalendar/events`
-Cet endpoint renvoie les événements filtrés.
+This endpoint returns filtered events.
 
-## Intégration dans la fiche organisation
-Le composant `frontend/src/resources/Agent/Actor/Organization/OrganizationIntegration.jsx` permet d’afficher un module simplifié de la démonstration directement sur la page d’une organisation.
-Cela facilite l’utilisation pour les utilisateurs non techniques, en leur permettant d’obtenir rapidement une vue (calendrier ou liste) personnalisée pour leur organisation, grâce aux boutons suivants :
-- afficher un aperçu du calendrier ou de la liste  
-- copier le lien  
-- copier le code iframe  
-L’URL générée contient automatiquement le paramètre `organization`, correspondant à l’organisation affichée.
+## Integration into the organization page
+The `frontend/src/resources/Agent/Actor/Organization/OrganizationIntegration.jsx` component displays a simplified version of the demo directly on an organization page.
+This makes it easier for non-technical users to use, allowing them to quickly get a customized view (calendar or list) for their organization using the following buttons:
+- show a preview of the calendar or list
+- copy the link
+- copy the iframe code
 
-## Fonctionnement technique
+The generated URL automatically includes the `organization` parameter corresponding to the displayed organization.
 
-- Le composant `EmbeddedCalendar.tsx` lit les paramètres dans l’URL
-- Il appelle le backend pour récupérer les événements
-- Le service `embeddedcalendar.service.js` filtre les événements
-- Le frontend affiche les résultats (calendrier ou liste)
+## Technical behavior
+- The `EmbeddedCalendar.tsx` component reads the parameters from the URL
+- It calls the backend to fetch events
+- The `embeddedcalendar.service.js` service filters the events
+- The frontend displays the results (calendar or list)

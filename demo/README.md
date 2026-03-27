@@ -1,91 +1,94 @@
-# Démo du calendrier intégré
+# Embedded Calendar Demo
 
 
-## À quoi sert cette application ?
-Cette démo permet de générer une iframe du calendrier embarqué (iframe) d'Archipelago / Transiscope afin d’intégrer les événements sur un site externe. Elle permet aussi de créer une URL prête à l’emploi, avec ou sans filtres, par thème, par organisation, ou les deux.
+## What is this application for?
+This demo allows you to generate an iframe of the embedded Archipelago / Transiscope calendar in order to display events on an external website.
+It also allows you to create a ready-to-use URL, with or without filters, by theme, by organization, or both.
 
-### Prérequis
-- Node.js
-- Yarn
-- Le projet Archipelago / Transiscope doit être lancé (frontend + backend)
 
-### Installation et démarrage :
-L'application est autonome et indépendante du frontend principal, mais nécessite que le projet Archipelago / Transiscope soit lancé pour fonctionner correctement.
+### Prerequisites
+- Node.js  
+- Yarn  
+- The Archipelago / Transiscope project must be running (frontend + backend)
 
-Installation des dépendances, à faire une seule fois :
+### Installation and startup
+The application is standalone and independent from the main frontend, but it requires the Archipelago / Transiscope project to be running in order to work properly.
+
+Install dependencies (only once):
 ```shell
 cd archipelago/demo
 yarn install
 ```
-Démarrage de l’application :
+
+Start the application:
 ```shell
 yarn dev
 ```
-Pour arrêter l’application :
+To stop the application:
 
 `Ctrl + C`
 
 
-Pour afficher l’aperçu utilisé par `EmbeddedCalendar.tsx`, il faut renseigner dans `demo/.env` l’URL du site Archipelago / Transiscope à utiliser.
+To display the preview used by `EmbeddedCalendar.tsx`, you need to set the URL of the Archipelago / Transiscope site to use in `demo/.env`.
 
-Exemple en local :
+Local example:
 ```shell
 VITE_FRONTEND_URL=http://localhost:5173/
 ```
 
 
-### Utilisation de l’application
-À l’ouverture, l’application affiche par défaut une vue **Calendrier**, sans filtre sélectionné.
+### Using the application
+When opened, the application displays the **Calendar** view by default, with no filters selected.
 
-L’interface est organisée en deux blocs :
+The interface is organized into two sections:
 
-| Bloc | Contenu |
+| Section | Content |
 | :-- | :-- |
-| Bloc 1 | Lien URL et choix de la vue |
-| Bloc 2 | Code iframe et filtres |
+| Section 1 | URL link and view selection |
+| Section 2 | iframe code and filters |
 
-Ces deux blocs sont liés : les options sélectionnées dans l’un mettent à jour le résultat affiché dans l’autre.
+These two sections are linked: the options selected in one update the result displayed in the other.
 
-##### Bloc 1 : lien URL et choix de la vue
+##### Section 1: URL link and view selection
 
-Dans ce bloc, vous pouvez choisir entre deux vues :
-- **Calendrier**
-- **Liste**
+In this section, you can choose between two views:
+- **Calendar**
+- **List**
 
-Selon la vue sélectionnée, l’URL générée est mise à jour automatiquement et affichée sous les boutons.
+Depending on the selected view, the generated URL is automatically updated and displayed below the buttons.
 
-Un bouton `Copier l’URL` permet de copier plus facilement.
+A `Copy URL` button makes it easier to copy.
 
-##### Bloc 2 : code iframe et filtres
+##### Section 2: iframe code and filters
 
-Dans ce bloc, vous pouvez générer le code de l’iframe avec deux filtres possibles :
-- **Thème**
-- **Organisation**
+In this section, you can generate the iframe code with two possible filters:
+- **Theme**
+- **Organization**
 
-Ces filtres peuvent être utilisés séparément ou ensemble.
-Après validation avec le bouton `OK`, le code de l’iframe est mis à jour selon la vue et les filtres choisis.
+These filters can be used separately or together.
+After confirming with the `OK` button, the iframe code is updated according to the selected view and filters.
 
-Un bouton `Copier l’iframe` permet ensuite de copier ce code plus facilement.
+A `Copy iframe` button then lets you copy this code more easily.
 
-#### Exemple de résultat
+#### Example output
 
-Exemple d’URL générée :
+Example of a generated URL:
 ```shell
-http://localhost:5173/embeddedcalendar?view=list&theme=jeunesse&organization=organisation-creative
+http://localhost:5173/embeddedcalendar?view=list&theme=youth&organization=creative-organization
 ```
-Exemple de code iframe généré :
+Example of generated iframe code:
 ```html
-<iframe src="http://localhost:5173/embeddedcalendar?view=list&theme=jeunesse&organization=organisation-creative" width="100%" height="600" style="border:0" title="Calendrier Transiscope"></iframe>
+<iframe src="http://localhost:5173/embeddedcalendar?view=list&theme=youth&organization=creative-organization" width="100%" height="600" style="border:0" title="Transiscope Calendar"></iframe>
 ```
 
 
-#### Dépannage
-Si l’aperçu ne s’affiche pas, vérifiez que :
-- le frontend Archipelago / Transiscope est bien lancé ;
-- la variable `VITE_FRONTEND_URL` dans `demo/.env` pointe vers la bonne URL.
+#### Troubleshooting
+If the preview does not appear, check that:
+- the Archipelago / Transiscope frontend is running;
+- the `VITE_FRONTEND_URL` variable in `demo/.env` points to the correct URL.
 
-### Exemple visuel
-Capture sur les blocs de l'application :
-<img src="capture-demo.png" alt="Capture sur les blocs de l'application" />
-Capture d'intégration de l'iframe sur une page html :
-<img src="Capture-integration-html.png" alt="Capture de l'application sur un site externe" />
+### Visual example
+Screenshot of the application's sections:
+<img src="capture-demo.png" alt="Screenshot of the application's sections" />
+Screenshot of the iframe integrated into an HTML page:
+<img src="capture-integration-html.png" alt="Screenshot of the application on an external website" />

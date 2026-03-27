@@ -132,3 +132,6 @@ You can also call dbMigration actions from REPL middleware with `call dbMigratio
 ## Deploying to production
 
 Follow the guide [here](deploy/README.md).
+
+A demo for the embedded calendar is available in [demo/README.md](demo/README.md).
+
