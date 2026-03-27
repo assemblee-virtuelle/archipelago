@@ -62,6 +62,7 @@ If you need to customize your Archipelago, you can follow the docs below:
 - [Layout configuration](./docs/layouts.md)
 - [Resources permissions](./docs/permissions.md)
 - [Geocoding configuration](./docs/permissions.md)
+- [Embedded calendar](./docs/embedded-calendar.md)
 
 ## Linking to SemApps packages
 
