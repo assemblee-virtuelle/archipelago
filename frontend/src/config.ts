@@ -27,11 +27,12 @@ interface ConfigInterface {
   middlewareUrl: string;
   title: string;
   layout: LayoutOptions;
+  geocoder: MapboxOptions | PhotonOptions;
   theme?: (baseTheme: Theme) => Theme;
   HomePage?: JSX.Element;
   LoginPage?: JSX.Element;
   resources?: (baseResources: Record<string, ResourceConfig>) => Record<string, ResourceConfig>;
-  geocoder: MapboxOptions | PhotonOptions;
+  useShortId?: boolean;
 }
 
 const config: ConfigInterface = {
@@ -51,6 +52,8 @@ const config: ConfigInterface = {
     name: 'topMenu',
     options: {},
   },
+
+  useShortId: true
 };
 
 export default config;

@@ -8,7 +8,7 @@ Structure of the `layout` configuration attribute is as below:
 {
   ...
   layout: {
-    name: 'layoutName', // Default is 'leftMenu'
+    name: 'layoutName', // Default is 'topMenu'
     options: {
       layoutOption1: 'value1',
       layoutOption2: 'value2',
