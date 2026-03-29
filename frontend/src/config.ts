@@ -52,8 +52,6 @@ const config: ConfigInterface = {
     name: 'topMenu',
     options: {},
   },
-
-  useShortId: true
 };
 
 export default config;

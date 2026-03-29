@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { useRecordContext } from 'react-admin';
 import { Box, Avatar, Chip } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import LaunchIcon from '@mui/icons-material/Launch';
 
 const useStyles = makeStyles(() => ({
   parent: {
@@ -43,17 +42,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const handleClick = () => {};
-
 type AvatarRecord = Record<string, unknown>;
 
 type Props = {
   label: string | ((record?: AvatarRecord) => string);
-  defaultLabel: string;
+  defaultLabel?: string;
   image: string | ((record?: AvatarRecord) => string);
-  fallback: string | ((record?: AvatarRecord) => string);
-  externalLink: boolean;
-  labelColor: 'default' | 'secondary' | 'primary' | 'error' | 'info' | 'success' | 'warning';
+  fallback?: string | ((record?: AvatarRecord) => string);
+  labelColor?: 'default' | 'secondary' | 'primary' | 'error' | 'info' | 'success' | 'warning';
 };
 
 const AvatarWithLabelField = ({
@@ -61,10 +57,9 @@ const AvatarWithLabelField = ({
   defaultLabel,
   image,
   fallback,
-  externalLink = false,
   labelColor = 'secondary',
   ...rest
-}: Props) => {
+}: PropsWithChildren<Props>) => {
   const classes = useStyles();
   const record = useRecordContext<Record<string, string>>();
 
@@ -77,16 +72,7 @@ const AvatarWithLabelField = ({
       <div className={classes.square}>
         <Avatar src={computedImage || computedFallback} alt={computedLabel} className={classes.avatar} {...rest} />
       </div>
-      {!computedLabel ? null : externalLink ? (
-        <Chip
-          color={labelColor}
-          className={classes.chip}
-          size="small"
-          label={computedLabel}
-          deleteIcon={<LaunchIcon className={classes.launchIcon} />}
-          onDelete={handleClick}
-        />
-      ) : (
+      {!computedLabel ? null : (
         <Chip color={labelColor} className={classes.chip} size="small" label={computedLabel} />
       )}
     </Box>

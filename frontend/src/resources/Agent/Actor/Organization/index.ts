@@ -88,6 +88,11 @@ const resource = {
         contact: 'Contact',
         other: 'Autres informations',
         members: 'Membres'
+      },
+      show: {
+        'involvedInProject': 'Impliqué dans les projets',
+        'involvedInTask': 'Impliqué dans les tâches',
+        'involvedInEvent': 'Impliqué dans les évènements',
       }
     }
   }
