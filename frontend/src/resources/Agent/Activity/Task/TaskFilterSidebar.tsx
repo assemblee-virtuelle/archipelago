@@ -10,7 +10,7 @@ const TaskFilterSidebar = () => {
   return (
     <Layout.Aside>
       {Layout.name === 'topMenu' && (
-        <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Task.searchLabel')} />
+        <FilterLiveSearch fullWidth source="pair:label" hiddenLabel label={translate('resources.Task.searchLabel')} />
       )}
       <ReferenceFilter
         reference="Status"

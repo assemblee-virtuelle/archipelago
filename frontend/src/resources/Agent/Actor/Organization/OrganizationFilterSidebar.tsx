@@ -11,7 +11,7 @@ const OrganizationFilterSidebar = () => {
   return (
     <Layout.Aside>
       {Layout.name === 'topMenu' && (
-        <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Organization.searchLabel')} />
+        <FilterLiveSearch fullWidth source="pair:label" hiddenLabel label={translate('resources.Organization.searchLabel')} />
       )}
       <ReferenceFilter
         reference="Type"

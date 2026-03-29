@@ -10,7 +10,7 @@ const EventFilterSidebar = () => {
   return (
     <Layout.Aside>
       {Layout.name === 'topMenu' && (
-        <FilterLiveSearch fullWidth source="q" hiddenLabel label={translate('resources.Event.searchLabel')} />
+        <FilterLiveSearch fullWidth source="pair:label" hiddenLabel label={translate('resources.Event.searchLabel')} />
       )}
       <ReferenceFilterTree
         reference="Theme"
