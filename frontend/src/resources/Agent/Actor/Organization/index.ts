@@ -92,7 +92,7 @@ const resource = {
       show: {
         'involvedInProject': 'Impliqué dans les projets',
         'involvedInTask': 'Impliqué dans les tâches',
-        'involvedInEvent': 'Impliqué dans les évènements',
+        'involvedInEvent': 'Évènements',
       }
     }
   }

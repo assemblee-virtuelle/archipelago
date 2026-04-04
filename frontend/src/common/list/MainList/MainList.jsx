@@ -13,7 +13,7 @@ const MainList = ({ children, Label = LargeLabel }) => {
     <Box>
       {React.Children.map(children, field =>
         field && record[field.props.source] && (!Array.isArray(record[field.props.source]) || record[field.props.source].length > 0) && React.isValidElement(field) ? (
-          <div key={field.props.source}>
+          <Box key={field.props.source} mb={8}>
             {field.props.label !== false ? (
               <>
                 <Label>
@@ -30,7 +30,7 @@ const MainList = ({ children, Label = LargeLabel }) => {
             ) : (
               field
             )}
-          </div>
+          </Box>
         ) : null
       )}
     </Box>
