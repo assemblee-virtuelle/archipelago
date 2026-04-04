@@ -1,10 +1,11 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import { QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
-import { GridList, ChipList } from '@semapps/list-components';
+import { ReferenceArrayField } from '@semapps/field-components';
+import { GridList } from '@semapps/list-components';
 import { Show } from '../../../common/layout';
 import { AvatarWithLabelField } from '../../../common/field';
 import { SideList } from '../../../common/list';
+import { ChipList } from '../../../common/list/ChipList/ChipList';
 
 const SkillShow = props => (
   <Show {...props}>
@@ -19,9 +20,9 @@ const SkillShow = props => (
               <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Agent" source="pair:neededBy">
+          <ReferenceArrayField reference="Agent" source="pair:neededBy">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
+          </ReferenceArrayField>
         </SideList>
       </Grid>
     </Grid>

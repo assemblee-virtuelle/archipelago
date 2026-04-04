@@ -1,8 +1,8 @@
 import React from 'react';
-import { TextField, SimpleList, EmailField, RaRecord, useTranslate, SingleFieldList } from 'react-admin';
-import { Grid } from '@mui/material';
+import { TextField, SimpleList, EmailField, RaRecord, useTranslate, SingleFieldList, Link, useCreatePath } from 'react-admin';
+import { Box, Grid } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
-import { ReferenceArrayField, MultiUrlField, SeparatedListField } from '@semapps/field-components';
+import { ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HomeIcon from '@mui/icons-material/Home';
 import { MarkdownField } from '../../../../common/field';
@@ -16,9 +16,12 @@ import { PairOrganizationRecord } from '.';
 import ResponsiveCalendarList from '../../../../common/list/calendar/ResponsiveCalendarList';
 import LargeLabel from '../../../../common/list/MainList/LargeLabel';
 import AvatarChipField from '../../../../common/field/AvatarChipField';
+import MultiUrlField from '../../../../common/field/MultiUrlField';
+import CreatedField from '../../../../common/field/CreatedField';
 
 const OrganizationShow = () => {
   const translate = useTranslate();
+  const createPath = useCreatePath();
 
   return (
     <Show>
@@ -63,12 +66,18 @@ const OrganizationShow = () => {
             source="pair:involvedIn"
             filter={{ type: 'pair:Event' }}
             render={({ data }: { data: RaRecord[] }) => {
-              if (!data || data.length === 0) return null;
+              const hasEvents = data && data.length > 0;
 
               return (
                 <>
                   <LargeLabel>{translate('resources.Organization.show.involvedInEvent')}</LargeLabel>
-                  <ResponsiveCalendarList />
+                  {hasEvents && <ResponsiveCalendarList />}
+                  {!hasEvents && (
+                    <div>
+                      <Box mb={1}>{translate('resources.Organization.show.involvedInEvent.empty')}</Box>
+                      <Link to={createPath({ resource: 'Event', type: 'create' })}>{translate('resources.Event.create')}</Link>
+                    </div>
+                  )}
                 </>
               );
             }}
@@ -123,6 +132,8 @@ const OrganizationShow = () => {
           />
 
           <OrganizationIntegration />
+
+          <CreatedField />
         </Grid>
       </Grid>
     </Show>

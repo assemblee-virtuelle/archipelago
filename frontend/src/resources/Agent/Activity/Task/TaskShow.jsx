@@ -6,6 +6,7 @@ import { GridList } from '@semapps/list-components';
 import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
+import CreatedField from '../../../../common/field/CreatedField';
 
 const TaskShow = props => (
   <Show {...props}>
@@ -62,6 +63,8 @@ const TaskShow = props => (
             </GridList>
           </ReferenceArrayField>
         </SideList>
+
+        <CreatedField />
       </Grid>
     </Grid>
   </Show>

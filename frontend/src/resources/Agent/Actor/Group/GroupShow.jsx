@@ -1,11 +1,13 @@
 import React from 'react';
 import { TextField } from 'react-admin';
 import { Grid } from '@mui/material';
-import { QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
-import { ChipList, GridList } from '@semapps/list-components';
+import { ReferenceArrayField } from '@semapps/field-components';
+import { GridList } from '@semapps/list-components';
 import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
+import { ChipList, SmallChipList } from '../../../../common/list/ChipList/ChipList';
+import CreatedField from '../../../../common/field/CreatedField';
 
 const GroupShow = props => (
   <Show {...props}>
@@ -25,19 +27,21 @@ const GroupShow = props => (
               <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ 'type': 'pair:Project' }}>
+          <ReferenceArrayField label="Projets" reference="Project" source="pair:involvedIn" filter={{ 'type': 'pair:Project' }}>
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ 'type': 'pair:Event' }}>
+          </ReferenceArrayField>
+          <ReferenceArrayField label="Evénements" reference="Event" source="pair:involvedIn" filter={{ 'type': 'pair:Event' }}>
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <SmallChipList primaryText="pair:label" linkType="show" externalLinks />
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Document" source="pair:documentedBy">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Document" source="pair:documentedBy">
-            <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
+          </ReferenceArrayField>
         </SideList>
+
+        <CreatedField />
       </Grid>
     </Grid>
   </Show>

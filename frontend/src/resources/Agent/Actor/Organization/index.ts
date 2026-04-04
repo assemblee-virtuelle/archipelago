@@ -93,6 +93,7 @@ const resource = {
         'involvedInProject': 'Impliqué dans les projets',
         'involvedInTask': 'Impliqué dans les tâches',
         'involvedInEvent': 'Évènements',
+        'involvedInEvent.empty': 'Aucun évènement lié à cette organisation !'
       }
     }
   }
