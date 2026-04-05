@@ -7,6 +7,7 @@ The table below lists all configurable options:
 | Property              | Type               | Default           | Description                                                                                                                                         |
 |-----------------------|--------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `title`               | `string`           | **required**      | Your app title displayed in the top bar
+| `description`         | `string`           |                   | Optional app description (used for SEO)
 | `middlewareUrl`       | `string`           | **required**      | Middleware API url (ex: https://<host>:<port>/). It should contain a trailing slash
 | `geocoder`            | `GeocoderOptions`  | **required**      | Geocoding server type (Mapbox or Photon) and its options. See [Geocoding configuration](./geocoder.md)
 | `layout`              | `LayoutOptions`    | **required**      | UI layout configuration. See [layout configuration](./layouts.md)

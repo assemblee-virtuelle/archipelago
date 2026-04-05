@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextField, SimpleList, EmailField, RaRecord, useTranslate, SingleFieldList, Link, useCreatePath } from 'react-admin';
+import { Helmet } from 'react-helmet';
+import { TextField, SimpleList, EmailField, RaRecord, useTranslate, SingleFieldList, Link, useCreatePath, useRecordContext } from 'react-admin';
 import { Box, Grid } from '@mui/material';
 import { MapField } from '@semapps/geo-components';
 import { ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
@@ -19,12 +20,27 @@ import AvatarChipField from '../../../../common/field/AvatarChipField';
 import MultiUrlField from '../../../../common/field/MultiUrlField';
 import CreatedField from '../../../../common/field/CreatedField';
 
+const OrganizationSEO = () => {
+  const record = useRecordContext<PairOrganizationRecord>();
+
+  return record ? (
+    <Helmet>
+
+      <meta property="og:title" content={record['pair:label']} />
+      {record['pair:comment'] && <meta property="og:description" content={record['pair:comment']} />}
+      {record['pair:comment'] && <meta name="description" content={record['pair:comment']} />}
+      {record['image'] && <meta property="og:image" content={record['image']} />}
+    </Helmet>
+  ) : null;
+};
+
 const OrganizationShow = () => {
   const translate = useTranslate();
   const createPath = useCreatePath();
 
   return (
     <Show>
+      <OrganizationSEO />
       <Grid container spacing={5}>
         <Grid item xs={12} md={9}>
           <Hero image="image">
