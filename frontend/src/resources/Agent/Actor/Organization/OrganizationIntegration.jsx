@@ -130,23 +130,13 @@ const OrganizationIntegration = () => {
                 {copied === 'code' ? 'Copié !' : 'Copier le code'}
             </Button>
 
-            <Tooltip title="Comment faire ?" componentsProps={{
-                tooltip: {
-                    sx: {
-                        backgroundColor: 'rgb(0, 82, 89)',
-                        color: '#fff',
-                        fontSize: '13px',
-                        fontWeight: 400,
-                    },
-                },
-            }}
-            >
+            <Tooltip title="Comment faire ?">
                 <IconButton
                     onClick={() => setShowHelp(!showHelp)}
                     size="small"
                     sx={{ mb: 1 }}
                 >
-                    <HelpOutlineIcon sx={{ fontSize: 22, color: 'rgb(0, 82, 89)' }} />
+                    <HelpOutlineIcon />
                 </IconButton>
             </Tooltip>
             {showHelp && (

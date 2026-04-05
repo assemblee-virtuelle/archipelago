@@ -1,12 +1,14 @@
 import React from 'react';
 import { TextField, UrlField, SimpleList } from 'react-admin';
 import { Grid } from '@mui/material';
-import { QuickAppendReferenceArrayField, ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
-import { ChipList, GridList } from '@semapps/list-components';
+import { ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
+import { GridList } from '@semapps/list-components';
 import DescriptionIcon from '@mui/icons-material/Description';
 import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
+import { ChipList, SmallChipList } from '../../../../common/list/ChipList/ChipList';
+import CreatedField from '../../../../common/field/CreatedField';
 
 const ProjectShow = props => (
   <Show {...props}>
@@ -39,16 +41,18 @@ const ProjectShow = props => (
               <AvatarWithLabelField label="pair:label" image="image" />
             </GridList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
+          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <SmallChipList primaryText="pair:label" linkType="show" externalLinks />
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Type" source="pair:hasType">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Type" source="pair:hasType">
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Resource" source="pair:needs">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Resource" source="pair:needs">
-            <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
+          </ReferenceArrayField>
         </SideList>
+
+        <CreatedField />
       </Grid>
     </Grid>
   </Show>
