@@ -26,6 +26,7 @@ type PhotonOptions = {
 interface ConfigInterface {
   middlewareUrl: string;
   title: string;
+  description?: string;
   layout: LayoutOptions;
   geocoder: MapboxOptions | PhotonOptions;
   theme?: (baseTheme: Theme) => Theme;

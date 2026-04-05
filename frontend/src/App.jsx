@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Admin, Resource, memoryStore, CustomRoutes } from 'react-admin';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -41,6 +42,9 @@ const App = () => (
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <LayoutProvider layoutOptions={config.layout}>
+          <Helmet titleTemplate={`%s - ${config.title}`}>
+            {config.description && <meta name="description" content={config.description} />}
+          </Helmet>
           <Admin
             disableTelemetry
             title={config.title}

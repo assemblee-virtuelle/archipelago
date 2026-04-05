@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextField, UrlField, DateField, FunctionField, SingleFieldList } from 'react-admin';
+import { TextField, UrlField, DateField, FunctionField, SingleFieldList, useRecordContext } from 'react-admin';
+import { Helmet } from 'react-helmet';
 import { Grid } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { ReferenceArrayField } from '@semapps/field-components';
@@ -10,10 +11,25 @@ import { Show } from '../../../../common/layout';
 import AddToCalendarButton from './AddToCalendarButton';
 import AvatarChipField from '../../../../common/field/AvatarChipField';
 import { SmallChipList } from '../../../../common/list/ChipList/ChipList';
+import { PairEventRecord } from '.';
 import CreatedField from '../../../../common/field/CreatedField';
 
-const EventShow = props => (
-  <Show {...props}>
+const EventSEO = () => {
+  const record = useRecordContext<PairEventRecord>();
+
+  return record ? (
+    <Helmet>
+      <meta property="og:title" content={record['pair:label']} />
+      {record['pair:comment'] && <meta property="og:description" content={record['pair:comment']} />}
+      {record['pair:comment'] && <meta name="description" content={record['pair:comment']} />}
+      {record['image'] && <meta property="og:image" content={record['image']} />}
+    </Helmet>
+  ) : null;
+};
+
+const EventShow = () => (
+  <Show>
+    <EventSEO />
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -23,7 +39,7 @@ const EventShow = props => (
           <FunctionField
             source="pair:startDate"
             label=""
-            render={(record) =>
+            render={(record: PairEventRecord) =>
               <AddToCalendarButton
                 title={record['pair:label']}
                 description={record['pair:comment']}
@@ -38,9 +54,9 @@ const EventShow = props => (
           <UrlField source="pair:aboutPage" />
           <MapField
             source="pair:hasLocation"
-            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+            address={(record: PairEventRecord) => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+            latitude={(record: PairEventRecord) => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+            longitude={(record: PairEventRecord) => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
           />
         </Hero>
         <MainList>
@@ -60,7 +76,6 @@ const EventShow = props => (
             <SmallChipList primaryText="pair:label" linkType="show" externalLinks />
           </ReferenceArrayField>
         </SideList>
-
         <CreatedField />
       </Grid>
     </Grid>
