@@ -1,13 +1,13 @@
 import React from 'react';
 import { TextField } from 'react-admin';
 import { Grid } from '@mui/material';
-import { QuickAppendReferenceArrayField } from '@semapps/field-components';
-import { ChipList } from '@semapps/list-components';
+import { ReferenceArrayField } from '@semapps/field-components';
 import { MapField } from '@semapps/geo-components';
 import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import MembershipAssociationField from '../../../../common/field/MembershipAssociationField';
+import { ChipList, SmallChipList } from '../../../../common/list/ChipList/ChipList';
 
 const PersonShow = props => (
   <Show {...props}>
@@ -40,15 +40,15 @@ const PersonShow = props => (
             }}
           />
 
-          <QuickAppendReferenceArrayField reference="Activity" source="pair:involvedIn">
+          <ReferenceArrayField reference="Activity" source="pair:involvedIn">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <SmallChipList primaryText="pair:label" linkType="show" externalLinks />
+          </ReferenceArrayField>
+          <ReferenceArrayField reference="Skill" source="pair:offers">
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Skill" source="pair:offers">
-            <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
+          </ReferenceArrayField>
         </SideList>
       </Grid>
     </Grid>

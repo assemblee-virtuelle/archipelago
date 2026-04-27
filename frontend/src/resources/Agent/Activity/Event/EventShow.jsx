@@ -1,13 +1,16 @@
 import React from 'react';
-import { TextField, UrlField, DateField, FunctionField } from 'react-admin';
+import { TextField, UrlField, DateField, FunctionField, SingleFieldList } from 'react-admin';
 import { Grid } from '@mui/material';
-import { QuickAppendReferenceArrayField, ReferenceArrayField } from '@semapps/field-components';
-import { GridList, ChipList } from '@semapps/list-components';
+import HomeIcon from '@mui/icons-material/Home';
+import { ReferenceArrayField } from '@semapps/field-components';
 import { MapField } from '@semapps/geo-components';
-import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
+import { MarkdownField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import AddToCalendarButton from './AddToCalendarButton';
+import AvatarChipField from '../../../../common/field/AvatarChipField';
+import { SmallChipList } from '../../../../common/list/ChipList/ChipList';
+import CreatedField from '../../../../common/field/CreatedField';
 
 const EventShow = props => (
   <Show {...props}>
@@ -31,7 +34,7 @@ const EventShow = props => (
                 url={window.location.href}
                 showIcon
               />}
-            />
+          />
           <UrlField source="pair:aboutPage" />
           <MapField
             source="pair:hasLocation"
@@ -47,14 +50,18 @@ const EventShow = props => (
       <Grid item xs={12} sm={3}>
         <SideList>
           <ReferenceArrayField reference="Actor" source="pair:involves" sort={{ field: 'type', order: 'ASC' }}>
-            <GridList xs={6} linkType="show" externalLinks>
-              <AvatarWithLabelField label="pair:label" image="image" />
-            </GridList>
+            <SingleFieldList linkType={false}>
+              <AvatarChipField label="pair:label" image="image" color="secondary" variant="filled">
+                <HomeIcon />
+              </AvatarChipField>
+            </SingleFieldList>
           </ReferenceArrayField>
-          <QuickAppendReferenceArrayField reference="Theme" source="pair:hasTopic">
-            <ChipList primaryText="pair:label" linkType="show" externalLinks />
-          </QuickAppendReferenceArrayField>
+          <ReferenceArrayField reference="Theme" source="pair:hasTopic">
+            <SmallChipList primaryText="pair:label" linkType="show" externalLinks />
+          </ReferenceArrayField>
         </SideList>
+
+        <CreatedField />
       </Grid>
     </Grid>
   </Show>
