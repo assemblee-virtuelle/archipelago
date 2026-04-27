@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextField } from 'react-admin';
+import { Helmet } from 'react-helmet';
+import { TextField, useRecordContext } from 'react-admin';
 import { Grid } from '@mui/material';
 import { ReferenceArrayField } from '@semapps/field-components';
 import { MapField } from '@semapps/geo-components';
@@ -8,9 +9,24 @@ import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import MembershipAssociationField from '../../../../common/field/MembershipAssociationField';
 import { ChipList, SmallChipList } from '../../../../common/list/ChipList/ChipList';
+import { PairPersonRecord } from '.';
 
-const PersonShow = props => (
-  <Show {...props}>
+const PersonSEO = () => {
+  const record = useRecordContext<PairPersonRecord>();
+
+  return record ? (
+    <Helmet>
+      <meta property="og:title" content={record['pair:label']} />
+      {record['pair:comment'] && <meta property="og:description" content={record['pair:comment']} />}
+      {record['pair:comment'] && <meta name="description" content={record['pair:comment']} />}
+      {record['image'] && <meta property="og:image" content={record['image']} />}
+    </Helmet>
+  ) : null;
+};
+
+const PersonShow = () => (
+  <Show>
+    <PersonSEO />
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -22,9 +38,9 @@ const PersonShow = props => (
           <MarkdownField source="pair:description" />
           <MapField
             source="pair:hasLocation"
-            address={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
-            latitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
-            longitude={record => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
+            address={(record: PairPersonRecord) => record['pair:hasLocation'] && record['pair:hasLocation']['pair:label']}
+            latitude={(record: PairPersonRecord) => record['pair:hasLocation'] && record['pair:hasLocation']['pair:latitude']}
+            longitude={(record: PairPersonRecord) => record['pair:hasLocation'] && record['pair:hasLocation']['pair:longitude']}
           />
         </MainList>
       </Grid>
@@ -35,7 +51,6 @@ const PersonShow = props => (
             referenceFieldProps={{
               reference: "Organization",
               source: "pair:membershipOrganization",
-              basePath: "/Organization",
               link: "show"
             }}
           />

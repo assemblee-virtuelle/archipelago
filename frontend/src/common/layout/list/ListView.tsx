@@ -1,4 +1,5 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
+import { Helmet } from 'react-helmet';
 import { useListContext, Pagination, CreateButton, useResourceDefinition, usePermissions } from 'react-admin';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -42,6 +43,9 @@ const ListView = ({ title, children, aside, actions, pagination }: PropsWithChil
 
   return (
     <Layout.BaseView title={title ?? listContext.defaultTitle} actions={actions} aside={aside}>
+      <Helmet>
+        <title>{title ?? listContext.defaultTitle}</title>
+      </Helmet>
       <Box px={Layout.name === 'leftMenu' ? 3 : 0} py={3}>
         {children}
       </Box>

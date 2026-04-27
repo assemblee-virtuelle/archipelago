@@ -1,5 +1,6 @@
 import React from 'react';
-import { TextField, UrlField, SimpleList } from 'react-admin';
+import { Helmet } from 'react-helmet';
+import { TextField, UrlField, SimpleList, useRecordContext } from 'react-admin';
 import { Grid } from '@mui/material';
 import { ReferenceArrayField, SeparatedListField } from '@semapps/field-components';
 import { GridList } from '@semapps/list-components';
@@ -8,10 +9,25 @@ import { MarkdownField, AvatarWithLabelField } from '../../../../common/field';
 import { Hero, MainList, SideList } from '../../../../common/list';
 import { Show } from '../../../../common/layout';
 import { ChipList, SmallChipList } from '../../../../common/list/ChipList/ChipList';
+import { PairProjectRecord } from '.';
 import CreatedField from '../../../../common/field/CreatedField';
 
-const ProjectShow = props => (
-  <Show {...props}>
+const ProjectSEO = () => {
+  const record = useRecordContext<PairProjectRecord>();
+
+  return record ? (
+    <Helmet>
+      <meta property="og:title" content={record['pair:label']} />
+      {record['pair:comment'] && <meta property="og:description" content={record['pair:comment']} />}
+      {record['pair:comment'] && <meta name="description" content={record['pair:comment']} />}
+      {record['image'] && <meta property="og:image" content={record['image']} />}
+    </Helmet>
+  ) : null;
+};
+
+const ProjectShow = () => (
+  <Show>
+    <ProjectSEO />
     <Grid container spacing={5}>
       <Grid item xs={12} sm={9}>
         <Hero image="image">
@@ -27,7 +43,7 @@ const ProjectShow = props => (
           <MarkdownField source="pair:description" />
           <ReferenceArrayField reference="Document" source="pair:documentedBy">
             <SimpleList
-              primaryText={record => record && record['pair:label']}
+              primaryText={(record: PairProjectRecord) => record && record['pair:label']}
               leftIcon={() => <DescriptionIcon />}
               linkType="show"
             />
@@ -51,7 +67,6 @@ const ProjectShow = props => (
             <ChipList primaryText="pair:label" linkType="show" externalLinks />
           </ReferenceArrayField>
         </SideList>
-
         <CreatedField />
       </Grid>
     </Grid>

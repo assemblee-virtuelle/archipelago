@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+import { Helmet } from 'react-helmet';
 import { RaRecord, ShowProps, useGetRecordRepresentation, useResourceContext, useShowContext } from 'react-admin';
 import { Box } from '@mui/material';
 import { useCheckPermissions } from '@semapps/auth-provider';
@@ -23,6 +24,9 @@ const ShowView = ({ title, actions, children }: PropsWithChildren<Props>) => {
 
   return (
     <Layout.BaseView title={title || recordTitle} actions={actions}>
+      <Helmet>
+        <title>{recordTitle}</title>
+      </Helmet>
       <Box p={3}>{children}</Box>
     </Layout.BaseView>
   );
